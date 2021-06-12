@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://oopsdc.github.io/sitemap.xml

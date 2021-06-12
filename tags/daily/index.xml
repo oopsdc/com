@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Daily on Atmet</title>
+    <link>https://oopsdc.github.io/tags/daily/</link>
+    <description>Recent content in Daily on Atmet</description>
+    <image>
+      <url>https://oopsdc.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://oopsdc.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 10 Jun 2021 21:03:39 +0800</lastBuildDate><atom:link href="https://oopsdc.github.io/tags/daily/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>XSS Challenges</title>
+      <link>https://oopsdc.github.io/post/xss-challenges/</link>
+      <pubDate>Thu, 10 Jun 2021 21:03:39 +0800</pubDate>
+      
+      <guid>https://oopsdc.github.io/post/xss-challenges/</guid>
+      <description>Stage #1 Hint: Very simple&amp;hellip;
+直接输入测试语句：
+Stage #2 Hint: Close the current tag and add SCRIPT tag&amp;hellip;
+上测试语句：
+然后审查元素，只需要把input标签闭合就能执行我们的语句了。
+&amp;ldquo;&amp;gt;alert(document.domain);Stage #3 Hint: The input in text box is properly escaped.
+这个页面有两个input标签，先在搜索框输入我们的测试语句试试。
+直接把我们的语句放到标签里了，但是这旁边不是还有一个input标签吗。把两者的name互换一下即可。
+Stage #4 Hint: Invisible input field.
+审查元素发现有三个input标签，第三个标签的属性是hidden，这里把它改为text，然后把input标签闭合，之后放上我们的语句即可。
+&amp;ldquo;&amp;gt;alert(document.domain);Stage #5 Hint: Length limited text box.
+审查元素，发现搜索框的长度被限制，修改maxlength的值即可。
+&amp;ldquo;&amp;gt;alert(document.domain);Stage #6 Hint: Event handler attributes.
+输入测试语句：
+&amp;ldquo;&amp;gt;alert(document.domain);发现尖括号和斜杠被转义了，那我们就使用不带尖括号的语句。
+&amp;lsquo;&amp;rdquo; onload=&amp;ldquo;alert(document.domain);&amp;quot;&amp;rsquo;
+Stage #7 Hint:Nearly the same&amp;hellip; but a bit more tricky.
+审查元素，发现Hint元素旁边有一个隐藏的输入框，将其属性修改为text，并将value设置如下：
+‘”onmouseover=&amp;ldquo;alert(document.domain);&amp;quot;&#39;</description>
+    </item>
+    
+    <item>
+      <title>网站镜像克隆</title>
+      <link>https://oopsdc.github.io/post/%E7%BD%91%E7%AB%99%E9%95%9C%E5%83%8F%E5%85%8B%E9%9A%86/</link>
+      <pubDate>Tue, 20 Apr 2021 22:06:50 +0800</pubDate>
+      
+      <guid>https://oopsdc.github.io/post/%E7%BD%91%E7%AB%99%E9%95%9C%E5%83%8F%E5%85%8B%E9%9A%86/</guid>
+      <description>使用wget克隆网站 使用方法 我们可以使用man wget命令查看帮助文档。
+操作命令及参数解释如下：
+wget -m -p -E -k -K -np -v https://www.baidu.com/ # 参数解释 -m	:	镜像，选择该选项适用于Web站点 -p	:	页面获取的先决条件，该选项确保包含了请求的图片和css脚本文件被下载(可以更好复制html5站点) -E	:	适用于拓展，可以在本地另存一个html文件 -k	:	转换链接，确保文件本转换，适用于本地浏览 -K	:	转换备份文件，将以orig为后缀作为原始文件 -np	:	不要到上一层子目录中 -v	:	显示过程，不显示过程为-nv 克隆结果 # 克隆后在当前目录下会出现一个与网站同名的子目录，树形结构如下 www.baidu.com ├── index.html ├── index.html.orig └── robots.txt 0 directories, 3 files 使用HTTrack克隆网站 使用方法 httrack # 进入软件后需要输入项目名 baidu # 克隆后的存放地址 /home/oopsdc/Desktop # 要克隆的网站地址 www.baidu.com # 有6个选项，此处我们选2，具有向导递归层级的镜像网站 2 # 接下来的部分全选默认选项 默认回车 克隆结果 baidu ├── backblue.</description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://oopsdc.github.io/post/docker/</link>
+      <pubDate>Tue, 13 Apr 2021 22:06:50 +0800</pubDate>
+      
+      <guid>https://oopsdc.github.io/post/docker/</guid>
+      <description>Docker概述 镜像(image)：
+一个只读模板。一个镜像可以用来创建多个Docker容器，好似Java中的类和对象，镜像是类，容器是对象。容器(container)：
+Docker利用容器独立运行一个或一组应用，容器是用镜像创建的运行实例。容器可以被启动、开始、停止、删除。每个容器都是相互个隔离的。也可以把容器看做一个简易版Linux环境(包括root用户权限、进程空间、用户空间和网络空间等)及运行在其中的应用程序。容器的定义和镜像几乎一模一样，也是一堆层的统一视角，唯一区别在于容器最上面一层可读可写。仓库(repository)：
+仓库是集中存放镜像文件的场所。仓库和仓库注册服务器(registry)是有区别的，后者往往存在多个仓库，每个仓库又存在多个镜像，每个镜像有不同的标签。仓库分为公开仓库和私有仓库两种形式。最大的公开仓库是Docker Hub，国内最大的为阿里云、网易云等。Docker安装  环境：CentOS 7
+ 1.官方文档
+2.yum安装gcc相关环境
+yum -y install gcc yum -y install gcc-c++ 3.卸载旧版本
+yum remove docker \ 	docker-client \ 	docker-client-latest \ 	docker-common \ 	docker-latest \ 	docker-latest-logrotate \ 	docker-logrotate \ 	docker-engine 4.安装依赖包
+yum install -y yum-utils 5.设置镜像仓库
+# 错误 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo ## 报错 [Errno 14] curl#35 - TCP connection reset by peer [Errno 12] curl#35 - Timeout # 推荐国内镜像 yum-config-manager --add-repo http://mirrors.</description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>https://oopsdc.github.io/post/go/</link>
+      <pubDate>Tue, 13 Apr 2021 22:06:50 +0800</pubDate>
+      
+      <guid>https://oopsdc.github.io/post/go/</guid>
+      <description>runoob教程：https://www.runoob.com/go/go-tutorial.html
+环境搭建 安装包官方下载地址：https://golang.org/dl/
+国内能打开的地址：https://golang.google.cn/dl/
+Windows安装go 安装包下载 这里我选择下载msi文件上面的go1.16.2.windows-amd64.zip压缩包，然后放在环境目录D:\Env\go1.16.2\bin下解压。
+环境配置 将go目录下的/bin路径添加到Path环境变量中，点击新建。
+检测安装 打开cmd输入go。
+hello-world 在工作目录创建hello.go文件。
+package main import &amp;#34;fmt&amp;#34; func main() { fmt.Println(&amp;#34;Hello, World!&amp;#34;) } 使用go run命令运行：
+go run hello.go go build生成二进制文件运行：
+&amp;gt; go build .\hello.go &amp;gt; ls Mode LastWriteTime Length Name ---- ------------- ------ ---- -a---- 2021/3/15 10:50 2094592 hello.exe -a---- 2021/3/15 10:47 79 hello.go &amp;gt; .\hello.exe Hello, World! Linux安装go 环境：Ubuntu 20.04.1(推荐使用WSL，但现在电脑上没配置，就在虚拟机上做了)
+官方安装文档：https://golang.google.cn/doc/install?download=go1.16.2.linux-amd64.tar.gz
+安装包下载 下载go1.16.2.linux-amd64.tar.gz压缩文件。
+解压 $ sudo tar -zxvf go1.16.2.linux-amd64.tar.gz 设置环境变量 $ export PATH=$PATH:/usr/local/go/bin 检测安装 $ go version 问题处理 本来想通过VMware Tools把压缩文件直接从主机拖到虚拟机的，但尝试本地解压VMware Tools失败，报错显示内存不足，尝试解压到其它目录。解决方法如下：</description>
+    </item>
+    
+    <item>
+      <title>GTK&#43;</title>
+      <link>https://oopsdc.github.io/post/gtk&#43;/</link>
+      <pubDate>Sat, 27 Mar 2021 22:06:50 +0800</pubDate>
+      
+      <guid>https://oopsdc.github.io/post/gtk&#43;/</guid>
+      <description>GTK+简介 GTK+(Gnome Toolkit+)最初是为GIMP(GNU Image Manipulation Program)写的，在开发早期GIMP版本时，Peter Mattis 和 Spencer Kimball创建了GTK(GIMP Toolkit)作为Motif收费工具包的替代。当GTK获得了面向对象特性和可扩展性后，才变为了GTK+。
+GTK+特点 稳定、跨平台、多语言绑定、接口丰富、与时俱进、算法丰富、移动嵌入式应用广泛.
+学习手册  GTK+2手册：https://developer.gnome.org/gtk2/ GTK+3手册：https://developer.gnome.org/gtk3/ 中文手册：https://www.bookstack.cn/read/GTK-3-Chinese-Reference-Manual/README.md  GTK程序简介  使用gcc编译时加上pkg-config --cflags --libs gtk+-2.0，或者直接使用makefile编译
+ 例： gcc demo.c -o demo `pkg-config --cflags --libs gtk+-2.0` 自动获得预处理参数，如宏定义、头文件位置 自动获得链接参数，如库、依赖库位置、文件名及其它参数 GTK程序基本框架 #include &amp;lt;gtk/gtk.h&amp;gt; int main(int argc, char *argv[]) { gtk_init(&amp;amp;argc, &amp;amp;argv);	// 初始化  // 代码区  gtk_main();	// 主事件循环  return 0; } 分析：
+&amp;lt;gtk/gtk.h&amp;gt;	// 头文件，包括了GTK+所有控件、变量、函数和结构的声明 gtk_init()	// 必须在控件定义之前使用，参数由命令中解析出来并送到程序中。主要作用为设立GTK+运行环境，自动完成一些必要的初始化工作 gtk_main()	// 程序运行停在这里等待事件(如键盘或鼠标事件)的发生，等待用户操作窗口。这个函数在所有GTK+程序中都要调用 GtkWidget* window = gtk_window_new(GTK_WINDOW_TOPLEVEL)	// GtkWidget是GTK+控件类型，GtkWidget*能指向任何控件的指针类型 gtk_window_new()	// 创建一个窗口并返回这个窗口的控件指针 GTK_WINDOW_TOPLEVEL	// 指明窗口类型为最上层主窗口 gtk_widget_show(window)	// 显示上一步创建的窗口控件  控件介绍</description>
+    </item>
+    
+    <item>
+      <title>博客搭建</title>
+      <link>https://oopsdc.github.io/post/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Sun, 13 Dec 2020 22:06:50 +0800</pubDate>
+      
+      <guid>https://oopsdc.github.io/post/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+      <description>博客搭建 hugo  hugo主题暂停更新。
+ hugo官方网站。
+需求准备：
+软件包管理工具
+ Chocolatey Scoop   两者区别
+由于以前使用hexo主题，本次为初次使用hugo主题，查询了一下以上两个软件包管理工具的区别
+Chocolatey：定位为“软件管理自动化”，开箱即用，支持范围广。但依赖于Windows power shell及NuGet包管理器系统，后者主要解决软件库依赖关系，且Chocolatey往往需要管理员权限运行。
+Scoop：用户目标更有针对性，更多时候帮助开发者安装系统工具时使用，尤其是依赖Linux但在Windows不存在的软件。相比于Chocolatey，Scoop在安装常规Windows程序时需要用户额外手动添加附加库。Scoop不使用NuGet且不会全局安装，应用程序的范围被限定在账户中，安装到特殊目录避免路径污染。
+ 这里我们就使用Chocolatey。
+官方安装教程
+hexo 需求准备：
+git
+nodejs
+连接GitHub  为方便后续操作，之后的命令使用gitbash，空白处右键即可打开gitbash
+ 配置个人信息 生成SSH 该命令会在用户文件夹下的.ssh文件夹生成id_rsa和id_rsa.pub文件，前者为私钥，后者为公钥。接下来我们把公钥提交到GitHub。
+登录GitHub
+自己取一个合适的名称，把刚刚cat看到的内容粘贴进去。
+完成上述步骤后查看连接是否成功。
+创建博客仓库 博客部署 安装hexo 初始化博客文件夹 本地初始化 我们可以看到博客启动成功，接下来我们就换主题。
+这里使用yun主题。
+ 项目官网 GitHub项目地址  下载后把文件解压缩放在这个地址，解压缩后的文件名为yun：
+然后修改博客根目录下的_config.yml文件，自定义主题，此处填写的主题名就是我们刚刚解压缩的文件夹名称。
+Ctrll+F搜索theme，然后进行修改。
+完成上述步骤后，我们返回gitbash，Ctrl+C结束当前调试，重新运行本地文件。
+刷新网页后看到了这个报错，按照提示安装hexo-render-pug即可。
+在安装过程中还有了其它提醒：
+我们依次进行解决。
+安装完成后依旧报错。
+查了资料，不缺插件，文件夹也是正确的，实在不知道什么错，就在_config.yml和theme下分别把yun和yun文件夹都改为了theme-yun，然后正常运行。但是改回yun又会报错&amp;hellip;先暂时不讨论这个问题了。
+这就是博客初始页面。
+剩下的完全可以按照官方文档自己操作，自定义想要的功能。
+官方文档
+修改完且本地测试无误后，我们就可以正式把博客发布到GitHub上了。
+首先还是编辑根目录下的_config.yml文件，直接翻到最后。
+部署博客 部署博客需要使用命令hexo deploy，但需要安装对应平台的插件。
+以GitHub为例，安装如下：
+我们的本地测试没有问题时，即可部署，部署时建议先清除以往数据并重新生成，避免未知错误。
+配置域名 如果想映射域名的话，需要先自己注册一个，腾讯云阿里云华为云均可购买，此处不详解了。我直接在
+这个目录下建了一个CNAME文件，没有后缀!!!。文件内容如下：
+优化访问 CDN加速 由于博客部署在GitHub，访问极不稳定，所以使用了Cloudflare的服务。</description>
+    </item>
+    
+    <item>
+      <title>SQL注入</title>
+      <link>https://oopsdc.github.io/post/sql%E6%B3%A8%E5%85%A5/</link>
+      <pubDate>Mon, 07 Dec 2020 22:06:50 +0800</pubDate>
+      
+      <guid>https://oopsdc.github.io/post/sql%E6%B3%A8%E5%85%A5/</guid>
+      <description>SQL注入 规则 通过发送异常数据来触发异常。
+规则含义 识别Web应用上所有的数据输入，了解哪种类型的请求会触发异常，检测服务器响应中的异常。
+Web应用通常包含：表示层、逻辑层、数据层。
+SQL注入分类 有参数传递。
+参数带入数据库查询且执行。
+产生过程 web应用开发人员无法确保在将从web表单、cookie、输入参数等收到的值传递给SQL查询之前已对其进行验证，则通常会引起SQL注入。
+若攻击者能够控制发送给SQL查询的输入，且能够操纵该输入将其解析为代码而非数据，那么攻击者就有可能有能力在后台数据库上执行该代码。
+若应用开发人员无法彻底理解与他们交互的基础数据库或完全无法理解并意识到所开发代码潜在的安全问题，那么他们编写的程序通常是不安全的，容易受到SQL注入攻击。
+盲注 假设发现了一个SQL注入点，但应用只提供了一个通用的错误页面，或虽然提供了正常的页面，但与我们取回的内容存在一些可见或不可见的小差异，这些都属于盲注。SQL盲注是指在无法使用详细数据库错误信息或带内数据连接的情况下，利用数据库查询的输入审查漏洞从数据库提取信息或提取与数据库查询相关信息的攻击技术。
+强制产生通用错误 应用中经常使用通用错误页面来替换数据库错误，即使出现通用错误页面，也可以推断SQL注入是否可行。若应用只在提交单引号或其中一个变量时才产生通用错误页面，那么很可能存在SQL盲注。提交单引号是最常见的错误源受损的SQL查询。
+注入带副作用的查询 最常用的是时序攻击来确认攻击者的SQL是否已执行，有时也可利用攻击者能够观察到的输出进行判断。
+拆分与平衡 分解合法输入的操作称为拆分，平衡保证最终查询中不包含不平衡的结尾单引号。
+基本思想：收集合法的请求参数，之后使用SQL关键字对他们进行修改以保证与原数据不同，担当数据库解析他们时，二者的功能等价。
+基于时间的盲注 所有相应都包含一种属性：发出请求到响应到达这段时间的差异。当某一状态为真时，能够让响应暂停几秒，为假时，能够不出现暂停。
+基于响应的盲注 通过仔细检查响应中的数据来推断状态，推断状态时，借助响应中包含的文本或在检查特定值时强制产生的错误，产生的错误类型是运行时错误而非查询编译错误。
+常用步骤 （一）发现SQL注入位置 1.整型参数判断 HTTP://xxx.xxx.xxx/xxx.asp?p=xx&#39;，此时xxx.asp中SQL语句变成了select * from 表名 where 字段=xx&#39; ，xx.asp运行异常。
+HTTP://xxx.xxx.xxx/xxx.asp?p=xx and 1=1，xxx.asp运行正常，且与HTTP://xxx.xxx.xxx/xxx.asp?p=xx运行结果相同
+HTTP://xxx.xxx.xxx/xxx.asp?p=xx and 1=2，xxx.asp运行异常
+2.字符型参数判断 HTTP://xxx.xxx.xxx/xxx.asp?p=xx&#39;，此时xxx.asp中的SQL语句变成了select * from 表名 where 字段=xx&#39;，xxx.asp运行异常。
+HTTP://xxx.xxx.xxx/xxx.asp?p=xx&amp;amp;nm&amp;hellip;39;1&#39;=&amp;lsquo;1&amp;rsquo;，xxx.asp运行正常，且与HTTP://xxx.xxx.xxx/xxx.asp?p=xx运行结果相同。
+HTTP://xxx.xxx.xxx/xxx.asp?p=xx&amp;amp;nb&amp;hellip;39;1&#39;=&amp;lsquo;2&amp;rsquo;，xxx.asp运行异常。
+若这三步全满足，则xxx.asp一定存在SQL注入漏洞。
+特殊类型参数判断 对于字符过滤等情况，可以尝试以下方法。
+大小写混合：VBS不区分大小写，程序员在设计时往往忽略大小写混合情况，可以尝试使用SelecT代替select。
+UNICODE：UNICODE字符集实现国际化，+=%2B，space=%20。
+ASCII：U=chr(85)，a=chr(97)。
+（二）判断后台数据库类型 查询数据库名称 1&amp;#39; union select 1,database(); 查询数据库表名 1&amp;#39; union select 1,group_concat(table_name) from information_schema.tables where table_schema=database(); 获取字段名 1&amp;#39; union select 1,group_concat(columns_name) from information_schema.</description>
+    </item>
+    
+  </channel>
+</rss>
