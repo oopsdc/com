@@ -9,7 +9,32 @@
       <link>https://oopsdc.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 10 Jun 2021 21:03:39 +0800</lastBuildDate><atom:link href="https://oopsdc.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Jun 2021 22:20:50 +0800</lastBuildDate><atom:link href="https://oopsdc.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>博客搭建</title>
+      <link>https://oopsdc.github.io/post/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Sat, 12 Jun 2021 22:20:50 +0800</pubDate>
+      
+      <guid>https://oopsdc.github.io/post/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+      <description>博客搭建 hugo hugo官方网站
+需求准备： 软件包管理工具
+  Hugo:Releases · gohugoio/hugo (github.com)
+安装步骤 1.解压压缩包
+2.配置环境变量
+D:\Env\hugo_0.83.13.初始化博客
+先上官方安装文档，避免踩坑：Installation · adityatelange/hugo-PaperMod Wiki (github.com)
+官方文档推荐我们使用易读性更高的yml初始化博客
+hugo new site &amp;lt;name of site&amp;gt; -f yml4.选择主题:Complete List | Hugo Themes (gohugo.io)
+5.在config.yml文件中指定主题，此处以PaperMod为例
+theme: PaperMod6.启动服务，本地查看效果
+hugo server7.创建仓库，详见之后的hexo主题教学
+8.将config.yml中的baseUrl修改为自己创建的仓库
+baseURL: &amp;quot;https://&amp;lt;username&amp;gt;.github.io/&amp;quot;9.在网站文件夹根目录下打开cmd命令行，生成public文件夹
+hugo10.切换到public文件夹，把所有文件push到GitHub即可
+11.链接到远程服务器代码仓库并push到GitHub，由于现在的GitHub默认为main分支了，我们需要先进行修改
+# 配置代理git config --global http.proxy socks5://127.0.0.1:portgit config --global https.proxy socks5://127.0.0.1:port# 更改默认分支git push -u origin main# push文件cd publicgit initgit add .</description>
+    </item>
+    
     <item>
       <title>XSS Challenges</title>
       <link>https://oopsdc.github.io/post/xss-challenges/</link>
@@ -108,54 +133,6 @@ GTK+特点 稳定、跨平台、多语言绑定、接口丰富、与时俱进、
 学习手册  GTK+2手册：https://developer.gnome.org/gtk2/ GTK+3手册：https://developer.gnome.org/gtk3/ 中文手册：https://www.bookstack.cn/read/GTK-3-Chinese-Reference-Manual/README.md  GTK程序简介  使用gcc编译时加上pkg-config --cflags --libs gtk+-2.0，或者直接使用makefile编译
  例： gcc demo.c -o demo `pkg-config --cflags --libs gtk+-2.0` 自动获得预处理参数，如宏定义、头文件位置 自动获得链接参数，如库、依赖库位置、文件名及其它参数 GTK程序基本框架 #include &amp;lt;gtk/gtk.h&amp;gt; int main(int argc, char *argv[]) { gtk_init(&amp;amp;argc, &amp;amp;argv);	// 初始化  // 代码区  gtk_main();	// 主事件循环  return 0; } 分析：
 &amp;lt;gtk/gtk.h&amp;gt;	// 头文件，包括了GTK+所有控件、变量、函数和结构的声明 gtk_init()	// 必须在控件定义之前使用，参数由命令中解析出来并送到程序中。主要作用为设立GTK+运行环境，自动完成一些必要的初始化工作 gtk_main()	// 程序运行停在这里等待事件(如键盘或鼠标事件)的发生，等待用户操作窗口。这个函数在所有GTK+程序中都要调用 GtkWidget* window = gtk_window_new(GTK_WINDOW_TOPLEVEL)	// GtkWidget是GTK+控件类型，GtkWidget*能指向任何控件的指针类型 gtk_window_new()	// 创建一个窗口并返回这个窗口的控件指针 GTK_WINDOW_TOPLEVEL	// 指明窗口类型为最上层主窗口 gtk_widget_show(window)	// 显示上一步创建的窗口控件  控件介绍</description>
-    </item>
-    
-    <item>
-      <title>博客搭建</title>
-      <link>https://oopsdc.github.io/post/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
-      <pubDate>Sun, 13 Dec 2020 22:06:50 +0800</pubDate>
-      
-      <guid>https://oopsdc.github.io/post/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
-      <description>博客搭建 hugo  hugo主题暂停更新。
- hugo官方网站。
-需求准备：
-软件包管理工具
- Chocolatey Scoop   两者区别
-由于以前使用hexo主题，本次为初次使用hugo主题，查询了一下以上两个软件包管理工具的区别
-Chocolatey：定位为“软件管理自动化”，开箱即用，支持范围广。但依赖于Windows power shell及NuGet包管理器系统，后者主要解决软件库依赖关系，且Chocolatey往往需要管理员权限运行。
-Scoop：用户目标更有针对性，更多时候帮助开发者安装系统工具时使用，尤其是依赖Linux但在Windows不存在的软件。相比于Chocolatey，Scoop在安装常规Windows程序时需要用户额外手动添加附加库。Scoop不使用NuGet且不会全局安装，应用程序的范围被限定在账户中，安装到特殊目录避免路径污染。
- 这里我们就使用Chocolatey。
-官方安装教程
-hexo 需求准备：
-git
-nodejs
-连接GitHub  为方便后续操作，之后的命令使用gitbash，空白处右键即可打开gitbash
- 配置个人信息 生成SSH 该命令会在用户文件夹下的.ssh文件夹生成id_rsa和id_rsa.pub文件，前者为私钥，后者为公钥。接下来我们把公钥提交到GitHub。
-登录GitHub
-自己取一个合适的名称，把刚刚cat看到的内容粘贴进去。
-完成上述步骤后查看连接是否成功。
-创建博客仓库 博客部署 安装hexo 初始化博客文件夹 本地初始化 我们可以看到博客启动成功，接下来我们就换主题。
-这里使用yun主题。
- 项目官网 GitHub项目地址  下载后把文件解压缩放在这个地址，解压缩后的文件名为yun：
-然后修改博客根目录下的_config.yml文件，自定义主题，此处填写的主题名就是我们刚刚解压缩的文件夹名称。
-Ctrll+F搜索theme，然后进行修改。
-完成上述步骤后，我们返回gitbash，Ctrl+C结束当前调试，重新运行本地文件。
-刷新网页后看到了这个报错，按照提示安装hexo-render-pug即可。
-在安装过程中还有了其它提醒：
-我们依次进行解决。
-安装完成后依旧报错。
-查了资料，不缺插件，文件夹也是正确的，实在不知道什么错，就在_config.yml和theme下分别把yun和yun文件夹都改为了theme-yun，然后正常运行。但是改回yun又会报错&amp;hellip;先暂时不讨论这个问题了。
-这就是博客初始页面。
-剩下的完全可以按照官方文档自己操作，自定义想要的功能。
-官方文档
-修改完且本地测试无误后，我们就可以正式把博客发布到GitHub上了。
-首先还是编辑根目录下的_config.yml文件，直接翻到最后。
-部署博客 部署博客需要使用命令hexo deploy，但需要安装对应平台的插件。
-以GitHub为例，安装如下：
-我们的本地测试没有问题时，即可部署，部署时建议先清除以往数据并重新生成，避免未知错误。
-配置域名 如果想映射域名的话，需要先自己注册一个，腾讯云阿里云华为云均可购买，此处不详解了。我直接在
-这个目录下建了一个CNAME文件，没有后缀!!!。文件内容如下：
-优化访问 CDN加速 由于博客部署在GitHub，访问极不稳定，所以使用了Cloudflare的服务。</description>
     </item>
     
     <item>
