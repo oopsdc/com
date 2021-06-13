@@ -4,12 +4,10 @@
 Hugo:Releases · gohugoio/hugo (github.com)
 安装步骤 1.解压压缩包
 2.配置环境变量
-D:\Env\hugo_0.83.1
-3.初始化博客
+D:\Env\hugo_0.83.1 3.初始化博客
 先上官方安装文档，避免踩坑：Installation · adityatelange/hugo-PaperMod Wiki (github.com)
 官方文档推荐我们使用易读性更高的yml初始化博客
-hugo new site &lt;name of site> -f yml
-4.选择主题:Complete List | Hugo Themes (gohugo.io)
+hugo new site &lt;name of site> -f yml 4.选择主题:Complete List | Hugo Themes (gohugo.io)
 5.在config.yml文件中指定主题，此处以PaperMod为例
 theme: PaperMod
 6.启动服务，本地查看效果
@@ -21,15 +19,8 @@ baseURL: "https://&lt;username>.github.io/"
 hugo
 10.切换到public文件夹，把所有文件push到GitHub即可
 11.链接到远程服务器代码仓库并push到GitHub，由于现在的GitHub默认为main分支了，我们需要先进行修改
-# 配置代理
-git config --global http.proxy socks5://127.0.0.1:port
-git config --global https.proxy socks5://127.0.0.1:port
-# 更改默认分支
-git push -u origin main
-# push文件
-cd public
-git init
-git add ....</p></section><footer class=entry-footer>June 12, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;DaChui</footer><a class=entry-link aria-label="post link to 博客搭建" href=https://oopsdc.github.io/post/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2>XSS Challenges</h2></header><section class=entry-content><p>Stage #1 Hint: Very simple…
+# 配置代理 git config --global http.proxy socks5://127.0.0.1:port git config --global https.proxy socks5://127.0.0.1:port # 更改默认分支 git push -u origin main # push文件 cd public git init git add ....</p></section><footer class=entry-footer>June 12, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;DaChui</footer><a class=entry-link aria-label="post link to 博客搭建" href=https://oopsdc.github.io/post/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2>XSS Challenges</h2></header><section class=entry-content><p>题目地址：https://xss-quiz.int21h.jp/
+Stage #1 Hint: Very simple…
 直接输入测试语句：
 Stage #2 Hint: Close the current tag and add SCRIPT tag…
 上测试语句：
