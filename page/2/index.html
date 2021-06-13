@@ -52,35 +52,15 @@ Web4 Des:post。
 方法1 利用hackbar直接post传参。
 方法2 利用burp抓包传值。
 方法3 编写python脚本。
-题目更新
-Des:看看源代码吧。
-查看源代码，发现有两串加密字符串。
+import requests s = requests.Session() r = s.get("&lt;url>") value = {'what':'flag'} r = s.post("&lt;url>", value) print(r.text) 题目更新 Des:看看源代码吧。
+查看源代码，发现有两串编码字符串。
 分别对两个字符串进行URL解码：
 按照代码含义将其组合起来：
 放到控制台Console里排版：
-将if判断里a的值输入提交框，提交。
+将if判断里与a.value判等的值输入提交框，提交。
 获得flag。
 Web5 Des:矛盾。
-利用1a绕过，例：
-?num=1a01
-Web6 Des:flag{}。
-查看源码。
-Unicode编码，解码即可。
-Web7 Des:你必须让它停下。
-burp抓包，不断点击go发送页面，注意查看response。
-Web8 Des:文件包含。
-打开题目获得代码：
-按照题目描述，尝试访问flag.txt，
-文件内容为flags，获得flag的条件是ac和fn严格相等，fn从flag.txt进行赋值，通过GET传参?ac=flags&fn=flag.txt。
-获得flag。
-题目更新
-?hello=file('flag.php') Web9 Des:N/A。
-eval("var_dump($$args);") //调用两次，$($argc) 调用全局变量打印所有内容，尝试GLOBAL和GLOBALS。
-Simple_SSTI_1 Des:N/A。
-页面显示：
-You need pass in a parameter named flag。
-查看源码：
-&lt;!DOCTYPE html> &lt;html lang="en"> &lt;head> &lt;meta charset="UTF-8"> &lt;title>Simple SSTI&lt;/title> &lt;/head> &lt;body> You need pass in a parameter named flag。 &lt;!...</p></section><footer class=entry-footer>April 13, 2020&nbsp;·&nbsp;9 min&nbsp;·&nbsp;DaChui</footer><a class=entry-link aria-label="post link to Bugku" href=https://oopsdc.github.io/post/bugku/></a></article><footer class=page-footer><nav class=pagination><a class=prev href=https://oopsdc.github.io/>« Prev Page</a>
+$num = $_GET['num']; if (!isnumeric($num)) { echo $num; if ($num == 1) echo 'flag{********}'; } 利用1a绕过，例：...</p></section><footer class=entry-footer>April 13, 2020&nbsp;·&nbsp;12 min&nbsp;·&nbsp;DaChui</footer><a class=entry-link aria-label="post link to Bugku" href=https://oopsdc.github.io/post/bugku/></a></article><footer class=page-footer><nav class=pagination><a class=prev href=https://oopsdc.github.io/>« Prev Page</a>
 <a class=next href=https://oopsdc.github.io/page/3/>Next Page »</a></nav></footer></main><footer class=footer><span>&copy; 2021 <a href=https://oopsdc.github.io/>Atmet</a></span>
 <span>&#183;</span>
 <span>Powered by <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a></span>
