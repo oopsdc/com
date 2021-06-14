@@ -9,30 +9,23 @@
       <link>https://oopsdc.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 12 Jun 2021 22:20:50 +0800</lastBuildDate><atom:link href="https://oopsdc.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Jun 2021 12:29:53 +0800</lastBuildDate><atom:link href="https://oopsdc.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>博客搭建</title>
       <link>https://oopsdc.github.io/post/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
-      <pubDate>Sat, 12 Jun 2021 22:20:50 +0800</pubDate>
+      <pubDate>Sat, 12 Jun 2021 12:29:53 +0800</pubDate>
       
       <guid>https://oopsdc.github.io/post/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
-      <description>博客搭建 hugo hugo官方网站
-需求准备： 软件包管理工具
-  Hugo:Releases · gohugoio/hugo (github.com)
-安装步骤 1.解压压缩包
-2.配置环境变量
-D:\Env\hugo_0.83.1 3.初始化博客
-先上官方安装文档，避免踩坑：Installation · adityatelange/hugo-PaperMod Wiki (github.com)
-官方文档推荐我们使用易读性更高的yml初始化博客
-hugo new site &amp;lt;name of site&amp;gt; -f yml 4.选择主题:Complete List | Hugo Themes (gohugo.io)
-5.在config.yml文件中指定主题，此处以PaperMod为例
-theme: PaperMod6.启动服务，本地查看效果
-hugo server7.创建仓库，详见之后的hexo主题教学
-8.将config.yml中的baseUrl修改为自己创建的仓库
-baseURL: &amp;quot;https://&amp;lt;username&amp;gt;.github.io/&amp;quot;9.在网站文件夹根目录下打开cmd命令行，生成public文件夹
-hugo10.切换到public文件夹，把所有文件push到GitHub即可
-11.链接到远程服务器代码仓库并push到GitHub，由于现在的GitHub默认为main分支了，我们需要先进行修改
-# 配置代理 git config --global http.proxy socks5://127.0.0.1:port git config --global https.proxy socks5://127.0.0.1:port # 更改默认分支 git push -u origin main # push文件 cd public git init git add .</description>
+      <description>博客搭建 hugo Hugo官方网站:https://gohugo.io
+本文以PaperMod主题为例，官方文档:Installation · adityatelange/hugo-PaperMod Wiki (github.com)
+需求准备 Hugo:Releases · gohugoio/hugo (github.com)
+安装步骤 1.解压压缩包 2.配置环境变量 D:\Env\hugo_0.83.13.初始化博客 官方文档推荐我们使用易读性更高的yml格式初始化博客。
+hugo new site &amp;lt;name of site&amp;gt; -f yml4.指定主题 在config.yml文件中设置主题。
+theme: PaperMod5.本地启动 先在本地看看网站跑起来的效果
+hugo server6.创建GitHub仓库 具体操作详见之后的hexo主题教学。
+7.修改baseUrl 将config.yml文件中的baseUrl修改为刚刚创建的仓库。
+baseURL: &amp;quot;https://&amp;lt;username&amp;gt;.github.io/&amp;quot;8.生成public文件夹 public中包含所有静态页面的内容，我们需要生成这个文件夹并上传到远程仓库中，完成博客部署。
+hugo9.push到远程仓库 # 配置代理 git config --global http.proxy socks5://127.0.0.1:port git config --global https.proxy socks5://127.0.0.1:port # 更改默认分支 git push -u origin main # push文件 cd public git init git add .</description>
     </item>
     
     <item>
