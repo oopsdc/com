@@ -28,27 +28,22 @@ hugo server
 baseURL: "https://&lt;username>.github.io/"
 8.生成public文件夹 public中包含所有静态页面的内容，我们需要生成这个文件夹并上传到远程仓库中，完成博客部署。
 hugo
-9.push到远程仓库 # 配置代理 git config --global http.proxy socks5://127.0.0.1:&lt;port> git config --global https.proxy socks5://127.0.0.1:&lt;port> # 更改默认分支 git push -u origin main # push文件 cd public git init git add ....</p></section><footer class=entry-footer>June 12, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;DaChui</footer><a class=entry-link aria-label="post link to 博客搭建" href=https://oopsdc.tk/post/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/></a></article><article class=post-entry><header class=entry-header><h2>XSS Challenges</h2></header><section class=entry-content><p>题目地址：https://xss-quiz.int21h.jp/
+9.push到远程仓库 # 配置代理 git config --global http.proxy socks5://127.0.0.1:&lt;port> git config --global https.proxy socks5://127.0.0.1:&lt;port> # 更改默认分支 git push -u origin main # push文件 cd public git init git add ....</p></section><footer class=entry-footer>June 12, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;DaChui</footer><a class=entry-link aria-label="post link to 博客搭建" href=https://oopsdc.tk/post/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/></a></article><article class=post-entry><header class=entry-header><h2>XSS Challenges</h2></header><section class=entry-content><p>题目地址:https://xss-quiz.int21h.jp/
 Stage #1 Hint: Very simple…
-直接输入测试语句：
-Stage #2 Hint: Close the current tag and add SCRIPT tag…
-上测试语句：
-然后审查元素，只需要把input标签闭合就能执行我们的语句了。
-“>alert(document.domain);Stage #3 Hint: The input in text box is properly escaped.
+直接输入测试语句:
+&lt;sCript>alert(document.domain);&lt;/Script> Stage #2 Hint: Close the current tag and add SCRIPT tag…
+上测试语句:
+&lt;sCript>alert(document.domain);&lt;/Script> 然后审查元素，只需要把input标签闭合就能执行我们的语句了。
+">&lt;sCript>alert(document.domain);&lt;/Script> Stage #3 Hint: The input in text box is properly escaped.
 这个页面有两个input标签，先在搜索框输入我们的测试语句试试。
-直接把我们的语句放到标签里了，但是这旁边不是还有一个input标签吗。把两者的name互换一下即可。
+直接把我们的语句放到&lt;b>标签里了，但是这旁边不是还有一个input标签吗。把两者的name互换一下即可。
 Stage #4 Hint: Invisible input field.
-审查元素发现有三个input标签，第三个标签的属性是hidden，这里把它改为text，然后把input标签闭合，之后放上我们的语句即可。
-“>alert(document.domain);Stage #5 Hint: Length limited text box.
+审查元素发现有三个input标签，第三个标签的属性是hidden，把它改为text，然后把input标签闭合。
+">&lt;sCript>alert(document.domain);&lt;/Script> Stage #5 Hint: Length limited text box.
 审查元素，发现搜索框的长度被限制，修改maxlength的值即可。
-“>alert(document.domain);Stage #6 Hint: Event handler attributes.
-输入测试语句：
-“>alert(document.domain);发现尖括号和斜杠被转义了，那我们就使用不带尖括号的语句。
-‘” onload=“alert(document.domain);"’
-Stage #7 Hint:Nearly the same… but a bit more tricky.
-审查元素，发现Hint元素旁边有一个隐藏的输入框，将其属性修改为text，并将value设置如下：
-‘”onmouseover=“alert(document.domain);"'</p></section><footer class=entry-footer>June 10, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui</footer><a class=entry-link aria-label="post link to XSS Challenges" href=https://oopsdc.tk/post/xss-challenges/></a></article><article class=post-entry><header class=entry-header><h2>Test</h2></header><section class=entry-content><p>He11o, th1s 1s a test!
-#include &lt;stdio.h>int main() { pritnf("Hello World!"); }</p></section><footer class=entry-footer>May 28, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui</footer><a class=entry-link aria-label="post link to Test" href=https://oopsdc.tk/post/test/></a></article><article class=post-entry><header class=entry-header><h2>网站镜像克隆</h2></header><section class=entry-content><p>使用wget克隆网站 使用方法 我们可以使用man wget命令查看帮助文档。
+">&lt;sCript>alert(document.domain);&lt;/Script> Stage #6 Hint: Event handler attributes....</p></section><footer class=entry-footer>June 10, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui</footer><a class=entry-link aria-label="post link to XSS Challenges" href=https://oopsdc.tk/post/xss-challenges/></a></article><article class=post-entry><header class=entry-header><h2>Test</h2></header><section class=entry-content><p>He11o, th1s 1s a test!
+#include &lt;stdio.h>int main() { pritnf("Hello World!"); } 本文链接:Test | Atmet (oopsdc.tk)
+文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。</p></section><footer class=entry-footer>May 28, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui</footer><a class=entry-link aria-label="post link to Test" href=https://oopsdc.tk/post/test/></a></article><article class=post-entry><header class=entry-header><h2>网站镜像克隆</h2></header><section class=entry-content><p>使用wget克隆网站 使用方法 我们可以使用man wget命令查看帮助文档。
 操作命令及参数解释如下：
 wget -m -p -E -k -K -np -v https://www.baidu.com/ # 参数解释 -m : 镜像，选择该选项适用于Web站点 -p : 页面获取的先决条件，该选项确保包含了请求的图片和css脚本文件被下载(可以更好复制html5站点) -E : 适用于拓展，可以在本地另存一个html文件 -k : 转换链接，确保文件本转换，适用于本地浏览 -K : 转换备份文件，将以orig为后缀作为原始文件 -np : 不要到上一层子目录中 -v : 显示过程，不显示过程为-nv 克隆结果 # 克隆后在当前目录下会出现一个与网站同名的子目录，树形结构如下 www.baidu.com ├── index.html ├── index.html.orig └── robots.txt 0 directories, 3 files 使用HTTrack克隆网站 使用方法 httrack # 进入软件后需要输入项目名 baidu # 克隆后的存放地址 /home/oopsdc/Desktop # 要克隆的网站地址 www.baidu.com # 有6个选项，此处我们选2，具有向导递归层级的镜像网站 2 # 接下来的部分全选默认选项 默认回车 克隆结果 baidu ├── backblue....</p></section><footer class=entry-footer>April 20, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui</footer><a class=entry-link aria-label="post link to 网站镜像克隆" href=https://oopsdc.tk/post/%E7%BD%91%E7%AB%99%E9%95%9C%E5%83%8F%E5%85%8B%E9%9A%86/></a></article><footer class=page-footer><nav class=pagination><a class=next href=https://oopsdc.tk/post/page/2/>Next Page »</a></nav></footer></main><footer class=footer><span>&copy; 2021 <a href=https://oopsdc.tk/>Atmet</a></span>
 <span>&#183;</span>

@@ -14,7 +14,7 @@ import requests s = requests.Session() r = s.get("&lt;url>") value = {'what':'fl
 查看源代码，发现有两串编码字符串。
 分别对两个字符串进行URL解码：
 按照代码含义将其组合起来：
-放到控制台Console里排版：
+放到控制台Console里排版。
 将if判断里与a.value判等的值输入提交框，提交。
 获得flag。
 Web5 Des:矛盾。
@@ -28,14 +28,14 @@ backup Des:X老师忘记删除备份文件，他派小宁同学去把备份文�
 尝试backup.php，无效。
 使用御剑扫描后台，得到index.php.bak，输入后下载备份文件，cat查看。
 获得flag。
-cookie Des:X老师告诉小宁他在cookie里放了些东西，小宁疑惑地想：‘这是夹心饼干的意思吗？
+cookie Des:X老师告诉小宁他在cookie里放了些东西，小宁疑惑地想:‘这是夹心饼干的意思吗？
 使用burp抓包，得到cookie.php。
 继续使用burp抓包，查看Response。
 获得flag。
 disable_button Des:N/A。
 页面的flag按钮无响应，猜测被禁用，查看控制台元素。
 &lt;input class="btn btn-default" disabled>
-将此处的disabled前三字符删除，按下按钮。
+将此处的disabled前三字符删除，改为abled，按下按钮。
 获得flag。
 weak_auth Des:小宁写了一个登陆验证页面，随手就设了一个密码。
 查看源码。
