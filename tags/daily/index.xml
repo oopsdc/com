@@ -25,7 +25,7 @@ theme: PaperMod5.本地启动 先在本地看看网站跑起来的效果
 hugo server6.创建GitHub仓库 具体操作详见之后的hexo主题教学。
 7.修改baseUrl 将config.yml文件中的baseUrl修改为刚刚创建的仓库。
 baseURL: &amp;quot;https://&amp;lt;username&amp;gt;.github.io/&amp;quot;8.生成public文件夹 public中包含所有静态页面的内容，我们需要生成这个文件夹并上传到远程仓库中，完成博客部署。
-hugo9.push到远程仓库 # 配置代理 git config --global http.proxy socks5://127.0.0.1:port git config --global https.proxy socks5://127.0.0.1:port # 更改默认分支 git push -u origin main # push文件 cd public git init git add .</description>
+hugo9.push到远程仓库 # 配置代理 git config --global http.proxy socks5://127.0.0.1:&amp;lt;port&amp;gt; git config --global https.proxy socks5://127.0.0.1:&amp;lt;port&amp;gt; # 更改默认分支 git push -u origin main # push文件 cd public git init git add .</description>
     </item>
     
     <item>
