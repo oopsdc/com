@@ -9,7 +9,24 @@
       <link>https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 12 Jun 2021 12:29:53 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/tags/daily/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Jul 2021 21:33:33 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/tags/daily/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>自定义GitHub个人资料</title>
+      <link>https://oopsdc.tk/post/%E8%87%AA%E5%AE%9A%E4%B9%89github%E4%B8%AA%E4%BA%BA%E8%B5%84%E6%96%99/</link>
+      <pubDate>Thu, 01 Jul 2021 21:33:33 +0800</pubDate>
+      
+      <guid>https://oopsdc.tk/post/%E8%87%AA%E5%AE%9A%E4%B9%89github%E4%B8%AA%E4%BA%BA%E8%B5%84%E6%96%99/</guid>
+      <description>概述 想自定义一下GitHub的个人资料自述文件，遂有本文。
+官方文档:管理个人资料自述文件 - GitHub Docs
+关于自述文件:关于自述文件 - GitHub Docs
+基本要求  创建一个与用户名相同的公开仓库 仓库根目录包含README.md文件 README.md文件不能为空  实现步骤 1.添加个人资料自述文件 1.新建仓库 在任意页面点击右上角的+号创建一个与自己用户名相同的仓库。当输入自己的用户名时，会出现一个小彩蛋。
+2.添加仓库说明(可选) 3.设置仓库为公共属性 4.使用自述文件初始化仓库 5.创建仓库并编辑README文档 生成的自述文件已由模板预先填充，也可自定义表情、符号。
+表情符号清单:🎁 Emoji cheat sheet for GitHub, Basecamp, Slack &amp;amp; more (webfx.com)
+在想要换行的文本前后加上&amp;lt;br&amp;gt;和&amp;lt;/br&amp;gt;即可，如:
+&amp;lt;br&amp;gt;This is test&amp;lt;/br&amp;gt; 2.删除个人资料自述文件 以下任一满足，个人资料自述文件就将会被删除:
+ 自述文件为空或不存在 仓库为私有仓库 仓库名与用户名不匹配  </description>
+    </item>
+    
     <item>
       <title>博客搭建</title>
       <link>https://oopsdc.tk/post/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
