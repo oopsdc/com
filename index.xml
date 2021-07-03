@@ -27,7 +27,10 @@ User-agent: *Disallow:/flag1_is_her3_fun.txt访问flag1_is_her3_fun.txt，获
  环境搭建 docker-compose.yml:
 version: &amp;#39;3.2&amp;#39; services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-git:latest ports: - 80:80 启动:
 docker-compose up -d解题过程 Git泄露，找一下利用工具:gakki429/Git_Extract: 提取远程 git 泄露或本地 git 的工具 (github.com)
-使用后会在当前目录生成一个以网站命名的文件夹，cd进去，发现有一个index.html文件。flag就在其中。</description>
+使用后会在当前目录生成一个以网站命名的文件夹，cd进去，发现有一个index.html文件。flag就在其中。
+SQL注入 SQL注入-1  Des:N/A。
+ 环境搭建 docker-compose.yml:
+version: &amp;#39;3.2&amp;#39; services: web: image: registry.</description>
     </item>
     
     <item>
