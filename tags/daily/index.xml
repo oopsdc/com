@@ -9,7 +9,20 @@
       <link>https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 01 Jul 2021 21:33:33 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/tags/daily/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Jul 2021 22:24:59 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/tags/daily/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ProxyChains</title>
+      <link>https://oopsdc.tk/post/proxychains/</link>
+      <pubDate>Fri, 09 Jul 2021 22:24:59 +0800</pubDate>
+      
+      <guid>https://oopsdc.tk/post/proxychains/</guid>
+      <description>概述 ProxyChains是一个Linux和Unix下的代理工具，允许TCP和DNS通过代理隧道，支持HTTP、SOCKS4、SOCKS5类型的代理服务器，且可配置多个代理。
+ProxyChains通过用户自定义的代理列表强制连接指定的应用程序。
+本文简述kali下如何通过ProxyChains使用Windows主机代理。
+相关资料 GitHub项目地址 ProxyChains:haad/proxychains: proxychains - a tool that forces any TCP connection made by any given application to follow through proxy like TOR or any other SOCKS4, SOCKS5 or HTTP(S) proxy. Supported auth-types: &amp;ldquo;user/pass&amp;rdquo; for SOCKS4/5, &amp;ldquo;basic&amp;rdquo; for HTTP. (github.com)
+ProxyChains-ng:rofl0r/proxychains-ng: proxychains ng (new generation) - a preloader which hooks calls to sockets in dynamically linked programs and redirects it through one or more socks/http proxies. continuation of the unmaintained proxychains project.</description>
+    </item>
+    
     <item>
       <title>自定义GitHub个人资料</title>
       <link>https://oopsdc.tk/post/%E8%87%AA%E5%AE%9A%E4%B9%89github%E4%B8%AA%E4%BA%BA%E8%B5%84%E6%96%99/</link>
