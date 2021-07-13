@@ -112,11 +112,11 @@ yum install -y yum-utils 5.设置镜像仓库
     </item>
     
     <item>
-      <title>Go</title>
-      <link>https://oopsdc.tk/post/go/</link>
+      <title>Golang</title>
+      <link>https://oopsdc.tk/post/golang/</link>
       <pubDate>Tue, 13 Apr 2021 22:06:50 +0800</pubDate>
       
-      <guid>https://oopsdc.tk/post/go/</guid>
+      <guid>https://oopsdc.tk/post/golang/</guid>
       <description>runoob教程:Go 语言教程 | 菜鸟教程 (runoob.com)
 环境搭建 安装包官方下载地址:Downloads - The Go Programming Language (golang.org)
 国内能打开的地址:Downloads - The Go Programming Language (google.cn)
