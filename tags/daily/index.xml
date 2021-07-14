@@ -141,40 +141,5 @@ GTK+特点 稳定、跨平台、多语言绑定、接口丰富、与时俱进、
  例: gcc demo.c -o demo `pkg-config --cflags --libs gtk+-2.0` 自动获得预处理参数，如宏定义、头文件位置 自动获得链接参数，如库、依赖库位置、文件名及其它参数 GTK程序基本框架 #include &amp;lt;gtk/gtk.h&amp;gt; int main(int argc, char *argv[]) { gtk_init(&amp;amp;argc, &amp;amp;argv);	// 初始化  // 代码区  gtk_main();	// 主事件循环  return 0; } 分析:</description>
     </item>
     
-    <item>
-      <title>SQL注入</title>
-      <link>https://oopsdc.tk/post/sql%E6%B3%A8%E5%85%A5/</link>
-      <pubDate>Mon, 07 Dec 2020 22:06:50 +0800</pubDate>
-      
-      <guid>https://oopsdc.tk/post/sql%E6%B3%A8%E5%85%A5/</guid>
-      <description>SQL注入 规则 通过发送异常数据来触发异常。
-规则含义 识别Web应用上所有的数据输入，了解哪种类型的请求会触发异常，检测服务器响应中的异常。
-Web应用通常包含:表示层、逻辑层、数据层。
-SQL注入分类 有参数传递。
-参数带入数据库查询且执行。
-产生过程 Web应用开发人员无法确保在将从web表单、cookie、输入参数等收到的值传递给SQL查询之前已对其进行验证，则通常会引起SQL注入。
-若攻击者能够控制发送给SQL查询的输入，且能够操纵该输入将其解析为代码而非数据，那么攻击者就有可能有能力在后台数据库上执行该代码。
-若应用开发人员无法彻底理解与他们交互的基础数据库或完全无法理解并意识到所开发代码潜在的安全问题，那么他们编写的程序通常是不安全的，容易受到SQL注入攻击。
-盲注 假设发现了一个SQL注入点，但应用只提供了一个通用的错误页面，或虽然提供了正常的页面，但与我们取回的内容存在一些可见或不可见的小差异，这些都属于盲注。SQL盲注是指在无法使用详细数据库错误信息或带内数据连接的情况下，利用数据库查询的输入审查漏洞从数据库提取信息或提取与数据库查询相关信息的攻击技术。
-强制产生通用错误 应用中经常使用通用错误页面来替换数据库错误，即使出现通用错误页面，也可以推断SQL注入是否可行。若应用只在提交单引号或其中一个变量时才产生通用错误页面，那么很可能存在SQL盲注。提交单引号是最常见的错误源受损的SQL查询。
-注入带副作用的查询 最常用的是时序攻击来确认攻击者的SQL是否已执行，有时也可利用攻击者能够观察到的输出进行判断。
-拆分与平衡 分解合法输入的操作称为拆分，平衡保证最终查询中不包含不平衡的结尾单引号。
-基本思想:收集合法的请求参数，之后使用SQL关键字对他们进行修改以保证与原数据不同，担当数据库解析他们时，二者的功能等价。
-基于时间的盲注 所有相应都包含一种属性:发出请求到响应到达这段时间的差异。当某一状态为真时，能够让响应暂停几秒，为假时，能够不出现暂停。
-基于响应的盲注 通过仔细检查响应中的数据来推断状态，推断状态时，借助响应中包含的文本或在检查特定值时强制产生的错误，产生的错误类型是运行时错误而非查询编译错误。
-常用步骤 （一）发现SQL注入位置 1.整型参数判断 HTTP://xxx.xxx.xxx/xxx.asp?p=xx&#39;，此时xxx.asp中SQL语句变成了select * from 表名 where 字段=xx&#39; ，xx.asp运行异常。
-HTTP://xxx.xxx.xxx/xxx.asp?p=xx and 1=1，xxx.asp运行正常，且与HTTP://xxx.xxx.xxx/xxx.asp?p=xx运行结果相同。
-HTTP://xxx.xxx.xxx/xxx.asp?p=xx and 1=2，xxx.asp运行异常。
-2.字符型参数判断 HTTP://xxx.xxx.xxx/xxx.asp?p=xx&#39;，此时xxx.asp中的SQL语句变成了select * from 表名 where 字段=xx&#39;，xxx.asp运行异常。
-HTTP://xxx.xxx.xxx/xxx.asp?p=xx&amp;amp;nm...39;1&#39;=&#39;1&#39;，xxx.asp运行正常，且与HTTP://xxx.xxx.xxx/xxx.asp?p=xx运行结果相同。
-HTTP://xxx.xxx.xxx/xxx.asp?p=xx&amp;amp;nb...39;1&#39;=&#39;2&#39;，xxx.asp运行异常。
-若这三步全满足，则xxx.asp一定存在SQL注入漏洞。
-特殊类型参数判断 对于字符过滤等情况，可以尝试以下方法。
-大小写混合:VBS不区分大小写，程序员在设计时往往忽略大小写混合情况，可以尝试使用SelecT代替select。
-UNICODE:UNICODE字符集实现国际化，+=%2B，space=%20。
-ASCII:U=chr(85)，a=chr(97)。
-（二）判断后台数据库类型 查询数据库名称 1&amp;#39; union select 1,database(); 查询数据库表名 1&amp;#39; union select 1,group_concat(table_name) from information_schema.tables where table_schema=database(); 获取字段名 1&amp;#39; union select 1,group_concat(columns_name) from information_schema.</description>
-    </item>
-    
   </channel>
 </rss>
