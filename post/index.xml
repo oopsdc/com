@@ -157,16 +157,15 @@ hugo9.push到远程仓库 # 配置代理 git config --global http.proxy socks5:
 Stage #1  Hint: Very simple&amp;hellip;
  直接输入测试语句:
 &amp;lt;sCript&amp;gt;alert(document.domain);&amp;lt;/Script&amp;gt; Stage #2  Hint: Close the current tag and add SCRIPT tag&amp;hellip;
- 上测试语句:
+ 地址:XSS Challenges (by yamagata21) - Stage #2 (int21h.jp)
+上测试语句:
 &amp;lt;sCript&amp;gt;alert(document.domain);&amp;lt;/Script&amp;gt; 然后审查元素，只需要把input标签闭合就能执行我们的语句了。
 &amp;#34;&amp;gt;&amp;lt;sCript&amp;gt;alert(document.domain);&amp;lt;/Script&amp;gt; Stage #3  Hint: The input in text box is properly escaped.
- 这个页面有两个input标签，先在搜索框输入我们的测试语句试试。
+ 地址:XSS Challenges (by yamagata21) - Stage #3 (int21h.jp)
+这个页面有两个input标签，先在搜索框输入我们的测试语句试试。
 直接把我们的语句放到&amp;lt;b&amp;gt;标签里了，但是这旁边不是还有一个input标签吗。把两者的name互换一下即可。
 Stage #4  Hint: Invisible input field.
- 审查元素发现有三个input标签，第三个标签的属性是hidden，把它改为text，然后把input标签闭合。
-&amp;#34;&amp;gt;&amp;lt;sCript&amp;gt;alert(document.domain);&amp;lt;/Script&amp;gt; Stage #5  Hint: Length limited text box.
- 审查元素，发现搜索框的长度被限制，修改maxlength的值即可。
-&amp;#34;&amp;gt;&amp;lt;sCript&amp;gt;alert(document.domain);&amp;lt;/Script&amp;gt; Stage #6  Hint: Event handler attributes.</description>
+ 地址:XSS Challenges (by yamagata21) - Stage #4 (int21h.</description>
     </item>
     
     <item>
