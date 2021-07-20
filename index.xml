@@ -9,13 +9,57 @@
       <link>https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 20 Jul 2021 09:10:00 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Jul 2021 17:19:55 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>utterances博客评论系统</title>
-      <link>https://oopsdc.tk/post/utterances%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</link>
+      <title>APNs推送机制</title>
+      <link>https://oopsdc.tk/post/apns%E6%8E%A8%E9%80%81%E6%9C%BA%E5%88%B6/</link>
+      <pubDate>Tue, 20 Jul 2021 17:19:55 +0800</pubDate>
+      
+      <guid>https://oopsdc.tk/post/apns%E6%8E%A8%E9%80%81%E6%9C%BA%E5%88%B6/</guid>
+      <description>APNs简述 Apple Push Notification server(APNs)，即苹果推送通知服务。
+APNs出现需求 由于移动设备内存、CPU、电池容量等各种因素，iOS不允许APP进程常驻后台(时限大概为10min)。
+当用户主动关闭APP或后台APP进入后台达到限定时长后，意味着该APP进程的结束，在一定程度上保证了手机的流畅度与使用时长。但这也同时意味着服务器无法主动和用户交互(如实时推送消息)，为了解决这个限制，苹果推出了APNs，允许设备和服务器分别与苹果的推送服务器保持长连接状态。
+iOS通知 iOS通知分为本地通知和远程通知两类，APNs是远程通知功能的核心。
+本地通知 由本地应用触发，一般是基于时间的通知形式，如闹钟、日历、待办事项等。
+远程通知 通过自建服务器推送消息的通知形式。
+APNs推送流程 苹果官方APNs概述:Local and Remote Notification Programming Guide: APNs Overview (apple.com)
+以下为APNs推送流程图:
+ Provider:自建应用服务器 APNs:苹果APNs推送通知服务器 Device:苹果设备 Client App:应用  大致流程可分为以下4点:
+ 苹果设备安装应用后会向APNs服务器进行注册，注册成功后APNs服务器返回一个deviceToken，且二者之间会维持一个基于SSL协议的TCP流通讯的长连接。 拿到deviceToken后设备会将其发送至自建应用服务器 有消息需要被推送时，自建服务器会将消息按指定格式结合deviceToken一并打包发送给APNs。 APNs将新消息推送至设备，并在设备屏幕上显示出来(因为设备和服务器之间维持了一个长连接)  结合上述过程可以发现，真正完成推送的是APNs服务器，消息一定是由APNs服务器推送给我们的设备，自建应用服务器只是将需要推送的消息告诉APNs服务器。至于如何维护消息队列或如何保证消息能被推送到指定设备上，这些功能都是由APNs实现的。
+deviceToken deviceToken是一个APP安装在设备上的唯一标识符，一个APP在不同设备上的deviceToken不同，同一台设备重新安装同一个APP后deviceToken也会不同。
+项目代码AppDelegate中有一个回调方法，当APNs注册成功后通过该回调方法可以获取到返回的deviceToken。
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken APNs拿到这个包之后会验证包结构是否正确，验证无误后会提取其中的消息，再将消息推送至指定设备。
+ 本文链接:APNs推送机制 | Atmet (oopsdc.tk)
+文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
+ </description>
+    </item>
+    
+    <item>
+      <title>Arm开发板联网配置</title>
+      <link>https://oopsdc.tk/post/arm%E5%BC%80%E5%8F%91%E6%9D%BF%E8%81%94%E7%BD%91%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 20 Jul 2021 12:17:34 +0800</pubDate>
+      
+      <guid>https://oopsdc.tk/post/arm%E5%BC%80%E5%8F%91%E6%9D%BF%E8%81%94%E7%BD%91%E9%85%8D%E7%BD%AE/</guid>
+      <description>文章背景 使用S5P6818开发板时，有业务上云的需求，遂有本文，内容较少，仅涉及联网部分。
+问题描述  插上网线后无法获取IP 配置静态IP后无法ping通外网  解决方案 分两步解决。
+1.配置静态IP 方法一
+命令行配置:
+ifconfig eth0 &amp;lt;ip&amp;gt; netmask &amp;lt;netmask&amp;gt; 方法二
+写配置文件:
+vi /etc/init.d/rcS # 网卡开机自启 ifconfig eth0 up ifconfig eth0 &amp;lt;ip&amp;gt; netmask &amp;lt;netmask&amp;gt; 2.配置网关及DNS服务器 完成第一步后，可以ping通局域网下的主机，但无法ping通外网，出现如下报错:
+sendto: Network is unreachable使用route命令查看路由表:
+Kernel IP routing tableDestination Gateway Genmask Flags Metric Ref Use Iface10.7.150.0 * 255.255.255.0 U 0 0 0 eth0发现没有网关，配置网关:
+route add default gw 10.7.150.1再使用route命令验证一下，确认配好。
+之后便要配置DNS解析，在/etc目录下新建一个resolv.conf配置文件，内容如下:
+#114 DNS服务器nameserver 114.114.114.114 #微软 DNS服务器nameserver 233.</description>
+    </item>
+    
+    <item>
+      <title>utterances博客评论插件</title>
+      <link>https://oopsdc.tk/post/utterances%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</link>
       <pubDate>Tue, 20 Jul 2021 09:10:00 +0800</pubDate>
       
-      <guid>https://oopsdc.tk/post/utterances%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</guid>
+      <guid>https://oopsdc.tk/post/utterances%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</guid>
       <description>概述 utterances是一个基于GitHub issue，拥有多种主题的开源小组件，本文将简述使用如何在hugo博客部署utterances。
 配置过程 新建仓库 新建一个公开的仓库，用于存放评论，名字随意。作者在此处创建一个名为utterances的公开仓库。
 安装utterances GitHub Apps - utterances
