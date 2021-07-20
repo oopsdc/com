@@ -9,7 +9,23 @@
       <link>https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 10 Jul 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Jul 2021 09:10:00 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>utterances博客评论系统</title>
+      <link>https://oopsdc.tk/post/utterances%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Tue, 20 Jul 2021 09:10:00 +0800</pubDate>
+      
+      <guid>https://oopsdc.tk/post/utterances%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</guid>
+      <description>概述 utterances是一个基于GitHub issue，拥有多种主题的开源小组件，本文将简述使用如何在hugo博客部署utterances。
+配置过程 新建仓库 新建一个公开的仓库，用于存放评论，名字随意。作者在此处创建一个名为utterances的公开仓库。
+安装utterances GitHub Apps - utterances
+点击安装即可，选择仓库:
+安装完成后会自动跳转到官方页面。
+在文件中添加插件 官方文档:utterances
+修改footer.html文件，以PaperMod主题为例:
+&amp;lt;footer class=&amp;#34;footer&amp;#34;&amp;gt; {{- if .Site.Copyright }} &amp;lt;span&amp;gt;{{ .Site.Copyright | markdownify }}&amp;lt;/span&amp;gt; {{- else }} &amp;lt;span&amp;gt;&amp;amp;copy; {{ now.Year }} &amp;lt;a href=&amp;#34;{{ &amp;#34;&amp;#34; | absLangURL }}&amp;#34;&amp;gt;{{ .Site.Title }}&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt; {{- end }} &amp;lt;span&amp;gt;&amp;amp;middot;&amp;lt;/span&amp;gt; &amp;lt;span&amp;gt;Powered by &amp;lt;a href=&amp;#34;https://gohugo.io/&amp;#34; rel=&amp;#34;noopener noreferrer&amp;#34; target=&amp;#34;_blank&amp;#34;&amp;gt;Hugo&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span&amp;gt;&amp;amp;middot;&amp;lt;/span&amp;gt; &amp;lt;span&amp;gt;Theme &amp;lt;a href=&amp;#34;https://git.io/hugopapermod&amp;#34; rel=&amp;#34;noopener&amp;#34; target=&amp;#34;_blank&amp;#34;&amp;gt;PaperMod&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;script src=&amp;#34;https://utteranc.es/client.js&amp;#34; repo=&amp;#34;oopsdc/utterances&amp;#34; issue-term=&amp;#34;title&amp;#34; theme=&amp;#34;github-light&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34; async&amp;gt; &amp;lt;/script&amp;gt; &amp;lt;/footer&amp;gt; 运行命令hugo server进入一篇文章即可查看评论插件效果。</description>
+    </item>
+    
     <item>
       <title>sqli-labs</title>
       <link>https://oopsdc.tk/post/sqli-labs/</link>
