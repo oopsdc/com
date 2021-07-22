@@ -9,7 +9,27 @@
       <link>https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 20 Jul 2021 17:19:55 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/tags/daily/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Jul 2021 14:34:21 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/tags/daily/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ATT&amp;CK实战一</title>
+      <link>https://oopsdc.tk/post/attck%E5%AE%9E%E6%88%98%E4%B8%80/</link>
+      <pubDate>Wed, 21 Jul 2021 14:34:21 +0800</pubDate>
+      
+      <guid>https://oopsdc.tk/post/attck%E5%AE%9E%E6%88%98%E4%B8%80/</guid>
+      <description>一、环境搭建 1.1 下载虚拟机文件 自行搜索。
+1.2 环境介绍 本次实验共3台主机，Win7作为Web服务器，是最先攻击点，Win2k3为内网域成员主机，Win2k8 R2为内网域控主机。
+Kali:自主搭建，配置与Web服务器同一网段的IP，使用命令ifconfig eth0 &amp;lt;ip&amp;gt;即可。
+Win7:双网卡，即存在内外网IP。外网网卡通过DHCP自动获取IP，内网网卡配置静态IP:192.168.52.143。服务器存在yxcms。分别与Kali(NAT模式)和内网两台主机(自定义VMnet2)连通。
+Win2k3:只有内网网卡，IP:192.168.52.138，使用VMnet2。
+Win2k8 R2:只有内网网卡，IP:192.168.52.141，使用VMnet2。
+拓扑图如下:
+![Untitled Diagram](https://gitee.com/oopsdc/PicBed/raw/master/img/Untitled Diagram.png)
+安装完成之后在Win7主机上打开phpstudy开启Web服务。
+二、信息收集 2.1 探测存活主机 命令:
+nmap -sS -sV -O 192.168.106.0/24# 此处的IP为NAT模式下Win7和Kali自动获取到的IP# 参数说明sS	:	SYN半连接扫描，只进行前两次握手sV	:	显示服务器详细版本O	:	显示服务器操作系统(不太准确)结果:
+Nmap scan report for 192.168.106.150Host is up (0.00044s latency).Not shown: 998 filtered portsPORT STATE SERVICE VERSION80/tcp open http Apache httpd 2.4.23 ((Win32) OpenSSL/1.0.2j PHP/5.</description>
+    </item>
+    
     <item>
       <title>APNs推送机制</title>
       <link>https://oopsdc.tk/post/%E6%B5%85%E6%9E%90ios-apns%E6%8E%A8%E9%80%81%E6%9C%BA%E5%88%B6/</link>

