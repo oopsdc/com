@@ -29,8 +29,13 @@ POC已经在当前目录中给出来，文件名poc.py:
 影响版本 OpenSSL 1.0.1、1.0.1a、1.0.1b、1.0.1c、1.0.1d、1.0.1e、1.0.1f、Beta 1 of OpenSSL 1.0.2等。
 复现思路 漏洞复现 环境搭建:
 git clone https://github.com/vulhub/vulhub.git cd vulhub/openssl/heartbleed docker-compose up -d 使用msf对目标进行攻击:
-msfconsole set RHOST &lt;ip> set verbose true run 本文链接:服务器应用漏洞 | Atmet (oopsdc.tk)
-文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。</p></section><footer class=entry-footer>June 17, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui</footer><a class=entry-link aria-label="post link to 服务器应用漏洞" href=https://oopsdc.tk/post/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BA%94%E7%94%A8%E6%BC%8F%E6%B4%9E/></a></article></main><footer class=footer><span>&copy; 2021 <a href=https://oopsdc.tk/>Atmet</a></span>
+msfconsole set RHOST &lt;ip> set verbose true run Redis Redis 主从复制RCE 漏洞描述 在2019年7月7日结束的WCTF2019 Final上，LC/BC成员Pavel Toporkov在分享会上介绍了一种关于Redis新版本的RCE利用方式，比起以前的利用方式来说，这种利用方式更为通用，危害也更大。
+Pavel Toporkov的分享:
+15-redis-post-exploitation.pdf (zeronights.ru)
+影响版本 Redis &lt;= 5.0.5
+复现思路 漏洞复现 环境搭建:
+docker pull a1143535418/redis5.0 docker run -p 6379:6379 -d a1143535418/redis5.0 redis-server 利用脚本:
+n0b0dyCN/redis-rogue-server: Redis(&lt;=5.0.5) RCE (github.com)...</p></section><footer class=entry-footer>June 17, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui</footer><a class=entry-link aria-label="post link to 服务器应用漏洞" href=https://oopsdc.tk/post/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BA%94%E7%94%A8%E6%BC%8F%E6%B4%9E/></a></article></main><footer class=footer><span>&copy; 2021 <a href=https://oopsdc.tk/>Atmet</a></span>
 <span>&#183;</span>
 <span>Powered by <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a></span>
 <span>&#183;</span>

