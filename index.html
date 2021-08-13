@@ -17,7 +17,8 @@ md51[]=1&md52[]=2</p></section><footer class=entry-footer>August 13, 2021&nbsp;�
 但由于目前一个账户只能同时启动一台靶机，您如果有需要建议浏览器开一个隐私窗口，注册一个新账号来启动这个靶机。
 ssh 用户名：root 密码：123456 地址和端口为动态分配的。
 开启环境后按照题目给定地址和端口使用SSH连接即可。
-连接上云主机后使用ls命令，发现当前用户家目录下啥也没有，再使用cd ..命令切换到根目录下看看，发现flag.txt文件。也可直接使用cat /flag.txt命令查看flag。
+连接上云主机后使用ls命令，发现当前用户家目录下啥也没有，再使用cd ..命令切换到根目录下看看，发现flag.txt文件。
+也可直接使用cat /flag.txt命令查看flag。
 BUU LFI COURSE 1 启动环境后得到如下PHP代码:
 &lt;?php /** * Created by PhpStorm. * User: jinzhao * Date: 2019/7/9 * Time: 7:07 AM */ highlight_file(__FILE__); if(isset($_GET['file'])) { $str = $_GET['file']; include $_GET['file']; } 本地文件包含，通过file参数进行传参，可在URL后构造参数?file=/flag查看flag。
 拓展 通过Wappalyzer插件可以发现网站使用了nginx服务，尝试访问nginx访问日志:
@@ -29,7 +30,7 @@ GET /?file=/var/log/nginx/access.log HTTP/1.1
 Host: 611bfd3e-480b-4a58-95d6-ee0dab70b4f2.node4.buuoj.cn:81
 Cache-Control: max-age=0
 Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Windows NT 10....</p></section><footer class=entry-footer>August 13, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;DaChui</footer><a class=entry-link aria-label="post link to BUUCTF" href=https://oopsdc.tk/post/buuctf/></a></article><article class=post-entry><header class=entry-header><h2>ATT&CK实战一</h2></header><section class=entry-content><p>一、环境搭建 1.1 下载虚拟机文件 自行搜索。
+User-Agent: Mozilla/5....</p></section><footer class=entry-footer>August 13, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;DaChui</footer><a class=entry-link aria-label="post link to BUUCTF" href=https://oopsdc.tk/post/buuctf/></a></article><article class=post-entry><header class=entry-header><h2>ATT&CK实战一</h2></header><section class=entry-content><p>一、环境搭建 1.1 下载虚拟机文件 自行搜索。
 1.2 环境介绍 本次实验共3台主机，Win7作为Web服务器，是最先攻击点，Win2k3为内网域成员主机，Win2k8 R2为内网域控主机。
 Kali:自主搭建，配置与Web服务器同一网段的IP，使用命令ifconfig eth0 &lt;ip>即可。
 Win7:双网卡，即存在内外网IP。外网网卡通过DHCP自动获取IP，内网网卡配置静态IP:192.168.52.143。服务器存在yxcms。分别与Kali(NAT模式)和内网两台主机(自定义VMnet2)连通。
