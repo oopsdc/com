@@ -25,10 +25,10 @@
     
     <item>
       <title>MD5()函数绕过</title>
-      <link>https://oopsdc.tk/post/md5s%CC%A7z%CC%87e%CC%82u%CC%86e%CC%80c%CC%82%C4%B1u%CC%86/</link>
+      <link>https://oopsdc.tk/post/md5%E5%87%BD%E6%95%B0%E7%BB%95%E8%BF%87/</link>
       <pubDate>Fri, 13 Aug 2021 20:27:10 +0800</pubDate>
       
-      <guid>https://oopsdc.tk/post/md5s%CC%A7z%CC%87e%CC%82u%CC%86e%CC%80c%CC%82%C4%B1u%CC%86/</guid>
+      <guid>https://oopsdc.tk/post/md5%E5%87%BD%E6%95%B0%E7%BB%95%E8%BF%87/</guid>
       <description>示例代码:
 if (md5($_POST[&amp;#39;md51&amp;#39;]) == md5($_POST[&amp;#39;md52&amp;#39;]) &amp;amp;&amp;amp; $_POST[&amp;#39;md51&amp;#39;] != $_POST[&amp;#39;md52&amp;#39;]) 弱类型绕过 PHP在处理哈希字符串时，会把每一个0E开头的哈希值解释为0，所以若两个不同密码进行哈希后以0E开头，则会被认为值均为0，从而判等。
 md5加密后开头为0E的值:
