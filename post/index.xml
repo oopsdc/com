@@ -9,13 +9,26 @@
       <link>https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 13 Aug 2021 20:27:10 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 Aug 2021 22:45:30 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kali安装Parallels Tools</title>
+      <link>https://oopsdc.tk/post/kali%E5%AE%89%E8%A3%85parallels-tools/</link>
+      <pubDate>Wed, 18 Aug 2021 22:45:30 +0800</pubDate>
+      
+      <guid>https://oopsdc.tk/post/kali%E5%AE%89%E8%A3%85parallels-tools/</guid>
+      <description>环境配置 本文环境信息如下：
+ Parallel Desktop 16 Business 16.5.0 (49183) Kali Linux 2021.2 64-Bit  系统安装 安装配置 安装Kali Linux的时候Parallels Desktop无法识别操作系统，需要我们手动选择Other Linux下的Kali Linux。
+配置选项因人而异，此处不细讲。
+更换国内源 # 备份原文件 mv /etc/apt/source.list /etc/apt/source.list.bak # 更换为清华源 vim /etc/apt/source.list # 输入以下内容 &amp;#34;deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free&amp;#34; &amp;#34;deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free&amp;#34; 安装Parallels Tools 把鼠标移到窗口的右上，有一个黄色的感叹符号，点击即可安装Parallels Tools。
+# 检测光盘是否挂载成功 mount | grep iso9660 # 将安装文件拷贝至本地，此处的dirname为自己创建的目录名称 mkdir ~/&amp;lt;dirname&amp;gt; &amp;amp;&amp;amp; cp -r /media/cdrom0/* ~/&amp;lt;dirname&amp;gt; # 安装Parallels Tools cd ~/&amp;lt;dirname&amp;gt; &amp;amp;&amp;amp; .</description>
+    </item>
+    
     <item>
       <title>MD5()函数绕过</title>
-      <link>https://oopsdc.tk/post/md5%E5%87%BD%E6%95%B0%E7%BB%95%E8%BF%87/</link>
+      <link>https://oopsdc.tk/post/md5s%CC%A7z%CC%87e%CC%82u%CC%86e%CC%80c%CC%82%C4%B1u%CC%86/</link>
       <pubDate>Fri, 13 Aug 2021 20:27:10 +0800</pubDate>
       
-      <guid>https://oopsdc.tk/post/md5%E5%87%BD%E6%95%B0%E7%BB%95%E8%BF%87/</guid>
+      <guid>https://oopsdc.tk/post/md5s%CC%A7z%CC%87e%CC%82u%CC%86e%CC%80c%CC%82%C4%B1u%CC%86/</guid>
       <description>示例代码:
 if (md5($_POST[&amp;#39;md51&amp;#39;]) == md5($_POST[&amp;#39;md52&amp;#39;]) &amp;amp;&amp;amp; $_POST[&amp;#39;md51&amp;#39;] != $_POST[&amp;#39;md52&amp;#39;]) 弱类型绕过 PHP在处理哈希字符串时，会把每一个0E开头的哈希值解释为0，所以若两个不同密码进行哈希后以0E开头，则会被认为值均为0，从而判等。
 md5加密后开头为0E的值:
@@ -50,10 +63,10 @@ GET /?file=/var/log/nginx/access.log HTTP/1.1Host: 611bfd3e-480b-4a58-95d6-ee0d
     
     <item>
       <title>ATT&amp;CK实战一</title>
-      <link>https://oopsdc.tk/post/attck%E5%AE%9E%E6%88%98%E4%B8%80/</link>
+      <link>https://oopsdc.tk/post/attck%CA%B5%D5%BD%D2%BB/</link>
       <pubDate>Wed, 21 Jul 2021 14:34:21 +0800</pubDate>
       
-      <guid>https://oopsdc.tk/post/attck%E5%AE%9E%E6%88%98%E4%B8%80/</guid>
+      <guid>https://oopsdc.tk/post/attck%CA%B5%D5%BD%D2%BB/</guid>
       <description>一、环境搭建 1.1 下载虚拟机文件 自行搜索。
 1.2 环境介绍 本次实验共3台主机，Win7作为Web服务器，是最先攻击点，Win2k3为内网域成员主机，Win2k8 R2为内网域控主机。
 Kali:自主搭建，配置与Web服务器同一网段的IP，使用命令ifconfig eth0 &amp;lt;ip&amp;gt;即可。
@@ -136,9 +149,9 @@ route add default gw 10.7.150.1再使用route命令验证一下，确认配好�
       <description>Less-1 传入id=1，页面正常回显，传入id=1&#39;页面报错。分别传参id=1&#39; and 1=1和id=1&#39; and 1=2，页面回显正常，判断为字符型注入。
 接下来使用联合查询看看有几列数据:id=-1&#39;union select 1,2,3--+，这是两条语句，先让前面为-1为假，执行后面的联合查询语句，测试有几列数据，测试出来有3列数据，其中第2、3位为显示位，可进行联合查询注入。
 查看当前数据库名:id=-1&#39;union select 1,database(),3--+
-爆库名:id=-1&#39;union select 1,database(),group_concat(schema_name) from information_schema.schemata
-爆表名:id=-1&#39;union select 1,database(),group_concat(table_name) from information_schema.tables where table_name=database()
-爆字段:id=-1&#39;union select 1,database(),group_concat(column_name) from information_schema.columns where table_name=database()
+爆库名:id=-1&#39;union select 1,database(),group_concat(schema_name) from information_schema.schemata--+
+爆表名:id=-1&#39;union select 1,database(),group_concat(table_name) from information_schema.tables where table_name=database()--+
+爆字段:id=-1&#39;union select 1,database(),group_concat(column_name) from information_schema.columns where table_name=database()--+
 Less-2 传入id=1 and 1=1页面正常，id=1 and 1=2页面无回显，判断为数字型注入。
 使用id=-1 order by语句测试有几列数据，当id=-1 order by 4时页面报错，所以有3列数据。
 使用联合查询语句id=-1 union select 1,2,3判断是否有回显位，2、3为回显位。
@@ -487,6 +500,28 @@ weak_auth  Des:小宁写了一个登陆验证页面，随手就设了一个密�
 获得flag。
 simple_php  Des:小宁听说php是最好的语言,于是她简单学习之后写了几行php代码。
  &amp;lt;?php show_source(__FILE__); include(&amp;#34;config.php&amp;#34;); $a = @$_GET[&amp;#39;a&amp;#39;]; $b = @$_GET[&amp;#39;b&amp;#39;]; if ($a == 0 and $a) { echo $flag1; } if (is_numeric($b)) { exit(); } if ($b &amp;gt; 1234) { echo $flag2; } ?</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://oopsdc.tk/post/homebrew/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://oopsdc.tk/post/homebrew/</guid>
+      <description>1、Homebrew简介 官方网站：
+https://brew.sh
+官方文档：
+https://docs.brew.sh
+Homebrew是macOS平台下的一款包管理工具，用户仅需通过一条简单的指令就可实现软件包管理，极大程度节省了构建环境所需的时间。
+2、Homebrew安装 安装文档：
+https://docs.brew.sh/Installation#1
+安装要求：
+ 64位Intel CPU或Apple Silicon CPU macOS Mojave（10.14）或更高版本 Xcode命令行工具：xcode-select --install 支持shell  在终端输入如下命令安装Homebrew：
+/bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;#34; 卸载Homebrew：
+cd `brew --prefix` rm -rf Cellar brew prune rm `git ls-files` rm -r Library/Homebrew Library/Aliases Library/Formula Library/Contributions rm -rf .git rm -rf ~/Library/Caches/Homebrew 3、Homebrew基本使用 安装包：
+brew install &amp;lt;package&amp;gt; // 安装node brew install node 卸载包：
+brew uninstall &amp;lt;package&amp;gt; 查询包：
+brew search &amp;lt;package&amp;gt; 查看已安装包列表：</description>
     </item>
     
   </channel>
