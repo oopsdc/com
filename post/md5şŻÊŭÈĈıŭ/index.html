@@ -11,7 +11,9 @@ md5加密后开头为0E的值:
 QNKCDZO240610708s878926199as155964671as214587387as214587387a以示例代码为例，分别给md51和md52赋表中不同的值。经过md5加密后，值均为0，而原始值又不同，顺利绕过if判断。
 数组绕过 md5()函数无法处理数组，会对传入的数组返回NULL，即数组经过md5加密后均得到NULL。
 我们仅需传入如下数据即可，数组内容随意:
-md51[]=1&md52[]=2 ">
+md51[]=1&md52[]=2  本文链接:MD5()函数绕过 | Atmet (oopsdc.tk)
+文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
+ ">
 <meta name=author content="DaChui">
 <link rel=canonical href=https://oopsdc.tk/post/md5s%CC%A7z%CC%87e%CC%82u%CC%86e%CC%80c%CC%82%C4%B1u%CC%86/>
 <link href=/assets/css/stylesheet.min.746a86b58bb2b052b5e4df8216510494f04f81e62c08d626150c26c69ca929da.css integrity="sha256-dGqGtYuysFK15N+CFlEElPBPgeYsCNYmFQwmxpypKdo=" rel="preload stylesheet" as=style>
@@ -30,7 +32,9 @@ md5加密后开头为0E的值:
 QNKCDZO240610708s878926199as155964671as214587387as214587387a以示例代码为例，分别给md51和md52赋表中不同的值。经过md5加密后，值均为0，而原始值又不同，顺利绕过if判断。
 数组绕过 md5()函数无法处理数组，会对传入的数组返回NULL，即数组经过md5加密后均得到NULL。
 我们仅需传入如下数据即可，数组内容随意:
-md51[]=1&md52[]=2 ">
+md51[]=1&md52[]=2  本文链接:MD5()函数绕过 | Atmet (oopsdc.tk)
+文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
+ ">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://oopsdc.tk/post/md5s%CC%A7z%CC%87e%CC%82u%CC%86e%CC%80c%CC%82%C4%B1u%CC%86/"><meta property="og:image" content="https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content="post">
 <meta property="article:published_time" content="2021-08-13T20:27:10+08:00">
@@ -44,9 +48,11 @@ md5加密后开头为0E的值:
 QNKCDZO240610708s878926199as155964671as214587387as214587387a以示例代码为例，分别给md51和md52赋表中不同的值。经过md5加密后，值均为0，而原始值又不同，顺利绕过if判断。
 数组绕过 md5()函数无法处理数组，会对传入的数组返回NULL，即数组经过md5加密后均得到NULL。
 我们仅需传入如下数据即可，数组内容随意:
-md51[]=1&md52[]=2 ">
+md51[]=1&md52[]=2  本文链接:MD5()函数绕过 | Atmet (oopsdc.tk)
+文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
+ ">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://oopsdc.tk/post/"},{"@type":"ListItem","position":2,"name":"MD5()函数绕过","item":"https://oopsdc.tk/post/md5s%CC%A7z%CC%87e%CC%82u%CC%86e%CC%80c%CC%82%C4%B1u%CC%86/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"MD5()函数绕过","name":"MD5()函数绕过","description":"示例代码:\nif (md5($_POST[\u0026#39;md51\u0026#39;]) == md5($_POST[\u0026#39;md52\u0026#39;]) \u0026amp;\u0026amp; $_POST[\u0026#39;md51\u0026#39;] != $_POST[\u0026#39;md52\u0026#39;]) 弱类型绕过 PHP在处理哈希字符串时，会把每一个0E开头的哈希值解释为0，所以若两个不同密码进行哈希后以0E开头，则会被认为值均为0，从而判等。\nmd5加密后开头为0E的值:\nQNKCDZO\r240610708\rs878926199a\rs155964671a\rs214587387a\rs214587387a\r以示例代码为例，分别给md51和md52赋表中不同的值。经过md5加密后，值均为0，而原始值又不同，顺利绕过if判断。\n数组绕过 md5()函数无法处理数组，会对传入的数组返回NULL，即数组经过md5加密后均得到NULL。\n我们仅需传入如下数据即可，数组内容随意:\nmd51[]=1\u0026amp;md52[]=2 ","keywords":["CTF"],"articleBody":"示例代码:\nif (md5($_POST['md51']) == md5($_POST['md52']) \u0026\u0026 $_POST['md51'] != $_POST['md52']) 弱类型绕过 PHP在处理哈希字符串时，会把每一个0E开头的哈希值解释为0，所以若两个不同密码进行哈希后以0E开头，则会被认为值均为0，从而判等。\nmd5加密后开头为0E的值:\nQNKCDZO\r240610708\rs878926199a\rs155964671a\rs214587387a\rs214587387a\r以示例代码为例，分别给md51和md52赋表中不同的值。经过md5加密后，值均为0，而原始值又不同，顺利绕过if判断。\n数组绕过 md5()函数无法处理数组，会对传入的数组返回NULL，即数组经过md5加密后均得到NULL。\n我们仅需传入如下数据即可，数组内容随意:\nmd51[]=1\u0026md52[]=2 ","wordCount":"23","inLanguage":"en","datePublished":"2021-08-13T20:27:10+08:00","dateModified":"2021-08-13T20:27:10+08:00","author":{"@type":"Person","name":"DaChui"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://oopsdc.tk/post/md5s%CC%A7z%CC%87e%CC%82u%CC%86e%CC%80c%CC%82%C4%B1u%CC%86/"},"publisher":{"@type":"Organization","name":"Atmet","logo":{"@type":"ImageObject","url":"https://oopsdc.tk/%3Clink%20/%20abs%20url%3E"}}}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"MD5()函数绕过","name":"MD5()函数绕过","description":"示例代码:\nif (md5($_POST[\u0026#39;md51\u0026#39;]) == md5($_POST[\u0026#39;md52\u0026#39;]) \u0026amp;\u0026amp; $_POST[\u0026#39;md51\u0026#39;] != $_POST[\u0026#39;md52\u0026#39;]) 弱类型绕过 PHP在处理哈希字符串时，会把每一个0E开头的哈希值解释为0，所以若两个不同密码进行哈希后以0E开头，则会被认为值均为0，从而判等。\nmd5加密后开头为0E的值:\nQNKCDZO\r240610708\rs878926199a\rs155964671a\rs214587387a\rs214587387a\r以示例代码为例，分别给md51和md52赋表中不同的值。经过md5加密后，值均为0，而原始值又不同，顺利绕过if判断。\n数组绕过 md5()函数无法处理数组，会对传入的数组返回NULL，即数组经过md5加密后均得到NULL。\n我们仅需传入如下数据即可，数组内容随意:\nmd51[]=1\u0026amp;md52[]=2  本文链接:MD5()函数绕过 | Atmet (oopsdc.tk)\n文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。\n ","keywords":["CTF"],"articleBody":"示例代码:\nif (md5($_POST['md51']) == md5($_POST['md52']) \u0026\u0026 $_POST['md51'] != $_POST['md52']) 弱类型绕过 PHP在处理哈希字符串时，会把每一个0E开头的哈希值解释为0，所以若两个不同密码进行哈希后以0E开头，则会被认为值均为0，从而判等。\nmd5加密后开头为0E的值:\nQNKCDZO\r240610708\rs878926199a\rs155964671a\rs214587387a\rs214587387a\r以示例代码为例，分别给md51和md52赋表中不同的值。经过md5加密后，值均为0，而原始值又不同，顺利绕过if判断。\n数组绕过 md5()函数无法处理数组，会对传入的数组返回NULL，即数组经过md5加密后均得到NULL。\n我们仅需传入如下数据即可，数组内容随意:\nmd51[]=1\u0026md52[]=2  本文链接:MD5()函数绕过 | Atmet (oopsdc.tk)\n文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。\n ","wordCount":"30","inLanguage":"en","datePublished":"2021-08-13T20:27:10+08:00","dateModified":"2021-08-13T20:27:10+08:00","author":{"@type":"Person","name":"DaChui"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://oopsdc.tk/post/md5s%CC%A7z%CC%87e%CC%82u%CC%86e%CC%80c%CC%82%C4%B1u%CC%86/"},"publisher":{"@type":"Organization","name":"Atmet","logo":{"@type":"ImageObject","url":"https://oopsdc.tk/%3Clink%20/%20abs%20url%3E"}}}</script>
 </head>
 <body id=top>
 <script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
@@ -132,7 +138,10 @@ s214587387a
 <p><code>md5()</code>函数无法处理数组，会对传入的数组返回<code>NULL</code>，即数组经过<code>md5</code>加密后均得到<code>NULL</code>。</p>
 <p>我们仅需传入如下数据即可，数组内容随意:</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#a6e22e>md51</span>[]<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span><span style=color:#f92672>&amp;</span><span style=color:#a6e22e>md52</span>[]<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span>
-</code></pre></div>
+</code></pre></div><blockquote>
+<p>本文链接:<a href=https://oopsdc.tk/post/md5()%E5%87%BD%E6%95%B0%E7%BB%95%E8%BF%87/>MD5()函数绕过 | Atmet (oopsdc.tk)</a></p>
+<p>文章许可:本文采用<a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>CC BY-NC-SA 4.0</a>许可协议，转载请注明出处。</p>
+</blockquote>
 </div>
 <footer class=post-footer>
 <ul class=post-tags>
