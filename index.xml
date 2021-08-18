@@ -252,7 +252,7 @@ VirusTotal
       <pubDate>Thu, 17 Jun 2021 09:03:30 +0800</pubDate>
       
       <guid>https://oopsdc.tk/post/apache%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
-      <description>Airflow 存储型XSS 漏洞描述 Apache Airflow 1.10.2及之前版本中的airflow webserver服务存在跨站脚本漏洞，该漏洞源于WEB应用缺少对客户端数据的正确验证，攻击者可利用该漏洞执行客户端代码。
+      <description>Airflow 存储型XSS 漏洞描述 Apache Airflow 1.10.2及之前版本中的airflow webserver服务存在跨站脚本漏洞，漏洞源于WEB应用缺少对客户端数据的正确验证，攻击者可利用该漏洞执行客户端代码。
 影响版本 Apache Airflow 1.10.3以下版本。
 复现思路 漏洞复现 访问/admin/dagrun/(默认不需要密码)
 创建一个项目，输入ID后点击保存，返回列表，点击running字样，发现能够输入HTML代码，例:
