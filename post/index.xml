@@ -9,7 +9,22 @@
       <link>https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 18 Aug 2021 22:45:30 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Aug 2021 08:46:55 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GitHub不再支持密码验证解决方案</title>
+      <link>https://oopsdc.tk/post/github%E4%B8%8D%E5%86%8D%E6%94%AF%E6%8C%81%E5%AF%86%E7%A0%81%E9%AA%8C%E8%AF%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</link>
+      <pubDate>Thu, 19 Aug 2021 08:46:55 +0800</pubDate>
+      
+      <guid>https://oopsdc.tk/post/github%E4%B8%8D%E5%86%8D%E6%94%AF%E6%8C%81%E5%AF%86%E7%A0%81%E9%AA%8C%E8%AF%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</guid>
+      <description>问题描述 在更新博客push本地资源时遇到如下报错：
+remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.大意就是GitHub从13号起不再支持密码验证，需要使用个人token，官方解释是为了安全。
+解决方案 进入GitHub首页后点击右上角的个人头像，选择Settings，在左侧选择Developer settings，然后选择Personal access tokens，选中之后点击Generate new token，我们可以设置token名、有效期及token的权限范围。仅需要仓库部署的话，我们就只需勾选repo，翻到最下面点击Gererate token。
+然后保存好生成的token，因为退出页面后将不再显示，可以通过重新生成来重新获取。然后在push项目时，将输入的密码改为我们生成的token即可。
+ 本文链接:GitHub不再支持密码验证解决方案 | Atmet
+文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
+ </description>
+    </item>
+    
     <item>
       <title>Kali安装Parallels Tools</title>
       <link>https://oopsdc.tk/post/kali%E5%AE%89%E8%A3%85parallels-tools/</link>

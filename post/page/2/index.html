@@ -76,6 +76,27 @@
 <article class=post-entry>
 <header class=entry-header>
 <h2>
+utterances博客评论插件
+</h2>
+</header>
+<section class=entry-content>
+<p>概述 utterances是一个基于GitHub issue，拥有多种主题的开源小组件，本文将简述使用如何在hugo博客部署utterances。
+配置过程 新建仓库 新建一个公开的仓库，用于存放评论，名字随意。作者在此处创建一个名为utterances的公开仓库。
+安装utterances GitHub Apps - utterances
+点击安装即可，选择仓库:
+安装完成后会自动跳转到官方页面。
+在文件中添加插件 官方文档:utterances
+修改footer.html文件，以PaperMod主题为例:
+&lt;footer class="footer"> {{- if .Site.Copyright }} &lt;span>{{ .Site.Copyright | markdownify }}&lt;/span> {{- else }} &lt;span>&amp;copy; {{ now.Year }} &lt;a href="{{ "" | absLangURL }}">{{ .Site.Title }}&lt;/a>&lt;/span> {{- end }} &lt;span>&amp;middot;&lt;/span> &lt;span>Powered by &lt;a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo&lt;/a>&lt;/span> &lt;span>&amp;middot;&lt;/span> &lt;span>Theme &lt;a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod&lt;/a>&lt;/span> &lt;script src="https://utteranc.es/client.js" repo="oopsdc/utterances" issue-term="title" theme="github-light" crossorigin="anonymous" async> &lt;/script> &lt;/footer> 运行命令hugo server进入一篇文章即可查看评论插件效果。...</p>
+</section>
+<footer class=entry-footer>
+July 20, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
+</footer>
+<a class=entry-link aria-label="post link to utterances博客评论插件" href=https://oopsdc.tk/post/utterances%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>
 sqli-labs
 </h2>
 </header>
@@ -234,27 +255,6 @@ java -jar jmet-0.1.0-all.jar -Q event -I ActiveMQ -s -Y "touch /tmp/vuln" -Yp RO
 June 17, 2021&nbsp;·&nbsp;10 min&nbsp;·&nbsp;DaChui
 </footer>
 <a class=entry-link aria-label="post link to Apache漏洞复现" href=https://oopsdc.tk/post/apache%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>
-JBoss漏洞复现
-</h2>
-</header>
-<section class=entry-content>
-<p>JBoss 4.x JBossMQ JMS 反序列化漏洞 CVE-2017-7504 漏洞描述 Red Hat JBoss Application Server是一款基于JavaEE的开源应用服务器。JBoss AS 4.x及之前版本中，JBossMQ实现过程的JMS over HTTP Invocation Layer的HTTPServerILServlet.java文件存在反序列化漏洞，攻击者可借助特制的序列化数据利用该漏洞执行任意代码。
-影响版本 JBoss AS 4.x及之前。
-复现思路 漏洞复现 环境搭建:
-git clone https://github.com/vulhub/vulhub.git cd vulhub/jboss/CVE-2017-7504 docker-compose up -d Jexboss工具:joaomatosf/jexboss: JexBoss: Jboss (and Java Deserialization Vulnerabilities) verify and EXploitation Tool (github.com)
-git clone https://github.com/joaomatosf/jexboss.git python3 jexboss.py -host http://&lt;ip>:8080 成功利用漏洞执行命令。
-本文链接:JBoss漏洞复现 | Atmet (oopsdc.tk)
-文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
-</p>
-</section>
-<footer class=entry-footer>
-June 17, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
-</footer>
-<a class=entry-link aria-label="post link to JBoss漏洞复现" href=https://oopsdc.tk/post/jboss%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

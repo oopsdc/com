@@ -81,6 +81,27 @@
 <article class=post-entry>
 <header class=entry-header>
 <h2>
+GitHub不再支持密码验证解决方案
+</h2>
+</header>
+<section class=entry-content>
+<p>问题描述 在更新博客push本地资源时遇到如下报错：
+remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+大意就是GitHub从13号起不再支持密码验证，需要使用个人token，官方解释是为了安全。
+解决方案 进入GitHub首页后点击右上角的个人头像，选择Settings，在左侧选择Developer settings，然后选择Personal access tokens，选中之后点击Generate new token，我们可以设置token名、有效期及token的权限范围。仅需要仓库部署的话，我们就只需勾选repo，翻到最下面点击Gererate token。
+然后保存好生成的token，因为退出页面后将不再显示，可以通过重新生成来重新获取。然后在push项目时，将输入的密码改为我们生成的token即可。
+本文链接:GitHub不再支持密码验证解决方案 | Atmet
+文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
+</p>
+</section>
+<footer class=entry-footer>
+August 19, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
+</footer>
+<a class=entry-link aria-label="post link to GitHub不再支持密码验证解决方案" href=https://oopsdc.tk/post/github%E4%B8%8D%E5%86%8D%E6%94%AF%E6%8C%81%E5%AF%86%E7%A0%81%E9%AA%8C%E8%AF%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>
 Kali安装Parallels Tools
 </h2>
 </header>
@@ -251,27 +272,6 @@ nameserver 233....</p>
 July 20, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 </footer>
 <a class=entry-link aria-label="post link to Arm开发板联网配置" href=https://oopsdc.tk/post/arm%E5%BC%80%E5%8F%91%E6%9D%BF%E8%81%94%E7%BD%91%E9%85%8D%E7%BD%AE/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>
-utterances博客评论插件
-</h2>
-</header>
-<section class=entry-content>
-<p>概述 utterances是一个基于GitHub issue，拥有多种主题的开源小组件，本文将简述使用如何在hugo博客部署utterances。
-配置过程 新建仓库 新建一个公开的仓库，用于存放评论，名字随意。作者在此处创建一个名为utterances的公开仓库。
-安装utterances GitHub Apps - utterances
-点击安装即可，选择仓库:
-安装完成后会自动跳转到官方页面。
-在文件中添加插件 官方文档:utterances
-修改footer.html文件，以PaperMod主题为例:
-&lt;footer class="footer"> {{- if .Site.Copyright }} &lt;span>{{ .Site.Copyright | markdownify }}&lt;/span> {{- else }} &lt;span>&amp;copy; {{ now.Year }} &lt;a href="{{ "" | absLangURL }}">{{ .Site.Title }}&lt;/a>&lt;/span> {{- end }} &lt;span>&amp;middot;&lt;/span> &lt;span>Powered by &lt;a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo&lt;/a>&lt;/span> &lt;span>&amp;middot;&lt;/span> &lt;span>Theme &lt;a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod&lt;/a>&lt;/span> &lt;script src="https://utteranc.es/client.js" repo="oopsdc/utterances" issue-term="title" theme="github-light" crossorigin="anonymous" async> &lt;/script> &lt;/footer> 运行命令hugo server进入一篇文章即可查看评论插件效果。...</p>
-</section>
-<footer class=entry-footer>
-July 20, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
-</footer>
-<a class=entry-link aria-label="post link to utterances博客评论插件" href=https://oopsdc.tk/post/utterances%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

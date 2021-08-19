@@ -75,6 +75,27 @@
 <article class="post-entry tag-entry">
 <header class=entry-header>
 <h2>
+GitHub不再支持密码验证解决方案
+</h2>
+</header>
+<section class=entry-content>
+<p>问题描述 在更新博客push本地资源时遇到如下报错：
+remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+大意就是GitHub从13号起不再支持密码验证，需要使用个人token，官方解释是为了安全。
+解决方案 进入GitHub首页后点击右上角的个人头像，选择Settings，在左侧选择Developer settings，然后选择Personal access tokens，选中之后点击Generate new token，我们可以设置token名、有效期及token的权限范围。仅需要仓库部署的话，我们就只需勾选repo，翻到最下面点击Gererate token。
+然后保存好生成的token，因为退出页面后将不再显示，可以通过重新生成来重新获取。然后在push项目时，将输入的密码改为我们生成的token即可。
+本文链接:GitHub不再支持密码验证解决方案 | Atmet
+文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
+</p>
+</section>
+<footer class=entry-footer>
+August 19, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
+</footer>
+<a class=entry-link aria-label="post link to GitHub不再支持密码验证解决方案" href=https://oopsdc.tk/post/github%E4%B8%8D%E5%86%8D%E6%94%AF%E6%8C%81%E5%AF%86%E7%A0%81%E9%AA%8C%E8%AF%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
+<h2>
 Kali安装Parallels Tools
 </h2>
 </header>
@@ -233,24 +254,6 @@ Less-2 传入id=1 and 1=1页面正常，id=1 and 1=2页面无回显，判断为�
 July 10, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 </footer>
 <a class=entry-link aria-label="post link to sqli-labs" href=https://oopsdc.tk/post/sqli-labs/></a>
-</article>
-<article class="post-entry tag-entry">
-<header class=entry-header>
-<h2>
-ProxyChains
-</h2>
-</header>
-<section class=entry-content>
-<p>概述 ProxyChains是一个Linux和Unix下的代理工具，允许TCP和DNS通过代理隧道，支持HTTP、SOCKS4、SOCKS5类型的代理服务器，且可配置多个代理。
-ProxyChains通过用户自定义的代理列表强制连接指定的应用程序。
-本文简述kali下如何通过ProxyChains使用Windows主机代理。
-相关资料 GitHub项目地址 ProxyChains:haad/proxychains: proxychains - a tool that forces any TCP connection made by any given application to follow through proxy like TOR or any other SOCKS4, SOCKS5 or HTTP(S) proxy. Supported auth-types: “user/pass” for SOCKS4/5, “basic” for HTTP. (github.com)
-ProxyChains-ng:rofl0r/proxychains-ng: proxychains ng (new generation) - a preloader which hooks calls to sockets in dynamically linked programs and redirects it through one or more socks/http proxies. continuation of the unmaintained proxychains project....</p>
-</section>
-<footer class=entry-footer>
-July 9, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
-</footer>
-<a class=entry-link aria-label="post link to ProxyChains" href=https://oopsdc.tk/post/proxychains/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
