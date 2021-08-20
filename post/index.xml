@@ -9,7 +9,19 @@
       <link>https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 19 Aug 2021 08:46:55 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Aug 2021 18:32:54 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vulhub环境搭建</title>
+      <link>https://oopsdc.tk/post/vulhub%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Fri, 20 Aug 2021 18:32:54 +0800</pubDate>
+      
+      <guid>https://oopsdc.tk/post/vulhub%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
+      <description>安装环境  Ubuntu 20.04  环境配置  docker docker-compose  更换系统源 备份原文件：
+mv /etc/apt/source.list /etc/apt/source.list.bak 使用以下任一命令创建并编辑source.list文件：
+gedit /etc/apt/source.list vi /etc/apt/source.list vim /etc/apt/source.list	// 需使用 apt install vim 命令安装 文件内容如下：
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiversedeb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiversedeb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse# deb-src https://mirrors.</description>
+    </item>
+    
     <item>
       <title>GitHub不再支持密码验证解决方案</title>
       <link>https://oopsdc.tk/post/github%E4%B8%8D%E5%86%8D%E6%94%AF%E6%8C%81%E5%AF%86%E7%A0%81%E9%AA%8C%E8%AF%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</link>
@@ -80,10 +92,10 @@ GET /?file=/var/log/nginx/access.log HTTP/1.1Host: 611bfd3e-480b-4a58-95d6-ee0d
     
     <item>
       <title>ATT&amp;CK实战一</title>
-      <link>https://oopsdc.tk/post/attck%CA%B5%D5%BD%D2%BB/</link>
+      <link>https://oopsdc.tk/post/attck%E5%AE%9E%E6%88%98%E4%B8%80/</link>
       <pubDate>Wed, 21 Jul 2021 14:34:21 +0800</pubDate>
       
-      <guid>https://oopsdc.tk/post/attck%CA%B5%D5%BD%D2%BB/</guid>
+      <guid>https://oopsdc.tk/post/attck%E5%AE%9E%E6%88%98%E4%B8%80/</guid>
       <description>一、环境搭建 1.1 下载虚拟机文件 自行搜索。
 1.2 环境介绍 本次实验共3台主机，Win7作为Web服务器，是最先攻击点，Win2k3为内网域成员主机，Win2k8 R2为内网域控主机。
 Kali:自主搭建，配置与Web服务器同一网段的IP，使用命令ifconfig eth0 &amp;lt;ip&amp;gt;即可。

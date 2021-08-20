@@ -75,6 +75,29 @@
 <article class="post-entry tag-entry">
 <header class=entry-header>
 <h2>
+Vulhub环境搭建
+</h2>
+</header>
+<section class=entry-content>
+<p>安装环境 Ubuntu 20.04 环境配置 docker docker-compose 更换系统源 备份原文件：
+mv /etc/apt/source.list /etc/apt/source.list.bak 使用以下任一命令创建并编辑source.list文件：
+gedit /etc/apt/source.list vi /etc/apt/source.list vim /etc/apt/source.list // 需使用 apt install vim 命令安装 文件内容如下：
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+# deb-src https://mirrors....</p>
+</section>
+<footer class=entry-footer>
+August 20, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
+</footer>
+<a class=entry-link aria-label="post link to Vulhub环境搭建" href=https://oopsdc.tk/post/vulhub%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
+<h2>
 GitHub不再支持密码验证解决方案
 </h2>
 </header>
@@ -144,7 +167,7 @@ PORT STATE SERVICE VERSION
 <footer class=entry-footer>
 July 21, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;DaChui
 </footer>
-<a class=entry-link aria-label="post link to ATT&CK实战一" href=https://oopsdc.tk/post/attck%CA%B5%D5%BD%D2%BB/></a>
+<a class=entry-link aria-label="post link to ATT&CK实战一" href=https://oopsdc.tk/post/attck%E5%AE%9E%E6%88%98%E4%B8%80/></a>
 </article>
 <article class="post-entry tag-entry">
 <header class=entry-header>
@@ -226,24 +249,6 @@ utterances博客评论插件
 July 20, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 </footer>
 <a class=entry-link aria-label="post link to utterances博客评论插件" href=https://oopsdc.tk/post/utterances%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/></a>
-</article>
-<article class="post-entry tag-entry">
-<header class=entry-header>
-<h2>
-ProxyChains
-</h2>
-</header>
-<section class=entry-content>
-<p>概述 ProxyChains是一个Linux和Unix下的代理工具，允许TCP和DNS通过代理隧道，支持HTTP、SOCKS4、SOCKS5类型的代理服务器，且可配置多个代理。
-ProxyChains通过用户自定义的代理列表强制连接指定的应用程序。
-本文简述kali下如何通过ProxyChains使用Windows主机代理。
-相关资料 GitHub项目地址 ProxyChains:haad/proxychains: proxychains - a tool that forces any TCP connection made by any given application to follow through proxy like TOR or any other SOCKS4, SOCKS5 or HTTP(S) proxy. Supported auth-types: “user/pass” for SOCKS4/5, “basic” for HTTP. (github.com)
-ProxyChains-ng:rofl0r/proxychains-ng: proxychains ng (new generation) - a preloader which hooks calls to sockets in dynamically linked programs and redirects it through one or more socks/http proxies. continuation of the unmaintained proxychains project....</p>
-</section>
-<footer class=entry-footer>
-July 9, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
-</footer>
-<a class=entry-link aria-label="post link to ProxyChains" href=https://oopsdc.tk/post/proxychains/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
