@@ -75,6 +75,27 @@
 <article class="post-entry tag-entry">
 <header class=entry-header>
 <h2>
+utterances博客评论插件
+</h2>
+</header>
+<section class=entry-content>
+<p>概述 utterances是一个基于GitHub issue，拥有多种主题的开源小组件，本文将简述使用如何在hugo博客部署utterances。
+配置过程 新建仓库 新建一个公开的仓库，用于存放评论，名字随意。作者在此处创建一个名为utterances的公开仓库。
+安装utterances GitHub Apps - utterances
+点击安装即可，选择仓库:
+安装完成后会自动跳转到官方页面。
+在文件中添加插件 官方文档:utterances
+修改footer.html文件，以PaperMod主题为例:
+&lt;footer class="footer"> {{- if .Site.Copyright }} &lt;span>{{ .Site.Copyright | markdownify }}&lt;/span> {{- else }} &lt;span>&amp;copy; {{ now.Year }} &lt;a href="{{ "" | absLangURL }}">{{ .Site.Title }}&lt;/a>&lt;/span> {{- end }} &lt;span>&amp;middot;&lt;/span> &lt;span>Powered by &lt;a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo&lt;/a>&lt;/span> &lt;span>&amp;middot;&lt;/span> &lt;span>Theme &lt;a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod&lt;/a>&lt;/span> &lt;script src="https://utteranc.es/client.js" repo="oopsdc/utterances" issue-term="title" theme="github-light" crossorigin="anonymous" async> &lt;/script> &lt;/footer> 运行命令hugo server进入一篇文章即可查看评论插件效果。...</p>
+</section>
+<footer class=entry-footer>
+July 20, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
+</footer>
+<a class=entry-link aria-label="post link to utterances博客评论插件" href=https://oopsdc.tk/post/utterances%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
+<h2>
 ProxyChains
 </h2>
 </header>
@@ -121,12 +142,9 @@ July 1, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 </h2>
 </header>
 <section class=entry-content>
-<p>博客搭建 hugo Hugo官方网站：
-https://gohugo.io
-本文以PaperMod主题为例，官方文档：
-Installation · adityatelange/hugo-PaperMod Wiki (github.com)
-需求准备 Hugo：
-Releases · gohugoio/hugo (github.com)
+<p>博客搭建 hugo Hugo官方网站：https://gohugo.io
+本文以PaperMod主题为例，官方文档：Installation · adityatelange/hugo-PaperMod Wiki (github.com)
+需求准备 Hugo：Releases · gohugoio/hugo (github.com)
 安装步骤 1.解压压缩包 2.配置环境变量 D:\Env\hugo_0.83.1
 3.初始化博客 官方文档推荐我们使用易读性更高的yml格式初始化博客。
 hugo new site &lt;name of site> -f yml
@@ -220,29 +238,6 @@ yum install -y yum-utils 5.设置镜像仓库
 April 13, 2021&nbsp;·&nbsp;13 min&nbsp;·&nbsp;DaChui
 </footer>
 <a class=entry-link aria-label="post link to Docker" href=https://oopsdc.tk/post/docker/></a>
-</article>
-<article class="post-entry tag-entry">
-<header class=entry-header>
-<h2>
-Golang
-</h2>
-</header>
-<section class=entry-content>
-<p>runoob教程:Go 语言教程 | 菜鸟教程 (runoob.com)
-环境搭建 安装包官方下载地址:Downloads - The Go Programming Language (golang.org)
-国内能打开的地址:Downloads - The Go Programming Language (google.cn)
-Windows安装go 安装包下载 这里我选择下载msi文件的go1.16.2.windows-amd64.zip压缩包，然后放在环境目录D:\Env\go1.16.2\bin下解压。
-环境配置 将go目录下的/bin路径添加到Path环境变量中，点击新建。
-检测安装 打开cmd输入go。
-hello-world 在工作目录创建hello.go文件。
-package main import "fmt" func main() { fmt.Println("Hello, World!") } 使用go run命令运行:
-go run hello.go go build生成二进制文件运行:
-> go build .\hello.go > ls Mode LastWriteTime Length Name ---- ------------- ------ ---- -a---- 2021/3/15 10:50 2094592 hello.exe -a---- 2021/3/15 10:47 79 hello.go > ....</p>
-</section>
-<footer class=entry-footer>
-April 13, 2021&nbsp;·&nbsp;16 min&nbsp;·&nbsp;DaChui
-</footer>
-<a class=entry-link aria-label="post link to Golang" href=https://oopsdc.tk/post/golang/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

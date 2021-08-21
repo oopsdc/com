@@ -71,6 +71,22 @@
 <article class=post-entry>
 <header class=entry-header>
 <h2>
+网站镜像克隆
+</h2>
+</header>
+<section class=entry-content>
+<p>使用wget克隆网站 使用方法 我们可以使用man wget命令查看帮助文档。
+操作命令及参数解释如下：
+wget -m -p -E -k -K -np -v https://www.baidu.com/ # 参数解释 -m : 镜像，选择该选项适用于Web站点 -p : 页面获取的先决条件，该选项确保包含了请求的图片和css脚本文件被下载(可以更好复制html5站点) -E : 适用于拓展，可以在本地另存一个html文件 -k : 转换链接，确保文件本转换，适用于本地浏览 -K : 转换备份文件，将以orig为后缀作为原始文件 -np : 不要到上一层子目录中 -v : 显示过程，不显示过程为-nv 克隆结果 # 克隆后在当前目录下会出现一个与网站同名的子目录，树形结构如下 www.baidu.com ├── index.html ├── index.html.orig └── robots.txt 0 directories, 3 files 使用HTTrack克隆网站 使用方法 httrack # 进入软件后需要输入项目名 baidu # 克隆后的存放地址 /home/oopsdc/Desktop # 要克隆的网站地址 www.baidu.com # 有6个选项，此处我们选2，具有向导递归层级的镜像网站 2 # 接下来的部分全选默认选项 默认回车 克隆结果 baidu ├── backblue....</p>
+</section>
+<footer class=entry-footer>
+April 20, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
+</footer>
+<a class=entry-link aria-label="post link to 网站镜像克隆" href=https://oopsdc.tk/post/%E7%BD%91%E7%AB%99%E9%95%9C%E5%83%8F%E5%85%8B%E9%9A%86/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>
 Docker
 </h2>
 </header>

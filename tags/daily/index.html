@@ -75,6 +75,31 @@
 <article class="post-entry tag-entry">
 <header class=entry-header>
 <h2>
+如何拥有多个GitHub Pages并配置子域名
+</h2>
+</header>
+<section class=entry-content>
+<p>文章背景 突发奇想能不能配置多个GitHub Pages，然后分别给它们绑定一个子域名，说干就干。
+博客搭建文章：博客搭建 | Atmet (oopsdc.tk)
+GitHub Pages有三种类型：项目、用户和组织，项目站点连接到GitHub托管的特定项目，后两者连接到特定GitHub账户。用户只能创建一个用户主站，但可以有多个项目站点。
+创建项目 创建一个新的名称为test的公开仓库。 进入仓库主页，点击Settings，点击左侧的Pages，选择Launch automatic page generator>Continue to layouts>Pubulish Page。（注：此处选择一个喜欢的主题即可） 搭建完成后可通过&lt;usernmae>.github.io/test访问。 绑定子域名 一般而言，在购买一个域名后，我们可以使用它的子域名，如本博客的域名为oopsdc.tk，现在我想给新创建的test仓库绑定一个test.oopsdc.tk的子域名。
+1.进入DNS服务商的控制台，此处以CloudFlare为例，点击新建一个CNAME，设置如下：
+保存后进入第二步。
+2.在test仓库中新建一个CNAME文件，内容如下：
+test.oopsdc.tk
+也可通过仓库中的Settings进行设置，选择Pages后，修改下面的Custom domain并保存即可。
+本文链接:如何拥有多个GitHub Pages并配置子域名 | Atmet (oopsdc.tk)
+文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
+</p>
+</section>
+<footer class=entry-footer>
+August 21, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
+</footer>
+<a class=entry-link aria-label="post link to 如何拥有多个GitHub Pages并配置子域名" href=https://oopsdc.tk/post/%E5%A6%82%E4%BD%95%E6%8B%A5%E6%9C%89%E5%A4%9A%E4%B8%AAgithub-pages%E5%B9%B6%E9%85%8D%E7%BD%AE%E5%AD%90%E5%9F%9F%E5%90%8D/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
+<h2>
 Vulhub环境搭建
 </h2>
 </header>
@@ -142,7 +167,8 @@ ATT&CK实战一
 </header>
 <section class=entry-content>
 <p>一、环境搭建 1.1 下载虚拟机文件 自行搜索。
-1.2 环境介绍 本次实验共3台主机，Win7作为Web服务器，是最先攻击点，Win2k3为内网域成员主机，Win2k8 R2为内网域控主机。
+1.2 环境介绍 开机密码：hongrisec@2019.
+本次实验共3台主机，Win7作为Web服务器，是最先攻击点，Win2k3为内网域成员主机，Win2k8 R2为内网域控主机。
 Kali:自主搭建，配置与Web服务器同一网段的IP，使用命令ifconfig eth0 &lt;ip>即可。
 Win7:双网卡，即存在内外网IP。外网网卡通过DHCP自动获取IP，内网网卡配置静态IP:192.168.52.143。服务器存在yxcms。分别与Kali(NAT模式)和内网两台主机(自定义VMnet2)连通。
 Win2k3:只有内网网卡，IP:192.168.52.138，使用VMnet2。
@@ -162,7 +188,7 @@ Nmap scan report for 192.168.106.150
 Host is up (0.00044s latency).
 Not shown: 998 filtered ports
 PORT STATE SERVICE VERSION
-80/tcp open http Apache httpd 2.4.23 ((Win32) OpenSSL/1.0.2j PHP/5....</p>
+80/tcp open http Apache httpd 2.4.23 ((Win32) OpenSSL/1....</p>
 </section>
 <footer class=entry-footer>
 July 21, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;DaChui
@@ -228,27 +254,6 @@ nameserver 233....</p>
 July 20, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 </footer>
 <a class=entry-link aria-label="post link to Arm开发板联网配置" href=https://oopsdc.tk/post/arm%E5%BC%80%E5%8F%91%E6%9D%BF%E8%81%94%E7%BD%91%E9%85%8D%E7%BD%AE/></a>
-</article>
-<article class="post-entry tag-entry">
-<header class=entry-header>
-<h2>
-utterances博客评论插件
-</h2>
-</header>
-<section class=entry-content>
-<p>概述 utterances是一个基于GitHub issue，拥有多种主题的开源小组件，本文将简述使用如何在hugo博客部署utterances。
-配置过程 新建仓库 新建一个公开的仓库，用于存放评论，名字随意。作者在此处创建一个名为utterances的公开仓库。
-安装utterances GitHub Apps - utterances
-点击安装即可，选择仓库:
-安装完成后会自动跳转到官方页面。
-在文件中添加插件 官方文档:utterances
-修改footer.html文件，以PaperMod主题为例:
-&lt;footer class="footer"> {{- if .Site.Copyright }} &lt;span>{{ .Site.Copyright | markdownify }}&lt;/span> {{- else }} &lt;span>&amp;copy; {{ now.Year }} &lt;a href="{{ "" | absLangURL }}">{{ .Site.Title }}&lt;/a>&lt;/span> {{- end }} &lt;span>&amp;middot;&lt;/span> &lt;span>Powered by &lt;a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo&lt;/a>&lt;/span> &lt;span>&amp;middot;&lt;/span> &lt;span>Theme &lt;a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod&lt;/a>&lt;/span> &lt;script src="https://utteranc.es/client.js" repo="oopsdc/utterances" issue-term="title" theme="github-light" crossorigin="anonymous" async> &lt;/script> &lt;/footer> 运行命令hugo server进入一篇文章即可查看评论插件效果。...</p>
-</section>
-<footer class=entry-footer>
-July 20, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
-</footer>
-<a class=entry-link aria-label="post link to utterances博客评论插件" href=https://oopsdc.tk/post/utterances%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

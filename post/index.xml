@@ -9,7 +9,26 @@
       <link>https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 20 Aug 2021 18:32:54 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 Aug 2021 16:48:19 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何拥有多个GitHub Pages并配置子域名</title>
+      <link>https://oopsdc.tk/post/%E5%A6%82%E4%BD%95%E6%8B%A5%E6%9C%89%E5%A4%9A%E4%B8%AAgithub-pages%E5%B9%B6%E9%85%8D%E7%BD%AE%E5%AD%90%E5%9F%9F%E5%90%8D/</link>
+      <pubDate>Sat, 21 Aug 2021 16:48:19 +0800</pubDate>
+      
+      <guid>https://oopsdc.tk/post/%E5%A6%82%E4%BD%95%E6%8B%A5%E6%9C%89%E5%A4%9A%E4%B8%AAgithub-pages%E5%B9%B6%E9%85%8D%E7%BD%AE%E5%AD%90%E5%9F%9F%E5%90%8D/</guid>
+      <description>文章背景 突发奇想能不能配置多个GitHub Pages，然后分别给它们绑定一个子域名，说干就干。
+博客搭建文章：博客搭建 | Atmet (oopsdc.tk)
+GitHub Pages有三种类型：项目、用户和组织，项目站点连接到GitHub托管的特定项目，后两者连接到特定GitHub账户。用户只能创建一个用户主站，但可以有多个项目站点。
+创建项目  创建一个新的名称为test的公开仓库。 进入仓库主页，点击Settings，点击左侧的Pages，选择Launch automatic page generator&amp;gt;Continue to layouts&amp;gt;Pubulish Page。（注：此处选择一个喜欢的主题即可） 搭建完成后可通过&amp;lt;usernmae&amp;gt;.github.io/test访问。  绑定子域名 一般而言，在购买一个域名后，我们可以使用它的子域名，如本博客的域名为oopsdc.tk，现在我想给新创建的test仓库绑定一个test.oopsdc.tk的子域名。
+1.进入DNS服务商的控制台，此处以CloudFlare为例，点击新建一个CNAME，设置如下：
+保存后进入第二步。
+2.在test仓库中新建一个CNAME文件，内容如下：
+test.oopsdc.tk也可通过仓库中的Settings进行设置，选择Pages后，修改下面的Custom domain并保存即可。
+ 本文链接:如何拥有多个GitHub Pages并配置子域名 | Atmet (oopsdc.tk)
+文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
+ </description>
+    </item>
+    
     <item>
       <title>Vulhub环境搭建</title>
       <link>https://oopsdc.tk/post/vulhub%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
@@ -87,7 +106,7 @@ BUU LFI COURSE 1 启动环境后得到如下PHP代码:
 ?file=/var/log/nginx/access.log页面回显出我们刚才的访问记录，接下来我们使用bp抓包尝试写入phpinfo:
 通过在User-Agent字段最后插入aaaaaaa&amp;lt;?php phpinfo();?&amp;gt;bbbbbbb传入phpinfo()，刷新页面后检查是否传入成功。
 Request请求包如下:
-GET /?file=/var/log/nginx/access.log HTTP/1.1Host: 611bfd3e-480b-4a58-95d6-ee0dab70b4f2.node4.buuoj.cn:81Cache-Control: max-age=0Upgrade-Insecure-Requests: 1User-Agent: Mozilla/5.</description>
+GET /?file=/var/log/nginx/access.log HTTP/1.1Host: &amp;lt;domain&amp;gt;:&amp;lt;port&amp;gt;Cache-Control: max-age=0Upgrade-Insecure-Requests: 1User-Agent: Mozilla/5.</description>
     </item>
     
     <item>
@@ -97,7 +116,8 @@ GET /?file=/var/log/nginx/access.log HTTP/1.1Host: 611bfd3e-480b-4a58-95d6-ee0d
       
       <guid>https://oopsdc.tk/post/attck%E5%AE%9E%E6%88%98%E4%B8%80/</guid>
       <description>一、环境搭建 1.1 下载虚拟机文件 自行搜索。
-1.2 环境介绍 本次实验共3台主机，Win7作为Web服务器，是最先攻击点，Win2k3为内网域成员主机，Win2k8 R2为内网域控主机。
+1.2 环境介绍 开机密码：hongrisec@2019.
+本次实验共3台主机，Win7作为Web服务器，是最先攻击点，Win2k3为内网域成员主机，Win2k8 R2为内网域控主机。
 Kali:自主搭建，配置与Web服务器同一网段的IP，使用命令ifconfig eth0 &amp;lt;ip&amp;gt;即可。
 Win7:双网卡，即存在内外网IP。外网网卡通过DHCP自动获取IP，内网网卡配置静态IP:192.168.52.143。服务器存在yxcms。分别与Kali(NAT模式)和内网两台主机(自定义VMnet2)连通。
 Win2k3:只有内网网卡，IP:192.168.52.138，使用VMnet2。
@@ -107,7 +127,7 @@ Win2k8 R2:只有内网网卡，IP:192.168.52.141，使用VMnet2。
 安装完成之后在Win7主机上打开phpstudy开启Web服务。
 二、信息收集 2.1 探测存活主机 命令:
 nmap -sS -sV -O 192.168.106.0/24# 此处的IP为NAT模式下Win7和Kali自动获取到的IP# 参数说明sS	:	SYN半连接扫描，只进行前两次握手sV	:	显示服务器详细版本O	:	显示服务器操作系统(不太准确)结果:
-Nmap scan report for 192.168.106.150Host is up (0.00044s latency).Not shown: 998 filtered portsPORT STATE SERVICE VERSION80/tcp open http Apache httpd 2.4.23 ((Win32) OpenSSL/1.0.2j PHP/5.</description>
+Nmap scan report for 192.168.106.150Host is up (0.00044s latency).Not shown: 998 filtered portsPORT STATE SERVICE VERSION80/tcp open http Apache httpd 2.4.23 ((Win32) OpenSSL/1.</description>
     </item>
     
     <item>
@@ -329,12 +349,9 @@ n0b0dyCN/redis-rogue-server: Redis(&amp;lt;=5.0.5) RCE (github.com)</description
       <pubDate>Sat, 12 Jun 2021 12:29:53 +0800</pubDate>
       
       <guid>https://oopsdc.tk/post/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
-      <description>博客搭建 hugo Hugo官方网站：
-https://gohugo.io
-本文以PaperMod主题为例，官方文档：
-Installation · adityatelange/hugo-PaperMod Wiki (github.com)
-需求准备 Hugo：
-Releases · gohugoio/hugo (github.com)
+      <description>博客搭建 hugo Hugo官方网站：https://gohugo.io
+本文以PaperMod主题为例，官方文档：Installation · adityatelange/hugo-PaperMod Wiki (github.com)
+需求准备 Hugo：Releases · gohugoio/hugo (github.com)
 安装步骤 1.解压压缩包 2.配置环境变量 D:\Env\hugo_0.83.13.初始化博客 官方文档推荐我们使用易读性更高的yml格式初始化博客。
 hugo new site &amp;lt;name of site&amp;gt; -f yml4.指定主题 在config.yml文件中设置主题。
 theme: PaperMod5.本地启动 先在本地看看网站跑起来的效果

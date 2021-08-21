@@ -71,6 +71,34 @@
 <article class=post-entry>
 <header class=entry-header>
 <h2>
+Apache漏洞复现
+</h2>
+</header>
+<section class=entry-content>
+<p>Airflow 存储型XSS 漏洞描述 Apache Airflow 1.10.2及之前版本中的airflow webserver服务存在跨站脚本漏洞，漏洞源于WEB应用缺少对客户端数据的正确验证，攻击者可利用该漏洞执行客户端代码。
+影响版本 Apache Airflow 1.10.3以下版本。
+复现思路 漏洞复现 访问/admin/dagrun/(默认不需要密码)
+创建一个项目，输入ID后点击保存，返回列表，点击running字样，发现能够输入HTML代码，例:
+&lt;script>_a="https://www.baidu.com"&lt;/script> &lt;script>document.location=_a&lt;/script> 能直接造成存储型XSS。
+ActiveMQ 反序列化漏洞 CVE-2015-5254 漏洞描述 Apache ActiveMQ是Apache软件经济会研发的一套开源消息中间件，支持Java消息服务、集群、Spring Framework等。Apache ActiveMQ 5.13.0之前版本，即5.x版本中存在反序列化漏洞，该漏洞源于程序没有限制可在代理中序列化的类，攻击者可借助特制的序列化Java消息服务(JMS) ObjectMessage对象利用该漏洞执行任意代码。
+影响版本 Apache ActiveMQ 5.13.0之前的5.x版本。
+复现思路 1.构造(可使用ysoserial)可执行命令的序列化对象。
+2.作为一个消息，发送给目标61616端口。
+3.访问web管理页面，读取消息，触发漏洞。
+漏洞复现 使用jmet进行漏洞利用:https://github.com/matthiaskaiser/jmet/releases/download/0.1.0/jmet-0.1.0-all.jar
+下载好之后在jmet-0.1.0-all.jar同级目录下创建external文件夹，避免出现文件夹不存在的报错。
+jmet的原理是使用jar包内置ysoserial生成Payload并发送，我们需要在ysoserial的gadget选择一个可使用的，如ROME。
+给目标ActiveMQ添加一个名为event的队列，点击事件为生成/tmp/vuln文件:
+java -jar jmet-0.1.0-all.jar -Q event -I ActiveMQ -s -Y "touch /tmp/vuln" -Yp ROME &lt;ip> 61616 # 命令执行成功后回显如下 INFO d.c.j.t.JMSTarget [main] Connected with ID: ID:&lt;server-id> INFO d.c.j.t.JMSTarget [main] Sent gadget "ROME" with command: "touch /tmp/vuln" INFO d....</p>
+</section>
+<footer class=entry-footer>
+June 17, 2021&nbsp;·&nbsp;10 min&nbsp;·&nbsp;DaChui
+</footer>
+<a class=entry-link aria-label="post link to Apache漏洞复现" href=https://oopsdc.tk/post/apache%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>
 JBoss漏洞复现
 </h2>
 </header>
@@ -140,12 +168,9 @@ June 17, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 </h2>
 </header>
 <section class=entry-content>
-<p>博客搭建 hugo Hugo官方网站：
-https://gohugo.io
-本文以PaperMod主题为例，官方文档：
-Installation · adityatelange/hugo-PaperMod Wiki (github.com)
-需求准备 Hugo：
-Releases · gohugoio/hugo (github.com)
+<p>博客搭建 hugo Hugo官方网站：https://gohugo.io
+本文以PaperMod主题为例，官方文档：Installation · adityatelange/hugo-PaperMod Wiki (github.com)
+需求准备 Hugo：Releases · gohugoio/hugo (github.com)
 安装步骤 1.解压压缩包 2.配置环境变量 D:\Env\hugo_0.83.1
 3.初始化博客 官方文档推荐我们使用易读性更高的yml格式初始化博客。
 hugo new site &lt;name of site> -f yml
@@ -207,22 +232,6 @@ Test
 May 28, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 </footer>
 <a class=entry-link aria-label="post link to Test" href=https://oopsdc.tk/post/test/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>
-网站镜像克隆
-</h2>
-</header>
-<section class=entry-content>
-<p>使用wget克隆网站 使用方法 我们可以使用man wget命令查看帮助文档。
-操作命令及参数解释如下：
-wget -m -p -E -k -K -np -v https://www.baidu.com/ # 参数解释 -m : 镜像，选择该选项适用于Web站点 -p : 页面获取的先决条件，该选项确保包含了请求的图片和css脚本文件被下载(可以更好复制html5站点) -E : 适用于拓展，可以在本地另存一个html文件 -k : 转换链接，确保文件本转换，适用于本地浏览 -K : 转换备份文件，将以orig为后缀作为原始文件 -np : 不要到上一层子目录中 -v : 显示过程，不显示过程为-nv 克隆结果 # 克隆后在当前目录下会出现一个与网站同名的子目录，树形结构如下 www.baidu.com ├── index.html ├── index.html.orig └── robots.txt 0 directories, 3 files 使用HTTrack克隆网站 使用方法 httrack # 进入软件后需要输入项目名 baidu # 克隆后的存放地址 /home/oopsdc/Desktop # 要克隆的网站地址 www.baidu.com # 有6个选项，此处我们选2，具有向导递归层级的镜像网站 2 # 接下来的部分全选默认选项 默认回车 克隆结果 baidu ├── backblue....</p>
-</section>
-<footer class=entry-footer>
-April 20, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
-</footer>
-<a class=entry-link aria-label="post link to 网站镜像克隆" href=https://oopsdc.tk/post/%E7%BD%91%E7%AB%99%E9%95%9C%E5%83%8F%E5%85%8B%E9%9A%86/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

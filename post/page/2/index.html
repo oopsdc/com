@@ -76,6 +76,34 @@
 <article class=post-entry>
 <header class=entry-header>
 <h2>
+浅析APNs推送机制
+</h2>
+</header>
+<section class=entry-content>
+<p>APNs简述 Apple Push Notification server(APNs)，即苹果推送通知服务。
+APNs出现需求 由于移动设备内存、CPU、电池容量等各种因素，iOS不允许APP进程常驻后台(时限大概为10min)。
+当用户主动关闭APP或后台APP进入后台达到限定时长后，意味着该APP进程的结束，在一定程度上保证了手机的流畅度与使用时长。但这也同时意味着服务器无法主动和用户交互(如实时推送消息)，为了解决这个限制，苹果推出了APNs，允许设备和服务器分别与苹果的推送服务器保持长连接状态。
+iOS通知 iOS通知分为本地通知和远程通知两类，APNs是远程通知功能的核心。
+本地通知 由本地应用触发，一般是基于时间的通知形式，如闹钟、日历、待办事项等。
+远程通知 通过自建服务器推送消息的通知形式。
+APNs推送流程 苹果官方APNs概述:Local and Remote Notification Programming Guide: APNs Overview (apple.com)
+以下为APNs推送流程图:
+Provider:自建应用服务器 APNs:苹果APNs推送通知服务器 Device:苹果设备 Client App:应用 大致流程可分为以下4点:
+苹果设备安装应用后会向APNs服务器进行注册，注册成功后APNs服务器返回一个deviceToken，且二者之间会维持一个基于SSL协议的TCP流通讯的长连接。 拿到deviceToken后设备会将其发送至自建应用服务器 有消息需要被推送时，自建服务器会将消息按指定格式结合deviceToken一并打包发送给APNs。 APNs将新消息推送至设备，并在设备屏幕上显示出来(因为设备和服务器之间维持了一个长连接) 结合上述过程可以发现，真正完成推送的是APNs服务器，消息一定是由APNs服务器推送给我们的设备，自建应用服务器只是将需要推送的消息告诉APNs服务器。至于如何维护消息队列或如何保证消息能被推送到指定设备上，这些功能都是由APNs实现的。
+deviceToken deviceToken是一个APP安装在设备上的唯一标识符，一个APP在不同设备上的deviceToken不同，同一台设备重新安装同一个APP后deviceToken也会不同。
+项目代码AppDelegate中有一个回调方法，当APNs注册成功后通过该回调方法可以获取到返回的deviceToken。
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken APNs拿到这个包之后会验证包结构是否正确，验证无误后会提取其中的消息，再将消息推送至指定设备。
+消息体结构如下:
+{ "aps":{ "alert":{ // 显示在用户设备上的推送标题内容 "title":"Test Request", "body":"This is a test msg.", }, "badge":5, // 显示的数量(整形类型)，是在应用icon右上角显示的数量，提示有几条未读信息 "sound":"default" // 推送消息声 } } 其实这就是一个JSON结构体，上述代码只是一种简单消息体，详情可见苹果官方文档:Local and Remote Notification Programming Guide: Creating the Remote Notification Payload (apple....</p>
+</section>
+<footer class=entry-footer>
+July 20, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
+</footer>
+<a class=entry-link aria-label="post link to 浅析APNs推送机制" href=https://oopsdc.tk/post/%E6%B5%85%E6%9E%90apns%E6%8E%A8%E9%80%81%E6%9C%BA%E5%88%B6/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>
 Arm开发板联网配置
 </h2>
 </header>
@@ -231,34 +259,6 @@ VirusTotal
 June 25, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;DaChui
 </footer>
 <a class=entry-link aria-label="post link to 信息收集" href=https://oopsdc.tk/post/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>
-Apache漏洞复现
-</h2>
-</header>
-<section class=entry-content>
-<p>Airflow 存储型XSS 漏洞描述 Apache Airflow 1.10.2及之前版本中的airflow webserver服务存在跨站脚本漏洞，漏洞源于WEB应用缺少对客户端数据的正确验证，攻击者可利用该漏洞执行客户端代码。
-影响版本 Apache Airflow 1.10.3以下版本。
-复现思路 漏洞复现 访问/admin/dagrun/(默认不需要密码)
-创建一个项目，输入ID后点击保存，返回列表，点击running字样，发现能够输入HTML代码，例:
-&lt;script>_a="https://www.baidu.com"&lt;/script> &lt;script>document.location=_a&lt;/script> 能直接造成存储型XSS。
-ActiveMQ 反序列化漏洞 CVE-2015-5254 漏洞描述 Apache ActiveMQ是Apache软件经济会研发的一套开源消息中间件，支持Java消息服务、集群、Spring Framework等。Apache ActiveMQ 5.13.0之前版本，即5.x版本中存在反序列化漏洞，该漏洞源于程序没有限制可在代理中序列化的类，攻击者可借助特制的序列化Java消息服务(JMS) ObjectMessage对象利用该漏洞执行任意代码。
-影响版本 Apache ActiveMQ 5.13.0之前的5.x版本。
-复现思路 1.构造(可使用ysoserial)可执行命令的序列化对象。
-2.作为一个消息，发送给目标61616端口。
-3.访问web管理页面，读取消息，触发漏洞。
-漏洞复现 使用jmet进行漏洞利用:https://github.com/matthiaskaiser/jmet/releases/download/0.1.0/jmet-0.1.0-all.jar
-下载好之后在jmet-0.1.0-all.jar同级目录下创建external文件夹，避免出现文件夹不存在的报错。
-jmet的原理是使用jar包内置ysoserial生成Payload并发送，我们需要在ysoserial的gadget选择一个可使用的，如ROME。
-给目标ActiveMQ添加一个名为event的队列，点击事件为生成/tmp/vuln文件:
-java -jar jmet-0.1.0-all.jar -Q event -I ActiveMQ -s -Y "touch /tmp/vuln" -Yp ROME &lt;ip> 61616 # 命令执行成功后回显如下 INFO d.c.j.t.JMSTarget [main] Connected with ID: ID:&lt;server-id> INFO d.c.j.t.JMSTarget [main] Sent gadget "ROME" with command: "touch /tmp/vuln" INFO d....</p>
-</section>
-<footer class=entry-footer>
-June 17, 2021&nbsp;·&nbsp;10 min&nbsp;·&nbsp;DaChui
-</footer>
-<a class=entry-link aria-label="post link to Apache漏洞复现" href=https://oopsdc.tk/post/apache%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
