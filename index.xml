@@ -271,29 +271,6 @@ VirusTotal
     </item>
     
     <item>
-      <title>Apache漏洞复现</title>
-      <link>https://oopsdc.tk/post/apache%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</link>
-      <pubDate>Thu, 17 Jun 2021 09:03:30 +0800</pubDate>
-      
-      <guid>https://oopsdc.tk/post/apache%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
-      <description>Airflow 存储型XSS 漏洞描述 Apache Airflow 1.10.2及之前版本中的airflow webserver服务存在跨站脚本漏洞，漏洞源于WEB应用缺少对客户端数据的正确验证，攻击者可利用该漏洞执行客户端代码。
-影响版本 Apache Airflow 1.10.3以下版本。
-复现思路 漏洞复现 访问/admin/dagrun/(默认不需要密码)
-创建一个项目，输入ID后点击保存，返回列表，点击running字样，发现能够输入HTML代码，例:
-&amp;lt;script&amp;gt;_a=&amp;#34;https://www.baidu.com&amp;#34;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt;document.location=_a&amp;lt;/script&amp;gt; 能直接造成存储型XSS。
-ActiveMQ 反序列化漏洞 CVE-2015-5254 漏洞描述 Apache ActiveMQ是Apache软件经济会研发的一套开源消息中间件，支持Java消息服务、集群、Spring Framework等。Apache ActiveMQ 5.13.0之前版本，即5.x版本中存在反序列化漏洞，该漏洞源于程序没有限制可在代理中序列化的类，攻击者可借助特制的序列化Java消息服务(JMS) ObjectMessage对象利用该漏洞执行任意代码。
-影响版本 Apache ActiveMQ 5.13.0之前的5.x版本。
-复现思路 1.构造(可使用ysoserial)可执行命令的序列化对象。
-2.作为一个消息，发送给目标61616端口。
-3.访问web管理页面，读取消息，触发漏洞。
-漏洞复现 使用jmet进行漏洞利用:https://github.com/matthiaskaiser/jmet/releases/download/0.1.0/jmet-0.1.0-all.jar
- 下载好之后在jmet-0.1.0-all.jar同级目录下创建external文件夹，避免出现文件夹不存在的报错。
-jmet的原理是使用jar包内置ysoserial生成Payload并发送，我们需要在ysoserial的gadget选择一个可使用的，如ROME。
- 给目标ActiveMQ添加一个名为event的队列，点击事件为生成/tmp/vuln文件:
-java -jar jmet-0.1.0-all.jar -Q event -I ActiveMQ -s -Y &amp;#34;touch /tmp/vuln&amp;#34; -Yp ROME &amp;lt;ip&amp;gt; 61616 # 命令执行成功后回显如下 INFO d.c.j.t.JMSTarget [main] Connected with ID: ID:&amp;lt;server-id&amp;gt; INFO d.c.j.t.JMSTarget [main] Sent gadget &amp;#34;ROME&amp;#34; with command: &amp;#34;touch /tmp/vuln&amp;#34; INFO d.</description>
-    </item>
-    
-    <item>
       <title>JBoss漏洞复现</title>
       <link>https://oopsdc.tk/post/jboss%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</link>
       <pubDate>Thu, 17 Jun 2021 09:03:30 +0800</pubDate>
@@ -526,6 +503,29 @@ weak_auth  Des:小宁写了一个登陆验证页面，随手就设了一个密�
 获得flag。
 simple_php  Des:小宁听说php是最好的语言,于是她简单学习之后写了几行php代码。
  &amp;lt;?php show_source(__FILE__); include(&amp;#34;config.php&amp;#34;); $a = @$_GET[&amp;#39;a&amp;#39;]; $b = @$_GET[&amp;#39;b&amp;#39;]; if ($a == 0 and $a) { echo $flag1; } if (is_numeric($b)) { exit(); } if ($b &amp;gt; 1234) { echo $flag2; } ?</description>
+    </item>
+    
+    <item>
+      <title>Apache漏洞复现</title>
+      <link>https://oopsdc.tk/post/apache%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://oopsdc.tk/post/apache%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
+      <description>Airflow 存储型XSS 漏洞描述 Apache Airflow 1.10.2及之前版本中的airflow webserver服务存在跨站脚本漏洞，漏洞源于WEB应用缺少对客户端数据的正确验证，攻击者可利用该漏洞执行客户端代码。
+影响版本 Apache Airflow 1.10.3以下版本。
+复现思路 漏洞复现 访问/admin/dagrun/(默认不需要密码)
+创建一个项目，输入ID后点击保存，返回列表，点击running字样，发现能够输入HTML代码，例：
+&amp;lt;script&amp;gt;_a=&amp;#34;https：//www.baidu.com&amp;#34;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt;document.location=_a&amp;lt;/script&amp;gt; 能直接造成存储型XSS。
+ActiveMQ 反序列化漏洞 CVE-2015-5254 漏洞描述 Apache ActiveMQ是Apache软件经济会研发的一套开源消息中间件，支持Java消息服务、集群、Spring Framework等。Apache ActiveMQ 5.13.0之前版本，即5.x版本中存在反序列化漏洞，该漏洞源于程序没有限制可在代理中序列化的类，攻击者可借助特制的序列化Java消息服务(JMS) ObjectMessage对象利用该漏洞执行任意代码。
+影响版本 Apache ActiveMQ 5.13.0之前的5.x版本。
+复现思路 1.构造(可使用ysoserial)可执行命令的序列化对象。
+2.作为一个消息，发送给目标61616端口。
+3.访问web管理页面，读取消息，触发漏洞。
+漏洞复现 使用jmet进行漏洞利用：https：//github.com/matthiaskaiser/jmet/releases/download/0.1.0/jmet-0.1.0-all.jar
+ 下载好之后在jmet-0.1.0-all.jar同级目录下创建external文件夹，避免出现文件夹不存在的报错。
+jmet的原理是使用jar包内置ysoserial生成Payload并发送，我们需要在ysoserial的gadget选择一个可使用的，如ROME。
+ 给目标ActiveMQ添加一个名为event的队列，点击事件为生成/tmp/vuln文件：
+java -jar jmet-0.1.0-all.jar -Q event -I ActiveMQ -s -Y &amp;#34;touch /tmp/vuln&amp;#34; -Yp ROME &amp;lt;ip&amp;gt; 61616 # 命令执行成功后回显如下 INFO d.c.j.t.JMSTarget [main] Connected with ID： ID：&amp;lt;server-id&amp;gt; INFO d.c.j.t.JMSTarget [main] Sent gadget &amp;#34;ROME&amp;#34; with command： &amp;#34;touch /tmp/vuln&amp;#34; INFO d.</description>
     </item>
     
     
