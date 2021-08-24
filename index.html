@@ -8,7 +8,7 @@
 <meta name=description content="0opsdc!">
 <meta name=author content="DaChui">
 <link rel=canonical href=https://oopsdc.tk/>
-<link href=/assets/css/stylesheet.min.746a86b58bb2b052b5e4df8216510494f04f81e62c08d626150c26c69ca929da.css integrity="sha256-dGqGtYuysFK15N+CFlEElPBPgeYsCNYmFQwmxpypKdo=" rel="preload stylesheet" as=style>
+<link href=/assets/css/stylesheet.min.fe37c241822b208b1ade5508f8fdbbe116fdf98dae7ffe71501145355d4636b4.css integrity="sha256-/jfCQYIrIIsa3lUI+P274Rb9+Y2uf/5xUBFFNV1GNrQ=" rel="preload stylesheet" as=style>
 <link rel=icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <link rel=icon type=image/png sizes=16x16 href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <link rel=icon type=image/png sizes=32x32 href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
@@ -77,6 +77,44 @@
 </section>
 <footer class=entry-footer><div class=social-icons></div>
 </footer>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>
+Scoop使用手册
+</h2>
+</header>
+<section class=entry-content>
+<p>Scoop简介 Scoop是一个包管理工具，类似Ubuntu的apt和Mac的homebrew，只需通过一条命令即可快速完成软件的下载、安装和配置等步骤。
+项目地址：GitHub - lukesampson/scoop: A command-line installer for Windows.
+Scoop安装 没什么问题的话，大部分的电脑都能直接安装scoop，有问题的话请参考官方文档和网络资料自行解决，本文仅描述scoop的安装过程及实际安装遇到的问题。
+注：请确保自身有代理环境，也可自行查找镜像源安装。
+默认安装 官方给出的安装命令如下，只需打开powershell粘贴并执行即可，scoop将被默认安装在C:\User\&lt;username>\scoop目录：
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh') # 或下述命令，任一条均可 iwr -useb get.scoop.sh | iex 安装完成后，可通过输入scoop help命令查看命令帮助，确认是否安装成功。
+更改scoop安装位置 在安装scoop前，可先通过配置环境变量改变scoop安装路径：
+$env:SCOOP='D:\&lt;dirname>' [Environment]::SetEnvironmentVariable('SCOOP', $env:SCOOP, 'User') 若已经安装scoop，则仅需在执行上述命令后，将原目录所有文件复制到新指定的目录即可。
+更改scoop全局程序安装位置 $env:SCOOP_GLOBAL='D:&lt;dirname>' [Environment]::SetEnvironmentVariable('SCOOP_GLOBAL', $env:SCOOP_GLOBAL, 'Machine') 如果直接执行上述命令可能会报错，原因在于权限不够，使用Windows+X，选择以管理员身份打开powershell，再次运行命令即可。
+多线程下载 查阅资料的时候，大部分文章都推荐安装aria2实现多线程下载，提高下载速度，命令如下：
+scoop install aria2 安装Typora 以下是通过scoop安装Typora的流程，先使用命令搜索一下软件信息：
+scoop search typora
+会有一个报错，大意为typora在extras软件库中，要求我们先安装对应软件库。按照要求执行命令添加软件库：
+scoop bucket add extras
+此时却又报错，提示需要从GitHub拉取项目，需要我们先安装git。安装git:
+scoop install git
+下载失败并报错，但之前都能正常下载，目前只安装了一个aria2，先禁用了看看：
+scoop config aria2-enabled false
+aria2默认配置：
+aria2-enabled (默认值: true)
+aria2-retry-wait (默认值: 2)
+aria2-split (默认值: 5)
+aria2-max-connection-per-server (默认值: 5)
+aria2-min-split-size (默认值: 5M)
+然后再下载git，成功下载，但是在安装软件库时又报错了，显示无法访问GitHub仓库，这可是个老问题了，项目部署经常遇到，检查代理没问题，那么就给git配个代理试试：...</p>
+</section>
+<footer class=entry-footer>
+August 23, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
+</footer>
+<a class=entry-link aria-label="post link to Scoop使用手册" href=https://oopsdc.tk/post/scoop%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/></a>
 </article>
 <article class=post-entry>
 <header class=entry-header>
@@ -208,13 +246,13 @@ ssh 用户名：root 密码：123456 地址和端口为动态分配的。
 开启环境后按照题目给定地址和端口使用SSH连接即可。
 连接上云主机后使用ls命令，发现当前用户家目录下啥也没有，再使用cd ..命令切换到根目录下看看，发现flag.txt文件。
 也可直接使用cat /flag.txt命令查看flag。
-BUU LFI COURSE 1 启动环境后得到如下PHP代码:
+BUU LFI COURSE 1 启动环境后得到如下PHP代码：
 &lt;?php /** * Created by PhpStorm. * User: jinzhao * Date: 2019/7/9 * Time: 7:07 AM */ highlight_file(__FILE__); if(isset($_GET['file'])) { $str = $_GET['file']; include $_GET['file']; } 本地文件包含，通过file参数进行传参，可在URL后构造参数?file=/flag查看flag。
-拓展 通过Wappalyzer插件可以发现网站使用了nginx服务，尝试访问nginx访问日志:
+拓展 通过Wappalyzer插件可以发现网站使用了nginx服务，尝试访问nginx访问日志：
 ?file=/var/log/nginx/access.log
-页面回显出我们刚才的访问记录，接下来我们使用bp抓包尝试写入phpinfo:
+页面回显出我们刚才的访问记录，接下来我们使用bp抓包尝试写入phpinfo。
 通过在User-Agent字段最后插入aaaaaaa&lt;?php phpinfo();?>bbbbbbb传入phpinfo()，刷新页面后检查是否传入成功。
-Request请求包如下:
+Request请求包如下：
 GET /?file=/var/log/nginx/access.log HTTP/1.1
 Host: &lt;domain>:&lt;port>
 Cache-Control: max-age=0
@@ -225,42 +263,6 @@ User-Agent: Mozilla/5....</p>
 August 13, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;DaChui
 </footer>
 <a class=entry-link aria-label="post link to BUUCTF" href=https://oopsdc.tk/post/buuctf/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>
-ATT&CK实战一
-</h2>
-</header>
-<section class=entry-content>
-<p>一、环境搭建 1.1 下载虚拟机文件 自行搜索。
-1.2 环境介绍 开机密码：hongrisec@2019.
-本次实验共3台主机，Win7作为Web服务器，是最先攻击点，Win2k3为内网域成员主机，Win2k8 R2为内网域控主机。
-Kali:自主搭建，配置与Web服务器同一网段的IP，使用命令ifconfig eth0 &lt;ip>即可。
-Win7:双网卡，即存在内外网IP。外网网卡通过DHCP自动获取IP，内网网卡配置静态IP:192.168.52.143。服务器存在yxcms。分别与Kali(NAT模式)和内网两台主机(自定义VMnet2)连通。
-Win2k3:只有内网网卡，IP:192.168.52.138，使用VMnet2。
-Win2k8 R2:只有内网网卡，IP:192.168.52.141，使用VMnet2。
-拓扑图如下:
-![Untitled Diagram](https://gitee.com/oopsdc/PicBed/raw/master/img/Untitled Diagram.png)
-安装完成之后在Win7主机上打开phpstudy开启Web服务。
-二、信息收集 2.1 探测存活主机 命令:
-nmap -sS -sV -O 192.168.106.0/24
-# 此处的IP为NAT模式下Win7和Kali自动获取到的IP
-# 参数说明
-sS : SYN半连接扫描，只进行前两次握手
-sV : 显示服务器详细版本
-O : 显示服务器操作系统(不太准确)
-结果:
-Nmap scan report for 192.168.106.150
-Host is up (0.00044s latency).
-Not shown: 998 filtered ports
-PORT STATE SERVICE VERSION
-80/tcp open http Apache httpd 2.4.23 ((Win32) OpenSSL/1....</p>
-</section>
-<footer class=entry-footer>
-July 21, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;DaChui
-</footer>
-<a class=entry-link aria-label="post link to ATT&CK实战一" href=https://oopsdc.tk/post/attck%E5%AE%9E%E6%88%98%E4%B8%80/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

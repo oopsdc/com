@@ -8,7 +8,7 @@
 <meta name=description content="0opsdc!">
 <meta name=author content="DaChui">
 <link rel=canonical href=https://oopsdc.tk/tags/ctf/>
-<link href=/assets/css/stylesheet.min.746a86b58bb2b052b5e4df8216510494f04f81e62c08d626150c26c69ca929da.css integrity="sha256-dGqGtYuysFK15N+CFlEElPBPgeYsCNYmFQwmxpypKdo=" rel="preload stylesheet" as=style>
+<link href=/assets/css/stylesheet.min.fe37c241822b208b1ade5508f8fdbbe116fdf98dae7ffe71501145355d4636b4.css integrity="sha256-/jfCQYIrIIsa3lUI+P274Rb9+Y2uf/5xUBFFNV1GNrQ=" rel="preload stylesheet" as=style>
 <link rel=icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <link rel=icon type=image/png sizes=16x16 href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <link rel=icon type=image/png sizes=32x32 href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
@@ -115,13 +115,13 @@ ssh 用户名：root 密码：123456 地址和端口为动态分配的。
 开启环境后按照题目给定地址和端口使用SSH连接即可。
 连接上云主机后使用ls命令，发现当前用户家目录下啥也没有，再使用cd ..命令切换到根目录下看看，发现flag.txt文件。
 也可直接使用cat /flag.txt命令查看flag。
-BUU LFI COURSE 1 启动环境后得到如下PHP代码:
+BUU LFI COURSE 1 启动环境后得到如下PHP代码：
 &lt;?php /** * Created by PhpStorm. * User: jinzhao * Date: 2019/7/9 * Time: 7:07 AM */ highlight_file(__FILE__); if(isset($_GET['file'])) { $str = $_GET['file']; include $_GET['file']; } 本地文件包含，通过file参数进行传参，可在URL后构造参数?file=/flag查看flag。
-拓展 通过Wappalyzer插件可以发现网站使用了nginx服务，尝试访问nginx访问日志:
+拓展 通过Wappalyzer插件可以发现网站使用了nginx服务，尝试访问nginx访问日志：
 ?file=/var/log/nginx/access.log
-页面回显出我们刚才的访问记录，接下来我们使用bp抓包尝试写入phpinfo:
+页面回显出我们刚才的访问记录，接下来我们使用bp抓包尝试写入phpinfo。
 通过在User-Agent字段最后插入aaaaaaa&lt;?php phpinfo();?>bbbbbbb传入phpinfo()，刷新页面后检查是否传入成功。
-Request请求包如下:
+Request请求包如下：
 GET /?file=/var/log/nginx/access.log HTTP/1.1
 Host: &lt;domain>:&lt;port>
 Cache-Control: max-age=0
