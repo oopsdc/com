@@ -9,7 +9,19 @@
       <link>https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 23 Aug 2021 23:31:36 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 Aug 2021 17:31:36 +0800</lastBuildDate><atom:link href="https://oopsdc.tk/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LxRunOffline使用手册</title>
+      <link>https://oopsdc.tk/post/lxrunoffline/</link>
+      <pubDate>Sat, 28 Aug 2021 17:31:36 +0800</pubDate>
+      
+      <guid>https://oopsdc.tk/post/lxrunoffline/</guid>
+      <description>一、简介 WSL有多香就不介绍了，但其原生命令较为简陋、默认安装在C盘，稍有不足。而LxRunOffline能够安装任意发行版系统到任意目录，且具备转移已安装WSL目录、备份等功能，是一个极好的WSL管理软件。
+项目地址：GitHub - DDoSolitary/LxRunOffline: A full-featured utility for managing Windows Subsystem for Linux (WSL)
+二、安装LxRunOffline  常规安装：下载项目，手动安装 通过Chocolatey安装：  choco install lxrunoffline  通过Scoop安装：  scoop bucket add extras scoop install lxrunoffline LxRunOffline参数介绍：
+l , list - 列出所有已安装的发行版。gd , get-default - 获取 bash.exe 使用的默认发行版。sd , set-default - 设置 bash.exe 使用的默认发行版。i , install - 安装新的发行版。sd , set-default - 设置 bash.exe 使用的默认发行版。ui , uninstall - 卸载发行版。rg , register - 注册现有的安装目录。ur , unregister - 取消注册发行版但不删除安装目录。m , move - 将发行版移动到新目录。d , duplicate - 在新目录中复制现有发行版。e , export - 将发行版的文件系统导出到.</description>
+    </item>
+    
     <item>
       <title>Scoop使用手册</title>
       <link>https://oopsdc.tk/post/scoop%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</link>
@@ -99,12 +111,12 @@ remote: Support for password authentication was removed on August 13, 2021. Plea
       <pubDate>Fri, 13 Aug 2021 20:27:10 +0800</pubDate>
       
       <guid>https://oopsdc.tk/post/md5%E5%87%BD%E6%95%B0%E7%BB%95%E8%BF%87/</guid>
-      <description>示例代码:
+      <description>示例代码：
 if (md5($_POST[&amp;#39;md51&amp;#39;]) == md5($_POST[&amp;#39;md52&amp;#39;]) &amp;amp;&amp;amp; $_POST[&amp;#39;md51&amp;#39;] != $_POST[&amp;#39;md52&amp;#39;]) 弱类型绕过 PHP在处理哈希字符串时，会把每一个0E开头的哈希值解释为0，所以若两个不同密码进行哈希后以0E开头，则会被认为值均为0，从而判等。
-md5加密后开头为0E的值:
+md5加密后开头为0E的值：
 QNKCDZO240610708s878926199as155964671as214587387as214587387a以示例代码为例，分别给md51和md52赋表中不同的值。经过md5加密后，值均为0，而原始值又不同，顺利绕过if判断。
 数组绕过 md5()函数无法处理数组，会对传入的数组返回NULL，即数组经过md5加密后均得到NULL。
-我们仅需传入如下数据即可，数组内容随意:
+我们仅需传入如下数据即可，数组内容随意：
 md51[]=1&amp;amp;md52[]=2  本文链接:MD5()函数绕过 | Atmet (oopsdc.tk)
 文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
  </description>
@@ -206,24 +218,24 @@ route add default gw &amp;lt;ip&amp;gt; 再使用route命令验证一下，确�
       <description>概述 utterances是一个基于GitHub issue，拥有多种主题的开源小组件，本文将简述使用如何在hugo博客部署utterances。
 配置过程 新建仓库 新建一个公开的仓库，用于存放评论，名字随意。作者在此处创建一个名为utterances的公开仓库。
 安装utterances GitHub Apps - utterances
-点击安装即可，选择仓库:
+点击安装即可，选择仓库：
 安装完成后会自动跳转到官方页面。
 在文件中添加插件 官方文档:utterances
-修改footer.html文件，以PaperMod主题为例:
+修改footer.html文件，以PaperMod主题为例：
 &amp;lt;footer class=&amp;#34;footer&amp;#34;&amp;gt; {{- if .Site.Copyright }} &amp;lt;span&amp;gt;{{ .Site.Copyright | markdownify }}&amp;lt;/span&amp;gt; {{- else }} &amp;lt;span&amp;gt;&amp;amp;copy; {{ now.Year }} &amp;lt;a href=&amp;#34;{{ &amp;#34;&amp;#34; | absLangURL }}&amp;#34;&amp;gt;{{ .Site.Title }}&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt; {{- end }} &amp;lt;span&amp;gt;&amp;amp;middot;&amp;lt;/span&amp;gt; &amp;lt;span&amp;gt;Powered by &amp;lt;a href=&amp;#34;https://gohugo.io/&amp;#34; rel=&amp;#34;noopener noreferrer&amp;#34; target=&amp;#34;_blank&amp;#34;&amp;gt;Hugo&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span&amp;gt;&amp;amp;middot;&amp;lt;/span&amp;gt; &amp;lt;span&amp;gt;Theme &amp;lt;a href=&amp;#34;https://git.io/hugopapermod&amp;#34; rel=&amp;#34;noopener&amp;#34; target=&amp;#34;_blank&amp;#34;&amp;gt;PaperMod&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;script src=&amp;#34;https://utteranc.es/client.js&amp;#34; repo=&amp;#34;oopsdc/utterances&amp;#34; issue-term=&amp;#34;title&amp;#34; theme=&amp;#34;github-light&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34; async&amp;gt; &amp;lt;/script&amp;gt; &amp;lt;/footer&amp;gt; 运行命令hugo server进入一篇文章即可查看评论插件效果。</description>
     </item>
     
     <item>
-      <title>ProxyChains</title>
-      <link>https://oopsdc.tk/post/proxychains/</link>
+      <title>ProxyChains简单使用</title>
+      <link>https://oopsdc.tk/post/proxychains%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Fri, 09 Jul 2021 22:24:59 +0800</pubDate>
       
-      <guid>https://oopsdc.tk/post/proxychains/</guid>
+      <guid>https://oopsdc.tk/post/proxychains%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</guid>
       <description>概述 ProxyChains是一个Linux和Unix下的代理工具，允许TCP和DNS通过代理隧道，支持HTTP、SOCKS4、SOCKS5类型的代理服务器，且可配置多个代理。
 ProxyChains通过用户自定义的代理列表强制连接指定的应用程序。
 本文简述kali下如何通过ProxyChains使用Windows主机代理。
-相关资料 GitHub项目地址 ProxyChains:haad/proxychains: proxychains - a tool that forces any TCP connection made by any given application to follow through proxy like TOR or any other SOCKS4, SOCKS5 or HTTP(S) proxy. Supported auth-types: &amp;ldquo;user/pass&amp;rdquo; for SOCKS4/5, &amp;ldquo;basic&amp;rdquo; for HTTP. (github.com)
-ProxyChains-ng:rofl0r/proxychains-ng: proxychains ng (new generation) - a preloader which hooks calls to sockets in dynamically linked programs and redirects it through one or more socks/http proxies. continuation of the unmaintained proxychains project.</description>
+相关资料 GitHub项目地址 ProxyChains：haad/proxychains: proxychains - a tool that forces any TCP connection made by any given application to follow through proxy like TOR or any other SOCKS4, SOCKS5 or HTTP(S) proxy. Supported auth-types: &amp;ldquo;user/pass&amp;rdquo; for SOCKS4/5, &amp;ldquo;basic&amp;rdquo; for HTTP. (github.com)
+ProxyChains-ng：rofl0r/proxychains-ng: proxychains ng (new generation) - a preloader which hooks calls to sockets in dynamically linked programs and redirects it through one or more socks/http proxies. continuation of the unmaintained proxychains project.</description>
     </item>
     
     <item>
@@ -234,18 +246,18 @@ ProxyChains-ng:rofl0r/proxychains-ng: proxychains ng (new generation) - a preloa
       <guid>https://oopsdc.tk/post/%E4%BB%8E0%E5%88%B01-ctfer%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF/</guid>
       <description>平台地址:N1BOOK平台-Nu1L Team
 第一章 Web入门 信息搜集 常见搜集  Des:一共3部分flag。
- 环境搭建 docker-compose.yml:
-version: &amp;#39;3.2&amp;#39; services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-backk:latest ports: - 80:80 启动:
+ 环境搭建 docker-compose.yml：
+version: &amp;#39;3.2&amp;#39; services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-backk:latest ports: - 80:80 启动：
 docker-compose up -d解题过程 既然说到了敏感文件，先试试robots.txt文件是否存在:
 User-agent: *Disallow:/flag1_is_her3_fun.txt访问flag1_is_her3_fun.txt，获得第一部分flag。
 剩下的工作就是扫描后台了，分别访问index.php~和.index.php.swp。
 粗心的小李  Des:看看能不能找到信息吧?
- 环境搭建 docker-compose.yml:
-version: &amp;#39;3.2&amp;#39; services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-git:latest ports: - 80:80 启动:
+ 环境搭建 docker-compose.yml：
+version: &amp;#39;3.2&amp;#39; services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-git:latest ports: - 80:80 启动：
 docker-compose up -d解题过程 Git泄露，找一下利用工具:gakki429/Git_Extract: 提取远程 git 泄露或本地 git 的工具 (github.com)
 使用后会在当前目录生成一个以网站命名的文件夹，cd进去，发现有一个index.html文件。flag就在其中。
 SQL注入 SQL注入-1  Des:N/A。
- 环境搭建 docker-compose.yml:
+ 环境搭建 docker-compose.yml：
 version: &amp;#39;3.2&amp;#39; services: web: image: registry.</description>
     </item>
     
@@ -280,17 +292,17 @@ version: &amp;#39;3.2&amp;#39; services: web: image: registry.</description>
 Whois命令查询 概念:Whois是一个标准互联网协议，可用于收集网络注册信息，如注册域名、IP等。
 原理:Whois就是一个用于查询域名是否被注册及注册域名详细信息的数据库。
 作用:获得注册人姓名和邮箱，通过社工进一步获取其它信息。
-用法:
-whois baidu.com	在线Whois查询网站:
+用法：
+whois baidu.com	在线Whois查询网站：
 站长工具_whois查询工具_爱站网 (aizhan.com)
 域名Whois查询 - 站长之家 (chinaz.com)
 VirusTotal
 2、查询备案信息 概念:网站备案是工具国家法律法规规定，需要网站所有者向国家有关部门申请的备案。这是国家信息产业部对网站的一种管理。
 注意:若网站搭建在其他国家，则不需进行备案。
-在线备案信息查询网站:
+在线备案信息查询网站：
 天眼查-商业查询平台_企业信息查询_公司查询_工商查询_企业信用信息系统 (tianyancha.com)
 3、收集敏感信息 搜索关键字 通过搜索引擎构造特殊关键字语法来搜索互联网上的相关敏感信息。还可用其来收集数据库文件、SQL注入、配置信息、源码泄露、未授权访问和robots.txt等敏感信息。
-常用搜索语法(各搜索引擎大同小异):
+常用搜索语法(各搜索引擎大同小异)：
    语法 作用     Site 指定域名   Inurl URL存在关键字的网页   Intext 网页正文中的关键字   Filetype 指定文件类型   Intitle 网页标题中的关键字   link link:baidu.com 表示返回所有和baidu.com做了链接的URL   Info 查找指定站点的基本信息   cache 搜索Google中关于某些内容的缓存    一般可以把语法结合使用以获得更准确的信息。</description>
     </item>
     
@@ -302,8 +314,8 @@ VirusTotal
       <guid>https://oopsdc.tk/post/jboss%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
       <description>JBoss 4.x JBossMQ JMS 反序列化漏洞 CVE-2017-7504 漏洞描述 Red Hat JBoss Application Server是一款基于JavaEE的开源应用服务器。JBoss AS 4.x及之前版本中，JBossMQ实现过程的JMS over HTTP Invocation Layer的HTTPServerILServlet.java文件存在反序列化漏洞，攻击者可借助特制的序列化数据利用该漏洞执行任意代码。
 影响版本 JBoss AS 4.x及之前。
-复现思路 漏洞复现 环境搭建:
-git clone https://github.com/vulhub/vulhub.git cd vulhub/jboss/CVE-2017-7504 docker-compose up -d Jexboss工具:joaomatosf/jexboss: JexBoss: Jboss (and Java Deserialization Vulnerabilities) verify and EXploitation Tool (github.com)
+复现思路 漏洞复现 环境搭建：
+git clone https://github.com/vulhub/vulhub.git cd vulhub/jboss/CVE-2017-7504 docker-compose up -d Jexboss工具：joaomatosf/jexboss: JexBoss: Jboss (and Java Deserialization Vulnerabilities) verify and EXploitation Tool (github.com)
 git clone https://github.com/joaomatosf/jexboss.git python3 jexboss.py -host http://&amp;lt;ip&amp;gt;:8080 成功利用漏洞执行命令。
  本文链接:JBoss漏洞复现 | Atmet (oopsdc.tk)
 文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
@@ -319,9 +331,9 @@ git clone https://github.com/joaomatosf/jexboss.git python3 jexboss.py -host htt
       <description>Nginx 越界读取缓存漏洞 CVE-2017-7529 漏洞描述 Nginx在反向代理站点的时候，通常会缓存一些文件，特别是静态文件。缓存的部分存储在文件中，每个缓存文件包括文件头+HTTP返回包头+HTTP返回包体。如果二次请求命中该缓存文件，Nginx会直接将该文件中的HTTP返回包体返回给用户。
 如果我的请求中包含Range头，Nginx将会根据我指定的start和end位置，返回指定长度的内容。而如果我构造了两个负的位置，如(-600, -9223372036854774591)，将可能读取到负位置的数据。如果这次请求又命中了缓存文件，则可能读取到缓存文件中位于HTTP返回包体前的文件头、HTTP返回包头等内容。
 影响版本 Nginx 0.5.6 ~ 1.13.2
-复现思路 漏洞复现 环境搭建:
+复现思路 漏洞复现 环境搭建：
 git clone https://github.com/vulhub/vulhub.git cd vulhub/nginx/CVE-2017-7529 docker-compose up -d 访问:http://&amp;lt;ip&amp;gt;:8080正常即可。
-POC已经在当前目录中给出来，文件名poc.py:
+POC已经在当前目录中给出来，文件名poc.py：
 #!/usr/bin/env python import sys import requests if len(sys.argv) &amp;lt; 2: print(&amp;#34;%surl&amp;#34; % (sys.argv[0])) print(&amp;#34;eg: python %shttp://your-ip:8080/&amp;#34; % (sys.argv[0])) sys.exit() headers = { &amp;#39;User-Agent&amp;#39;: &amp;#34;Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240&amp;#34; } offset = 605 url = sys.argv[1] file_len = len(requests.get(url, headers=headers).content) n = file_len + offset headers[&amp;#39;Range&amp;#39;] = &amp;#34;bytes=-%d,-%d&amp;#34; % ( n, 0x8000000000000000 - n) r = requests.</description>
     </item>
     
@@ -368,19 +380,19 @@ hugo9.push到远程仓库 # 配置代理 git config --global http.proxy socks5:
       <pubDate>Thu, 10 Jun 2021 21:03:39 +0800</pubDate>
       
       <guid>https://oopsdc.tk/post/xss-challenges/</guid>
-      <description>题目地址:https://xss-quiz.int21h.jp/
+      <description>题目地址：https://xss-quiz.int21h.jp/
 Stage #1  Hint: Very simple&amp;hellip;
- 直接输入测试语句:
+ 直接输入测试语句：
 &amp;lt;sCript&amp;gt;alert(document.domain);&amp;lt;/Script&amp;gt; Stage #2  Hint: Close the current tag and add SCRIPT tag&amp;hellip;
- 地址:XSS Challenges (by yamagata21) - Stage #2 (int21h.jp)
-上测试语句:
+ 地址：XSS Challenges (by yamagata21) - Stage #2 (int21h.jp)
+上测试语句：
 &amp;lt;sCript&amp;gt;alert(document.domain);&amp;lt;/Script&amp;gt; 然后审查元素，只需要把input标签闭合就能执行我们的语句了。
 &amp;#34;&amp;gt;&amp;lt;sCript&amp;gt;alert(document.domain);&amp;lt;/Script&amp;gt; Stage #3  Hint: The input in text box is properly escaped.
- 地址:XSS Challenges (by yamagata21) - Stage #3 (int21h.jp)
+ 地址：XSS Challenges (by yamagata21) - Stage #3 (int21h.jp)
 这个页面有两个input标签，先在搜索框输入我们的测试语句试试。
 直接把我们的语句放到&amp;lt;b&amp;gt;标签里了，但是这旁边不是还有一个input标签吗。把两者的name互换一下即可。
 Stage #4  Hint: Invisible input field.
- 地址:XSS Challenges (by yamagata21) - Stage #4 (int21h.</description>
+ 地址：XSS Challenges (by yamagata21) - Stage #4 (int21h.</description>
     </item>
     
     <item>
@@ -450,8 +462,8 @@ go run hello.go go build生成二进制文件运行:
       <guid>https://oopsdc.tk/post/gtk&#43;/</guid>
       <description>GTK+简介 GTK+(Gnome Toolkit+)最初是为GIMP(GNU Image Manipulation Program)写的，在开发早期GIMP版本时，Peter Mattis 和 Spencer Kimball创建了GTK(GIMP Toolkit)作为Motif收费工具包的替代。当GTK获得了面向对象特性和可扩展性后，才变为了GTK+。
 GTK+特点 稳定、跨平台、多语言绑定、接口丰富、与时俱进、算法丰富、移动嵌入式应用广泛.
-学习手册  GTK+2手册:GTK+ 2 Reference Manual - GNOME Developer Center GTK+3手册:GTK+ 3 Reference Manual - GNOME Developer Center 中文手册:介绍 - 《GTK+3 参考手册》 - 书栈网 · BookStack  GTK程序简介  使用gcc编译时加上pkg-config --cflags --libs gtk+-2.0，或者直接使用makefile编译
- 例: gcc demo.c -o demo `pkg-config --cflags --libs gtk+-2.0` 自动获得预处理参数，如宏定义、头文件位置 自动获得链接参数，如库、依赖库位置、文件名及其它参数 GTK程序基本框架 #include &amp;lt;gtk/gtk.h&amp;gt; int main(int argc, char *argv[]) { gtk_init(&amp;amp;argc, &amp;amp;argv);	// 初始化  // 代码区  gtk_main();	// 主事件循环  return 0; } 分析:</description>
+学习手册  GTK+2手册：GTK+ 2 Reference Manual - GNOME Developer Center GTK+3手册：GTK+ 3 Reference Manual - GNOME Developer Center 中文手册：介绍 - 《GTK+3 参考手册》 - 书栈网 · BookStack  GTK程序简介  使用gcc编译时加上pkg-config --cflags --libs gtk+-2.0，或者直接使用makefile编译
+ 例: gcc demo.c -o demo `pkg-config --cflags --libs gtk+-2.0` 自动获得预处理参数，如宏定义、头文件位置 自动获得链接参数，如库、依赖库位置、文件名及其它参数 GTK程序基本框架 #include &amp;lt;gtk/gtk.h&amp;gt; int main(int argc, char *argv[]) { gtk_init(&amp;amp;argc, &amp;amp;argv);	// 初始化  // 代码区  gtk_main();	// 主事件循环  return 0; } 分析：</description>
     </item>
     
     <item>

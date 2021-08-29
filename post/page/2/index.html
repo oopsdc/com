@@ -76,6 +76,39 @@
 <article class=post-entry>
 <header class=entry-header>
 <h2>
+BUUCTF
+</h2>
+</header>
+<section class=entry-content>
+<p>Basic Linux Labs 2020年10月24日 更新：目前所有靶机均能直接访问互联网。
+点击启动靶机可以启动一台安装好了 LAMP 的机器。
+并且这台机器位于靶机内网，所有动态靶机均可直接通过主机名访问这台机器。
+但由于目前一个账户只能同时启动一台靶机，您如果有需要建议浏览器开一个隐私窗口，注册一个新账号来启动这个靶机。
+ssh 用户名：root 密码：123456 地址和端口为动态分配的。
+开启环境后按照题目给定地址和端口使用SSH连接即可。
+连接上云主机后使用ls命令，发现当前用户家目录下啥也没有，再使用cd ..命令切换到根目录下看看，发现flag.txt文件。
+也可直接使用cat /flag.txt命令查看flag。
+BUU LFI COURSE 1 启动环境后得到如下PHP代码：
+&lt;?php /** * Created by PhpStorm. * User: jinzhao * Date: 2019/7/9 * Time: 7:07 AM */ highlight_file(__FILE__); if(isset($_GET['file'])) { $str = $_GET['file']; include $_GET['file']; } 本地文件包含，通过file参数进行传参，可在URL后构造参数?file=/flag查看flag。
+拓展 通过Wappalyzer插件可以发现网站使用了nginx服务，尝试访问nginx访问日志：
+?file=/var/log/nginx/access.log
+页面回显出我们刚才的访问记录，接下来我们使用bp抓包尝试写入phpinfo。
+通过在User-Agent字段最后插入aaaaaaa&lt;?php phpinfo();?>bbbbbbb传入phpinfo()，刷新页面后检查是否传入成功。
+Request请求包如下：
+GET /?file=/var/log/nginx/access.log HTTP/1.1
+Host: &lt;domain>:&lt;port>
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5....</p>
+</section>
+<footer class=entry-footer>
+August 13, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;DaChui
+</footer>
+<a class=entry-link aria-label="post link to BUUCTF" href=https://oopsdc.tk/post/buuctf/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>
 ATT&CK实战一
 </h2>
 </header>
@@ -178,10 +211,10 @@ utterances博客评论插件
 <p>概述 utterances是一个基于GitHub issue，拥有多种主题的开源小组件，本文将简述使用如何在hugo博客部署utterances。
 配置过程 新建仓库 新建一个公开的仓库，用于存放评论，名字随意。作者在此处创建一个名为utterances的公开仓库。
 安装utterances GitHub Apps - utterances
-点击安装即可，选择仓库:
+点击安装即可，选择仓库：
 安装完成后会自动跳转到官方页面。
 在文件中添加插件 官方文档:utterances
-修改footer.html文件，以PaperMod主题为例:
+修改footer.html文件，以PaperMod主题为例：
 &lt;footer class="footer"> {{- if .Site.Copyright }} &lt;span>{{ .Site.Copyright | markdownify }}&lt;/span> {{- else }} &lt;span>&amp;copy; {{ now.Year }} &lt;a href="{{ "" | absLangURL }}">{{ .Site.Title }}&lt;/a>&lt;/span> {{- end }} &lt;span>&amp;middot;&lt;/span> &lt;span>Powered by &lt;a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo&lt;/a>&lt;/span> &lt;span>&amp;middot;&lt;/span> &lt;span>Theme &lt;a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod&lt;/a>&lt;/span> &lt;script src="https://utteranc.es/client.js" repo="oopsdc/utterances" issue-term="title" theme="github-light" crossorigin="anonymous" async> &lt;/script> &lt;/footer> 运行命令hugo server进入一篇文章即可查看评论插件效果。...</p>
 </section>
 <footer class=entry-footer>
@@ -192,20 +225,20 @@ July 20, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 <article class=post-entry>
 <header class=entry-header>
 <h2>
-ProxyChains
+ProxyChains简单使用
 </h2>
 </header>
 <section class=entry-content>
 <p>概述 ProxyChains是一个Linux和Unix下的代理工具，允许TCP和DNS通过代理隧道，支持HTTP、SOCKS4、SOCKS5类型的代理服务器，且可配置多个代理。
 ProxyChains通过用户自定义的代理列表强制连接指定的应用程序。
 本文简述kali下如何通过ProxyChains使用Windows主机代理。
-相关资料 GitHub项目地址 ProxyChains:haad/proxychains: proxychains - a tool that forces any TCP connection made by any given application to follow through proxy like TOR or any other SOCKS4, SOCKS5 or HTTP(S) proxy. Supported auth-types: “user/pass” for SOCKS4/5, “basic” for HTTP. (github.com)
-ProxyChains-ng:rofl0r/proxychains-ng: proxychains ng (new generation) - a preloader which hooks calls to sockets in dynamically linked programs and redirects it through one or more socks/http proxies. continuation of the unmaintained proxychains project....</p>
+相关资料 GitHub项目地址 ProxyChains：haad/proxychains: proxychains - a tool that forces any TCP connection made by any given application to follow through proxy like TOR or any other SOCKS4, SOCKS5 or HTTP(S) proxy. Supported auth-types: “user/pass” for SOCKS4/5, “basic” for HTTP. (github.com)
+ProxyChains-ng：rofl0r/proxychains-ng: proxychains ng (new generation) - a preloader which hooks calls to sockets in dynamically linked programs and redirects it through one or more socks/http proxies. continuation of the unmaintained proxychains project....</p>
 </section>
 <footer class=entry-footer>
 July 9, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 </footer>
-<a class=entry-link aria-label="post link to ProxyChains" href=https://oopsdc.tk/post/proxychains/></a>
+<a class=entry-link aria-label="post link to ProxyChains简单使用" href=https://oopsdc.tk/post/proxychains%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/></a>
 </article>
 <article class=post-entry>
 <header class=entry-header>
@@ -216,8 +249,8 @@ July 9, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 <section class=entry-content>
 <p>平台地址:N1BOOK平台-Nu1L Team
 第一章 Web入门 信息搜集 常见搜集 Des:一共3部分flag。
-环境搭建 docker-compose.yml:
-version: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-backk:latest ports: - 80:80 启动:
+环境搭建 docker-compose.yml：
+version: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-backk:latest ports: - 80:80 启动：
 docker-compose up -d
 解题过程 既然说到了敏感文件，先试试robots.txt文件是否存在:
 User-agent: *
@@ -226,43 +259,19 @@ Disallow:
 访问flag1_is_her3_fun.txt，获得第一部分flag。
 剩下的工作就是扫描后台了，分别访问index.php~和.index.php.swp。
 粗心的小李 Des:看看能不能找到信息吧?
-环境搭建 docker-compose.yml:
-version: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-git:latest ports: - 80:80 启动:
+环境搭建 docker-compose.yml：
+version: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-git:latest ports: - 80:80 启动：
 docker-compose up -d
 解题过程 Git泄露，找一下利用工具:gakki429/Git_Extract: 提取远程 git 泄露或本地 git 的工具 (github.com)
 使用后会在当前目录生成一个以网站命名的文件夹，cd进去，发现有一个index.html文件。flag就在其中。
 SQL注入 SQL注入-1 Des:N/A。
-环境搭建 docker-compose.yml:
+环境搭建 docker-compose.yml：
 version: '3.2' services: web: image: registry....</p>
 </section>
 <footer class=entry-footer>
 July 3, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;DaChui
 </footer>
 <a class=entry-link aria-label="post link to 从0到1-CTFer成长之路" href=https://oopsdc.tk/post/%E4%BB%8E0%E5%88%B01-ctfer%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>
-自定义GitHub个人资料
-</h2>
-</header>
-<section class=entry-content>
-<p>概述 想自定义一下GitHub的个人资料自述文件，遂有本文。
-官方文档:管理个人资料自述文件 - GitHub Docs
-关于自述文件:关于自述文件 - GitHub Docs
-基本要求 创建一个与用户名相同的公开仓库 仓库根目录包含README.md文件 README.md文件不能为空 实现步骤 1.添加个人资料自述文件 1.新建仓库 在任意页面点击右上角的+号创建一个与自己用户名相同的仓库。当输入自己的用户名时，会出现一个小彩蛋。
-2.添加仓库说明(可选) 3.设置仓库为公共属性 4.使用自述文件初始化仓库 5.创建仓库并编辑README文档 生成的自述文件已由模板预先填充，也可自定义表情、符号。
-表情符号清单:🎁 Emoji cheat sheet for GitHub, Basecamp, Slack & more (webfx.com)
-在想要换行的文本前后加上&lt;br>和&lt;/br>即可，如:
-&lt;br>This is test&lt;/br> 2.删除个人资料自述文件 以下任一满足，个人资料自述文件就将会被删除:
-自述文件为空或不存在 仓库为私有仓库 仓库名与用户名不匹配 本文链接:自定义GitHub个人资料 | Atmet (oopsdc.tk)
-文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
-</p>
-</section>
-<footer class=entry-footer>
-July 1, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
-</footer>
-<a class=entry-link aria-label="post link to 自定义GitHub个人资料" href=https://oopsdc.tk/post/%E8%87%AA%E5%AE%9A%E4%B9%89github%E4%B8%AA%E4%BA%BA%E8%B5%84%E6%96%99/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

