@@ -79,11 +79,11 @@ version: &amp;#39;3.2&amp;#39; services: web: image: registry.</description>
       <pubDate>Mon, 13 Apr 2020 22:06:50 +0800</pubDate>
       
       <guid>https://oopsdc.tk/post/bugku/</guid>
-      <description>Bugku Web Web1  Des:flag{}。
+      <description>Bugku Web Web1  Des：flag{}。
  查看源码即可。
-Web2  Des:输入验证码即可得到flag。
+Web2  Des：输入验证码即可得到flag。
  输入框有输入长度限制，在控制台修改长度即可。
-Web3  Des:flag{}。
+Web3  Des：flag{}。
  通过get传参，按照题目要求直接传入
 ?what=flagWeb4  Des:post。
  方法1 利用hackbar直接post传参。
