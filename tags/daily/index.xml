@@ -60,8 +60,8 @@ GitHub Pages有三种类型：项目、用户和组织，项目站点连接到Gi
 保存后进入第二步。
 2.在test仓库中新建一个CNAME文件，内容如下：
 test.oopsdc.tk也可通过仓库中的Settings进行设置，选择Pages后，修改下面的Custom domain并保存即可。
- 本文链接:如何拥有多个GitHub Pages并配置子域名 | Atmet (oopsdc.tk)
-文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
+ 本文链接：如何拥有多个GitHub Pages并配置子域名 | Atmet (oopsdc.tk)
+文章许可：本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
  </description>
     </item>
     
@@ -87,8 +87,8 @@ gedit /etc/apt/source.list vi /etc/apt/source.list vim /etc/apt/source.list	// �
 remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.大意就是GitHub从13号起不再支持密码验证，需要使用个人token，官方解释是为了安全。
 解决方案 进入GitHub首页后点击右上角的个人头像，选择Settings，在左侧选择Developer settings，然后选择Personal access tokens，选中之后点击Generate new token，我们可以设置token名、有效期及token的权限范围。仅需要仓库部署的话，我们就只需勾选repo，翻到最下面点击Gererate token。
 然后保存好生成的token，因为退出页面后将不再显示，可以通过重新生成来重新获取。然后在push项目时，将输入的密码改为我们生成的token即可。
- 本文链接:GitHub不再支持密码验证解决方案 | Atmet
-文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
+ 本文链接：GitHub不再支持密码验证解决方案 | Atmet
+文章许可：本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
  </description>
     </item>
     
@@ -212,8 +212,8 @@ ProxyChains-ng：rofl0r/proxychains-ng: proxychains ng (new generation) - a prel
 表情符号清单:🎁 Emoji cheat sheet for GitHub, Basecamp, Slack &amp;amp; more (webfx.com)
 在想要换行的文本前后加上&amp;lt;br&amp;gt;和&amp;lt;/br&amp;gt;即可，如:
 &amp;lt;br&amp;gt;This is test&amp;lt;/br&amp;gt; 2.删除个人资料自述文件 以下任一满足，个人资料自述文件就将会被删除:
- 自述文件为空或不存在 仓库为私有仓库 仓库名与用户名不匹配   本文链接:自定义GitHub个人资料 | Atmet (oopsdc.tk)
-文章许可:本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
+ 自述文件为空或不存在 仓库为私有仓库 仓库名与用户名不匹配   本文链接：自定义GitHub个人资料 | Atmet (oopsdc.tk)
+文章许可：本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
  </description>
     </item>
     
