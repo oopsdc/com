@@ -31,7 +31,7 @@ aria2-enabled (默认值: true)aria2-retry-wait (默认值: 2)aria2-split (默
 <link rel=mask-icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta property="og:title" content="Scoop使用手册">
 <meta property="og:description" content="Scoop简介 Scoop是一个包管理工具，类似Ubuntu的apt和Mac的homebrew，只需通过一条命令即可快速完成软件的下载、安装和配置等步骤。
 项目地址：GitHub - lukesampson/scoop: A command-line installer for Windows.
@@ -176,32 +176,32 @@ iwr -useb get.scoop.sh | iex
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-powershell data-lang=powershell>scoop install aria2
 </code></pre></div><h1 id=安装typora>安装Typora<a hidden class=anchor aria-hidden=true href=#安装typora>#</a></h1>
 <p>以下是通过<code>scoop</code>安装<code>Typora</code>的流程，先使用命令搜索一下软件信息：</p>
-<pre><code>scoop search typora
+<pre tabindex=0><code>scoop search typora
 </code></pre><p>会有一个报错，大意为<code>typora</code>在<code>extras</code>软件库中，要求我们先安装对应软件库。按照要求执行命令添加软件库：</p>
-<pre><code>scoop bucket add extras
+<pre tabindex=0><code>scoop bucket add extras
 </code></pre><p>此时却又报错，提示需要从<code>GitHub</code>拉取项目，需要我们先安装<code>git</code>。安装<code>git</code>:</p>
-<pre><code>scoop install git
+<pre tabindex=0><code>scoop install git
 </code></pre><p>下载失败并报错，但之前都能正常下载，目前只安装了一个<code>aria2</code>，先禁用了看看：</p>
-<pre><code>scoop config aria2-enabled false
+<pre tabindex=0><code>scoop config aria2-enabled false
 </code></pre><p><code>aria2</code>默认配置：</p>
-<pre><code>aria2-enabled (默认值: true)
+<pre tabindex=0><code>aria2-enabled (默认值: true)
 aria2-retry-wait (默认值: 2)
 aria2-split (默认值: 5)
 aria2-max-connection-per-server (默认值: 5)
 aria2-min-split-size (默认值: 5M)
 </code></pre><p>然后再下载<code>git</code>，成功下载，但是在安装软件库时又报错了，显示无法访问<code>GitHub</code>仓库，这可是个老问题了，项目部署经常遇到，检查代理没问题，那么就给<code>git</code>配个代理试试：</p>
-<pre><code>git config --global http.proxy http://127.0.0.1:7890
+<pre tabindex=0><code>git config --global http.proxy http://127.0.0.1:7890
 </code></pre><p>再次安装软件库，成功安装，后续再使用命令安装<code>Typora</code>即可。</p>
 <h1 id=总结>总结<a hidden class=anchor aria-hidden=true href=#总结>#</a></h1>
 <h2 id=软件安装>软件安装<a hidden class=anchor aria-hidden=true href=#软件安装>#</a></h2>
 <p>1、安装前先搜索看看</p>
-<pre><code>scoop search &lt;package-name&gt;
+<pre tabindex=0><code>scoop search &lt;package-name&gt;
 </code></pre><p>2、安装</p>
-<pre><code>scoop install &lt;package-name&gt;
+<pre tabindex=0><code>scoop install &lt;package-name&gt;
 </code></pre><p>3、安装到全局目录</p>
-<pre><code>scoop install -g &lt;package-name&gt;
+<pre tabindex=0><code>scoop install -g &lt;package-name&gt;
 </code></pre><p>4、卸载</p>
-<pre><code>scoop uninstall uninstall &lt;package-name&gt;
+<pre tabindex=0><code>scoop uninstall uninstall &lt;package-name&gt;
 </code></pre><h2 id=软件库>软件库<a hidden class=anchor aria-hidden=true href=#软件库>#</a></h2>
 <p>可以在<code>GitHub</code>项目仓库找软件库，以下列出十一个软件库：</p>
 <p>1、main - Default bucket for the most common (mostly CLI) apps</p>
@@ -215,7 +215,7 @@ aria2-min-split-size (默认值: 5M)
 <p>10、php - Installers for most versions of PHP</p>
 <p>11、versions - Alternative versions of apps found in other buckets</p>
 <p>软件库添加方式：</p>
-<pre><code>scoop bucket add &lt;bucket-name&gt;
+<pre tabindex=0><code>scoop bucket add &lt;bucket-name&gt;
 </code></pre><blockquote>
 <p>本文链接：<a href=https://oopsdc.tk/post/scoop%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/>Scoop使用手册 | Atmet (oopsdc.tk)</a></p>
 <p>文章许可：本文采用<a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>CC BY-NC-SA 4.0</a>许可协议，转载请注明出处。</p>

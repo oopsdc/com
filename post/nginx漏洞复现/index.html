@@ -22,7 +22,7 @@ POC已经在当前目录中给出来，文件名poc.py：
 <link rel=mask-icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta property="og:title" content="Nginx漏洞复现">
 <meta property="og:description" content="Nginx 越界读取缓存漏洞 CVE-2017-7529 漏洞描述 Nginx在反向代理站点的时候，通常会缓存一些文件，特别是静态文件。缓存的部分存储在文件中，每个缓存文件包括文件头+HTTP返回包头+HTTP返回包体。如果二次请求命中该缓存文件，Nginx会直接将该文件中的HTTP返回包体返回给用户。
 如果我的请求中包含Range头，Nginx将会根据我指定的start和end位置，返回指定长度的内容。而如果我构造了两个负的位置，如(-600, -9223372036854774591)，将可能读取到负位置的数据。如果这次请求又命中了缓存文件，则可能读取到缓存文件中位于HTTP返回包体前的文件头、HTTP返回包头等内容。

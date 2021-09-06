@@ -19,7 +19,7 @@ gedit /etc/apt/source.list vi /etc/apt/source.list vim /etc/apt/source.list	// �
 <link rel=mask-icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta property="og:title" content="Vulhub环境搭建">
 <meta property="og:description" content="安装环境  Ubuntu 20.04  环境配置  docker docker-compose  更换系统源 备份原文件：
 mv /etc/apt/source.list /etc/apt/source.list.bak 使用以下任一命令创建并编辑source.list文件：
@@ -126,7 +126,7 @@ August 20, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 vi /etc/apt/source.list
 vim /etc/apt/source.list	// 需使用 apt install vim 命令安装
 </code></pre></div><p>文件内容如下：</p>
-<pre><code># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+<pre tabindex=0><code># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
@@ -178,7 +178,7 @@ systemctl restart docker
 </code></pre></div><p>查看配置文件：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>vim docker-compose.yml
 </code></pre></div><p>停止服务：</p>
-<pre><code>docker-compose down
+<pre tabindex=0><code>docker-compose down
 </code></pre><blockquote>
 <p>本文链接：<a href=https://oopsdc.tk/post/vulhub%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/>vulhub环境搭建 | Atmet</a></p>
 <p>文章许可：本文采用<a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>CC BY-NC-SA 4.0</a>许可协议，转载请注明出处。</p>

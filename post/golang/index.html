@@ -25,7 +25,7 @@ go run hello.go go build生成二进制文件运行:
 <link rel=mask-icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta property="og:title" content="Golang">
 <meta property="og:description" content="runoob教程:Go 语言教程 | 菜鸟教程 (runoob.com)
 环境搭建 安装包官方下载地址：Downloads - The Go Programming Language (golang.org)
@@ -340,7 +340,7 @@ $ sudo ./vmware-install.pl								<span style=color:#75715e># 运行安装文件
     <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>c</span>)
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>oopsdc
+<pre tabindex=0><code>oopsdc
 0
 false
 </code></pre><ul>
@@ -368,7 +368,7 @@ false
     <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Printf</span>(<span style=color:#e6db74>&#34;%v %v %v %q\n&#34;</span>, <span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>f</span>, <span style=color:#a6e22e>b</span>, <span style=color:#a6e22e>s</span>)
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>0 0 false &quot;&quot;
+<pre tabindex=0><code>0 0 false &quot;&quot;
 </code></pre><h3 id=方式二>方式二<a hidden class=anchor aria-hidden=true href=#方式二>#</a></h3>
 <p>根据值自行判断变量类型。</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>v_name</span> = <span style=color:#a6e22e>value</span>
@@ -380,7 +380,7 @@ false
     <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>d</span>)
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>true
+<pre tabindex=0><code>true
 </code></pre><h3 id=方式三>方式三<a hidden class=anchor aria-hidden=true href=#方式三>#</a></h3>
 <p><code>:=</code>赋值，是使用变量的首选形式。**但只能被用在函数体内，不能够用于全局变量声明及赋值。**使用<code>:=</code>操作符可以高效创建一个变量。称之为初始化声明。</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#a6e22e>v_name</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>value</span>
@@ -400,7 +400,7 @@ false
     <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>f</span>)
 }
 </code></pre></div><p>执行结果:</p>
-<pre><code>oopsdc
+<pre tabindex=0><code>oopsdc
 </code></pre><h2 id=多变量声明>多变量声明<a hidden class=anchor aria-hidden=true href=#多变量声明>#</a></h2>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#75715e>//类型相同多个变量, 非全局变量
 </span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>vname1</span>, <span style=color:#a6e22e>vname2</span>, <span style=color:#a6e22e>vname3</span> <span style=color:#66d9ef>type</span>
@@ -436,7 +436,7 @@ false
     println(<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>, <span style=color:#a6e22e>c</span>, <span style=color:#a6e22e>d</span>, <span style=color:#a6e22e>e</span>, <span style=color:#a6e22e>f</span>, <span style=color:#a6e22e>g</span>, <span style=color:#a6e22e>h</span>)
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>0 0 0 false 1 2 123 hello 123 hello
+<pre tabindex=0><code>0 0 0 false 1 2 123 hello 123 hello
 </code></pre><h2 id=空白标识符在函数返回值中的使用>空白标识符在函数返回值中的使用<a hidden class=anchor aria-hidden=true href=#空白标识符在函数返回值中的使用>#</a></h2>
 <p>实例：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
@@ -454,7 +454,7 @@ false
   <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>a</span>,<span style=color:#a6e22e>b</span>,<span style=color:#a6e22e>c</span>
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>2 str
+<pre tabindex=0><code>2 str
 </code></pre><h2 id=unsafesizeof函数>unsafe.sizeof()函数<a hidden class=anchor aria-hidden=true href=#unsafesizeof函数>#</a></h2>
 <p>实例如下：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
@@ -470,7 +470,7 @@ false
     println(<span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>, <span style=color:#a6e22e>c</span>)
 }
 </code></pre></div><p>运行结果：</p>
-<pre><code>abc 3 16
+<pre tabindex=0><code>abc 3 16
 </code></pre><p>看到的时候没搞懂为什么<code>c</code>，即<code>unsafe.Sizeof(a)</code>的值为16，于是查了一下。</p>
 <p><code>csdn</code>文章：<a href=https://blog.csdn.net/zzuchengming/article/details/88628645>unsafe.sizeof()_记录每一个小阶段的学习心得，持之以恒！-CSDN博客</a></p>
 <blockquote>
@@ -540,7 +540,7 @@ j = 6
 k = 12
 l = 24
 </code></pre></div><p>刚看到<code>i=1&lt;&lt;iota</code>的时候就想到了移位，以下是对结果的分析：</p>
-<pre><code>&lt;&lt;n==*(2^n)
+<pre tabindex=0><code>&lt;&lt;n==*(2^n)
 
 i = 1 &lt;&lt; 0		# 左移0位
 i = 001
@@ -592,7 +592,7 @@ l = 3 * 2^3 = 24
    println(<span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>, <span style=color:#a6e22e>c</span>)  
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>面积为 : 50
+<pre tabindex=0><code>面积为 : 50
 1 false str
 </code></pre><p>常量用作枚举：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>const</span> (
@@ -655,7 +655,7 @@ l = 3 * 2^3 = 24
    <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Printf</span>(<span style=color:#e6db74>&#34;*ptr 为 %d\n&#34;</span>, <span style=color:#f92672>*</span><span style=color:#a6e22e>ptr</span>);
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>第 1 行 - a 变量类型为 = int
+<pre tabindex=0><code>第 1 行 - a 变量类型为 = int
 第 2 行 - b 变量类型为 = int32
 第 3 行 - c 变量类型为 = float32
 a 的值为  4
@@ -855,7 +855,7 @@ a 的值为  4
     <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>x</span>
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>oops dc
+<pre tabindex=0><code>oops dc
 </code></pre><h3 id=函数参数>函数参数<a hidden class=anchor aria-hidden=true href=#函数参数>#</a></h3>
 <p>函数如果使用参数，该变量可称为函数的形参。</p>
 <p>形参就像定义在函数体内的局部变量。</p>
@@ -929,7 +929,7 @@ a 的值为  4
     <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Printf</span>(<span style=color:#e6db74>&#34;Res: a=%d, b=%d, c=%d\n&#34;</span>, <span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>, <span style=color:#a6e22e>c</span>)
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>Res: a=1, b=2, c=3
+<pre tabindex=0><code>Res: a=1, b=2, c=3
 </code></pre><h4 id=全局变量>全局变量<a hidden class=anchor aria-hidden=true href=#全局变量>#</a></h4>
 <p>在函数体外声明的变量称为全局变量，其作用域可以在整个包甚至外部包(被导出后)使用。</p>
 <p>全局变量可在任何函数中使用。</p>
@@ -953,7 +953,7 @@ a 的值为  4
     <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Printf</span>(<span style=color:#e6db74>&#34;Res: a=%d, b=%d, g=%d\n&#34;</span>, <span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>, <span style=color:#a6e22e>g</span>)
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>Res: a=1, b=2, g=3
+<pre tabindex=0><code>Res: a=1, b=2, g=3
 </code></pre><p><code>Go </code>语言中全局变量和局部变量名称可以相同，但位于函数内的局部变量会被优先考虑。</p>
 <p>实例2：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
@@ -975,7 +975,7 @@ a 的值为  4
     <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Printf</span>(<span style=color:#e6db74>&#34;Res: a=%d, b=%d, g=%d\n&#34;</span>, <span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>, <span style=color:#a6e22e>g</span>)
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>Res: a=1, b=2, g=3
+<pre tabindex=0><code>Res: a=1, b=2, g=3
 </code></pre><p>我们可以看出，即使在函数外部给全局变量<code>g</code>赋值为<code>10</code>，最后输出的还是函数体内局部变量<code>g</code>的值。</p>
 <h4 id=形式参数>形式参数<a hidden class=anchor aria-hidden=true href=#形式参数>#</a></h4>
 <p>形式参数会作为函数的局部变量来使用。</p>
@@ -1006,7 +1006,7 @@ a 的值为  4
     <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>a</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>b</span>
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>main()函数中 a=1
+<pre tabindex=0><code>main()函数中 a=1
 sum()函数中 a=1
 sum()函数中 b=2
 main()函数中 c=3
@@ -1077,7 +1077,7 @@ main()函数中 c=3
 	}
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>Ele[0] = 1
+<pre tabindex=0><code>Ele[0] = 1
 Ele[1] = 2
 Ele[2] = 3
 Ele[3] = 4
@@ -1109,7 +1109,7 @@ Ele[9] = 10
 
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>Ele[0] = 1.000000
+<pre tabindex=0><code>Ele[0] = 1.000000
 Ele[1] = 2.000000
 Ele[2] = 3.000000
 Ele[3] = 4.000000
@@ -1160,7 +1160,7 @@ Ele[4] = 0.000000
 
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>a 变量地址为: c000128058
+<pre tabindex=0><code>a 变量地址为: c000128058
 ip 变量存储地址为: c000128058
 *ip 指向的值: 20
 </code></pre><h3 id=空指针>空指针<a hidden class=anchor aria-hidden=true href=#空指针>#</a></h3>
@@ -1175,7 +1175,7 @@ ip 变量存储地址为: c000128058
     <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Printf</span>(<span style=color:#e6db74>&#34;%x\n&#34;</span>, <span style=color:#a6e22e>ptr</span>)
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>0
+<pre tabindex=0><code>0
 </code></pre><p>空指针判断：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>ptr</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span>)
 <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>ptr</span> <span style=color:#f92672>==</span> <span style=color:#66d9ef>nil</span>)
@@ -1243,12 +1243,12 @@ ip 变量存储地址为: c000128058
     <span style=color:#a6e22e>website</span> <span style=color:#66d9ef>string</span>
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>{Go lang DC Go lang learn oopsdc.tk}
+<pre tabindex=0><code>{Go lang DC Go lang learn oopsdc.tk}
 {Go lang DC Go lang learn oopsdc.tk}
 {Go lang DC  }
 </code></pre><h3 id=访问结构体成员>访问结构体成员<a hidden class=anchor aria-hidden=true href=#访问结构体成员>#</a></h3>
 <p>格式：</p>
-<pre><code>结构体.成员名
+<pre tabindex=0><code>结构体.成员名
 </code></pre><p>实例：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
 
@@ -1286,7 +1286,7 @@ ip 变量存储地址为: c000128058
     <span style=color:#a6e22e>id</span> <span style=color:#66d9ef>int</span>
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>Book1 title: C语言
+<pre tabindex=0><code>Book1 title: C语言
 Book1 author: DC
 Book1 subject: 编程
 Book1 id: 1
@@ -1333,7 +1333,7 @@ Book2 id: 2
     <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Printf</span>(<span style=color:#e6db74>&#34;Date: %s\n&#34;</span>, <span style=color:#a6e22e>book</span>.<span style=color:#a6e22e>date</span>)
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>Title: C语言
+<pre tabindex=0><code>Title: C语言
 Author: DC
 Subject: 编程
 Date: 2021-03-19
@@ -1405,7 +1405,7 @@ Date: 2021-03-19
 </code></pre></div><p>将<code>arr</code>中下标为<code>startIndex</code>到<code>endIndex-1</code>下的元素创建为一个新的切片：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#a6e22e>s</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>arr</span>[<span style=color:#a6e22e>startIndex</span>:<span style=color:#a6e22e>endIndex</span>]
 </code></pre></div><p>默认<code>endIndex</code>时将表示一直到<code>arr</code>的最后一个元素：</p>
-<pre><code>s := arr[startIndex:]
+<pre tabindex=0><code>s := arr[startIndex:]
 </code></pre><p>默认<code>startIndex</code>时表示从<code>arr</code>的第一个元素开始：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#a6e22e>s</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>arr</span>[:<span style=color:#a6e22e>endIndex</span>]
 </code></pre></div><p>通过切片<code>s</code>初始化切片<code>s1</code>：</p>
@@ -1430,7 +1430,7 @@ Date: 2021-03-19
     <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Printf</span>(<span style=color:#e6db74>&#34;len=%d cap=%d slice=%v&#34;</span>, len(<span style=color:#a6e22e>x</span>), cap(<span style=color:#a6e22e>x</span>), <span style=color:#a6e22e>x</span>)
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>len=3 cap=5 slice=[0 0 0]
+<pre tabindex=0><code>len=3 cap=5 slice=[0 0 0]
 </code></pre><h3 id=空切片>空切片<a hidden class=anchor aria-hidden=true href=#空切片>#</a></h3>
 <p>切片在未初始化之前默认为nil，长度为0。</p>
 <p>实例：</p>
@@ -1452,7 +1452,7 @@ Date: 2021-03-19
     <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Printf</span>(<span style=color:#e6db74>&#34;len=%d cap=%d slice=%v\n&#34;</span>, len(<span style=color:#a6e22e>x</span>), cap(<span style=color:#a6e22e>x</span>), <span style=color:#a6e22e>x</span>)
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>len=0 cap=0 slice=[]
+<pre tabindex=0><code>len=0 cap=0 slice=[]
 切片为空!
 </code></pre><h3 id=切片截取>切片截取<a hidden class=anchor aria-hidden=true href=#切片截取>#</a></h3>
 <p>可通过设置上下限设置截取切片。</p>
@@ -1487,7 +1487,7 @@ Date: 2021-03-19
     <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Printf</span>(<span style=color:#e6db74>&#34;len=%d cap=%d slice=%v\n&#34;</span>, len(<span style=color:#a6e22e>x</span>), cap(<span style=color:#a6e22e>x</span>), <span style=color:#a6e22e>x</span>)
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>len=9 cap=9 slice=[1 2 3 4 5 6 7 8 9]
+<pre tabindex=0><code>len=9 cap=9 slice=[1 2 3 4 5 6 7 8 9]
 nums= [1 2 3 4 5 6 7 8 9]
 nums[1:4]= [2 3 4]
 nums[:3]= [1 2 3]
@@ -1526,7 +1526,7 @@ len=3 cap=7 slice=[3 4 5]
     <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Printf</span>(<span style=color:#e6db74>&#34;len=%d cap=%d slice=%v\n&#34;</span>, len(<span style=color:#a6e22e>x</span>), cap(<span style=color:#a6e22e>x</span>), <span style=color:#a6e22e>x</span>)
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>len=0 cap=0 slice=[]
+<pre tabindex=0><code>len=0 cap=0 slice=[]
 len=1 cap=1 slice=[0]
 len=2 cap=2 slice=[0 1]
 len=5 cap=6 slice=[0 1 1 2 3]
@@ -1563,7 +1563,7 @@ len=5 cap=12 slice=[0 1 1 2 3]
         }
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>sum: 9
+<pre tabindex=0><code>sum: 9
 index: 1
 a -&gt; apple
 b -&gt; banana
@@ -1605,7 +1605,7 @@ b -&gt; banana
         }
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>智能制造 招牌是 嵌入式
+<pre tabindex=0><code>智能制造 招牌是 嵌入式
 人文 招牌是 法学
 数计 招牌是 计算机
 外国语 招牌是 翻译
@@ -1636,7 +1636,7 @@ b -&gt; banana
         }
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>原始数据
+<pre tabindex=0><code>原始数据
 一 值为 1
 二 值为 2
 三 值为 3
@@ -1662,7 +1662,7 @@ b -&gt; banana
         <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1</span>
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>15的阶乘为:1307674368000
+<pre tabindex=0><code>15的阶乘为:1307674368000
 </code></pre><h3 id=斐波那契数列>斐波那契数列<a hidden class=anchor aria-hidden=true href=#斐波那契数列>#</a></h3>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
 
@@ -1682,7 +1682,7 @@ b -&gt; banana
         <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>fibonacci</span>(<span style=color:#a6e22e>n</span><span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>) <span style=color:#f92672>+</span> <span style=color:#a6e22e>fibonacci</span>(<span style=color:#a6e22e>n</span><span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>)
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>0       1       1       2       3       5       8       13      21      34
+<pre tabindex=0><code>0       1       1       2       3       5       8       13      21      34
 </code></pre><h2 id=类型转换>类型转换<a hidden class=anchor aria-hidden=true href=#类型转换>#</a></h2>
 <blockquote>
 <p>注:Go 不支持隐式转换</p>
@@ -1704,7 +1704,7 @@ b -&gt; banana
         <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Printf</span>(<span style=color:#e6db74>&#34;%f\n&#34;</span>, <span style=color:#a6e22e>res</span>)
 }
 </code></pre></div><p>执行结果:</p>
-<pre><code>3.400000
+<pre tabindex=0><code>3.400000
 </code></pre><h2 id=接口>接口<a hidden class=anchor aria-hidden=true href=#接口>#</a></h2>
 <p><code>Go </code>中提供了另一种数据类型，<code>接口</code>。它把所有具有共性的方法定义在一起，任何其它类型只要实现了这些方法就是实现了这个接口。</p>
 <p>实例：</p>
@@ -1740,7 +1740,7 @@ b -&gt; banana
         <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;iPhone plz!&#34;</span>)
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>This is Nokiad
+<pre tabindex=0><code>This is Nokiad
 iPhone plz!
 </code></pre><h2 id=错误处理>错误处理<a hidden class=anchor aria-hidden=true href=#错误处理>#</a></h2>
 <p><code>Go </code>通过内置的错误接口提供了非常简单的错误处理机制。</p>
@@ -1803,7 +1803,7 @@ iPhone plz!
         }
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>100/10 =  10
+<pre tabindex=0><code>100/10 =  10
 errorMsg:
         Cannot proceed, the divider is zero!
         dividee: 100
@@ -1838,7 +1838,7 @@ errorMsg:
         }
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>world
+<pre tabindex=0><code>world
 hello
 world
 hello
@@ -1880,7 +1880,7 @@ hello
         <span style=color:#a6e22e>c</span> <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>sum</span>
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>-4 17 13
+<pre tabindex=0><code>-4 17 13
 </code></pre><h3 id=通道缓冲区>通道缓冲区<a hidden class=anchor aria-hidden=true href=#通道缓冲区>#</a></h3>
 <p>通道可以设置缓冲区，通过<code>make</code>的第二个参数指定缓冲区大小。</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#a6e22e>ch</span> <span style=color:#f92672>:=</span> make(<span style=color:#66d9ef>chan</span> <span style=color:#66d9ef>int</span>, <span style=color:#ae81ff>100</span>)
@@ -1903,7 +1903,7 @@ hello
         <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#f92672>&lt;-</span><span style=color:#a6e22e>ch</span>)
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>1
+<pre tabindex=0><code>1
 2
 </code></pre><h3 id=go遍历与关闭通道>Go遍历与关闭通道<a hidden class=anchor aria-hidden=true href=#go遍历与关闭通道>#</a></h3>
 <p><code>Go</code>通过<code>range</code>关键字来实现遍历读取到的数据，类似于数组或切片。格式如下：</p>
@@ -1932,7 +1932,7 @@ hello
         close(<span style=color:#a6e22e>c</span>)
 }
 </code></pre></div><p>执行结果：</p>
-<pre><code>0
+<pre tabindex=0><code>0
 1
 1
 2

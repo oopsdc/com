@@ -20,7 +20,7 @@ ProxyChains-ng：rofl0r/proxychains-ng: proxychains ng (new generation) - a prel
 <link rel=mask-icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta property="og:title" content="ProxyChains简单使用">
 <meta property="og:description" content="概述 ProxyChains是一个Linux和Unix下的代理工具，允许TCP和DNS通过代理隧道，支持HTTP、SOCKS4、SOCKS5类型的代理服务器，且可配置多个代理。
 ProxyChains通过用户自定义的代理列表强制连接指定的应用程序。
@@ -129,7 +129,7 @@ July 9, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 <p><code>kali</code>默认预装<code>proxychains4</code>，其它基于<code>Debian</code>的<code>Linux</code>发行版可通过如下命令安装：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>apt-get install proxychains4
 </code></pre></div><h2 id=文件配置>文件配置<a hidden class=anchor aria-hidden=true href=#文件配置>#</a></h2>
-<pre><code>vim /etc/proxychains4.conf
+<pre tabindex=0><code>vim /etc/proxychains4.conf
 </code></pre><p>取消<code>dynamic_chain</code>的注释以及注释掉<code>strict_chain</code>：</p>
 <p><img loading=lazy src=https://gitee.com/oopsdc/PicBed/raw/master/img/image-20210709223814090.png alt=image-20210709223814090>
 </p>
@@ -146,7 +146,7 @@ July 9, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 </p>
 <p>此处之所以选择<code>VMnet8</code>是因为虚拟机使用的<code>NAT</code>模式，如有不同请自行修改。</p>
 <p>以上步骤完成之后，在<code>kali</code>中执行如下命令打开浏览器访问某歌测试即可：</p>
-<pre><code>proxychains4 firefox
+<pre tabindex=0><code>proxychains4 firefox
 </code></pre><blockquote>
 <p>本文链接：<a href=https://oopsdc.tk/post/proxychains/>ProxyChains | Atmet (oopsdc.tk)</a></p>
 <p>文章许可：本文采用<a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>CC BY-NC-SA 4.0</a>许可协议，转载请注明出处。</p>

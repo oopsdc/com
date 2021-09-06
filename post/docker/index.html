@@ -25,7 +25,7 @@ yum install -y yum-utils 5.设置镜像仓库：
 <link rel=mask-icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta property="og:title" content="Docker">
 <meta property="og:description" content="Docker概述 镜像（image）：
 一个只读模板。一个镜像可以用来创建多个Docker容器，好似Java中的类和对象，镜像是类，容器是对象。容器（container）：
@@ -196,15 +196,15 @@ April 13, 2021&nbsp;·&nbsp;13 min&nbsp;·&nbsp;DaChui
 <div class=post-content>
 <h1 id=docker概述>Docker概述<a hidden class=anchor aria-hidden=true href=#docker概述>#</a></h1>
 <p>镜像（<code>image</code>）：</p>
-<pre><code>一个只读模板。一个镜像可以用来创建多个Docker容器，好似Java中的类和对象，镜像是类，容器是对象。
+<pre tabindex=0><code>一个只读模板。一个镜像可以用来创建多个Docker容器，好似Java中的类和对象，镜像是类，容器是对象。
 </code></pre><p>容器（<code>container</code>）：</p>
-<pre><code>Docker利用容器独立运行一个或一组应用，容器是用镜像创建的运行实例。
+<pre tabindex=0><code>Docker利用容器独立运行一个或一组应用，容器是用镜像创建的运行实例。
 容器可以被启动、开始、停止、删除。
 每个容器都是相互个隔离的。
 也可以把容器看做一个简易版Linux环境(包括root用户权限、进程空间、用户空间和网络空间等)及运行在其中的应用程序。
 容器的定义和镜像几乎一模一样，也是一堆层的统一视角，唯一区别在于容器最上面一层可读可写。
 </code></pre><p>仓库（<code>repository</code>）：</p>
-<pre><code>仓库是集中存放镜像文件的场所。
+<pre tabindex=0><code>仓库是集中存放镜像文件的场所。
 仓库和仓库注册服务器(registry)是有区别的，后者往往存在多个仓库，每个仓库又存在多个镜像，每个镜像有不同的标签。
 仓库分为公开仓库和私有仓库两种形式。
 最大的公开仓库是Docker Hub，国内最大的为阿里云、网易云等。
@@ -1134,7 +1134,7 @@ docker stack deploy wordpress.yaml
   ls          List secrets
   rm          Remove one or more secrets
 </code></pre></div><h1 id=docker-config>Docker Config<a hidden class=anchor aria-hidden=true href=#docker-config>#</a></h1>
-<pre><code>Commands:
+<pre tabindex=0><code>Commands:
   create      Create a config from a file or STDIN
   inspect     Display detailed information on one or more configs
   ls          List configs

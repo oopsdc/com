@@ -20,7 +20,7 @@
 <link rel=mask-icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta property="og:title" content="Kali安装Parallels Tools">
 <meta property="og:description" content="环境配置 本文环境信息如下：
  Parallel Desktop 16 Business 16.5.0 (49183) Kali Linux 2021.2 64-Bit  系统安装 安装配置 安装Kali Linux的时候Parallels Desktop无法识别操作系统，需要我们手动选择Other Linux下的Kali Linux。
@@ -142,7 +142,7 @@ mkdir ~/&lt;dirname&gt; <span style=color:#f92672>&amp;&amp;</span> cp -r /media
 <span style=color:#75715e># 安装Parallels Tools</span>
 cd ~/&lt;dirname&gt; <span style=color:#f92672>&amp;&amp;</span> ./install
 </code></pre></div><p>进入安装流程后，一直点回车，然后我们会得到大致如下的报错：</p>
-<pre><code>An error occured while installing the following packages:
+<pre tabindex=0><code>An error occured while installing the following packages:
 - linux-headers-5.10.0-kali3-amd64
 - dkms
 Install these packages manually and start the Parallels Tools installation again.
@@ -155,14 +155,14 @@ apt update <span style=color:#f92672>&amp;&amp;</span> apt upgrade
 <span style=color:#75715e># 安装内核头</span>
 apt install linux-headers-<span style=color:#66d9ef>$(</span>uname -r<span style=color:#66d9ef>)</span>
 </code></pre></div><p>然后又会报错：</p>
-<pre><code>Unable to locate package linux-headers-5.10.0-kali3-amd64
+<pre tabindex=0><code>Unable to locate package linux-headers-5.10.0-kali3-amd64
 Couldn't find any package by glob 'linux-headers-5.10.0-kali3-amd'
 </code></pre><p>源文件中没有头文件的包，所以需要我们手动下载头文件，我们手动下载一下文件：</p>
 <p><a href=http://old.kali.org/kali/pool/main/l/linux/>Index of /kali/pool/main/l/linux</a></p>
 <p>我们先使用如下命令查看自己的<code>Linux</code>内核版本：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>echo <span style=color:#66d9ef>$(</span>uname -r<span style=color:#66d9ef>)</span>
 </code></pre></div><p>我这里的信息为：</p>
-<pre><code>5.10.0-kali7-amd64
+<pre tabindex=0><code>5.10.0-kali7-amd64
 </code></pre><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># 下载内核头依赖并命名为 common.deb</span>
 wget -O common.deb http://old.kali.org/kali/pool/main/l/linux/linux-headers-5.10.0-kali3-common_5.10.13-1kali1_all.deb
 

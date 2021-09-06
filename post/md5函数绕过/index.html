@@ -24,7 +24,7 @@ md51[]=1&md52[]=2  本文链接：MD5()函数绕过 | Atmet (oopsdc.tk)
 <link rel=mask-icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta property="og:title" content="MD5()函数绕过">
 <meta property="og:description" content="示例代码：
 if (md5($_POST['md51']) == md5($_POST['md52']) && $_POST['md51'] != $_POST['md52']) 弱类型绕过 PHP在处理哈希字符串时，会把每一个0E开头的哈希值解释为0，所以若两个不同密码进行哈希后以0E开头，则会被认为值均为0，从而判等。
@@ -122,7 +122,7 @@ August 13, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 </code></pre></div><h1 id=弱类型绕过>弱类型绕过<a hidden class=anchor aria-hidden=true href=#弱类型绕过>#</a></h1>
 <p><code>PHP</code>在处理哈希字符串时，会把每一个<code>0E</code>开头的哈希值解释为0，所以若两个不同密码进行哈希后以<code>0E</code>开头，则会被认为值均为0，从而判等。</p>
 <p><code>md5</code>加密后开头为<code>0E</code>的值：</p>
-<pre><code>QNKCDZO
+<pre tabindex=0><code>QNKCDZO
 
 240610708
 

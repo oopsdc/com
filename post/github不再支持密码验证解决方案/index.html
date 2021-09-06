@@ -22,7 +22,7 @@ remote: Support for password authentication was removed on August 13, 2021. Plea
 <link rel=mask-icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta property="og:title" content="GitHub不再支持密码验证解决方案">
 <meta property="og:description" content="问题描述 在更新博客push本地资源时遇到如下报错：
 remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.大意就是GitHub从13号起不再支持密码验证，需要使用个人token，官方解释是为了安全。
@@ -113,7 +113,7 @@ August 19, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 <div class=post-content>
 <h1 id=问题描述>问题描述<a hidden class=anchor aria-hidden=true href=#问题描述>#</a></h1>
 <p>在更新博客<code>push</code>本地资源时遇到如下报错：</p>
-<pre><code>remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+<pre tabindex=0><code>remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
 </code></pre><p>大意就是<code>GitHub</code>从13号起不再支持密码验证，需要使用个人<code>token</code>，官方解释是为了安全。</p>
 <h1 id=解决方案>解决方案<a hidden class=anchor aria-hidden=true href=#解决方案>#</a></h1>
 <p>进入<code>GitHub</code>首页后点击右上角的个人头像，选择<code>Settings</code>，在左侧选择<code>Developer settings</code>，然后选择<code>Personal access tokens</code>，选中之后点击<code>Generate new token</code>，我们可以设置<code>token</code>名、有效期及<code>token</code>的权限范围。仅需要仓库部署的话，我们就只需勾选<code>repo</code>，翻到最下面点击<code>Gererate token</code>。</p>

@@ -27,7 +27,7 @@ route add default gw <ip> 再使用route命令验证一下，确认配好。
 <link rel=mask-icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta property="og:title" content="Arm开发板联网配置">
 <meta property="og:description" content="文章背景 使用S5P6818开发板时，有业务上云的需求，遂有本文，内容较少，仅涉及联网部分。
 问题描述  插上网线后无法获取IP 配置静态IP后无法ping通外网  解决方案 分两步解决。
@@ -153,16 +153,16 @@ ifconfig eth0 up
 ifconfig eth0 &lt;ip&gt; netmask &lt;netmask&gt;
 </code></pre></div><h2 id=2配置网关及dns服务器>2.配置网关及DNS服务器<a hidden class=anchor aria-hidden=true href=#2配置网关及dns服务器>#</a></h2>
 <p>完成第一步后，可以<code>ping</code>通局域网下的主机，但无法<code>ping</code>通外网，出现如下报错:</p>
-<pre><code>sendto: Network is unreachable
+<pre tabindex=0><code>sendto: Network is unreachable
 </code></pre><p>使用<code>route</code>命令查看路由表:</p>
-<pre><code>Kernel IP routing table
+<pre tabindex=0><code>Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 &lt;ip&gt;      			*        			  255.255.255.0   U     0      0      0 	eth0
 </code></pre><p>发现没有网关，配置网关:</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>route add default gw &lt;ip&gt;
 </code></pre></div><p>再使用<code>route</code>命令验证一下，确认配好。</p>
 <p>之后便要配置<code>DNS</code>解析，在<code>/etc</code>目录下新建一个<code>resolv.conf</code>配置文件，内容如下:</p>
-<pre><code>#114 DNS服务器
+<pre tabindex=0><code>#114 DNS服务器
 nameserver 114.114.114.114    
  
 #微软 DNS服务器

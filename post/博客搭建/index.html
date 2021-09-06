@@ -25,7 +25,7 @@ hugo9.push到远程仓库 # 配置代理 git config --global http.proxy socks5:
 <link rel=mask-icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta property="og:title" content="博客搭建">
 <meta property="og:description" content="博客搭建 hugo Hugo官方网站：https://gohugo.io
 本文以PaperMod主题为例，官方文档：Installation · adityatelange/hugo-PaperMod Wiki (github.com)
@@ -204,24 +204,24 @@ June 12, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;DaChui
 <h3 id=安装步骤>安装步骤<a hidden class=anchor aria-hidden=true href=#安装步骤>#</a></h3>
 <h4 id=1解压压缩包>1.解压压缩包<a hidden class=anchor aria-hidden=true href=#1解压压缩包>#</a></h4>
 <h4 id=2配置环境变量>2.配置环境变量<a hidden class=anchor aria-hidden=true href=#2配置环境变量>#</a></h4>
-<pre><code>D:\Env\hugo_0.83.1
+<pre tabindex=0><code>D:\Env\hugo_0.83.1
 </code></pre><h4 id=3初始化博客>3.初始化博客<a hidden class=anchor aria-hidden=true href=#3初始化博客>#</a></h4>
 <p>官方文档推荐我们使用易读性更高的<code>yml</code>格式初始化博客。</p>
-<pre><code>hugo new site &lt;name of site&gt; -f yml
+<pre tabindex=0><code>hugo new site &lt;name of site&gt; -f yml
 </code></pre><h4 id=4指定主题>4.指定主题<a hidden class=anchor aria-hidden=true href=#4指定主题>#</a></h4>
 <p>在<code>config.yml</code>文件中设置主题。</p>
-<pre><code>theme: PaperMod
+<pre tabindex=0><code>theme: PaperMod
 </code></pre><h4 id=5本地启动>5.本地启动<a hidden class=anchor aria-hidden=true href=#5本地启动>#</a></h4>
 <p>先在本地看看网站跑起来的效果</p>
-<pre><code>hugo server
+<pre tabindex=0><code>hugo server
 </code></pre><h4 id=6创建github仓库>6.创建GitHub仓库<a hidden class=anchor aria-hidden=true href=#6创建github仓库>#</a></h4>
 <p>具体操作详见之后的<code>hexo</code>主题教学。</p>
 <h4 id=7修改baseurl>7.修改baseUrl<a hidden class=anchor aria-hidden=true href=#7修改baseurl>#</a></h4>
 <p>将<code>config.yml</code>文件中的<code>baseUrl</code>修改为刚刚创建的仓库。</p>
-<pre><code>baseURL: &quot;https://&lt;username&gt;.github.io/&quot;
+<pre tabindex=0><code>baseURL: &quot;https://&lt;username&gt;.github.io/&quot;
 </code></pre><h4 id=8生成public文件夹>8.生成public文件夹<a hidden class=anchor aria-hidden=true href=#8生成public文件夹>#</a></h4>
 <p><code>public</code>中包含所有静态页面的内容，我们需要生成这个文件夹并上传到远程仓库中，完成博客部署。</p>
-<pre><code>hugo
+<pre tabindex=0><code>hugo
 </code></pre><h4 id=9push到远程仓库>9.push到远程仓库<a hidden class=anchor aria-hidden=true href=#9push到远程仓库>#</a></h4>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># 配置代理</span>
 git config --global http.proxy socks5://127.0.0.1:&lt;port&gt;
@@ -257,7 +257,7 @@ git add -A <span style=color:#f92672>&amp;&amp;</span> git commit -m <span style
 </blockquote>
 <h3 id=日常排错>日常排错<a hidden class=anchor aria-hidden=true href=#日常排错>#</a></h3>
 <p>在<code>push</code>的时候报错了，报错如下：</p>
-<pre><code> ! [rejected]        main -&gt; main (fetch first)
+<pre tabindex=0><code> ! [rejected]        main -&gt; main (fetch first)
 error: failed to push some refs to 'https://github.com/oopsdc/oopsdc.github.io.git'
 hint: Updates were rejected because the remote contains work that you do
 hint: not have locally. This is usually caused by another repository pushing
@@ -349,7 +349,7 @@ run <span style=color:#e6db74>`</span>npm audit fix<span style=color:#e6db74>`</
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>npm install --save -g core-js@^3
 npm audit fix
 </code></pre></div><p>安装后依旧报错：</p>
-<pre><code>WARN No layout: index.html
+<pre tabindex=0><code>WARN No layout: index.html
 </code></pre><p>查了资料，不缺插件，文件夹也是正确的，实在不知道什么错，就在<code>_config.yml</code>和<code>theme</code>下分别把<code>yun</code>和<code>yun</code>文件夹都改为了<code>theme-yun</code>，然后正常运行。但是改回<code>yun</code>又会报错&mldr;先暂时不讨论这个问题了。</p>
 <p><img loading=lazy src=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/image-20210311133420464.png alt=image-20210311133420464>
 </p>
@@ -366,7 +366,7 @@ npm audit fix
 <p>以<code>GitHub</code>为例，安装如下：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>npm install hexo-deployer-git --save
 </code></pre></div><p>本地测试没有问题时，即可部署，部署时建议先清除以往数据并重新生成，避免未知错误。</p>
-<pre><code>hexo clean &amp;&amp; hexo g -d
+<pre tabindex=0><code>hexo clean &amp;&amp; hexo g -d
 </code></pre><h4 id=配置域名>配置域名<a hidden class=anchor aria-hidden=true href=#配置域名>#</a></h4>
 <p>首先自己去买一个，然后按照对应的官方文档设置<code>DNS</code>等参数，然后点击博客仓库的<code>Settings</code>→<code>GitHub Pages</code>→<code>Check it out here!</code>，之后自定义域名即可。</p>
 <h3 id=hexo常用命令>hexo常用命令<a hidden class=anchor aria-hidden=true href=#hexo常用命令>#</a></h3>
@@ -467,7 +467,7 @@ hexo new &lt;page-name&gt; <span style=color:#75715e># 生成对应页面，具�
 <p>下一步进入<code>图床设置</code>下的<code>gitee</code>，我的设置如图。</p>
 <p><img loading=lazy src=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/image-20210309211940010.png alt=image-20210309211940010>
 </p>
-<pre><code>repo		:	用户名/仓库名
+<pre tabindex=0><code>repo		:	用户名/仓库名
 branch		:	分支
 token		:	个人口令
 path		:	仓库下的二级文件夹
@@ -553,7 +553,7 @@ cd C:\Users\&lt;user&gt;\AppData\Roaming\Typora\picgo\win64
 <p><img loading=lazy src=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/Screen%20Shot%202021-08-21%20at%2016.54.58_2021%2008%2021%2016%2056%20.png alt="Screen Shot 2021-08-21 at 16.54.58">
 </p>
 <p>从上到下依次为：</p>
-<pre><code>用户名	：	即gitee用户名
+<pre tabindex=0><code>用户名	：	即gitee用户名
 仓库名	：	自建一个公开仓库即可，详见PicGo配置
 分支	：	默认为master，没有特殊需求不用管
 token	：	详见PicGo配置
@@ -563,7 +563,7 @@ token	：	详见PicGo配置
 <p><img loading=lazy src=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/Screen%20Shot%202021-08-21%20at%2017.02.45_2021%2008%2021%2017%2002%20.png alt="Screen Shot 2021-08-21 at 17.02.45">
 </p>
 <p>参数讲解：</p>
-<pre><code>当插入图片时，上传图片
+<pre tabindex=0><code>当插入图片时，上传图片
 规则针对本地文件
 插入图片时对URL进行转义
 </code></pre><p>点击<code>测试上传</code>即可验证。</p>

