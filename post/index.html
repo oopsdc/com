@@ -76,6 +76,23 @@
 <article class=post-entry>
 <header class=entry-header>
 <h2>
+HTB Starting Point
+</h2>
+</header>
+<section class=entry-content>
+<p>Archetype 目标：拿到用户权限与系统权限。
+靶机IP：10.10.10.27
+1、信息收集 先使用nmap看看靶机开放了什么端口：
+sudo nmap -sS -sV 10.10.10.27 # 参数讲解 sS：使用SYN半开放式扫描，扫描快，隐蔽性高 sV：探测服务版本 # 扫描结果 Nmap scan report for 10.10.10.27 (10.10.10.27) Host is up (0.28s latency). Not shown: 996 closed ports PORT STATE SERVICE VERSION 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 445/tcp open microsoft-ds Microsoft Windows Server 2008 R2 - 2012 microsoft-ds 1433/tcp open ms-sql-s Microsoft SQL Server 2017 14.00.1000 Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows 比较容易入手的就是445端口对应的SMB服务，1433是SQL Server的默认端口。先尝试能否匿名访问SMB服务，这里使用Kali预装的smbclient：...</p>
+</section>
+<footer class=entry-footer>
+September 12, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;DaChui
+</footer>
+<a class=entry-link aria-label="post link to HTB Starting Point" href=https://oopsdc.tk/post/htb-starting-point/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>
 LxRunOffline使用手册
 </h2>
 </header>
@@ -224,34 +241,6 @@ Parallel Desktop 16 Business 16.5.0 (49183) Kali Linux 2021.2 64-Bit 系统安�
 August 18, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 </footer>
 <a class=entry-link aria-label="post link to Kali安装Parallels Tools" href=https://oopsdc.tk/post/kali%E5%AE%89%E8%A3%85parallels-tools/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>
-MD5()函数绕过
-</h2>
-</header>
-<section class=entry-content>
-<p>示例代码：
-if (md5($_POST['md51']) == md5($_POST['md52']) && $_POST['md51'] != $_POST['md52']) 弱类型绕过 PHP在处理哈希字符串时，会把每一个0E开头的哈希值解释为0，所以若两个不同密码进行哈希后以0E开头，则会被认为值均为0，从而判等。
-md5加密后开头为0E的值：
-QNKCDZO
-240610708
-s878926199a
-s155964671a
-s214587387a
-s214587387a
-以示例代码为例，分别给md51和md52赋表中不同的值。经过md5加密后，值均为0，而原始值又不同，顺利绕过if判断。
-数组绕过 md5()函数无法处理数组，会对传入的数组返回NULL，即数组经过md5加密后均得到NULL。
-我们仅需传入如下数据即可，数组内容随意：
-md51[]=1&md52[]=2 本文链接：MD5()函数绕过 | Atmet (oopsdc.tk)
-文章许可：本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
-</p>
-</section>
-<footer class=entry-footer>
-August 13, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
-</footer>
-<a class=entry-link aria-label="post link to MD5()函数绕过" href=https://oopsdc.tk/post/md5%E5%87%BD%E6%95%B0%E7%BB%95%E8%BF%87/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

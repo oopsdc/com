@@ -3,11 +3,11 @@
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name=robots content="index, follow">
-<title>Tags | Atmet</title>
+<title>Hack The Box | Atmet</title>
 <meta name=keywords content>
 <meta name=description content="0opsdc!">
 <meta name=author content="DaChui">
-<link rel=canonical href=https://oopsdc.tk/tags/>
+<link rel=canonical href=https://oopsdc.tk/tags/hack-the-box/>
 <link href=/assets/css/stylesheet.min.fe37c241822b208b1ade5508f8fdbbe116fdf98dae7ffe71501145355d4636b4.css integrity="sha256-/jfCQYIrIIsa3lUI+P274Rb9+Y2uf/5xUBFFNV1GNrQ=" rel="preload stylesheet" as=style>
 <link rel=icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
 <link rel=icon type=image/png sizes=16x16 href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
@@ -17,14 +17,14 @@
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
 <meta name=generator content="Hugo 0.88.1">
-<link rel=alternate type=application/rss+xml href=https://oopsdc.tk/tags/index.xml>
-<meta property="og:title" content="Tags">
+<link rel=alternate type=application/rss+xml href=https://oopsdc.tk/tags/hack-the-box/index.xml>
+<meta property="og:title" content="Hack The Box">
 <meta property="og:description" content="0opsdc!">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://oopsdc.tk/tags/"><meta property="og:image" content="https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="og:site_name" content="Atmet">
+<meta property="og:url" content="https://oopsdc.tk/tags/hack-the-box/"><meta property="og:image" content="https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="og:site_name" content="Atmet">
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E">
-<meta name=twitter:title content="Tags">
+<meta name=twitter:title content="Hack The Box">
 <meta name=twitter:description content="0opsdc!">
 </head>
 <body class=list id=top>
@@ -60,35 +60,35 @@
 </li>
 <li>
 <a href=https://oopsdc.tk/tags/ title=Tags>
-<span class=active>Tags</span>
+<span>Tags</span>
 </a>
 </li></ul>
 </nav>
 </header>
 <main class=main>
 <header class=page-header>
-<h1>Tags</h1>
+<div class=breadcrumbs>
+<a href=https://oopsdc.tk/>Home</a>&nbsp;»&nbsp;<a href=https://oopsdc.tk/tags/>Tags</a>
+</div>
+<h1>Hack The Box</h1>
 </header>
-<ul class=terms-tags>
-<li>
-<a href=https://oopsdc.tk/tags/ctf/>CTF <sup><strong><sup>5</sup></strong></sup> </a>
-</li>
-<li>
-<a href=https://oopsdc.tk/tags/daily/>Daily <sup><strong><sup>18</sup></strong></sup> </a>
-</li>
-<li>
-<a href=https://oopsdc.tk/tags/first/>first <sup><strong><sup>1</sup></strong></sup> </a>
-</li>
-<li>
-<a href=https://oopsdc.tk/tags/hack-the-box/>Hack The Box <sup><strong><sup>1</sup></strong></sup> </a>
-</li>
-<li>
-<a href=https://oopsdc.tk/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/>信息收集 <sup><strong><sup>1</sup></strong></sup> </a>
-</li>
-<li>
-<a href=https://oopsdc.tk/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/>漏洞复现 <sup><strong><sup>4</sup></strong></sup> </a>
-</li>
-</ul>
+<article class="post-entry tag-entry">
+<header class=entry-header>
+<h2>
+HTB Starting Point
+</h2>
+</header>
+<section class=entry-content>
+<p>Archetype 目标：拿到用户权限与系统权限。
+靶机IP：10.10.10.27
+1、信息收集 先使用nmap看看靶机开放了什么端口：
+sudo nmap -sS -sV 10.10.10.27 # 参数讲解 sS：使用SYN半开放式扫描，扫描快，隐蔽性高 sV：探测服务版本 # 扫描结果 Nmap scan report for 10.10.10.27 (10.10.10.27) Host is up (0.28s latency). Not shown: 996 closed ports PORT STATE SERVICE VERSION 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 445/tcp open microsoft-ds Microsoft Windows Server 2008 R2 - 2012 microsoft-ds 1433/tcp open ms-sql-s Microsoft SQL Server 2017 14.00.1000 Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows 比较容易入手的就是445端口对应的SMB服务，1433是SQL Server的默认端口。先尝试能否匿名访问SMB服务，这里使用Kali预装的smbclient：...</p>
+</section>
+<footer class=entry-footer>
+September 12, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;DaChui
+</footer>
+<a class=entry-link aria-label="post link to HTB Starting Point" href=https://oopsdc.tk/post/htb-starting-point/></a>
+</article>
 </main><footer class=footer>
 <span>&copy; 2021 <a href=https://oopsdc.tk/>Atmet</a></span>
 <span>&#183;</span>

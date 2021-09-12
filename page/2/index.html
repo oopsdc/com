@@ -71,6 +71,34 @@
 <article class=post-entry>
 <header class=entry-header>
 <h2>
+MD5()函数绕过
+</h2>
+</header>
+<section class=entry-content>
+<p>示例代码：
+if (md5($_POST['md51']) == md5($_POST['md52']) && $_POST['md51'] != $_POST['md52']) 弱类型绕过 PHP在处理哈希字符串时，会把每一个0E开头的哈希值解释为0，所以若两个不同密码进行哈希后以0E开头，则会被认为值均为0，从而判等。
+md5加密后开头为0E的值：
+QNKCDZO
+240610708
+s878926199a
+s155964671a
+s214587387a
+s214587387a
+以示例代码为例，分别给md51和md52赋表中不同的值。经过md5加密后，值均为0，而原始值又不同，顺利绕过if判断。
+数组绕过 md5()函数无法处理数组，会对传入的数组返回NULL，即数组经过md5加密后均得到NULL。
+我们仅需传入如下数据即可，数组内容随意：
+md51[]=1&md52[]=2 本文链接：MD5()函数绕过 | Atmet (oopsdc.tk)
+文章许可：本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。
+</p>
+</section>
+<footer class=entry-footer>
+August 13, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
+</footer>
+<a class=entry-link aria-label="post link to MD5()函数绕过" href=https://oopsdc.tk/post/md5%E5%87%BD%E6%95%B0%E7%BB%95%E8%BF%87/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>
 BUUCTF
 </h2>
 </header>
@@ -234,39 +262,6 @@ ProxyChains-ng：rofl0r/proxychains-ng: proxychains ng (new generation) - a prel
 July 9, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
 </footer>
 <a class=entry-link aria-label="post link to ProxyChains简单使用" href=https://oopsdc.tk/post/proxychains%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>
-从0到1-CTFer成长之路
-</h2>
-</header>
-<section class=entry-content>
-<p>平台地址:N1BOOK平台-Nu1L Team
-第一章 Web入门 信息搜集 常见搜集 Des:一共3部分flag。
-环境搭建 docker-compose.yml：
-version: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-backk:latest ports: - 80:80 启动：
-docker-compose up -d
-解题过程 既然说到了敏感文件，先试试robots.txt文件是否存在:
-User-agent: *
-Disallow:
-/flag1_is_her3_fun.txt
-访问flag1_is_her3_fun.txt，获得第一部分flag。
-剩下的工作就是扫描后台了，分别访问index.php~和.index.php.swp。
-粗心的小李 Des:看看能不能找到信息吧?
-环境搭建 docker-compose.yml：
-version: '3.2' services: web: image: registry.cn-hangzhou.aliyuncs.com/n1book/web-information-git:latest ports: - 80:80 启动：
-docker-compose up -d
-解题过程 Git泄露，找一下利用工具:gakki429/Git_Extract: 提取远程 git 泄露或本地 git 的工具 (github.com)
-使用后会在当前目录生成一个以网站命名的文件夹，cd进去，发现有一个index.html文件。flag就在其中。
-SQL注入 SQL注入-1 Des:N/A。
-环境搭建 docker-compose.yml：
-version: '3.2' services: web: image: registry....</p>
-</section>
-<footer class=entry-footer>
-July 3, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;DaChui
-</footer>
-<a class=entry-link aria-label="post link to 从0到1-CTFer成长之路" href=https://oopsdc.tk/post/%E4%BB%8E0%E5%88%B01-ctfer%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

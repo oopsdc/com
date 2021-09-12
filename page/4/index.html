@@ -71,6 +71,32 @@
 <article class=post-entry>
 <header class=entry-header>
 <h2>
+XSS Challenges
+</h2>
+</header>
+<section class=entry-content>
+<p>题目地址：https://xss-quiz.int21h.jp/
+Stage #1 Hint: Very simple…
+直接输入测试语句：
+&lt;sCript>alert(document.domain);&lt;/Script> Stage #2 Hint: Close the current tag and add SCRIPT tag…
+地址：XSS Challenges (by yamagata21) - Stage #2 (int21h.jp)
+上测试语句：
+&lt;sCript>alert(document.domain);&lt;/Script> 然后审查元素，只需要把input标签闭合就能执行我们的语句了。
+">&lt;sCript>alert(document.domain);&lt;/Script> Stage #3 Hint: The input in text box is properly escaped.
+地址：XSS Challenges (by yamagata21) - Stage #3 (int21h.jp)
+这个页面有两个input标签，先在搜索框输入我们的测试语句试试。
+直接把我们的语句放到&lt;b>标签里了，但是这旁边不是还有一个input标签吗。把两者的name互换一下即可。
+Stage #4 Hint: Invisible input field.
+地址：XSS Challenges (by yamagata21) - Stage #4 (int21h....</p>
+</section>
+<footer class=entry-footer>
+June 10, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;DaChui
+</footer>
+<a class=entry-link aria-label="post link to XSS Challenges" href=https://oopsdc.tk/post/xss-challenges/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>
 Test
 </h2>
 </header>
@@ -189,39 +215,6 @@ My 1st post
 September 15, 2020&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Me
 </footer>
 <a class=entry-link aria-label="post link to My 1st post" href=https://oopsdc.tk/post/my-1st-post/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>
-Bugku
-</h2>
-</header>
-<section class=entry-content>
-<p>Bugku Web Web1 Des：flag{}。
-查看源码即可。
-Web2 Des：输入验证码即可得到flag。
-输入框有输入长度限制，在控制台修改长度即可。
-Web3 Des：flag{}。
-通过get传参，按照题目要求直接传入
-?what=flag
-Web4 Des:post。
-方法1 利用hackbar直接post传参。
-方法2 利用burp抓包传值。
-方法3 编写python脚本。
-import requests s = requests.Session() r = s.get("&lt;url>") value = {'what':'flag'} r = s.post("&lt;url>", value) print(r.text) 题目更新 Des:看看源代码吧。
-查看源代码，发现有两串编码字符串。
-分别对两个字符串进行URL解码：
-按照代码含义将其组合起来：
-放到控制台Console里排版。
-将if判断里与a.value判等的值输入提交框，提交。
-获得flag。
-Web5 Des:矛盾。
-$num = $_GET['num']; if (!isnumeric($num)) { echo $num; if ($num == 1) echo 'flag{********}'; } 利用1a绕过，例：...</p>
-</section>
-<footer class=entry-footer>
-April 13, 2020&nbsp;·&nbsp;12 min&nbsp;·&nbsp;DaChui
-</footer>
-<a class=entry-link aria-label="post link to Bugku" href=https://oopsdc.tk/post/bugku/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

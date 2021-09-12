@@ -76,6 +76,39 @@
 <article class=post-entry>
 <header class=entry-header>
 <h2>
+Bugku
+</h2>
+</header>
+<section class=entry-content>
+<p>Bugku Web Web1 Des：flag{}。
+查看源码即可。
+Web2 Des：输入验证码即可得到flag。
+输入框有输入长度限制，在控制台修改长度即可。
+Web3 Des：flag{}。
+通过get传参，按照题目要求直接传入
+?what=flag
+Web4 Des:post。
+方法1 利用hackbar直接post传参。
+方法2 利用burp抓包传值。
+方法3 编写python脚本。
+import requests s = requests.Session() r = s.get("&lt;url>") value = {'what':'flag'} r = s.post("&lt;url>", value) print(r.text) 题目更新 Des:看看源代码吧。
+查看源代码，发现有两串编码字符串。
+分别对两个字符串进行URL解码：
+按照代码含义将其组合起来：
+放到控制台Console里排版。
+将if判断里与a.value判等的值输入提交框，提交。
+获得flag。
+Web5 Des:矛盾。
+$num = $_GET['num']; if (!isnumeric($num)) { echo $num; if ($num == 1) echo 'flag{********}'; } 利用1a绕过，例：...</p>
+</section>
+<footer class=entry-footer>
+April 13, 2020&nbsp;·&nbsp;12 min&nbsp;·&nbsp;DaChui
+</footer>
+<a class=entry-link aria-label="post link to Bugku" href=https://oopsdc.tk/post/bugku/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>
 攻防世界
 </h2>
 </header>
