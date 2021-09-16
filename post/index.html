@@ -86,7 +86,7 @@ HTB-Starting Point
 sudo nmap -sS -sV 10.10.10.27 # 参数讲解 sS：使用SYN半开放式扫描，扫描快，隐蔽性高 sV：探测服务版本 # 扫描结果 Nmap scan report for 10.10.10.27 (10.10.10.27) Host is up (0.28s latency). Not shown: 996 closed ports PORT STATE SERVICE VERSION 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 445/tcp open microsoft-ds Microsoft Windows Server 2008 R2 - 2012 microsoft-ds 1433/tcp open ms-sql-s Microsoft SQL Server 2017 14.00.1000 Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows 比较容易入手的就是445端口对应的SMB服务，1433是SQL Server的默认端口。先尝试能否匿名访问SMB服务，这里使用Kali预装的smbclient：...</p>
 </section>
 <footer class=entry-footer>
-September 12, 2021&nbsp;·&nbsp;6 min&nbsp;·&nbsp;DaChui
+September 12, 2021&nbsp;·&nbsp;8 min&nbsp;·&nbsp;DaChui
 </footer>
 <a class=entry-link aria-label="post link to HTB-Starting Point" href=https://oopsdc.tk/post/htb-starting-point/></a>
 </article>
